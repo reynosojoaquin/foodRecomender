@@ -1,0 +1,12 @@
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\bin\Debug\IngredientMinery.exe.config
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\bin\Debug\IngredientMinery.exe
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\bin\Debug\IngredientMinery.pdb
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.csprojResolveAssemblyReference.cache
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.Properties.Resources.resources
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.csproj.GenerateResource.Cache
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.exe
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.pdb
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.frmMineria.resources
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.frmMineria.resources
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.Properties.Resources.resources
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.csproj.GenerateResource.Cache

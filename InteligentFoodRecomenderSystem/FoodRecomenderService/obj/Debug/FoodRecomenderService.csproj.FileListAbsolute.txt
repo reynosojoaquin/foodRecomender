@@ -1,0 +1,1 @@
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\InteligentFoodRecomenderSystem\FoodRecomenderService\obj\Debug\FoodRecomenderService.csprojResolveAssemblyReference.cache

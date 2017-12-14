@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1" stroke="null">
+   <polygon fill="#ea4f3b" points="10,16.263 10,0.499 9.994,0.487 6.915,6.75 0,7.756 5.005,12.632 3.825,19.513  " id="svg_2" stroke="null"/>
+   <polygon fill="#f2f2f2" points="20,7.751 13.091,6.75 10,0.499 10,16.263 10.005,16.26 16.193,19.506 15.004,12.622  " id="svg_3" stroke="null"/>
+   <line fill="none" stroke="null" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="5.151022" y1="2.236798" x2="5.309404" y2="7.305014" id="svg_6"/>
+   <line fill="none" stroke="null" stroke-width="5" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="5.34108" y1="4.549172" x2="6.544782" y2="8.128599" id="svg_7"/>
+  </g>
+ </g>
+</svg>

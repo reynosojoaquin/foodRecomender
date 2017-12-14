@@ -1,0 +1,51 @@
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\RecipeScraper.exe.config
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\RecipeScraper.exe
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\RecipeScraper.pdb
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csprojResolveAssemblyReference.cache
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.Properties.Resources.resources
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csproj.GenerateResource.Cache
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.exe
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.pdb
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.frmScraper.resources
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MicroDataScraper.exe
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MySql.Data.dll
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MicroDataScraper.pdb
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MicroDataScraper.exe.config
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MySql.Data.xml
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\RecipeScraper.exe.config
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.exe
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.pdb
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\RecipeScraper.exe
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\RecipeScraper.pdb
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.dll
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MicroDataScraper.exe
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MySql.Data.dll
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MicroDataScraper.pdb
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.pdb
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.xml
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MySql.Data.xml
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csprojResolveAssemblyReference.cache
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.frmScraper.resources
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.Properties.Resources.resources
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csproj.GenerateResource.Cache
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.dll
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MicroDataScraper.exe
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MySql.Data.dll
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\Newtonsoft.Json.dll
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MicroDataScraper.pdb
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MicroDataScraper.exe.config
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.pdb
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.xml
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\MySql.Data.xml
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\bin\Debug\Newtonsoft.Json.xml
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csprojResolveAssemblyReference.cache
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csproj.RecipeScraper.exe.config
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.frmScraper.resources
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.MineriaIngredientes.resources
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.Properties.Resources.resources
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csproj.GenerateResource.Cache
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.exe
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.pdb

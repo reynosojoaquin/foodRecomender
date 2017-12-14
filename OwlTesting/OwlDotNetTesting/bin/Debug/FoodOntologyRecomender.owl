@@ -1,0 +1,3722 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dcterms "http://purl.org/dc/terms/" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY fo "http://purl.org/ontology/fo/" >
+    <!ENTITY dctypes "http://purl.org/dc/dcmitype/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY v "http://rdf.data-vocabulary.org/#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY provenance "http://www.bbc.co.uk/ontologies/provenance/" >
+    <!ENTITY vs "http://www.w3.org/2003/06/sw-vocab-status/ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/owl/owlapi/turtle#"
+     xml:base="http://www.semanticweb.org/owl/owlapi/turtle"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:v="http://rdf.data-vocabulary.org/#"
+     xmlns:provenance="http://www.bbc.co.uk/ontologies/provenance/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:fo="http://purl.org/ontology/fo/"
+     xmlns:dctypes="http://purl.org/dc/dcmitype/"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+    <owl:Ontology rdf:about="http://purl.org/ontology/fo/">
+        <rdfs:label rdf:datatype="&xsd;string">Food Ontology</rdfs:label>
+        <provenance:version rdf:datatype="&xsd;double">1.1</provenance:version>
+        <owl:versionInfo rdf:datatype="&xsd;string">1.1</owl:versionInfo>
+        <dcterms:created rdf:datatype="&xsd;date">2011-07-08</dcterms:created>
+        <provenance:changeReason rdf:datatype="&xsd;string">Fix a typo of occassion</provenance:changeReason>
+        <provenance:slug rdf:datatype="&xsd;string">fo</provenance:slug>
+        <provenance:canonicalLocation rdf:datatype="&xsd;string">https://repo.dev.bbc.co.uk/services/linked-data/ontologies/domain/kl/food/food-ontology-1-1.ttl</provenance:canonicalLocation>
+        <provenance:public rdf:datatype="&xsd;boolean">true</provenance:public>
+        <rdfs:comment xml:lang="en-gb">A simple vocabulary for describing recipes, ingredients, menus and diets.</rdfs:comment>
+        <dc:date>Date: 2014/03/18 16:30:00 </dc:date>
+        <dcterms:title xml:lang="en-gb">Food Ontology</dcterms:title>
+        <dcterms:license rdf:resource="http://creativecommons.org/licenses/by/4.0#id"/>
+        <owl:priorVersion rdf:resource="&fo;1.0"/>
+        <owl:versionIRI rdf:resource="&fo;1.1"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/contributor -->
+
+    <rdf:Description rdf:about="&dc;contributor">
+        <rdfs:label xml:lang="en">Contributor</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <rdfs:comment xml:lang="en">An entity responsible for making contributions to the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Examples of a Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#contributor-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/coverage -->
+
+    <rdf:Description rdf:about="&dc;coverage">
+        <rdfs:label xml:lang="en">Coverage</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <dcterms:description xml:lang="en">Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN]. Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges.</dcterms:description>
+        <rdfs:comment xml:lang="en">The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#coverage-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <rdf:Description rdf:about="&dc;creator">
+        <rdfs:label xml:lang="en">Creator</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <rdfs:comment xml:lang="en">An entity primarily responsible for making the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#creator-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <rdf:Description rdf:about="&dc;date">
+        <rdfs:label xml:lang="en">Date</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A point or period of time associated with an event in the lifecycle of the resource.</rdfs:comment>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <dcterms:description xml:lang="en">Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#date-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <rdf:Description rdf:about="&dc;description">
+        <rdfs:label xml:lang="en">Description</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <rdfs:comment xml:lang="en">An account of the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#description-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/format -->
+
+    <rdf:Description rdf:about="&dc;format">
+        <rdfs:label xml:lang="en">Format</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <dcterms:description xml:lang="en">Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME].</dcterms:description>
+        <rdfs:comment xml:lang="en">The file format, physical medium, or dimensions of the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#format-007"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/identifier -->
+
+    <rdf:Description rdf:about="&dc;identifier">
+        <rdfs:label xml:lang="en">Identifier</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <rdfs:comment xml:lang="en">An unambiguous reference to the resource within a given context.</rdfs:comment>
+        <dcterms:description xml:lang="en">Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. </dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#identifier-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/language -->
+
+    <rdf:Description rdf:about="&dc;language">
+        <rdfs:label xml:lang="en">Language</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A language of the resource.</rdfs:comment>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <dcterms:description xml:lang="en">Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646].</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#language-007"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+        <rdfs:seeAlso rdf:resource="http://www.ietf.org/rfc/rfc4646.txt"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/publisher -->
+
+    <rdf:Description rdf:about="&dc;publisher">
+        <rdfs:label xml:lang="en">Publisher</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <rdfs:comment xml:lang="en">An entity responsible for making the resource available.</rdfs:comment>
+        <dcterms:description xml:lang="en">Examples of a Publisher include a person, an organization, or a service. Typically, the name of a Publisher should be used to indicate the entity.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#publisher-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/relation -->
+
+    <rdf:Description rdf:about="&dc;relation">
+        <rdfs:label xml:lang="en">Relation</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource.</rdfs:comment>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <dcterms:description xml:lang="en">Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system. </dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#relation-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/rights -->
+
+    <rdf:Description rdf:about="&dc;rights">
+        <rdfs:label xml:lang="en">Rights</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <rdfs:comment xml:lang="en">Information about rights held in and over the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#rights-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/source -->
+
+    <rdf:Description rdf:about="&dc;source">
+        <rdfs:label xml:lang="en">Source</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource from which the described resource is derived.</rdfs:comment>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <dcterms:description xml:lang="en">The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#source-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/subject -->
+
+    <rdf:Description rdf:about="&dc;subject">
+        <rdfs:label xml:lang="en">Subject</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2012-06-14</dcterms:modified>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <rdfs:comment xml:lang="en">The topic of the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#subject-007"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <rdf:Description rdf:about="&dc;title">
+        <rdfs:label xml:lang="en">Title</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A name given to the resource.</rdfs:comment>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#title-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/type -->
+
+    <rdf:Description rdf:about="&dc;type">
+        <rdfs:label xml:lang="en">Type</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">1999-07-02</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <skos:note xml:lang="en">A second property with the same name as this property has been declared in the dcterms: namespace (http://purl.org/dc/terms/).  See the Introduction to the document &quot;DCMI Metadata Terms&quot; (http://dublincore.org/documents/dcmi-terms/) for an explanation.</skos:note>
+        <dcterms:description xml:lang="en">Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</dcterms:description>
+        <rdfs:comment xml:lang="en">The nature or genre of the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#type-006"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.org/dc/terms/abstract -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;abstract">
+        <rdfs:label xml:lang="en">Abstract</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A summary of the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#abstract-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;description"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;description"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/accessRights -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;accessRights">
+        <rdfs:subPropertyOf rdf:resource="&dc;rights"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/accrualMethod -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;accrualMethod"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/accrualPeriodicity -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;accrualPeriodicity"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/accrualPolicy -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;accrualPolicy"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/alternative -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;alternative">
+        <rdfs:label xml:lang="en">Alternative Title</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2010-10-11</dcterms:modified>
+        <rdfs:comment xml:lang="en">An alternative name for the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">The distinction between titles and alternative titles is application-specific.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#alternative-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;title"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/available -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;available">
+        <rdfs:label xml:lang="en">Date Available</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date (often a range) that the resource became or will become available.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#available-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/bibliographicCitation -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;bibliographicCitation">
+        <rdfs:label xml:lang="en">Bibliographic Citation</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2003-02-15</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A bibliographic reference for the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#bibliographicCitation-002"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;identifier"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:domain rdf:resource="&dcterms;BibliographicResource"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/conformsTo -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;conformsTo">
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;contributor">
+        <rdfs:label xml:lang="en">Contributor</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2010-10-11</dcterms:modified>
+        <rdfs:comment xml:lang="en">An entity responsible for making contributions to the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Examples of a Contributor include a person, an organization, or a service.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#contributorT-001"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;contributor"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/coverage -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;coverage">
+        <rdfs:subPropertyOf rdf:resource="&dc;coverage"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;created">
+        <rdfs:label xml:lang="en">Date Created</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date of creation of the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#created-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;creator">
+        <rdfs:label xml:lang="en">Creator</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2010-10-11</dcterms:modified>
+        <rdfs:comment xml:lang="en">An entity primarily responsible for making the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Examples of a Creator include a person, an organization, or a service.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#creatorT-002"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;creator"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;contributor"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/date -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;date">
+        <rdfs:label xml:lang="en">Date</rdfs:label>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <rdfs:comment xml:lang="en">A point or period of time associated with an event in the lifecycle of the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#dateT-001"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/dateAccepted -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;dateAccepted">
+        <rdfs:label xml:lang="en">Date Accepted</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2002-07-13</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date of acceptance of the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Examples of resources to which a Date Accepted may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal).</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#dateAccepted-002"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/dateCopyrighted -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;dateCopyrighted">
+        <rdfs:label xml:lang="en">Date Copyrighted</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2002-07-13</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date of copyright.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#dateCopyrighted-002"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/dateSubmitted -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;dateSubmitted">
+        <rdfs:label xml:lang="en">Date Submitted</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2002-07-13</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date of submission of the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Examples of resources to which a Date Submitted may be relevant are a thesis (submitted to a university department) or an article (submitted to a journal).</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#dateSubmitted-002"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;description">
+        <rdfs:label xml:lang="en">Description</rdfs:label>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <rdfs:comment xml:lang="en">An account of the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#descriptionT-001"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;description"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/educationLevel -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;educationLevel"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/extent -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;extent">
+        <rdfs:subPropertyOf rdf:resource="&dc;format"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/format -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;format">
+        <rdfs:subPropertyOf rdf:resource="&dc;format"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/hasFormat -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;hasFormat">
+        <rdfs:label xml:lang="en">Has Format</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource that is substantially the same as the pre-existing described resource, but in another format.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#hasFormat-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/hasPart -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;hasPart">
+        <rdfs:label xml:lang="en">Has Part</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource that is included either physically or logically in the described resource.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#hasPart-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/hasVersion -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;hasVersion">
+        <rdfs:label xml:lang="en">Has Version</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource that is a version, edition, or adaptation of the described resource.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#hasVersion-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/identifier -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;identifier">
+        <rdfs:label xml:lang="en">Identifier</rdfs:label>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <rdfs:comment xml:lang="en">An unambiguous reference to the resource within a given context.</rdfs:comment>
+        <dcterms:description xml:lang="en">Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. </dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#identifierT-001"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;identifier"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isFormatOf -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;isFormatOf">
+        <rdfs:label xml:lang="en">Is Format Of</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource that is substantially the same as the described resource, but in another format.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#isFormatOf-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isPartOf -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;isPartOf">
+        <rdfs:label xml:lang="en">Is Part Of</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource in which the described resource is physically or logically included.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#isPartOf-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isReferencedBy -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;isReferencedBy">
+        <rdfs:label xml:lang="en">Is Referenced By</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource that references, cites, or otherwise points to the described resource.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#isReferencedBy-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isReplacedBy -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;isReplacedBy">
+        <rdfs:label xml:lang="en">Is Replaced By</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource that supplants, displaces, or supersedes the described resource.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#isReplacedBy-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isRequiredBy -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;isRequiredBy">
+        <rdfs:label xml:lang="en">Is Required By</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource that requires the described resource to support its function, delivery, or coherence.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#isRequiredBy-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isVersionOf -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;isVersionOf">
+        <rdfs:label xml:lang="en">Is Version Of</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource of which the described resource is a version, edition, or adaptation.</rdfs:comment>
+        <dcterms:description xml:lang="en">Changes in version imply substantive changes in content rather than differences in format.</dcterms:description>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#isVersionOf-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;issued">
+        <rdfs:label xml:lang="en">Date Issued</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date of formal issuance (e.g., publication) of the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#issued-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/language -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;language">
+        <rdfs:subPropertyOf rdf:resource="&dc;language"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;license">
+        <rdfs:subPropertyOf rdf:resource="&dc;rights"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/mediator -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;mediator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/medium -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;medium">
+        <rdfs:subPropertyOf rdf:resource="&dc;format"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;modified">
+        <rdfs:label xml:lang="en">Date Modified</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date on which the resource was changed.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#modified-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/publisher -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;publisher">
+        <rdfs:label xml:lang="en">Publisher</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2010-10-11</dcterms:modified>
+        <rdfs:comment xml:lang="en">An entity responsible for making the resource available.</rdfs:comment>
+        <dcterms:description xml:lang="en">Examples of a Publisher include a person, an organization, or a service.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#publisherT-001"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;publisher"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/references -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;references">
+        <rdfs:label xml:lang="en">References</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource that is referenced, cited, or otherwise pointed to by the described resource.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#references-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/relation -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;relation">
+        <rdfs:label xml:lang="en">Relation</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system. </dcterms:description>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#relationT-001"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/replaces -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;replaces">
+        <rdfs:label xml:lang="en">Replaces</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource that is supplanted, displaced, or superseded by the described resource.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#replaces-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/requires -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;requires">
+        <rdfs:label xml:lang="en">Requires</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A related resource that is required by the described resource to support its function, delivery, or coherence.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#requires-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;relation"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/rights -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;rights">
+        <rdfs:subPropertyOf rdf:resource="&dc;rights"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/source -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;source">
+        <rdfs:label xml:lang="en">Source</rdfs:label>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <rdfs:comment xml:lang="en">A related resource from which the described resource is derived.</rdfs:comment>
+        <dcterms:description xml:lang="en">The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system.</dcterms:description>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#sourceT-001"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;source"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/spatial -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;spatial">
+        <rdfs:subPropertyOf rdf:resource="&dc;coverage"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/subject -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;subject">
+        <rdfs:label xml:lang="en">Subject</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2012-06-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">The topic of the resource.</rdfs:comment>
+        <skos:note xml:lang="en">This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration.</skos:note>
+        <dcterms:description xml:lang="en">Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#subjectT-002"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;subject"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/tableOfContents -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;tableOfContents">
+        <rdfs:label xml:lang="en">Table Of Contents</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A list of subunits of the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#tableOfContents-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;description"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;description"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/temporal -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;temporal">
+        <rdfs:subPropertyOf rdf:resource="&dc;coverage"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;title">
+        <rdfs:label xml:lang="en">Title</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2010-10-11</dcterms:modified>
+        <rdfs:comment xml:lang="en">A name given to the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#titleT-002"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;title"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/type -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;type">
+        <rdfs:label xml:lang="en">Type</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <dcterms:description xml:lang="en">Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</dcterms:description>
+        <rdfs:comment xml:lang="en">The nature or genre of the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#typeT-001"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;type"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/valid -->
+
+    <owl:AnnotationProperty rdf:about="&dcterms;valid">
+        <rdfs:label xml:lang="en">Date Valid</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date (often a range) of validity of a resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#valid-003"/>
+        <rdfs:subPropertyOf rdf:resource="&dc;date"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2003/06/sw-vocab-status/ns#term_status -->
+
+    <owl:AnnotationProperty rdf:about="&vs;term_status"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#note -->
+
+    <owl:AnnotationProperty rdf:about="&skos;note"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/name -->
+
+    <owl:AnnotationProperty rdf:about="&foaf;name"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/Box -->
+
+    <rdfs:Datatype rdf:about="&dcterms;Box">
+        <rdfs:label xml:lang="en">DCMI Box</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">The set of regions in space defined by their geographic coordinates according to the DCMI Box Encoding Scheme.</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://dublincore.org/documents/dcmi-box/"/>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#Box-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/ISO3166 -->
+
+    <rdfs:Datatype rdf:about="&dcterms;ISO3166">
+        <rdfs:label xml:lang="en">ISO 3166</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">The set of codes listed in ISO 3166-1 for the representation of names of countries.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#ISO3166-004"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:seeAlso rdf:resource="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/ISO639-2 -->
+
+    <rdfs:Datatype rdf:about="&dcterms;ISO639-2">
+        <rdfs:label xml:lang="en">ISO 639-2</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">The three-letter alphabetic codes listed in ISO639-2 for the representation of names of languages.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#ISO639-2-003"/>
+        <rdfs:seeAlso rdf:resource="http://lcweb.loc.gov/standards/iso639-2/langhome.html"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/ISO639-3 -->
+
+    <rdfs:Datatype rdf:about="&dcterms;ISO639-3">
+        <rdfs:label xml:lang="en">ISO 639-3</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <rdfs:comment xml:lang="en">The set of three-letter codes listed in ISO 639-3 for the representation of names of languages.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#ISO639-3-001"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:seeAlso rdf:resource="http://www.sil.org/iso639-3/"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/Period -->
+
+    <rdfs:Datatype rdf:about="&dcterms;Period">
+        <rdfs:label xml:lang="en">DCMI Period</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">The set of time intervals defined by their limits according to the DCMI Period Encoding Scheme.</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://dublincore.org/documents/dcmi-period/"/>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#Period-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/Point -->
+
+    <rdfs:Datatype rdf:about="&dcterms;Point">
+        <rdfs:label xml:lang="en">DCMI Point</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">The set of points in space defined by their geographic coordinates according to the DCMI Point Encoding Scheme.</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://dublincore.org/documents/dcmi-point/"/>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#Point-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/RFC1766 -->
+
+    <rdfs:Datatype rdf:about="&dcterms;RFC1766">
+        <rdfs:label xml:lang="en">RFC 1766</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">The set of tags, constructed according to RFC 1766, for the identification of languages.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#RFC1766-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:seeAlso rdf:resource="http://www.ietf.org/rfc/rfc1766.txt"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/RFC3066 -->
+
+    <rdfs:Datatype rdf:about="&dcterms;RFC3066">
+        <rdfs:label xml:lang="en">RFC 3066</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2002-07-13</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <dcterms:description xml:lang="en">RFC 3066 has been obsoleted by RFC 4646.</dcterms:description>
+        <rdfs:comment xml:lang="en">The set of tags constructed according to RFC 3066 for the identification of languages.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#RFC3066-002"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:seeAlso rdf:resource="http://www.ietf.org/rfc/rfc3066.txt"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/RFC4646 -->
+
+    <rdfs:Datatype rdf:about="&dcterms;RFC4646">
+        <rdfs:label xml:lang="en">RFC 4646</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <dcterms:description xml:lang="en">RFC 4646 obsoletes RFC 3066.</dcterms:description>
+        <rdfs:comment xml:lang="en">The set of tags constructed according to RFC 4646 for the identification of languages.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#RFC4646-001"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:seeAlso rdf:resource="http://www.ietf.org/rfc/rfc4646.txt"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/RFC5646 -->
+
+    <rdfs:Datatype rdf:about="&dcterms;RFC5646">
+        <rdfs:label xml:lang="en">RFC 5646</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2010-10-11</dcterms:issued>
+        <dcterms:description xml:lang="en">RFC 5646 obsoletes RFC 4646.</dcterms:description>
+        <rdfs:comment xml:lang="en">The set of tags constructed according to RFC 5646 for the identification of languages.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#RFC5646-001"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:seeAlso rdf:resource="http://www.ietf.org/rfc/rfc5646.txt"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/URI -->
+
+    <rdfs:Datatype rdf:about="&dcterms;URI">
+        <rdfs:label xml:lang="en">URI</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">The set of identifiers constructed according to the generic syntax for Uniform Resource Identifiers as specified by the Internet Engineering Task Force.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#URI-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:seeAlso rdf:resource="http://www.ietf.org/rfc/rfc3986.txt"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://purl.org/dc/terms/W3CDTF -->
+
+    <rdfs:Datatype rdf:about="&dcterms;W3CDTF">
+        <rdfs:label xml:lang="en">W3C-DTF</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">The set of dates and times constructed according to the W3C Date and Time Formats Specification.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#W3CDTF-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:seeAlso rdf:resource="http://www.w3.org/TR/NOTE-datetime"/>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="&xsd;date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodInLocation -->
+
+    <owl:ObjectProperty rdf:about="&fo;FoodInLocation">
+        <rdfs:subPropertyOf rdf:resource="&fo;HasLocation"/>
+        <rdfs:domain rdf:resource="&fo;Ubicacion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/HasLocation -->
+
+    <owl:ObjectProperty rdf:about="&fo;HasLocation">
+        <owl:inverseOf rdf:resource="&fo;FoodInLocation"/>
+        <rdfs:range rdf:resource="&fo;Ubicacion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/PerteneceMenu -->
+
+    <owl:ObjectProperty rdf:about="&fo;PerteneceMenu">
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RecipeHasIngredient -->
+
+    <owl:ObjectProperty rdf:about="&fo;RecipeHasIngredient">
+        <rdfs:range rdf:resource="&fo;Ingrediente"/>
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RecipeInSesson -->
+
+    <owl:ObjectProperty rdf:about="&fo;RecipeInSesson">
+        <rdfs:domain rdf:resource="&fo;Temporada"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/diet -->
+
+    <owl:ObjectProperty rdf:about="&fo;diet">
+        <rdfs:label xml:lang="en-gb">diet</rdfs:label>
+        <rdfs:comment xml:lang="en-gb">The diet property relates a recipe to a diet it may be suitable for.</rdfs:comment>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+        <rdfs:range rdf:resource="&fo;Dieta"/>
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/hasIngredient -->
+
+    <owl:ObjectProperty rdf:about="&fo;hasIngredient"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/hasSubstance -->
+
+    <owl:ObjectProperty rdf:about="&fo;hasSubstance">
+        <rdfs:domain rdf:resource="&fo;SubstanceIntolerant"/>
+        <rdfs:range rdf:resource="&fo;Substances"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ingredientInRecipe -->
+
+    <owl:ObjectProperty rdf:about="&fo;ingredientInRecipe">
+        <rdfs:domain rdf:resource="&fo;Ingrediente"/>
+        <rdfs:range rdf:resource="&fo;Receta"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ingredients -->
+
+    <owl:ObjectProperty rdf:about="&fo;ingredients">
+        <rdfs:label xml:lang="en-gb">ingredients</rdfs:label>
+        <rdfs:comment xml:lang="en-gb">The ingredients property relates a recipe or recipe stage to an ingredient list.</rdfs:comment>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/main_course -->
+
+    <owl:ObjectProperty rdf:about="&fo;main_course">
+        <rdfs:label xml:lang="en-gb">main course</rdfs:label>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:comment xml:lang="en-gb">The main course property relates a menu to a recipe that may be served as a main course.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+        <rdfs:range rdf:resource="&fo;Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/occasion -->
+
+    <owl:ObjectProperty rdf:about="&fo;occasion">
+        <rdfs:label xml:lang="en-gb">occassion</rdfs:label>
+        <rdfs:comment xml:lang="en-gb">The occassion property relates a recipe to an occasion it may be appropriate for.</rdfs:comment>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/produces -->
+
+    <owl:ObjectProperty rdf:about="&fo;produces">
+        <rdfs:label xml:lang="en-gb">produces</rdfs:label>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:comment xml:lang="en-gb">The produces property relates a recipe to the food it produces.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/recetaTieneNacionalidad -->
+
+    <owl:ObjectProperty rdf:about="&fo;recetaTieneNacionalidad">
+        <rdfs:range rdf:resource="&fo;Pais"/>
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/required_technique -->
+
+    <owl:ObjectProperty rdf:about="&fo;required_technique">
+        <rdfs:label xml:lang="en-gb">required technique</rdfs:label>
+        <rdfs:comment xml:lang="en-gb">The required technique property indicates that a particular technique is required in order to complete a recipe, method or step.</rdfs:comment>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/alternative -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;alternative">
+        <rdfs:label xml:lang="en">Alternative Title</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2010-10-11</dcterms:modified>
+        <rdfs:comment xml:lang="en">An alternative name for the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">The distinction between titles and alternative titles is application-specific.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#alternative-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;title"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/available -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;available">
+        <rdfs:label xml:lang="en">Date Available</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date (often a range) that the resource became or will become available.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#available-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;date"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/bibliographicCitation -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;bibliographicCitation">
+        <rdfs:label xml:lang="en">Bibliographic Citation</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2003-02-15</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A bibliographic reference for the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible.</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#bibliographicCitation-002"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;identifier"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;created">
+        <rdfs:label xml:lang="en">Date Created</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date of creation of the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#created-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;date"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/date -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;date">
+        <rdfs:label xml:lang="en">Date</rdfs:label>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <rdfs:comment xml:lang="en">A point or period of time associated with an event in the lifecycle of the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#dateT-001"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/dateAccepted -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;dateAccepted">
+        <rdfs:label xml:lang="en">Date Accepted</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2002-07-13</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date of acceptance of the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Examples of resources to which a Date Accepted may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal).</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#dateAccepted-002"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;date"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/dateCopyrighted -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;dateCopyrighted">
+        <rdfs:label xml:lang="en">Date Copyrighted</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2002-07-13</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date of copyright.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#dateCopyrighted-002"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;created"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/dateSubmitted -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;dateSubmitted">
+        <rdfs:label xml:lang="en">Date Submitted</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2002-07-13</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date of submission of the resource.</rdfs:comment>
+        <dcterms:description xml:lang="en">Examples of resources to which a Date Submitted may be relevant are a thesis (submitted to a university department) or an article (submitted to a journal).</dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#dateSubmitted-002"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;date"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/identifier -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;identifier">
+        <rdfs:label xml:lang="en">Identifier</rdfs:label>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <rdfs:comment xml:lang="en">An unambiguous reference to the resource within a given context.</rdfs:comment>
+        <dcterms:description xml:lang="en">Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. </dcterms:description>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#identifierT-001"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;issued">
+        <rdfs:label xml:lang="en">Date Issued</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date of formal issuance (e.g., publication) of the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#issued-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;date"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;modified">
+        <rdfs:label xml:lang="en">Date Modified</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date on which the resource was changed.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#modified-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;date"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;title">
+        <rdfs:label xml:lang="en">Title</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2008-01-14</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2010-10-11</dcterms:modified>
+        <rdfs:comment xml:lang="en">A name given to the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#titleT-002"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/valid -->
+
+    <owl:DatatypeProperty rdf:about="&dcterms;valid">
+        <rdfs:label xml:lang="en">Date Valid</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2000-07-11</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">Date (often a range) of validity of a resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#valid-003"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <rdfs:subPropertyOf rdf:resource="&dcterms;date"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/CountryName -->
+
+    <owl:DatatypeProperty rdf:about="&fo;CountryName">
+        <rdfs:domain rdf:resource="&fo;Pais"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodCalories -->
+
+    <owl:DatatypeProperty rdf:about="&fo;FoodCalories">
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodCarbs -->
+
+    <owl:DatatypeProperty rdf:about="&fo;FoodCarbs">
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodFat -->
+
+    <owl:DatatypeProperty rdf:about="&fo;FoodFat">
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodFibre -->
+
+    <owl:DatatypeProperty rdf:about="&fo;FoodFibre">
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodProtein -->
+
+    <owl:DatatypeProperty rdf:about="&fo;FoodProtein">
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodSalt -->
+
+    <owl:DatatypeProperty rdf:about="&fo;FoodSalt">
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodSaturates -->
+
+    <owl:DatatypeProperty rdf:about="&fo;FoodSaturates">
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodSugar -->
+
+    <owl:DatatypeProperty rdf:about="&fo;FoodSugar">
+        <rdfs:comment>Proporcion de azucares en el plato</rdfs:comment>
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RecipeDishtype -->
+
+    <owl:DatatypeProperty rdf:about="&fo;RecipeDishtype"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RecipeMethod -->
+
+    <owl:DatatypeProperty rdf:about="&fo;RecipeMethod">
+        <rdfs:label xml:lang="en-gb">Method</rdfs:label>
+        <rdfs:comment xml:lang="en-gb">A Method is the way in which ingredients are combined, using particular techniques, in order to produce a food. A method is part of a recipe and is also an rdf:Seq.</rdfs:comment>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RecipeName -->
+
+    <owl:DatatypeProperty rdf:about="&fo;RecipeName">
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RecipeServes -->
+
+    <owl:DatatypeProperty rdf:about="&fo;RecipeServes">
+        <rdfs:label xml:lang="en-gb">serves</rdfs:label>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:comment xml:lang="en-gb">The server property indicates what the recipe is intended to serve, this is often a human readable integer range such as &apos;6-8&apos;.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RecipeTiempoCoccion -->
+
+    <owl:DatatypeProperty rdf:about="&fo;RecipeTiempoCoccion">
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RecipeTiempoPreparacion -->
+
+    <owl:DatatypeProperty rdf:about="&fo;RecipeTiempoPreparacion">
+        <rdfs:domain rdf:resource="&fo;Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/informationFactsCantidad -->
+
+    <owl:DatatypeProperty rdf:about="&fo;informationFactsCantidad">
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ingredientItemMeasurement -->
+
+    <owl:DatatypeProperty rdf:about="&fo;ingredientItemMeasurement">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ingredientItemQuantity -->
+
+    <owl:DatatypeProperty rdf:about="&fo;ingredientItemQuantity">
+        <rdfs:comment rdf:datatype="&xsd;string">300 g Arborio risotto rice</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ingredientName -->
+
+    <owl:DatatypeProperty rdf:about="&fo;ingredientName"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/instruction -->
+
+    <owl:DatatypeProperty rdf:about="&fo;instruction">
+        <rdfs:label xml:lang="en-gb">instruction</rdfs:label>
+        <rdfs:comment xml:lang="en-gb">An instruction provides the human-readable text associated with a step in the method for a recipe.</rdfs:comment>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/ontology/fo/quantity -->
+
+    <owl:DatatypeProperty rdf:about="&fo;quantity">
+        <rdfs:label xml:lang="en-gb">quantity</rdfs:label>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:comment xml:lang="en-gb">A quantity provides a non-negative integer quantity that can be used as a measure of the food stuff for the ingredient.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+        <rdfs:domain rdf:resource="&fo;Ingrediente"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/ontology/fo/Aceite -->
+
+    <owl:Class rdf:about="&fo;Aceite">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Adereso -->
+
+    <owl:Class rdf:about="&fo;Adereso">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Alergias -->
+
+    <owl:Class rdf:about="&fo;Alergias">
+        <rdfs:subClassOf rdf:resource="&fo;Enfermedades"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Animal -->
+
+    <owl:Class rdf:about="&fo;Animal">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Arroz -->
+
+    <owl:Class rdf:about="&fo;Arroz">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Cadiac -->
+
+    <owl:Class rdf:about="&fo;Cadiac">
+        <rdfs:subClassOf rdf:resource="&fo;Enfermedades"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Carne -->
+
+    <owl:Class rdf:about="&fo;Carne">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Celiaco -->
+
+    <owl:Class rdf:about="&fo;Celiaco">
+        <rdfs:subClassOf rdf:resource="&fo;Enfermedades"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Cereal -->
+
+    <owl:Class rdf:about="&fo;Cereal">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Condimento -->
+
+    <owl:Class rdf:about="&fo;Condimento">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Cultura -->
+
+    <owl:Class rdf:about="&fo;Cultura"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Diabetes -->
+
+    <owl:Class rdf:about="&fo;Diabetes">
+        <rdfs:subClassOf rdf:resource="&fo;Enfermedades"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Dieta -->
+
+    <owl:Class rdf:about="&fo;Dieta">
+        <rdfs:label xml:lang="en-gb">Diet</rdfs:label>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:comment xml:lang="en-gb">A Diet is a way of selecting food that achieves a particular effect, such as eating in way that is pregnancy-friendly or avoiding foods that contain shellfish.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/DishPreferences -->
+
+    <owl:Class rdf:about="&fo;DishPreferences">
+        <rdfs:subClassOf rdf:resource="&fo;RecipePreferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Embutido -->
+
+    <owl:Class rdf:about="&fo;Embutido">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Enfermedades -->
+
+    <owl:Class rdf:about="&fo;Enfermedades"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Especia -->
+
+    <owl:Class rdf:about="&fo;Especia">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodIntolerant -->
+
+    <owl:Class rdf:about="&fo;FoodIntolerant">
+        <rdfs:subClassOf rdf:resource="&fo;HealthProfile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodMoment -->
+
+    <owl:Class rdf:about="&fo;FoodMoment">
+        <rdfs:subClassOf rdf:resource="&fo;FoodPreferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodPreferences -->
+
+    <owl:Class rdf:about="&fo;FoodPreferences">
+        <rdfs:subClassOf rdf:resource="&fo;Preferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/FoodType -->
+
+    <owl:Class rdf:about="&fo;FoodType">
+        <rdfs:subClassOf rdf:resource="&fo;FoodPreferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Fruta -->
+
+    <owl:Class rdf:about="&fo;Fruta">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Gastritis -->
+
+    <owl:Class rdf:about="&fo;Gastritis">
+        <rdfs:subClassOf rdf:resource="&fo;Enfermedades"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/GeoReference -->
+
+    <owl:Class rdf:about="&fo;GeoReference">
+        <rdfs:subClassOf rdf:resource="&fo;Preferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/HealthProfile -->
+
+    <owl:Class rdf:about="&fo;HealthProfile">
+        <rdfs:subClassOf rdf:resource="&fo;UserProfile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Hortaliza -->
+
+    <owl:Class rdf:about="&fo;Hortaliza">
+        <rdfs:subClassOf rdf:resource="&fo;Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Ingrediente -->
+
+    <owl:Class rdf:about="&fo;Ingrediente"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Lacteo -->
+
+    <owl:Class rdf:about="&fo;Lacteo">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Leche -->
+
+    <owl:Class rdf:about="&fo;Leche">
+        <rdfs:subClassOf rdf:resource="&fo;Lacteo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/NationalityPreferences -->
+
+    <owl:Class rdf:about="&fo;NationalityPreferences">
+        <rdfs:subClassOf rdf:resource="&fo;Preferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Nuez -->
+
+    <owl:Class rdf:about="&fo;Nuez">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/NutritionPreferences -->
+
+    <owl:Class rdf:about="&fo;NutritionPreferences">
+        <rdfs:subClassOf rdf:resource="&fo;RecipePreferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Pais -->
+
+    <owl:Class rdf:about="&fo;Pais">
+        <rdfs:subClassOf rdf:resource="&fo;Ubicacion"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Pan -->
+
+    <owl:Class rdf:about="&fo;Pan">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Panaderia -->
+
+    <owl:Class rdf:about="&fo;Panaderia">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Pasta -->
+
+    <owl:Class rdf:about="&fo;Pasta">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Preferences -->
+
+    <owl:Class rdf:about="&fo;Preferences">
+        <rdfs:subClassOf rdf:resource="&fo;UserProfile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Queso -->
+
+    <owl:Class rdf:about="&fo;Queso">
+        <rdfs:subClassOf rdf:resource="&fo;Lacteo"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Receta -->
+
+    <owl:Class rdf:about="&fo;Receta">
+        <rdfs:comment xml:lang="en">Spicy Saag Aloo</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RecipePreferences -->
+
+    <owl:Class rdf:about="&fo;RecipePreferences">
+        <rdfs:subClassOf rdf:resource="&fo;FoodPreferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Renal -->
+
+    <owl:Class rdf:about="&fo;Renal">
+        <rdfs:subClassOf rdf:resource="&fo;Enfermedades"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/SeasonPreferences -->
+
+    <owl:Class rdf:about="&fo;SeasonPreferences">
+        <rdfs:subClassOf rdf:resource="&fo;Preferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Semillas -->
+
+    <owl:Class rdf:about="&fo;Semillas">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/SubstanceIntolerant -->
+
+    <owl:Class rdf:about="&fo;SubstanceIntolerant">
+        <rdfs:subClassOf rdf:resource="&fo;HealthProfile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Substances -->
+
+    <owl:Class rdf:about="&fo;Substances"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Temporada -->
+
+    <owl:Class rdf:about="&fo;Temporada">
+        <rdfs:label xml:lang="en-gb">Season</rdfs:label>
+        <vs:term_status>testing</vs:term_status>
+        <rdfs:comment xml:lang="en-gb">A Season is a period of time that recurs annually during which a food is typically available or at its best.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/fo/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/TipoPlato -->
+
+    <owl:Class rdf:about="&fo;TipoPlato"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Ubicacion -->
+
+    <owl:Class rdf:about="&fo;Ubicacion"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/UserProfile -->
+
+    <owl:Class rdf:about="&fo;UserProfile"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Vegetal -->
+
+    <owl:Class rdf:about="&fo;Vegetal">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Verdura -->
+
+    <owl:Class rdf:about="&fo;Verdura">
+        <rdfs:subClassOf rdf:resource="&fo;Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Vinagre -->
+
+    <owl:Class rdf:about="&fo;Vinagre">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Vino -->
+
+    <owl:Class rdf:about="&fo;Vino">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/azucar -->
+
+    <owl:Class rdf:about="&fo;azucar">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ingredientPreferences -->
+
+    <owl:Class rdf:about="&fo;ingredientPreferences">
+        <rdfs:subClassOf rdf:resource="&fo;RecipePreferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/maxCalories -->
+
+    <owl:Class rdf:about="&fo;maxCalories">
+        <rdfs:subClassOf rdf:resource="&fo;NutritionPreferences"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/ontology/fo/superfluos -->
+
+    <owl:Class rdf:about="&fo;superfluos">
+        <rdfs:subClassOf rdf:resource="&fo;Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/ontology/fo/00001 -->
+
+    <owl:NamedIndividual rdf:about="&fo;00001">
+        <rdf:type rdf:resource="&fo;Receta"/>
+        <rdfs:label xml:lang="en">Carbonara Cake</rdfs:label>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">1.4</fo:FoodSalt>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">1.9</fo:FoodFibre>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">10.3</fo:FoodSaturates>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">19.1</fo:FoodFat>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">2.8</fo:FoodSugar>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">22.2</fo:FoodProtein>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">38.4</fo:FoodCarbs>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">545</fo:FoodCalories>
+        <fo:RecipeHasIngredient rdf:resource="&fo;Rosemary"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;cheeseCheddar"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;doubleCream"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;dried_spaghetti"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;eggs"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;oliveoil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;smokedHam"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/00002 -->
+
+    <owl:NamedIndividual rdf:about="&fo;00002">
+        <rdf:type rdf:resource="&fo;Receta"/>
+        <rdfs:label xml:lang="en">Turkey risotto</rdfs:label>
+        <fo:RecipeServes rdf:datatype="&xsd;string"> 4 OR 8</fo:RecipeServes>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">0.8</fo:FoodSalt>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">23.5</fo:FoodFat>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">3.1</fo:FoodFibre>
+        <fo:RecipeTiempoCoccion rdf:datatype="&xsd;int">35</fo:RecipeTiempoCoccion>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">50.1</fo:FoodProtein>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">8.5</fo:FoodSugar>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">815</fo:FoodCalories>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">9.9</fo:FoodSaturates>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">94.6</fo:FoodCarbs>
+        <fo:RecipeMethod rdf:datatype="&xsd;string">I like to place any leftover turkey skin from the bottom of the carcass into a cold casserole pan, then put it on a medium heat so the fat naturally renders out and it becomes super-crisp, like crackling, turning halfway. When it’s golden, strip in the thyme leaves to crisp up for just 10 seconds, then scoop the crispy skin and thyme on to a plate, keeping the pan of flavoursome fat to one side.
+
+Peel the onion, wash the leek and trim with the celery, then finely chop it all. Return the pan of fat to a medium heat, then add the veg and fry for 10 minutes, or until soft but not coloured, stirring occasionally, and adding a splash of oil, if needed. Pour the stock into a separate pan and bring to a simmer on a low heat. Stir the rice into the veg for a couple of minutes, then pour in the Prosecco. Let it cook away, then start adding the stock, a ladleful at a time, letting each one cook away before adding more. Keep a close eye on it and stir constantly for 17 minutes, or until the rice is cooked but still retains its shape. Meanwhile, finely chop the turkey meat, stirring it into the pan halfway through the 17 minutes. Reheat your gravy, then sieve it into a pre-warmed jug ready to pour at the table.
+
+When the risotto is done, add enough extra stock to make it oozy, then remove from the heat. Finely grate over most of the Parmesan and beat it in with the butter and mascarpone, then taste and season to perfection. Put the lid on and take to the table. Divide between your hot plates, make a well in the middle of each portion and flamboyantly pour in the hot gravy, then crack and crumble the crispy skin and thyme over the top. Finish with a tiny extra grating of Parmesan, and a thimble of new season’s extra virgin olive oil, if you’ve got it.</fo:RecipeMethod>
+        <fo:RecipeHasIngredient rdf:resource="&fo;ArborioRice"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;Prosecco"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;TurkeyMeat"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;celery"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;cheeseParmesan"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;leek"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;mascarponeCheese"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;oliveoil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;onion"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;organicChickenOrvegStock"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;thyme"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;turkeyGravy"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;turkeySkin"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;unsaltedButter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Antipasti -->
+
+    <owl:NamedIndividual rdf:about="&fo;Antipasti">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ArborioRice -->
+
+    <owl:NamedIndividual rdf:about="&fo;ArborioRice">
+        <rdf:type rdf:resource="&fo;Arroz"/>
+        <rdfs:label xml:lang="en">Arborio Rice</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/BBQ_food -->
+
+    <owl:NamedIndividual rdf:about="&fo;BBQ_food">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">BBQ food</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Basil -->
+
+    <owl:NamedIndividual rdf:about="&fo;Basil">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">Basil</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Bread&amp;doughs -->
+
+    <owl:NamedIndividual rdf:about="&fo;Bread&amp;doughs">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Bread &amp; doughs</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Brussels_sprouts -->
+
+    <owl:NamedIndividual rdf:about="&fo;Brussels_sprouts">
+        <rdf:type rdf:resource="&fo;Hortaliza"/>
+        <rdfs:label xml:lang="en">Brussels sprouts</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Cakes&amp;teatimetreats -->
+
+    <owl:NamedIndividual rdf:about="&fo;Cakes&amp;teatimetreats">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Cakes &amp; tea time treats</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/CarbonaraCake -->
+
+    <owl:NamedIndividual rdf:about="&fo;CarbonaraCake">
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">1.4</fo:FoodSalt>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">1.9</fo:FoodFibre>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">19.1</fo:FoodFat>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">2.8</fo:FoodSugar>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">22.2</fo:FoodProtein>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">38.4</fo:FoodCarbs>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">545</fo:FoodCalories>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Carrot -->
+
+    <owl:NamedIndividual rdf:about="&fo;Carrot">
+        <rdf:type rdf:resource="&fo;Hortaliza"/>
+        <rdfs:label xml:lang="en">Carrot</rdfs:label>
+        <rdfs:comment xml:lang="es">zanahoria</rdfs:comment>
+        <fo:RecipeHasIngredient rdf:resource="&fo;Basil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;radicchio"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Chocolate-chip_soda_bread -->
+
+    <owl:NamedIndividual rdf:about="&fo;Chocolate-chip_soda_bread">
+        <rdf:type rdf:resource="&fo;Receta"/>
+        <rdfs:label xml:lang="en">Chocolate-chip soda bread</rdfs:label>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">0.6</fo:FoodSalt>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">14.5</fo:FoodProtein>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">16.2</fo:FoodFat>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">4.7</fo:FoodSaturates>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">496</fo:FoodCalories>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">6</fo:FoodFibre>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">7.7</fo:FoodSugar>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">77</fo:FoodCarbs>
+        <fo:RecipeHasIngredient rdf:resource="&fo;bicarbonate_of_soda"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;blanched_hazelnuts"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;buttermilk"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;free-range_egg"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;oats"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;plain_flour__plus_extra_for_dusting"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;quality_dark_chocolate_chips"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;semi-skimmed_milk"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ChocolateChipSodaBread -->
+
+    <owl:NamedIndividual rdf:about="&fo;ChocolateChipSodaBread"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Cookies -->
+
+    <owl:NamedIndividual rdf:about="&fo;Cookies">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Curry -->
+
+    <owl:NamedIndividual rdf:about="&fo;Curry">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Drinks -->
+
+    <owl:NamedIndividual rdf:about="&fo;Drinks">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/DrunkenBroadBeanGoatCheeseSalad -->
+
+    <owl:NamedIndividual rdf:about="&fo;DrunkenBroadBeanGoatCheeseSalad">
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">1.7</fo:FoodFibre>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">1.88</fo:FoodSalt>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">14.1</fo:FoodSaturates>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">22.2</fo:FoodProtein>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">34.7</fo:FoodCarbs>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">4</fo:FoodSugar>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">48.5</fo:FoodFat>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">665</fo:FoodCalories>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Drunken_broad_bean_&amp;_goat’s_cheese_salad -->
+
+    <owl:NamedIndividual rdf:about="&fo;Drunken_broad_bean_&amp;_goat’s_cheese_salad">
+        <rdf:type rdf:resource="&fo;Receta"/>
+        <rdfs:label xml:lang="en">Drunken broad bean &amp; goat’s cheese salad</rdfs:label>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">1.7</fo:FoodFibre>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">1.88</fo:FoodSalt>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">14.1</fo:FoodSaturates>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">22.2</fo:FoodProtein>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">34.7</fo:FoodCarbs>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">4</fo:FoodSugar>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">48.5</fo:FoodFat>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">665</fo:FoodCalories>
+        <fo:RecipeDishtype rdf:datatype="&xsd;string">Salad</fo:RecipeDishtype>
+        <fo:RecipeMethod>1-Blanch the broad beans in boiling salted water for 2 minutes. Drain and refresh in cold water. Squeeze most of the beans out of their skins, leaving the smaller ones in their skins for texture.
+
+2- In a bowl, combine the wine, vinegar and sugar. Stir to dissolve the sugar, add the beans and leave to marinate for 1 hour.
+
+3-Preheat the oven to 190ºC/375ºF/gas 5.
+
+4-Trim and chop the spring onions and blitz in a food processor with 4 tablespoons of oil.
+
+5-Tear the bread into chunks, scatter over a baking tray, drizzle with the onion oil and scrunch with your hands. Bake for 10 minutes, until crunchy.
+
+Use a slotted spoon to transfer the beans to a serving bowl. Top with the pea shoots, picked mint leaves, croutons and goat’s cheese. Finish with the lemon zest and juice, and a drizzle of oil.</fo:RecipeMethod>
+        <fo:RecipeHasIngredient rdf:resource="&fo;broadBeans"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;casterSugar"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;freshMint"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;goatsCheese"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;lemon"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;oliveoil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;onion"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;peaShoots"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;sourdoughBread"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;whiteWine"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;whiteWineVinegar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Esp -->
+
+    <owl:NamedIndividual rdf:about="&fo;Esp">
+        <rdf:type rdf:resource="&fo;Pais"/>
+        <rdfs:label xml:lang="es">España</rdfs:label>
+        <fo:CountryName rdf:datatype="&xsd;string">España</fo:CountryName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Finlandia -->
+
+    <owl:NamedIndividual rdf:about="&fo;Finlandia">
+        <rdf:type rdf:resource="&fo;Pais"/>
+        <rdfs:label xml:lang="es">Finlandia</rdfs:label>
+        <fo:CountryName rdf:datatype="&xsd;string">Finlandia</fo:CountryName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Francia -->
+
+    <owl:NamedIndividual rdf:about="&fo;Francia">
+        <rdf:type rdf:resource="&fo;Pais"/>
+        <rdfs:label xml:lang="es">Francia</rdfs:label>
+        <fo:CountryName rdf:datatype="&xsd;string">Francia</fo:CountryName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Greek_yoghurt -->
+
+    <owl:NamedIndividual rdf:about="&fo;Greek_yoghurt">
+        <rdf:type rdf:resource="&fo;Lacteo"/>
+        <rdfs:label xml:lang="en">Greek yoghurt</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Italia -->
+
+    <owl:NamedIndividual rdf:about="&fo;Italia">
+        <rdf:type rdf:resource="&fo;Pais"/>
+        <rdfs:label xml:lang="es">Italia</rdfs:label>
+        <fo:CountryName rdf:datatype="&xsd;string">Italia</fo:CountryName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ItalianSpringBeanSalad -->
+
+    <owl:NamedIndividual rdf:about="&fo;ItalianSpringBeanSalad">
+        <rdfs:label xml:lang="en">Italian Spring Bean Salad</rdfs:label>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">0.6</fo:FoodSalt>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">13.5</fo:FoodProtein>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">2.2</fo:FoodSugar>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">20.5</fo:FoodFat>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">21.8</fo:FoodCarbs>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">328</fo:FoodCalories>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">4.9</fo:FoodSaturates>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">7.3</fo:FoodFibre>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Italian_spring_bean_salad -->
+
+    <owl:NamedIndividual rdf:about="&fo;Italian_spring_bean_salad">
+        <rdf:type rdf:resource="&fo;Receta"/>
+        <rdfs:label xml:lang="en">Italian Spring Bean Salad</rdfs:label>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">0.6</fo:FoodSalt>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">13.5</fo:FoodProtein>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">2.2</fo:FoodSugar>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">20.5</fo:FoodFat>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">21.8</fo:FoodCarbs>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">328</fo:FoodCalories>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">4.9</fo:FoodSaturates>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">7.3</fo:FoodFibre>
+        <fo:RecipeDishtype rdf:datatype="&xsd;string">Salad</fo:RecipeDishtype>
+        <fo:RecipeMethod rdf:datatype="&xsd;string">Trim the celery, peel and trim the carrot, then cut, along with the radicchio, into 5mm cubes. Pick and finely chop the basil leaves.
+Drain and rinse the beans and place in a bowl (save the remainder for another dish) with the radicchio, celery, carrot, onion and basil. Stir in the olive oil and vinegar, then season and leave to rest for 2 hours at room temperature.
+Meanwhile, place the Parmesan rinds in a pot with 1.5 litres of cold water and cook slowly over a low–medium for 1 hour. Remove from the heat and leave the rinds in the water to cool.
+Preheat the oven to 200ºC/400ºF/gas 6.
+Cut the bread into 1cm cubes, scatter over a baking tray and toast in the oven until golden, about 20 minutes, tossing halfway through.
+Divide the bean mixture between plates, then add a few tablespoons of the cooled parmesan broth. Garnish with croutons and the Parmesan rinds, finely sliced with a speed-peeler, if you like.</fo:RecipeMethod>
+        <fo:RecipeHasIngredient rdf:resource="&fo;Basil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;Carrot"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;Parmesan_rinds"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;Stale_Bread"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;borlottiBeans"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;celery"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;oliveoil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;onion"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;radicchio"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;whiteWineVinegar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Meatballs -->
+
+    <owl:NamedIndividual rdf:about="&fo;Meatballs">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/MenuAntipasti -->
+
+    <owl:NamedIndividual rdf:about="&fo;MenuAntipasti"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/MenuPastaRisotto -->
+
+    <owl:NamedIndividual rdf:about="&fo;MenuPastaRisotto"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Muffins -->
+
+    <owl:NamedIndividual rdf:about="&fo;Muffins">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Parmesan_cheese -->
+
+    <owl:NamedIndividual rdf:about="&fo;Parmesan_cheese">
+        <rdf:type rdf:resource="&fo;Queso"/>
+        <rdfs:label xml:lang="en">Parmesan Cheese</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Parmesan_rinds -->
+
+    <owl:NamedIndividual rdf:about="&fo;Parmesan_rinds">
+        <rdf:type rdf:resource="&fo;Queso"/>
+        <rdfs:label xml:lang="en">Parmesan Rinds</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Pasta&amp;risotto -->
+
+    <owl:NamedIndividual rdf:about="&fo;Pasta&amp;risotto">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="es">Pasta &amp; risotto</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Pasta&amp;risottoFacts -->
+
+    <owl:NamedIndividual rdf:about="&fo;Pasta&amp;risottoFacts"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Pastabakes -->
+
+    <owl:NamedIndividual rdf:about="&fo;Pastabakes">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Pasta bakes</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Pies&amp;pastries -->
+
+    <owl:NamedIndividual rdf:about="&fo;Pies&amp;pastries">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Pies &amp; pastries</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Pizza -->
+
+    <owl:NamedIndividual rdf:about="&fo;Pizza">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Print_Spicy_saag_aloo -->
+
+    <owl:NamedIndividual rdf:about="&fo;Print_Spicy_saag_aloo">
+        <rdf:type rdf:resource="&fo;Receta"/>
+        <rdfs:label xml:lang="en">Spicy saag aloo</rdfs:label>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">0.5</fo:FoodSalt>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">13.6</fo:FoodProtein>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">13.9</fo:FoodSugar>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">22.9</fo:FoodFat>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">3.6</fo:FoodSaturates>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">563</fo:FoodCalories>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">81.2</fo:FoodCarbs>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">9.1</fo:FoodFibre>
+        <fo:RecipeHasIngredient rdf:resource="&fo;basmati_rice"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;clove_of_garlic"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;cumin_seeds"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;fresh_coriander"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;fresh_red_chilli"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;hot_curry_paste"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;lettuce"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;onion"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;plain_yoghurt"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;potatoes"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;ripe_tomatoes"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;spinach"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Prosecco -->
+
+    <owl:NamedIndividual rdf:about="&fo;Prosecco">
+        <rdf:type rdf:resource="&fo;Vino"/>
+        <rdfs:label xml:lang="en">Prosecco</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Puddings&amp;desserts -->
+
+    <owl:NamedIndividual rdf:about="&fo;Puddings&amp;desserts">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Puddings &amp; desserts</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RepDOM -->
+
+    <owl:NamedIndividual rdf:about="&fo;RepDOM">
+        <rdf:type rdf:resource="&fo;Pais"/>
+        <rdfs:label xml:lang="es">Republica Dominicana</rdfs:label>
+        <fo:CountryName rdf:datatype="&xsd;string">Republica Dominicana</fo:CountryName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Roast -->
+
+    <owl:NamedIndividual rdf:about="&fo;Roast">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Rosemary -->
+
+    <owl:NamedIndividual rdf:about="&fo;Rosemary">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">Rosemary</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/RoyalPastaroyalDough -->
+
+    <owl:NamedIndividual rdf:about="&fo;RoyalPastaroyalDough">
+        <rdf:type rdf:resource="&fo;Pasta"/>
+        <rdfs:label xml:lang="en">Royal pasta dough</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Salad -->
+
+    <owl:NamedIndividual rdf:about="&fo;Salad">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Salad</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Sandwiches&amp;wraps -->
+
+    <owl:NamedIndividual rdf:about="&fo;Sandwiches&amp;wraps">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Sandwiches &amp; wraps</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Sauces&amp;condiments -->
+
+    <owl:NamedIndividual rdf:about="&fo;Sauces&amp;condiments">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Sauces &amp; condiments</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Soup -->
+
+    <owl:NamedIndividual rdf:about="&fo;Soup">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Soup</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/SpicySaagAloo -->
+
+    <owl:NamedIndividual rdf:about="&fo;SpicySaagAloo">
+        <rdfs:label xml:lang="en">Spicy saag aloo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/SquashedBrussels -->
+
+    <owl:NamedIndividual rdf:about="&fo;SquashedBrussels"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Squashed_Brussels -->
+
+    <owl:NamedIndividual rdf:about="&fo;Squashed_Brussels">
+        <rdf:type rdf:resource="&fo;Receta"/>
+        <rdfs:label xml:lang="en">Squashed Brussels</rdfs:label>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">1</fo:FoodSalt>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">1.2</fo:FoodFibre>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">10.1</fo:FoodFat>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">14.2</fo:FoodCarbs>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">182</fo:FoodCalories>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">3</fo:FoodSaturates>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">5.7</fo:FoodSugar>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">9.4</fo:FoodProtein>
+        <fo:RecipeHasIngredient rdf:resource="&fo;Brussels_sprouts"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;Rosemary"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;chorizo"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;oliveoil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;sherry_vinegar"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;vac-packed_chestnuts"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Stale_Bread -->
+
+    <owl:NamedIndividual rdf:about="&fo;Stale_Bread">
+        <rdf:type rdf:resource="&fo;Pan"/>
+        <rdfs:label xml:lang="en">Stale Bread</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Stew -->
+
+    <owl:NamedIndividual rdf:about="&fo;Stew">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/StuffedBraidedBread -->
+
+    <owl:NamedIndividual rdf:about="&fo;StuffedBraidedBread"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Stuffed_braided_bread -->
+
+    <owl:NamedIndividual rdf:about="&fo;Stuffed_braided_bread">
+        <rdf:type rdf:resource="&fo;Receta"/>
+        <rdfs:label xml:lang="en">Stuffed braided bread</rdfs:label>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">12.8</fo:FoodProtein>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">16.8</fo:FoodFat>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">3</fo:FoodSaturates>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">441</fo:FoodCalories>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">62.7</fo:FoodCarbs>
+        <fo:RecipeDishtype rdf:datatype="&xsd;string">Bread</fo:RecipeDishtype>
+        <fo:RecipeMethod rdf:datatype="&xsd;string">Combine the yeast, flours and 2 teaspoons of sea salt in a bowl and make a well in the centre. Pour in the honey, 2 tablespoons of oil and 400ml of tepid water. Mix the liquid around with your fingers, drawing the flour in and gradually combining the ingredients to form a soft dough.
+Turn onto a lightly floured surface and knead for 10 minutes, until elastic. Place in a lightly oiled bowl, cover with oiled clingfilm and leave to rise in a warm place for 45 minutes to 1 hour.
+Meanwhile, prepare the fillings. For the walnut and parsley filling, chop the nuts and parsley, and peel and crush the garlic. Combine with 1 tablespoon of oil in a bowl and set aside.
+For the second filling, warm 2 tablespoons of olive oil in a small pan over a medium heat, then finely chop and stir in the oregano. Set aside to infuse. Finely chop the tomatoes.
+Halve the dough and, on a floured surface, roll it out to make two rectangles roughly 21cm x 30cm.
+Stir the tomatoes into the oregano oil and spread it over the surface of one rectangle, then finely grate over the Parmesan. Cover the surface of the other rectangle with the walnut and parsley filling.
+Starting with a long edge, tightly roll one of the rectangles into a log and lay it seam-side down. Repeat with the second rectangle. Trim the ends of both logs so they&apos;re the same length. Cut each log in two lengthways, giving you four long pieces of filled dough.
+Place a walnut and parsley piece, cut-side up, alongside a piece of the tomato and oregano. Pinch the top of both lengths together, then lift the left over the right, repeating until intertwined, with the filling visible on top.
+Pinch the other ends together to seal. Shape the plait into a tight ‘S’ shape, then tuck both ends under the middle to form a figure of eight. Make the other plait the same way.
+Place on a greased baking sheet, with plenty of space between them. Cover with a clean tea towel and leave to rise for 1 hour.
+Preheat the oven to 180ºC/350ºF/gas 4.
+Brush the loaves with olive oil, scatter with sea salt and bake for 35 to 40 minutes, or until golden and the base of the loaves sound hollow when tapped.
+Cool on a wire rack and enjoy warm or cold.</fo:RecipeMethod>
+        <fo:RecipeHasIngredient rdf:resource="&fo;bunch_of_fresh_flat-leaf_parsley"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;clove_of_garlic"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;instant_yeast"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;oliveoil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;runny_honey"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;spelt_flour"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;strong_white_bread_flour_plus_extra"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;walnut_halves"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ThaiGreenCurry -->
+
+    <owl:NamedIndividual rdf:about="&fo;ThaiGreenCurry"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Thai_green_curry -->
+
+    <owl:NamedIndividual rdf:about="&fo;Thai_green_curry">
+        <rdf:type rdf:resource="&fo;Receta"/>
+        <rdfs:label xml:lang="en">Thai green curry</rdfs:label>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">0.5</fo:FoodSalt>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">10.2</fo:FoodProtein>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">10.3</fo:FoodSugar>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">18.2</fo:FoodCarbs>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">24</fo:FoodFat>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">3.7</fo:FoodFibre>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">324</fo:FoodCalories>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">9.7</fo:FoodSaturates>
+        <fo:RecipeHasIngredient rdf:resource="&fo;butternut_squash"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;clove_of_garlic"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;cumin_seeds"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;desiccated_coconut"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;firm_silken_tofu"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;fish_sauce"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;fresh_coriander"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;fresh_green_chillies"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;fresh_red_chilli"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;groundnut_oil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;kaffir_lime_leaves"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;leftover_cooked_greens_such_as_Brussels_sprouts_Brussels_tops_kale"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;lemongrass"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;limes"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;piece_of_ginger"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;sesame_oil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;shallots"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;tins_of_light_coconut_milk"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;unsalted_peanuts"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/TurkeyMeat -->
+
+    <owl:NamedIndividual rdf:about="&fo;TurkeyMeat">
+        <rdf:type rdf:resource="&fo;Carne"/>
+        <rdfs:label xml:lang="en">Turkey Meat</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/TurkeyRisotto -->
+
+    <owl:NamedIndividual rdf:about="&fo;TurkeyRisotto">
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">0.8</fo:FoodSalt>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">23.5</fo:FoodFat>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">3.1</fo:FoodSalt>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">8.5</fo:FoodSugar>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">815</fo:FoodCalories>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">9.9</fo:FoodSaturates>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">9.9</fo:FoodProtein>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">94.6</fo:FoodCarbs>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Usa -->
+
+    <owl:NamedIndividual rdf:about="&fo;Usa">
+        <rdf:type rdf:resource="&fo;Pais"/>
+        <rdfs:label xml:lang="es">Estados Unidos De Norte america</rdfs:label>
+        <fo:CountryName rdf:datatype="&xsd;string">Estados Unidos</fo:CountryName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Vegetablesides -->
+
+    <owl:NamedIndividual rdf:about="&fo;Vegetablesides">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Vegetable sides</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/WiltedSpinachWithYoghurtRaisins -->
+
+    <owl:NamedIndividual rdf:about="&fo;WiltedSpinachWithYoghurtRaisins"/>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Wilted_spinach_with_yoghurt_&amp;_raisins -->
+
+    <owl:NamedIndividual rdf:about="&fo;Wilted_spinach_with_yoghurt_&amp;_raisins">
+        <rdf:type rdf:resource="&fo;Receta"/>
+        <rdfs:label xml:lang="en">Wilted spinach with yoghurt &amp; raisins</rdfs:label>
+        <fo:FoodFibre rdf:datatype="&xsd;decimal">0</fo:FoodFibre>
+        <fo:FoodSalt rdf:datatype="&xsd;decimal">0.6</fo:FoodSalt>
+        <fo:FoodCalories rdf:datatype="&xsd;decimal">117</fo:FoodCalories>
+        <fo:FoodSaturates rdf:datatype="&xsd;decimal">3.9</fo:FoodSaturates>
+        <fo:FoodProtein rdf:datatype="&xsd;decimal">4.1</fo:FoodProtein>
+        <fo:FoodSugar rdf:datatype="&xsd;decimal">7.6</fo:FoodSugar>
+        <fo:FoodCarbs rdf:datatype="&xsd;decimal">7.8</fo:FoodCarbs>
+        <fo:FoodFat rdf:datatype="&xsd;decimal">7.9</fo:FoodFat>
+        <fo:RecipeHasIngredient rdf:resource="&fo;Greek_yoghurt"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;clove_of_garlic"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;oliveoil"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;raisins"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;spinach"/>
+        <fo:RecipeHasIngredient rdf:resource="&fo;sunflower_oil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/Wood-firedrecipes -->
+
+    <owl:NamedIndividual rdf:about="&fo;Wood-firedrecipes">
+        <rdf:type rdf:resource="&fo;TipoPlato"/>
+        <rdfs:label xml:lang="en">Wood-fired recipes</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/basmati_rice -->
+
+    <owl:NamedIndividual rdf:about="&fo;basmati_rice">
+        <rdf:type rdf:resource="&fo;Arroz"/>
+        <rdfs:label xml:lang="en">basmati rice</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/bicarbonate_of_soda -->
+
+    <owl:NamedIndividual rdf:about="&fo;bicarbonate_of_soda">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">bicarbonate of soda</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/blanched_hazelnuts -->
+
+    <owl:NamedIndividual rdf:about="&fo;blanched_hazelnuts">
+        <rdf:type rdf:resource="&fo;Nuez"/>
+        <rdfs:label xml:lang="en">Blanched Hazelnuts</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/borlottiBeans -->
+
+    <owl:NamedIndividual rdf:about="&fo;borlottiBeans">
+        <rdf:type rdf:resource="&fo;Semillas"/>
+        <rdfs:label xml:lang="en">Borlotti Beans</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/broadBeans -->
+
+    <owl:NamedIndividual rdf:about="&fo;broadBeans">
+        <rdf:type rdf:resource="&fo;Semillas"/>
+        <rdfs:label xml:lang="en">Broad Beans</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/bunch_of_fresh_flat-leaf_parsley -->
+
+    <owl:NamedIndividual rdf:about="&fo;bunch_of_fresh_flat-leaf_parsley">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en"> flat-leaf parsley</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/bunch_of_fresh_oregano -->
+
+    <owl:NamedIndividual rdf:about="&fo;bunch_of_fresh_oregano">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en"> oregano</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/buttermilk -->
+
+    <owl:NamedIndividual rdf:about="&fo;buttermilk">
+        <rdf:type rdf:resource="&fo;Lacteo"/>
+        <rdfs:label xml:lang="en">Buttermilk</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/butternut_squash -->
+
+    <owl:NamedIndividual rdf:about="&fo;butternut_squash">
+        <rdf:type rdf:resource="&fo;Lacteo"/>
+        <rdfs:label xml:lang="en">butternut squash</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/casterSugar -->
+
+    <owl:NamedIndividual rdf:about="&fo;casterSugar">
+        <rdf:type rdf:resource="&fo;azucar"/>
+        <rdfs:comment xml:lang="en">Caster Sugar</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/celery -->
+
+    <owl:NamedIndividual rdf:about="&fo;celery">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">celery</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/cheeseCheddar -->
+
+    <owl:NamedIndividual rdf:about="&fo;cheeseCheddar">
+        <rdf:type rdf:resource="&fo;Queso"/>
+        <rdfs:label xml:lang="en">cheese Cheddar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/cheeseGruyere -->
+
+    <owl:NamedIndividual rdf:about="&fo;cheeseGruyere">
+        <rdf:type rdf:resource="&fo;Queso"/>
+        <rdfs:label xml:lang="en">Cheese Gruyère</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/cheeseParmesan -->
+
+    <owl:NamedIndividual rdf:about="&fo;cheeseParmesan">
+        <rdf:type rdf:resource="&fo;Queso"/>
+        <rdfs:label xml:lang="en">cheese Parmesan</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/chorizo -->
+
+    <owl:NamedIndividual rdf:about="&fo;chorizo">
+        <rdf:type rdf:resource="&fo;Embutido"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/clove_of_garlic -->
+
+    <owl:NamedIndividual rdf:about="&fo;clove_of_garlic">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">Clove of Garlic</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/cumin_seeds -->
+
+    <owl:NamedIndividual rdf:about="&fo;cumin_seeds">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">cumin seeds</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/desiccated_coconut -->
+
+    <owl:NamedIndividual rdf:about="&fo;desiccated_coconut">
+        <rdf:type rdf:resource="&fo;Vegetal"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/doubleCream -->
+
+    <owl:NamedIndividual rdf:about="&fo;doubleCream">
+        <rdf:type rdf:resource="&fo;Lacteo"/>
+        <rdfs:label xml:lang="en">Double Cream</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/dried_spaghetti -->
+
+    <owl:NamedIndividual rdf:about="&fo;dried_spaghetti">
+        <rdf:type rdf:resource="&fo;Pasta"/>
+        <rdfs:label xml:lang="en">Dried spaghetti</rdfs:label>
+        <fo:RecipeHasIngredient rdf:resource="&fo;oliveoil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/eggs -->
+
+    <owl:NamedIndividual rdf:about="&fo;eggs">
+        <rdf:type rdf:resource="&fo;Animal"/>
+        <rdfs:label xml:lang="en">eggs</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/firm_silken_tofu -->
+
+    <owl:NamedIndividual rdf:about="&fo;firm_silken_tofu">
+        <rdf:type rdf:resource="&fo;Vegetal"/>
+        <rdfs:label xml:lang="en">firm silken tofu</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/fish_sauce -->
+
+    <owl:NamedIndividual rdf:about="&fo;fish_sauce">
+        <rdf:type rdf:resource="&fo;Condimento"/>
+        <rdfs:label xml:lang="en">fish sauce</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/free-range_egg -->
+
+    <owl:NamedIndividual rdf:about="&fo;free-range_egg">
+        <rdf:type rdf:resource="&fo;Animal"/>
+        <rdfs:label xml:lang="en">free-range egg</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/freshMint -->
+
+    <owl:NamedIndividual rdf:about="&fo;freshMint">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">Fresh Mint</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/fresh_coriander -->
+
+    <owl:NamedIndividual rdf:about="&fo;fresh_coriander">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">fresh coriander (30g)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/fresh_green_chillies -->
+
+    <owl:NamedIndividual rdf:about="&fo;fresh_green_chillies">
+        <rdf:type rdf:resource="&fo;Verdura"/>
+        <rdfs:label xml:lang="en">fresh green chillies</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/fresh_red_chilli -->
+
+    <owl:NamedIndividual rdf:about="&fo;fresh_red_chilli">
+        <rdf:type rdf:resource="&fo;Verdura"/>
+        <rdfs:label xml:lang="en">Red chilli</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/frisée -->
+
+    <owl:NamedIndividual rdf:about="&fo;frisée">
+        <rdf:type rdf:resource="&fo;Hortaliza"/>
+        <rdfs:label xml:lang="en">Frisée</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/goatsCheese -->
+
+    <owl:NamedIndividual rdf:about="&fo;goatsCheese">
+        <rdf:type rdf:resource="&fo;Queso"/>
+        <rdfs:label xml:lang="en">Goat&apos;s Cheese</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/groundnut_oil -->
+
+    <owl:NamedIndividual rdf:about="&fo;groundnut_oil">
+        <rdf:type rdf:resource="&fo;Aceite"/>
+        <rdfs:label xml:lang="en">groundnut oil</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/hot_curry_paste -->
+
+    <owl:NamedIndividual rdf:about="&fo;hot_curry_paste">
+        <rdf:type rdf:resource="&fo;Condimento"/>
+        <rdfs:label xml:lang="en">hot curry paste</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/instant_yeast -->
+
+    <owl:NamedIndividual rdf:about="&fo;instant_yeast">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">instant yeast</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/kaffir_lime_leaves -->
+
+    <owl:NamedIndividual rdf:about="&fo;kaffir_lime_leaves">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">kaffir lime leaves</rdfs:label>
+        <rdfs:comment xml:lang="es">hojas de lima kaffir</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/leek -->
+
+    <owl:NamedIndividual rdf:about="&fo;leek">
+        <rdf:type rdf:resource="&fo;Hortaliza"/>
+        <rdfs:label xml:lang="en">leek</rdfs:label>
+        <rdfs:comment xml:lang="es">Allium ampeloprasum var. porrum, el puerro, porro, ajo porro, ajoporro, poro o cebolla larga, es una de las variedades cultivadas de la especie Allium ampeloprasum. Como la cebolla y el ajo, esta planta pertenece a la familia de las liliáceas.</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/leftover_cooked_greens_such_as_Brussels_sprouts_Brussels_tops_kale -->
+
+    <owl:NamedIndividual rdf:about="&fo;leftover_cooked_greens_such_as_Brussels_sprouts_Brussels_tops_kale">
+        <rdf:type rdf:resource="&fo;Hortaliza"/>
+        <rdfs:label xml:lang="en">leftover cooked greens, such as Brussels sprouts, Brussels tops, kale, cabbage, broccoli</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/lemon -->
+
+    <owl:NamedIndividual rdf:about="&fo;lemon">
+        <rdf:type rdf:resource="&fo;Fruta"/>
+        <rdfs:label xml:lang="en">Lemon</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/lemongrass -->
+
+    <owl:NamedIndividual rdf:about="&fo;lemongrass">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">lemongrass</rdfs:label>
+        <rdfs:comment xml:lang="es">La hierba de limón</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/lettuce -->
+
+    <owl:NamedIndividual rdf:about="&fo;lettuce">
+        <rdf:type rdf:resource="&fo;Hortaliza"/>
+        <rdfs:label xml:lang="en">lettuce</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/limes -->
+
+    <owl:NamedIndividual rdf:about="&fo;limes">
+        <rdf:type rdf:resource="&fo;Fruta"/>
+        <rdfs:label xml:lang="en">limes</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/mascarponeCheese -->
+
+    <owl:NamedIndividual rdf:about="&fo;mascarponeCheese">
+        <rdf:type rdf:resource="&fo;Queso"/>
+        <rdfs:label xml:lang="en">Mascarpone Cheese</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/oats -->
+
+    <owl:NamedIndividual rdf:about="&fo;oats">
+        <rdf:type rdf:resource="&fo;Cereal"/>
+        <rdfs:label xml:lang="en">oats</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/oliveoil -->
+
+    <owl:NamedIndividual rdf:about="&fo;oliveoil">
+        <rdf:type rdf:resource="&fo;Aceite"/>
+        <rdfs:label xml:lang="en">Olive oil</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/onion -->
+
+    <owl:NamedIndividual rdf:about="&fo;onion">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">Onion</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/organicChickenOrvegStock -->
+
+    <owl:NamedIndividual rdf:about="&fo;organicChickenOrvegStock">
+        <rdf:type rdf:resource="&fo;Carne"/>
+        <rdfs:label xml:lang="en">Organic Chicken or Veg Stock</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/peaShoots -->
+
+    <owl:NamedIndividual rdf:about="&fo;peaShoots">
+        <rdf:type rdf:resource="&fo;Semillas"/>
+        <rdfs:label xml:lang="en">Pea Shoots</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/piece_of_ginger -->
+
+    <owl:NamedIndividual rdf:about="&fo;piece_of_ginger">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">piece of ginger</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/plain_flour__plus_extra_for_dusting -->
+
+    <owl:NamedIndividual rdf:about="&fo;plain_flour__plus_extra_for_dusting">
+        <rdf:type rdf:resource="&fo;Cereal"/>
+        <rdfs:label xml:lang="en">plain flour , plus extra for dusting</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/plain_yoghurt -->
+
+    <owl:NamedIndividual rdf:about="&fo;plain_yoghurt">
+        <rdf:type rdf:resource="&fo;Lacteo"/>
+        <rdfs:label xml:lang="en">plain yoghurt</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/potatoes -->
+
+    <owl:NamedIndividual rdf:about="&fo;potatoes">
+        <rdf:type rdf:resource="&fo;Hortaliza"/>
+        <rdfs:label xml:lang="en">potatoes</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/prosciutto -->
+
+    <owl:NamedIndividual rdf:about="&fo;prosciutto">
+        <rdf:type rdf:resource="&fo;Embutido"/>
+        <rdfs:label xml:lang="en">Prosciutto</rdfs:label>
+        <rdfs:comment xml:lang="es">Prosciutto es el término italiano para ‘jamón’, aludiéndose con mayor frecuencia al curado, que se sirve sin cocinar, cortado fino. A este estilo se llama en Italia prosciutto crudo, distinguiéndose del cocinado</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/quality_dark_chocolate_chips -->
+
+    <owl:NamedIndividual rdf:about="&fo;quality_dark_chocolate_chips">
+        <rdf:type rdf:resource="&fo;superfluos"/>
+        <rdfs:label xml:lang="en">quality dark chocolate chips (70%)</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/radicchio -->
+
+    <owl:NamedIndividual rdf:about="&fo;radicchio">
+        <rdf:type rdf:resource="&fo;Hortaliza"/>
+        <rdfs:label xml:lang="en">Radicchio</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/raisins -->
+
+    <owl:NamedIndividual rdf:about="&fo;raisins">
+        <rdf:type rdf:resource="&fo;Fruta"/>
+        <rdfs:label xml:lang="en">raisins</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ricottaCheese -->
+
+    <owl:NamedIndividual rdf:about="&fo;ricottaCheese">
+        <rdf:type rdf:resource="&fo;Queso"/>
+        <rdfs:label xml:lang="en">Ricotta Cheese</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/ripe_tomatoes -->
+
+    <owl:NamedIndividual rdf:about="&fo;ripe_tomatoes">
+        <rdf:type rdf:resource="&fo;Verdura"/>
+        <rdfs:label xml:lang="en">ripe tomatoes</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/runny_honey -->
+
+    <owl:NamedIndividual rdf:about="&fo;runny_honey">
+        <rdf:type rdf:resource="&fo;Adereso"/>
+        <rdfs:label xml:lang="en">Runny Honey</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/semi-skimmed_milk -->
+
+    <owl:NamedIndividual rdf:about="&fo;semi-skimmed_milk">
+        <rdf:type rdf:resource="&fo;Leche"/>
+        <rdfs:label xml:lang="en">Semi Skimmed Milk</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/sesame_oil -->
+
+    <owl:NamedIndividual rdf:about="&fo;sesame_oil">
+        <rdf:type rdf:resource="&fo;Aceite"/>
+        <rdfs:label xml:lang="en">sesame oil</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/shallots -->
+
+    <owl:NamedIndividual rdf:about="&fo;shallots">
+        <rdf:type rdf:resource="&fo;Verdura"/>
+        <rdfs:label xml:lang="en">shallots</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/sherry_vinegar -->
+
+    <owl:NamedIndividual rdf:about="&fo;sherry_vinegar">
+        <rdf:type rdf:resource="&fo;Vinagre"/>
+        <rdfs:label xml:lang="en">sherry vinegar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/smokedHam -->
+
+    <owl:NamedIndividual rdf:about="&fo;smokedHam">
+        <rdf:type rdf:resource="&fo;Embutido"/>
+        <rdfs:label xml:lang="en">Smoked  ham</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/sourdoughBread -->
+
+    <owl:NamedIndividual rdf:about="&fo;sourdoughBread">
+        <rdf:type rdf:resource="&fo;Pan"/>
+        <rdfs:label xml:lang="en">Sourdough Bread</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/spelt_flour -->
+
+    <owl:NamedIndividual rdf:about="&fo;spelt_flour">
+        <rdf:type rdf:resource="&fo;Cereal"/>
+        <rdfs:label xml:lang="en">Spelt Flour</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/spinach -->
+
+    <owl:NamedIndividual rdf:about="&fo;spinach">
+        <rdf:type rdf:resource="&fo;Hortaliza"/>
+        <rdfs:label xml:lang="en">spinach</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/strong_white_bread_flour_plus_extra -->
+
+    <owl:NamedIndividual rdf:about="&fo;strong_white_bread_flour_plus_extra">
+        <rdf:type rdf:resource="&fo;Cereal"/>
+        <rdfs:label xml:lang="en">strong white bread flour</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/sun-blush_tomatoes -->
+
+    <owl:NamedIndividual rdf:about="&fo;sun-blush_tomatoes">
+        <rdf:type rdf:resource="&fo;Verdura"/>
+        <rdfs:label xml:lang="en">sun-blush tomatoes</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/sunflower_oil -->
+
+    <owl:NamedIndividual rdf:about="&fo;sunflower_oil">
+        <rdf:type rdf:resource="&fo;Aceite"/>
+        <rdfs:label xml:lang="en">sunflower oil</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/thyme -->
+
+    <owl:NamedIndividual rdf:about="&fo;thyme">
+        <rdf:type rdf:resource="&fo;Especia"/>
+        <rdfs:label xml:lang="en">Thyme</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/tins_of_light_coconut_milk -->
+
+    <owl:NamedIndividual rdf:about="&fo;tins_of_light_coconut_milk">
+        <rdf:type rdf:resource="&fo;Leche"/>
+        <rdfs:label xml:lang="en">tins of light coconut milk</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/turkeyGravy -->
+
+    <owl:NamedIndividual rdf:about="&fo;turkeyGravy">
+        <rdf:type rdf:resource="&fo;Carne"/>
+        <rdfs:label xml:lang="en">Turkey Gravy</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/turkeySkin -->
+
+    <owl:NamedIndividual rdf:about="&fo;turkeySkin">
+        <rdf:type rdf:resource="&fo;Carne"/>
+        <rdfs:label xml:lang="en">Turkey Skin</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/unsaltedButter -->
+
+    <owl:NamedIndividual rdf:about="&fo;unsaltedButter">
+        <rdf:type rdf:resource="&fo;Lacteo"/>
+        <rdfs:label xml:lang="en">Unsalted Butter</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/unsalted_peanuts -->
+
+    <owl:NamedIndividual rdf:about="&fo;unsalted_peanuts">
+        <rdf:type rdf:resource="&fo;Nuez"/>
+        <rdfs:label xml:lang="en">unsalted peanuts</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/vac-packed_chestnuts -->
+
+    <owl:NamedIndividual rdf:about="&fo;vac-packed_chestnuts">
+        <rdf:type rdf:resource="&fo;Nuez"/>
+        <rdfs:label xml:lang="en">vac-packed chestnuts</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/walnut_halves -->
+
+    <owl:NamedIndividual rdf:about="&fo;walnut_halves">
+        <rdf:type rdf:resource="&fo;Nuez"/>
+        <rdfs:label xml:lang="en">Walnut Halves</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/whiteWine -->
+
+    <owl:NamedIndividual rdf:about="&fo;whiteWine">
+        <rdf:type rdf:resource="&fo;Vino"/>
+        <rdfs:label xml:lang="en">White Wine</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/ontology/fo/whiteWineVinegar -->
+
+    <owl:NamedIndividual rdf:about="&fo;whiteWineVinegar">
+        <rdf:type rdf:resource="&fo;Vinagre"/>
+        <rdfs:label xml:lang="en">White Wine Vinegar</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="&fo;#rob">
+        <foaf:name>Rob Styles</foaf:name>
+    </rdf:Description>
+    <rdf:Description rdf:about="&fo;#rija">
+        <foaf:name>Rija Menage</foaf:name>
+    </rdf:Description>
+    <rdf:Description rdf:about="&fo;#philip">
+        <foaf:name>Philip Lamond</foaf:name>
+    </rdf:Description>
+    <rdf:Description rdf:about="&dcterms;rightsHolder">
+        <rdfs:label xml:lang="en">Rights Holder</rdfs:label>
+        <dcterms:issued rdf:datatype="&xsd;date">2004-06-14</dcterms:issued>
+        <dcterms:modified rdf:datatype="&xsd;date">2008-01-14</dcterms:modified>
+        <rdfs:comment xml:lang="en">A person or organization owning or managing rights over the resource.</rdfs:comment>
+        <dcterms:hasVersion rdf:resource="http://dublincore.org/usage/terms/history/#rightsHolder-002"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="&fo;#oliver">
+        <foaf:name>Oliver Bartlett</foaf:name>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/">
+        <dcterms:modified rdf:datatype="&xsd;date">2012-06-14</dcterms:modified>
+        <dcterms:title xml:lang="en">Dublin Core Metadata Element Set, Version 1.1</dcterms:title>
+        <dcterms:publisher rdf:resource="http://purl.org/dc/aboutdcmi#DCMI"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.org/dc/terms/">
+        <dcterms:modified rdf:datatype="&xsd;date">2012-06-14</dcterms:modified>
+        <dcterms:title xml:lang="en">DCMI Metadata Terms - other</dcterms:title>
+        <dcterms:publisher rdf:resource="http://purl.org/dc/aboutdcmi#DCMI"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="&fo;#andrew">
+        <foaf:name>Andrew Robinson</foaf:name>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

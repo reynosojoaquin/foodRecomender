@@ -1,0 +1,33 @@
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.exe.config
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.exe
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.pdb
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.dll
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.csprojResolveAssemblyReference.cache
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.exe
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.pdb
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MySql.Data.dll
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MySql.Data.xml
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.exe.config
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.exe
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.pdb
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.dll
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MySql.Data.dll
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.pdb
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.xml
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MySql.Data.xml
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.csprojResolveAssemblyReference.cache
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.exe
+C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.pdb
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.exe.config
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.exe
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.pdb
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.dll
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MySql.Data.dll
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.pdb
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.xml
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\bin\Debug\MySql.Data.xml
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.csprojResolveAssemblyReference.cache
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.exe
+D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.pdb

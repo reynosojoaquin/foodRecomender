@@ -1,0 +1,4 @@
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\bin\Debug\FoodRecomenderDataAccess.dll
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\bin\Debug\FoodRecomenderDataAccess.pdb
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\obj\Debug\FoodRecomenderDataAccess.dll
+C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\obj\Debug\FoodRecomenderDataAccess.pdb
