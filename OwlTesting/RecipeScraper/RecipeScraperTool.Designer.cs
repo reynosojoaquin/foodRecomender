@@ -43,16 +43,16 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbEnlaceActual = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.Temporada = new System.Windows.Forms.Label();
+            this.cboTemporada = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cboMomentoComida = new System.Windows.Forms.ComboBox();
+            this.cboNacionalidad = new System.Windows.Forms.ComboBox();
+            this.cboCultura = new System.Windows.Forms.ComboBox();
+            this.CboTipoPlato = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -63,7 +63,8 @@
             this.lbTotalRegistroEncontrados = new System.Windows.Forms.Label();
             this.btnBuscarArchivo = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lbErrorCount = new System.Windows.Forms.Label();
+            this.openFileHtmlPage = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -212,39 +213,39 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.comboBox7);
+            this.groupBox3.Controls.Add(this.Temporada);
+            this.groupBox3.Controls.Add(this.cboTemporada);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.comboBox6);
-            this.groupBox3.Controls.Add(this.comboBox5);
-            this.groupBox3.Controls.Add(this.comboBox4);
-            this.groupBox3.Controls.Add(this.comboBox3);
+            this.groupBox3.Controls.Add(this.cboMomentoComida);
+            this.groupBox3.Controls.Add(this.cboNacionalidad);
+            this.groupBox3.Controls.Add(this.cboCultura);
+            this.groupBox3.Controls.Add(this.CboTipoPlato);
             this.groupBox3.Location = new System.Drawing.Point(5, 276);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(554, 165);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             // 
-            // label11
+            // Temporada
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 130);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(55, 13);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "Contenido";
+            this.Temporada.AutoSize = true;
+            this.Temporada.Location = new System.Drawing.Point(9, 130);
+            this.Temporada.Name = "Temporada";
+            this.Temporada.Size = new System.Drawing.Size(61, 13);
+            this.Temporada.TabIndex = 12;
+            this.Temporada.Text = "Temporada";
             // 
-            // comboBox7
+            // cboTemporada
             // 
-            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(124, 127);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(426, 21);
-            this.comboBox7.TabIndex = 11;
+            this.cboTemporada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTemporada.FormattingEnabled = true;
+            this.cboTemporada.Location = new System.Drawing.Point(124, 127);
+            this.cboTemporada.Name = "cboTemporada";
+            this.cboTemporada.Size = new System.Drawing.Size(426, 21);
+            this.cboTemporada.TabIndex = 11;
             // 
             // label10
             // 
@@ -282,41 +283,41 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "Tipo Plato";
             // 
-            // comboBox6
+            // cboMomentoComida
             // 
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(124, 100);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(426, 21);
-            this.comboBox6.TabIndex = 5;
+            this.cboMomentoComida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMomentoComida.FormattingEnabled = true;
+            this.cboMomentoComida.Location = new System.Drawing.Point(124, 100);
+            this.cboMomentoComida.Name = "cboMomentoComida";
+            this.cboMomentoComida.Size = new System.Drawing.Size(426, 21);
+            this.cboMomentoComida.TabIndex = 5;
             // 
-            // comboBox5
+            // cboNacionalidad
             // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(124, 73);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(426, 21);
-            this.comboBox5.TabIndex = 4;
+            this.cboNacionalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboNacionalidad.FormattingEnabled = true;
+            this.cboNacionalidad.Location = new System.Drawing.Point(124, 73);
+            this.cboNacionalidad.Name = "cboNacionalidad";
+            this.cboNacionalidad.Size = new System.Drawing.Size(426, 21);
+            this.cboNacionalidad.TabIndex = 4;
             // 
-            // comboBox4
+            // cboCultura
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(124, 46);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(426, 21);
-            this.comboBox4.TabIndex = 3;
+            this.cboCultura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCultura.FormattingEnabled = true;
+            this.cboCultura.Location = new System.Drawing.Point(124, 46);
+            this.cboCultura.Name = "cboCultura";
+            this.cboCultura.Size = new System.Drawing.Size(426, 21);
+            this.cboCultura.TabIndex = 3;
             // 
-            // comboBox3
+            // CboTipoPlato
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(124, 19);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(426, 21);
-            this.comboBox3.TabIndex = 2;
+            this.CboTipoPlato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CboTipoPlato.FormattingEnabled = true;
+            this.CboTipoPlato.Location = new System.Drawing.Point(124, 19);
+            this.CboTipoPlato.Name = "CboTipoPlato";
+            this.CboTipoPlato.Size = new System.Drawing.Size(426, 21);
+            this.CboTipoPlato.TabIndex = 2;
             // 
             // groupBox4
             // 
@@ -329,7 +330,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.lbErrorCount);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.lbTotalRegistroEncontrados);
             this.groupBox5.Controls.Add(this.label5);
@@ -405,6 +406,7 @@
             this.btnBuscarArchivo.TabIndex = 10;
             this.btnBuscarArchivo.Text = "Buscar";
             this.btnBuscarArchivo.UseVisualStyleBackColor = true;
+            this.btnBuscarArchivo.Click += new System.EventHandler(this.btnBuscarArchivo_Click);
             // 
             // label7
             // 
@@ -415,14 +417,19 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Errores encontrados";
             // 
-            // label14
+            // lbErrorCount
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(140, 70);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(13, 13);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "0";
+            this.lbErrorCount.AutoSize = true;
+            this.lbErrorCount.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorCount.Location = new System.Drawing.Point(140, 70);
+            this.lbErrorCount.Name = "lbErrorCount";
+            this.lbErrorCount.Size = new System.Drawing.Size(13, 13);
+            this.lbErrorCount.TabIndex = 7;
+            this.lbErrorCount.Text = "0";
+            // 
+            // openFileHtmlPage
+            // 
+            this.openFileHtmlPage.FileName = "openFileDialog1";
             // 
             // RecipeScraperTool
             // 
@@ -437,6 +444,7 @@
             this.Name = "RecipeScraperTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RecipeScraperTool";
+            this.Load += new System.EventHandler(this.RecipeScraperTool_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -468,16 +476,16 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label lbPorcent;
         private System.Windows.Forms.ProgressBar progressBarBusqueda;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cboMomentoComida;
+        private System.Windows.Forms.ComboBox cboNacionalidad;
+        private System.Windows.Forms.ComboBox cboCultura;
+        private System.Windows.Forms.ComboBox CboTipoPlato;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.Label Temporada;
+        private System.Windows.Forms.ComboBox cboTemporada;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lbTotalNodosIdentificados;
@@ -486,7 +494,8 @@
         private System.Windows.Forms.Label lbTotalRegistroEncontrados;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnBuscarArchivo;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lbErrorCount;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.OpenFileDialog openFileHtmlPage;
     }
 }

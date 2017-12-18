@@ -368,7 +368,59 @@ namespace RecipeScraper
             return recipeData;
 
         }
+        public bool isVisited(string Url)
+        {
+            if (visitedLink.ContainsKey(Url))
+                return true;
+            else
+                return false;
 
+        }
+        private void addValueToDic(string Tkey, string Tvalue)
+        {
+            visitedLink.Add(Tkey, Tvalue);
+        }
 
+        private void btnBuscarArchivo_Click(object sender, EventArgs e)
+        {
+            DialogResult result = openFileHtmlPage.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                txtFileRoute.Text = openFileHtmlPage.FileName;
+            }
+        }
+
+        private void frmScraper_Load(object sender, EventArgs e)
+        {
+            cboFormato.SelectedIndex = 0;
+        }
+        private void scrapLocalPage(string file, int DataFormat)
+        {
+            var doc = new HtmlAgilityPack.HtmlDocument();
+            doc.Load(file);
+            switch (DataFormat)
+            {
+                case 0:
+                    HtmlNode[] nodes = doc.DocumentNode.SelectNodes(".//article/a/@href").ToArray();
+                    scrapData(nodes, DataFormat);
+                    break;
+                case 1:
+                    HtmlNode[] JsonNodes = doc.DocumentNode.SelectNodes("//div[@class='recipe-block']/a/@href").ToArray();
+                    scrapData(JsonNodes, DataFormat);
+                    break;
+            }
+            MessageBox.Show("La Busqueda a concluido");
+
+        }
+
+        private void RecipeScraperTool_Load(object sender, EventArgs e)
+        {
+            cboFormato.SelectedIndex = 0;
+        }
+
+        private void Cliente_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+
+        }
     }
 }
