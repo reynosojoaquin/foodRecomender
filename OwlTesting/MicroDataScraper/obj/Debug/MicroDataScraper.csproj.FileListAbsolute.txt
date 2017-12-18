@@ -31,3 +31,14 @@ D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDa
 D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.csprojResolveAssemblyReference.cache
 D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.exe
 D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.pdb
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.exe.config
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.exe
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\MicroDataScraper.pdb
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.dll
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\MySql.Data.dll
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.pdb
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.xml
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\MySql.Data.xml
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.csprojResolveAssemblyReference.cache
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.exe
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.pdb

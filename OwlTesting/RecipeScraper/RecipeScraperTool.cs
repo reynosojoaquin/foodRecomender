@@ -15,6 +15,7 @@ using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
+
 namespace RecipeScraper
 {
     public partial class RecipeScraperTool : Form
@@ -30,6 +31,7 @@ namespace RecipeScraper
         private static bool completed = false;
         string baseUrl = string.Empty;
         HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
+       
         public RecipeScraperTool()
         {
             InitializeComponent();
@@ -206,28 +208,34 @@ namespace RecipeScraper
 
             return resultado;
         }
-        public DataSet GetMicroData(HtmlAgilityPack.HtmlDocument Document)
+        public DataSet GetMicroData(HtmlAgilityPack.HtmlDocument Document, int dataFormat)
         {
             string dataError = string.Empty, pictureRoute = string.Empty, appRoute = string.Empty, filename = string.Empty;
             ClDataAcces objDataAccess = new ClDataAcces();
             string Name = string.Empty;
             string Ingredient = string.Empty;
             DataSet recipeData = new DataSet();
-            DataTable recipe = new DataTable();
+            DataTable recipeTable = new DataTable();
             DataTable nutritionData = new DataTable();
+            HtmlNode[] nodes = null;
+            HtmlNode[] child = null;
+            HtmlNode NameNode = null;
+            WebClient cliente = new WebClient();
+           
+            Uri Url = null;
             string calories = string.Empty, fat = string.Empty, saturatefat = string.Empty,
                 fiber = string.Empty, carbohydrate = string.Empty, protein = string.Empty,
-                cholesterol = string.Empty, sugar = string.Empty, sodium = string.Empty;
+                cholesterol = string.Empty, sugar = string.Empty, sodium = string.Empty, imagenUrl = string.Empty;
 
             // RECIPE DATA 
-            recipe.Columns.Add("Name", typeof(string));
-            recipe.Columns.Add("Ingrediente", typeof(string));
-            recipe.Columns.Add("recipeTipoPlatoData", typeof(string));
-            recipe.Columns.Add("recipeCulturaData", typeof(string));
-            recipe.Columns.Add("recipeNacionalidadData", typeof(string));
-            recipe.Columns.Add("recipeMomentoData", typeof(string));
-            recipe.Columns.Add("recipeTemporadaData", typeof(string));
-            recipe.Columns.Add("Picture", typeof(string));
+            recipeTable.Columns.Add("Name", typeof(string));
+            recipeTable.Columns.Add("Ingrediente", typeof(string));
+            recipeTable.Columns.Add("recipeTipoPlatoData", typeof(string));
+            recipeTable.Columns.Add("recipeCulturaData", typeof(string));
+            recipeTable.Columns.Add("recipeNacionalidadData", typeof(string));
+            recipeTable.Columns.Add("recipeMomentoData", typeof(string));
+            recipeTable.Columns.Add("recipeTemporadaData", typeof(string));
+            recipeTable.Columns.Add("Picture", typeof(string));
 
 
             // NUTRICION DATA
@@ -242,131 +250,142 @@ namespace RecipeScraper
             nutritionData.Columns.Add("sugar", typeof(decimal));
             nutritionData.Columns.Add("sodium", typeof(decimal));
 
-            HtmlNode[] nodes = Document.DocumentNode.SelectNodes(".//*[@itemtype='http://schema.org/Recipe']").ToArray();
-            HtmlNode[] child = null;
-            HtmlNode NameNode = Document.DocumentNode.SelectSingleNode(".//*[@class='recipeDetailHeader showOnTabletToDesktop']");
-            string imagenUrl = Document.DocumentNode.Descendants("img")
-                .Where(node => node.Attributes["class"] != null && node.Attributes["class"].Value == "recipeDetailSummaryImageMain")
-                .Select(node => node.Attributes["src"].Value)
-                .DefaultIfEmpty(string.Empty)
-                .FirstOrDefault()
-                .ToString();
             appRoute = Application.StartupPath;
 
-            WebClient cliente = new WebClient();
-            cliente.DownloadFileCompleted += new AsyncCompletedEventHandler(Cliente_DownloadFileCompleted);
-            Uri Url = new Uri(imagenUrl);
-
-            filename = System.IO.Path.GetFileName(Url.LocalPath);
-            pictureRoute = appRoute.Remove(appRoute.Length - 10) + "\\Picture\\" + filename;
-            cliente.DownloadFileAsync(Url, pictureRoute);
-            Name = NameNode.InnerText;
-
-            foreach (HtmlNode item in nodes)
+            switch(dataFormat)
             {
-                child = item.SelectNodes(".//*[@itemprop='ingredients']").ToArray();
 
-                foreach (HtmlNode chldnode in child)
-                {
+                case 0:
+           
+                    nodes = Document.DocumentNode.SelectNodes(".//*[@itemtype='http://schema.org/Recipe']").ToArray();
+                    NameNode = Document.DocumentNode.SelectSingleNode(".//*[@class='recipeDetailHeader showOnTabletToDesktop']");
+                    imagenUrl = Document.DocumentNode.Descendants("img")
+                    .Where(node => node.Attributes["class"] != null && node.Attributes["class"].Value == "recipeDetailSummaryImageMain")
+                    .Select(node => node.Attributes["src"].Value)
+                    .DefaultIfEmpty(string.Empty)
+                    .FirstOrDefault()
+                    .ToString();
+            
+           
+                    cliente.DownloadFileCompleted += new AsyncCompletedEventHandler(Cliente_DownloadFileCompleted);
+                    Url = new Uri(imagenUrl);
 
-                    for (int ind = 0; ind < chldnode.Attributes.Count; ind++)
+                    filename = System.IO.Path.GetFileName(Url.LocalPath);
+                    pictureRoute = appRoute.Remove(appRoute.Length - 10) + "\\Picture\\" + filename;
+                    cliente.DownloadFileAsync(Url, pictureRoute);
+                    Name = NameNode.InnerText;
+
+                    foreach (HtmlNode item in nodes)
                     {
+                        child = item.SelectNodes(".//*[@itemprop='ingredients']").ToArray();
 
-
-                        Ingredient = chldnode.InnerText.Trim();
-                        recipe.NewRow();
-                        recipe.Rows.Add(Name, Ingredient, CboTipoPlato.Text, cboCultura.Text,
-                        cboNacionalidad.Text, cboMomentoComida.Text, cboTemporada.Text, pictureRoute);
-
-
-                    }
-                }
-                if (Document.DocumentNode.SelectNodes(".//*[@itemtype='http://schema.org/NutritionInformation']") != null)
-                {
-                    nodes = Document.DocumentNode.SelectNodes(".//*[@itemtype='http://schema.org/NutritionInformation']").ToArray();
-
-                    foreach (HtmlNode chldnode in nodes)
-                    {
-                        child = chldnode.SelectNodes(".//*[@itemprop]").ToArray();
-                        foreach (HtmlNode ntNodo in child)
+                        foreach (HtmlNode chldnode in child)
                         {
-                            for (int ind = 0; ind < ntNodo.Attributes.Count; ind++)
+
+                            for (int ind = 0; ind < chldnode.Attributes.Count; ind++)
                             {
 
-                                Console.WriteLine(ntNodo.Attributes[ind].Value + ": " +
-                                RegexTool.GetNumber(ntNodo.InnerText) + "\r");
-                                if (ntNodo.InnerText != "")
-                                {
-                                    switch (ntNodo.Attributes[ind].Value)
-                                    {
-                                        case "calories":
-                                            calories = RegexTool.GetNumber(ntNodo.InnerText);
 
-                                            break;
-                                        case "fatContent":
-                                            fat = RegexTool.GetNumber(ntNodo.InnerText);
-                                            break;
-                                        case "saturatedFatContent":
-                                            saturatefat = RegexTool.GetNumber(ntNodo.InnerText);
-                                            break;
-                                        case "fiberContent":
-                                            fiber = RegexTool.GetNumber(ntNodo.InnerText);
-                                            break;
-                                        case "carbohydrateContent":
-                                            carbohydrate = RegexTool.GetNumber(ntNodo.InnerText);
-                                            break;
-                                        case "proteinContent":
-                                            protein = RegexTool.GetNumber(ntNodo.InnerText);
-                                            break;
-                                        case "cholesterolContent":
-                                            cholesterol = RegexTool.GetNumber(ntNodo.InnerText);
-                                            break;
-                                        case "sugarContent":
-                                            sugar = RegexTool.GetNumber(ntNodo.InnerText);
-                                            break;
-                                        case "sodiumContent":
-                                            sodium = RegexTool.GetNumber(ntNodo.InnerText);
-                                            break;
-                                    }
-                                }
-
-
+                                Ingredient = chldnode.InnerText.Trim();
+                                recipeTable.NewRow();
+                                recipeTable.Rows.Add(Name, Ingredient, CboTipoPlato.Text, cboCultura.Text,
+                                cboNacionalidad.Text, cboMomentoComida.Text, cboTemporada.Text, pictureRoute);
                             }
+                        }
+                        if (Document.DocumentNode.SelectNodes(".//*[@itemtype='http://schema.org/NutritionInformation']") != null)
+                        {
+                            nodes = Document.DocumentNode.SelectNodes(".//*[@itemtype='http://schema.org/NutritionInformation']").ToArray();
 
+                            foreach (HtmlNode chldnode in nodes)
+                            {
+                                child = chldnode.SelectNodes(".//*[@itemprop]").ToArray();
+                                foreach (HtmlNode ntNodo in child)
+                                {
+                                    for (int ind = 0; ind < ntNodo.Attributes.Count; ind++)
+                                    {
+
+                                        Console.WriteLine(ntNodo.Attributes[ind].Value + ": " +
+                                        RegexTool.GetNumber(ntNodo.InnerText) + "\r");
+                                        if (ntNodo.InnerText != "")
+                                        {
+                                            switch (ntNodo.Attributes[ind].Value)
+                                            {
+                                                case "calories":
+                                                    calories = RegexTool.GetNumber(ntNodo.InnerText);
+
+                                                    break;
+                                                case "fatContent":
+                                                    fat = RegexTool.GetNumber(ntNodo.InnerText);
+                                                    break;
+                                                case "saturatedFatContent":
+                                                    saturatefat = RegexTool.GetNumber(ntNodo.InnerText);
+                                                    break;
+                                                case "fiberContent":
+                                                    fiber = RegexTool.GetNumber(ntNodo.InnerText);
+                                                    break;
+                                                case "carbohydrateContent":
+                                                    carbohydrate = RegexTool.GetNumber(ntNodo.InnerText);
+                                                    break;
+                                                case "proteinContent":
+                                                    protein = RegexTool.GetNumber(ntNodo.InnerText);
+                                                    break;
+                                                case "cholesterolContent":
+                                                    cholesterol = RegexTool.GetNumber(ntNodo.InnerText);
+                                                    break;
+                                                case "sugarContent":
+                                                    sugar = RegexTool.GetNumber(ntNodo.InnerText);
+                                                    break;
+                                                case "sodiumContent":
+                                                    sodium = RegexTool.GetNumber(ntNodo.InnerText);
+                                                    break;
+                                            }
+                                        }
+
+
+                                    }
+
+                                }
+                            }
+                            try
+                            {
+                                nutritionData.Rows.Add(Convert.ToDecimal(calories), Convert.ToDecimal(fat), Convert.ToDecimal(saturatefat),
+                                         Convert.ToDecimal(fiber), Convert.ToDecimal(carbohydrate), Convert.ToDecimal(protein), Convert.ToDecimal(cholesterol)
+                                         , Convert.ToDecimal(sugar), Convert.ToDecimal(sodium));
+                            }
+                            catch (Exception error)
+                            {
+                                dataError = error.Message;
+                            }
                         }
                     }
-                    try
+                    if (nutritionData.Rows.Count > 0)
                     {
-                        nutritionData.Rows.Add(Convert.ToDecimal(calories), Convert.ToDecimal(fat), Convert.ToDecimal(saturatefat),
-                                 Convert.ToDecimal(fiber), Convert.ToDecimal(carbohydrate), Convert.ToDecimal(protein), Convert.ToDecimal(cholesterol)
-                                 , Convert.ToDecimal(sugar), Convert.ToDecimal(sodium));
+                        contador++;
+                        percent = contador / cantidad * 100;
+                        lbPorcent.Text = percent.ToString();
+                        lbPorcent.Refresh();
+                        progressBarBusqueda.PerformStep();
+                        progressBarBusqueda.Refresh();
+                        recipeData.Tables.Add(recipeTable);
+                        recipeData.Tables.Add(nutritionData);
+                        dataError = objDataAccess.insertRecipeData(recipeData);
+                        if (dataError != "")
+                        {
+                            errorCount++;
+                            lbErrorCount.Text = errorCount.ToString();
+                            Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
+                        }
                     }
-                    catch (Exception error)
-                    {
-                        dataError = error.Message;
-                    }
-                }
-            }
-            if (nutritionData.Rows.Count > 0)
-            {
-                contador++;
-                percent = contador / cantidad * 100;
-                lbPorcent.Text = percent.ToString();
-                lbPorcent.Refresh();
-                progressBarBusqueda.PerformStep();
-                progressBarBusqueda.Refresh();
-                recipeData.Tables.Add(recipe);
-                recipeData.Tables.Add(nutritionData);
-                dataError = objDataAccess.insertRecipeData(recipeData);
-                if (dataError != "")
-                {
-                    errorCount++;
-                    lbErrorCount.Text = errorCount.ToString();
-                    Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
-                }
-            }
-            return recipeData;
+                    break;
+                case 1:
+                    string jsonValue = Document.DocumentNode.
+                            SelectSingleNode("//script[@type='application/ld+json']").InnerText;
+                    dynamic jsonData = JsonConvert.DeserializeObject(jsonValue);
 
+                    break;
+             
+        }
+            return recipeData;
         }
         public bool isVisited(string Url)
         {
@@ -416,6 +435,7 @@ namespace RecipeScraper
         private void RecipeScraperTool_Load(object sender, EventArgs e)
         {
             cboFormato.SelectedIndex = 0;
+            cboScrapMode.SelectedIndex = 0;
         }
 
         private void Cliente_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)

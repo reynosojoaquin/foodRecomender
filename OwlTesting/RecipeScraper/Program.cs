@@ -16,7 +16,7 @@ namespace RecipeScraper
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmScraper());
+            Application.Run(new RecipeScraperTool());
         }
     }
 }

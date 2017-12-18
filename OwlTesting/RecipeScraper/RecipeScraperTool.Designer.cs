@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscarArchivo = new System.Windows.Forms.Button();
             this.lbPorcent = new System.Windows.Forms.Label();
             this.progressBarBusqueda = new System.Windows.Forms.ProgressBar();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,15 +56,14 @@
             this.CboTipoPlato = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lbTotalNodosEvaluados = new System.Windows.Forms.Label();
-            this.lbTotalNodosIdentificados = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lbTotalRegistroEncontrados = new System.Windows.Forms.Label();
-            this.btnBuscarArchivo = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.lbErrorCount = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lbTotalRegistroEncontrados = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbTotalNodosIdentificados = new System.Windows.Forms.Label();
+            this.lbTotalNodosEvaluados = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.openFileHtmlPage = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,6 +91,16 @@
             this.groupBox1.Size = new System.Drawing.Size(563, 140);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnBuscarArchivo
+            // 
+            this.btnBuscarArchivo.Location = new System.Drawing.Point(470, 74);
+            this.btnBuscarArchivo.Name = "btnBuscarArchivo";
+            this.btnBuscarArchivo.Size = new System.Drawing.Size(81, 23);
+            this.btnBuscarArchivo.TabIndex = 10;
+            this.btnBuscarArchivo.Text = "Buscar";
+            this.btnBuscarArchivo.UseVisualStyleBackColor = true;
+            this.btnBuscarArchivo.Click += new System.EventHandler(this.btnBuscarArchivo_Click);
             // 
             // lbPorcent
             // 
@@ -164,8 +174,8 @@
             this.cboFormato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFormato.FormattingEnabled = true;
             this.cboFormato.Items.AddRange(new object[] {
-            "Local",
-            "Web"});
+            "MICRODATA",
+            "JSON-LD"});
             this.cboFormato.Location = new System.Drawing.Point(125, 46);
             this.cboFormato.Name = "cboFormato";
             this.cboFormato.Size = new System.Drawing.Size(426, 21);
@@ -176,7 +186,8 @@
             this.cboScrapMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboScrapMode.FormattingEnabled = true;
             this.cboScrapMode.Items.AddRange(new object[] {
-            "MICRODATA"});
+            "WEB",
+            "LOCAL"});
             this.cboScrapMode.Location = new System.Drawing.Point(125, 19);
             this.cboScrapMode.Name = "cboScrapMode";
             this.cboScrapMode.Size = new System.Drawing.Size(426, 21);
@@ -344,69 +355,15 @@
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             // 
-            // label12
+            // lbErrorCount
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 11);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(114, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Registros Identificados";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 29);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(118, 13);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Total Nodos Evaluados";
-            // 
-            // lbTotalNodosEvaluados
-            // 
-            this.lbTotalNodosEvaluados.AutoSize = true;
-            this.lbTotalNodosEvaluados.Location = new System.Drawing.Point(140, 30);
-            this.lbTotalNodosEvaluados.Name = "lbTotalNodosEvaluados";
-            this.lbTotalNodosEvaluados.Size = new System.Drawing.Size(13, 13);
-            this.lbTotalNodosEvaluados.TabIndex = 2;
-            this.lbTotalNodosEvaluados.Text = "0";
-            // 
-            // lbTotalNodosIdentificados
-            // 
-            this.lbTotalNodosIdentificados.AutoSize = true;
-            this.lbTotalNodosIdentificados.Location = new System.Drawing.Point(140, 12);
-            this.lbTotalNodosIdentificados.Name = "lbTotalNodosIdentificados";
-            this.lbTotalNodosIdentificados.Size = new System.Drawing.Size(13, 13);
-            this.lbTotalNodosIdentificados.TabIndex = 3;
-            this.lbTotalNodosIdentificados.Text = "0";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 48);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Registros encontrados";
-            // 
-            // lbTotalRegistroEncontrados
-            // 
-            this.lbTotalRegistroEncontrados.AutoSize = true;
-            this.lbTotalRegistroEncontrados.Location = new System.Drawing.Point(140, 49);
-            this.lbTotalRegistroEncontrados.Name = "lbTotalRegistroEncontrados";
-            this.lbTotalRegistroEncontrados.Size = new System.Drawing.Size(13, 13);
-            this.lbTotalRegistroEncontrados.TabIndex = 5;
-            this.lbTotalRegistroEncontrados.Text = "0";
-            // 
-            // btnBuscarArchivo
-            // 
-            this.btnBuscarArchivo.Location = new System.Drawing.Point(470, 74);
-            this.btnBuscarArchivo.Name = "btnBuscarArchivo";
-            this.btnBuscarArchivo.Size = new System.Drawing.Size(81, 23);
-            this.btnBuscarArchivo.TabIndex = 10;
-            this.btnBuscarArchivo.Text = "Buscar";
-            this.btnBuscarArchivo.UseVisualStyleBackColor = true;
-            this.btnBuscarArchivo.Click += new System.EventHandler(this.btnBuscarArchivo_Click);
+            this.lbErrorCount.AutoSize = true;
+            this.lbErrorCount.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorCount.Location = new System.Drawing.Point(140, 70);
+            this.lbErrorCount.Name = "lbErrorCount";
+            this.lbErrorCount.Size = new System.Drawing.Size(13, 13);
+            this.lbErrorCount.TabIndex = 7;
+            this.lbErrorCount.Text = "0";
             // 
             // label7
             // 
@@ -417,15 +374,59 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Errores encontrados";
             // 
-            // lbErrorCount
+            // lbTotalRegistroEncontrados
             // 
-            this.lbErrorCount.AutoSize = true;
-            this.lbErrorCount.ForeColor = System.Drawing.Color.Red;
-            this.lbErrorCount.Location = new System.Drawing.Point(140, 70);
-            this.lbErrorCount.Name = "lbErrorCount";
-            this.lbErrorCount.Size = new System.Drawing.Size(13, 13);
-            this.lbErrorCount.TabIndex = 7;
-            this.lbErrorCount.Text = "0";
+            this.lbTotalRegistroEncontrados.AutoSize = true;
+            this.lbTotalRegistroEncontrados.Location = new System.Drawing.Point(140, 49);
+            this.lbTotalRegistroEncontrados.Name = "lbTotalRegistroEncontrados";
+            this.lbTotalRegistroEncontrados.Size = new System.Drawing.Size(13, 13);
+            this.lbTotalRegistroEncontrados.TabIndex = 5;
+            this.lbTotalRegistroEncontrados.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(113, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Registros encontrados";
+            // 
+            // lbTotalNodosIdentificados
+            // 
+            this.lbTotalNodosIdentificados.AutoSize = true;
+            this.lbTotalNodosIdentificados.Location = new System.Drawing.Point(140, 12);
+            this.lbTotalNodosIdentificados.Name = "lbTotalNodosIdentificados";
+            this.lbTotalNodosIdentificados.Size = new System.Drawing.Size(13, 13);
+            this.lbTotalNodosIdentificados.TabIndex = 3;
+            this.lbTotalNodosIdentificados.Text = "0";
+            // 
+            // lbTotalNodosEvaluados
+            // 
+            this.lbTotalNodosEvaluados.AutoSize = true;
+            this.lbTotalNodosEvaluados.Location = new System.Drawing.Point(140, 30);
+            this.lbTotalNodosEvaluados.Name = "lbTotalNodosEvaluados";
+            this.lbTotalNodosEvaluados.Size = new System.Drawing.Size(13, 13);
+            this.lbTotalNodosEvaluados.TabIndex = 2;
+            this.lbTotalNodosEvaluados.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(9, 29);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(118, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Total Nodos Evaluados";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 11);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(114, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Registros Identificados";
             // 
             // openFileHtmlPage
             // 
