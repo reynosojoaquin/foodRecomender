@@ -66,6 +66,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.openFileHtmlPage = new System.Windows.Forms.OpenFileDialog();
             this.btnViewLog = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -196,7 +197,7 @@
             // 
             // btnIniciar
             // 
-            this.btnIniciar.Location = new System.Drawing.Point(471, 12);
+            this.btnIniciar.Location = new System.Drawing.Point(386, 12);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(75, 23);
             this.btnIniciar.TabIndex = 1;
@@ -333,6 +334,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnCerrar);
             this.groupBox4.Controls.Add(this.btnViewLog);
             this.groupBox4.Controls.Add(this.btnIniciar);
             this.groupBox4.Location = new System.Drawing.Point(5, 442);
@@ -436,13 +438,23 @@
             // 
             // btnViewLog
             // 
-            this.btnViewLog.Location = new System.Drawing.Point(391, 12);
+            this.btnViewLog.Location = new System.Drawing.Point(308, 12);
             this.btnViewLog.Name = "btnViewLog";
             this.btnViewLog.Size = new System.Drawing.Size(75, 23);
             this.btnViewLog.TabIndex = 2;
             this.btnViewLog.Text = "Ver Log";
             this.btnViewLog.UseVisualStyleBackColor = true;
             this.btnViewLog.Click += new System.EventHandler(this.btnViewLog_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Location = new System.Drawing.Point(465, 12);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.TabIndex = 3;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // RecipeScraperTool
             // 
@@ -511,5 +523,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.OpenFileDialog openFileHtmlPage;
         private System.Windows.Forms.Button btnViewLog;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }

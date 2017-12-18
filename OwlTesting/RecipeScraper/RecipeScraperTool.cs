@@ -389,45 +389,49 @@ namespace RecipeScraper
                     try
                     {
                         jsonData.nutrition.Remove("@type");
-                    }
-                    catch (Exception e)
-                    { }
+                        Dictionary<string, string> values = jsonData.nutrition.ToObject<Dictionary<string, string>>();
+                        listIngredient = jsonData.recipeIngredient.ToObject<IList<string>>();
 
-                    Dictionary<string, string> values = jsonData.nutrition.ToObject<Dictionary<string, string>>();
-                    listIngredient = jsonData.recipeIngredient.ToObject<IList<string>>();
+                        // RECUPERANDO VALORES NUTRICIONALES
 
-                    // RECUPERANDO VALORES NUTRICIONALES
-
-                    foreach (KeyValuePair<string, string> valor in values)
-                    {
-                        switch (valor.Key)
+                        foreach (KeyValuePair<string, string> valor in values)
                         {
-                            case "calories":
-                                calories = RegexTool.GetNumber(valor.Value);
+                            switch (valor.Key)
+                            {
+                                case "calories":
+                                      calories = RegexTool.GetNumber(valor.Value);
                                 break;
-                            case "fatContent":
-                                fat = RegexTool.GetNumber(valor.Value);
+                                case "fatContent":
+                                      fat = RegexTool.GetNumber(valor.Value);
                                 break;
-                            case "saturatedFatContent":
-                                saturatefat = RegexTool.GetNumber(valor.Value);
+                                 case "saturatedFatContent":
+                                       saturatefat = RegexTool.GetNumber(valor.Value);
                                 break;
-                            case "proteinContent":
-                                protein = RegexTool.GetNumber(valor.Value);
+                                case "proteinContent":
+                                       protein = RegexTool.GetNumber(valor.Value);
                                 break;
-                            case "carbohydrateContent":
-                                carbohydrate = RegexTool.GetNumber(valor.Value);
+                                case "carbohydrateContent":
+                                       carbohydrate = RegexTool.GetNumber(valor.Value);
                                 break;
-                            case "sugarContent":
-                                sugar = RegexTool.GetNumber(valor.Value);
+                                case "sugarContent":
+                                    sugar = RegexTool.GetNumber(valor.Value);
                                 break;
-                            case "sodiumContent":
-                                sodium =  RegexTool.GetNumber(valor.Value);
+                                case "sodiumContent":
+                                    sodium =  RegexTool.GetNumber(valor.Value);
                                 break;
-                            case "fiberContent":
-                                fiber = RegexTool.GetNumber(valor.Value);
+                                case "fiberContent":
+                                    fiber = RegexTool.GetNumber(valor.Value);
                                 break;
 
                         }
+                     }
+                    }
+                    catch (Exception e)
+                    {
+
+                        dataError = e.Message;
+                        lbErrorCount.Text = errorCount.ToString() + "\r Json-Ld Scraper ";
+                        Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
                     }
                     try
                     {
@@ -435,13 +439,7 @@ namespace RecipeScraper
                         nutritionData.Rows.Add(Convert.ToDecimal(calories), Convert.ToDecimal(fat), Convert.ToDecimal(saturatefat),
                                  Convert.ToDecimal(fiber), Convert.ToDecimal(carbohydrate), Convert.ToDecimal(protein), Convert.ToDecimal(cholesterol)
                                  , Convert.ToDecimal(sugar), Convert.ToDecimal(sodium));
-                    }
-                    catch (Exception error)
-                    {
-                        dataError = error.Message;
-                        lbErrorCount.Text = errorCount.ToString() + "\r Json-Ld Scraper ";
-                        Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
-                    }
+                    
 
                     //RECUPERANDO INGREDIENTES 
 
@@ -454,8 +452,15 @@ namespace RecipeScraper
                         cboNacionalidad.Text, cboMomentoComida.Text, cboTemporada.Text, pictureRoute);
                     }
 
-                   
 
+                    }
+                    catch (Exception error)
+                    {
+                        errorCount++;
+                        dataError = error.Message;
+                        lbErrorCount.Text = errorCount.ToString() + "\r Json-Ld Scraper ";
+                        Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
+                    }
                     if (nutritionData.Rows.Count > 0)
                     {
                         //RECUPERANDO IMAGEN DEL LA RECETA
@@ -484,6 +489,8 @@ namespace RecipeScraper
                             lbErrorCount.Text = errorCount.ToString();
                             Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
                         }
+
+
                     }
                     break;
              
@@ -545,6 +552,11 @@ namespace RecipeScraper
         {
             frmLogVisor objVisor = new frmLogVisor();
             objVisor.ShowDialog();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void Cliente_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
