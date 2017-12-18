@@ -223,9 +223,9 @@ namespace RecipeScraper
             WebClient cliente = new WebClient();
             IList<string> listIngredient = null;
             Uri Url = null;
-            string calories = string.Empty, fat = string.Empty, saturatefat = string.Empty,
-                fiber = string.Empty, carbohydrate = string.Empty, protein = string.Empty,
-                cholesterol = string.Empty, sugar = string.Empty, sodium = string.Empty, imagenUrl = string.Empty;
+            string calories = "0", fat = "0", saturatefat = "0",
+                fiber = "0", carbohydrate = "0", protein = "0",
+                cholesterol = "0", sugar = "0", sodium = "0", imagenUrl = string.Empty;
 
             // RECIPE DATA 
             recipeTable.Columns.Add("Name", typeof(string));
@@ -372,7 +372,7 @@ namespace RecipeScraper
                         if (dataError != "")
                         {
                             errorCount++;
-                            lbErrorCount.Text = errorCount.ToString();
+                            lbErrorCount.Text = errorCount.ToString()+"\r MicroData scraper ";
                             Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
                         }
                     }
@@ -386,8 +386,12 @@ namespace RecipeScraper
                     //SERIALIZANDO EL OBJETO JSON A UN OBJETO DINAMICO
 
                     dynamic jsonData = JsonConvert.DeserializeObject(jsonValue);
-                    jsonData.nutrition.Remove("@type");
-
+                    try
+                    {
+                        jsonData.nutrition.Remove("@type");
+                    }
+                    catch (Exception e)
+                    { }
 
                     Dictionary<string, string> values = jsonData.nutrition.ToObject<Dictionary<string, string>>();
                     listIngredient = jsonData.recipeIngredient.ToObject<IList<string>>();
@@ -399,28 +403,28 @@ namespace RecipeScraper
                         switch (valor.Key)
                         {
                             case "calories":
-                                calories = valor.Value;
+                                calories = RegexTool.GetNumber(valor.Value);
                                 break;
                             case "fatContent":
-                                fat = valor.Value;
+                                fat = RegexTool.GetNumber(valor.Value);
                                 break;
                             case "saturatedFatContent":
-                                saturatefat = valor.Value;
+                                saturatefat = RegexTool.GetNumber(valor.Value);
                                 break;
                             case "proteinContent":
-                                protein = valor.Value;
+                                protein = RegexTool.GetNumber(valor.Value);
                                 break;
                             case "carbohydrateContent":
-                                carbohydrate = valor.Value;
+                                carbohydrate = RegexTool.GetNumber(valor.Value);
                                 break;
                             case "sugarContent":
-                                sugar = valor.Value;
+                                sugar = RegexTool.GetNumber(valor.Value);
                                 break;
                             case "sodiumContent":
-                                sodium = valor.Value;
+                                sodium =  RegexTool.GetNumber(valor.Value);
                                 break;
                             case "fiberContent":
-                                fiber = valor.Value;
+                                fiber = RegexTool.GetNumber(valor.Value);
                                 break;
 
                         }
@@ -435,13 +439,16 @@ namespace RecipeScraper
                     catch (Exception error)
                     {
                         dataError = error.Message;
+                        lbErrorCount.Text = errorCount.ToString() + "\r Json-Ld Scraper ";
+                        Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
                     }
 
                     //RECUPERANDO INGREDIENTES 
 
                     foreach (string ingrediente in listIngredient)
                     {
-                                                Ingredient = ingrediente;
+                        Ingredient = ingrediente;
+                        Name = jsonData.name;
                         recipeTable.NewRow();
                         recipeTable.Rows.Add(Name, Ingredient, CboTipoPlato.Text, cboCultura.Text,
                         cboNacionalidad.Text, cboMomentoComida.Text, cboTemporada.Text, pictureRoute);
@@ -454,12 +461,14 @@ namespace RecipeScraper
                         //RECUPERANDO IMAGEN DEL LA RECETA
                         imagenUrl = jsonData.image;
                         cliente.DownloadFileCompleted += new AsyncCompletedEventHandler(Cliente_DownloadFileCompleted);
-                        Url = new Uri(imagenUrl);
+                        if (RegexTool.isUrl(imagenUrl))
+                        {
 
-                        filename = System.IO.Path.GetFileName(Url.LocalPath);
-                        pictureRoute = appRoute.Remove(appRoute.Length - 10) + "\\Picture\\" + filename;
-                        cliente.DownloadFileAsync(Url, pictureRoute);
-
+                            Url = new Uri(imagenUrl);
+                            filename = System.IO.Path.GetFileName(Url.LocalPath);
+                            pictureRoute = appRoute.Remove(appRoute.Length - 10) + "\\Picture\\" + filename;
+                            cliente.DownloadFileAsync(Url, pictureRoute);
+                        }
                         contador++;
                         percent = contador / cantidad * 100;
                         lbPorcent.Text = percent.ToString();
@@ -476,10 +485,6 @@ namespace RecipeScraper
                             Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
                         }
                     }
-
-
-
-
                     break;
              
         }
@@ -534,6 +539,12 @@ namespace RecipeScraper
         {
             cboFormato.SelectedIndex = 0;
             cboScrapMode.SelectedIndex = 0;
+        }
+
+        private void btnViewLog_Click(object sender, EventArgs e)
+        {
+            frmLogVisor objVisor = new frmLogVisor();
+            objVisor.ShowDialog();
         }
 
         private void Cliente_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)

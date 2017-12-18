@@ -65,6 +65,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.openFileHtmlPage = new System.Windows.Forms.OpenFileDialog();
+            this.btnViewLog = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -332,6 +333,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnViewLog);
             this.groupBox4.Controls.Add(this.btnIniciar);
             this.groupBox4.Location = new System.Drawing.Point(5, 442);
             this.groupBox4.Name = "groupBox4";
@@ -432,6 +434,16 @@
             // 
             this.openFileHtmlPage.FileName = "openFileDialog1";
             // 
+            // btnViewLog
+            // 
+            this.btnViewLog.Location = new System.Drawing.Point(391, 12);
+            this.btnViewLog.Name = "btnViewLog";
+            this.btnViewLog.Size = new System.Drawing.Size(75, 23);
+            this.btnViewLog.TabIndex = 2;
+            this.btnViewLog.Text = "Ver Log";
+            this.btnViewLog.UseVisualStyleBackColor = true;
+            this.btnViewLog.Click += new System.EventHandler(this.btnViewLog_Click);
+            // 
             // RecipeScraperTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -498,5 +510,6 @@
         private System.Windows.Forms.Label lbErrorCount;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.OpenFileDialog openFileHtmlPage;
+        private System.Windows.Forms.Button btnViewLog;
     }
 }

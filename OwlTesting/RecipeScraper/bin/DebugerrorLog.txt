@@ -1,6 +1,7 @@
-18/10/2017 8:43 p. m. El índice (basado en cero) debe ser mayor o igual a cero y menor que el tamaño de la lista de argumentos.
-18/10/2017 8:43 p. m. El índice (basado en cero) debe ser mayor o igual a cero y menor que el tamaño de la lista de argumentos.
-18/10/2017 8:43 p. m. El índice (basado en cero) debe ser mayor o igual a cero y menor que el tamaño de la lista de argumentos.
-18/10/2017 8:43 p. m. El índice (basado en cero) debe ser mayor o igual a cero y menor que el tamaño de la lista de argumentos.
-18/10/2017 8:43 p. m. El índice (basado en cero) debe ser mayor o igual a cero y menor que el tamaño de la lista de argumentos.
-18/10/2017 8:48 p. m. El índice (basado en cero) debe ser mayor o igual a cero y menor que el tamaño de la lista de argumentos.
+18/12/2017 3:23 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 3:36 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 3:37 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 3:37 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 3:41 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 3:43 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 3:43 p. m. La cadena de entrada no tiene el formato correcto.

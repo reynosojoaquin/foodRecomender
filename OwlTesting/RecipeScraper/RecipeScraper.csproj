@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmLogVisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogVisor.Designer.cs">
+      <DependentUpon>FrmLogVisor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lib\ClDataAcces.cs" />
     <Compile Include="Lib\ClMicroDataTool.cs" />
     <Compile Include="Lib\FileTool.cs" />
@@ -76,6 +82,9 @@
       <DependentUpon>RecipeScraperTool.cs</DependentUpon>
     </Compile>
     <Compile Include="RegexTool.cs" />
+    <EmbeddedResource Include="FrmLogVisor.resx">
+      <DependentUpon>FrmLogVisor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MineriaIngredientes.resx">
       <DependentUpon>MineriaIngredientes.cs</DependentUpon>
     </EmbeddedResource>

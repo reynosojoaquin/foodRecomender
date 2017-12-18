@@ -70,3 +70,4 @@ D:\projectos\foodRecomender\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.p
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.xml
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\bin\Debug\MySql.Data.xml
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\bin\Debug\Newtonsoft.Json.xml
+D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.frmLogVisor.resources
