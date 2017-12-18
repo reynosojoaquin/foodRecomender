@@ -163,7 +163,7 @@ namespace RecipeScraper
                                 addValueToDic(urlActual, "");
                                 lbTotalRegistroEncontrados.Text = contador.ToString();
                                 lbTotalRegistroEncontrados.Refresh();
-                                GetMicroData(recipe);
+                                GetMicroData(recipe,dataformat);
                             }
                             else
                             {
@@ -221,7 +221,7 @@ namespace RecipeScraper
             HtmlNode[] child = null;
             HtmlNode NameNode = null;
             WebClient cliente = new WebClient();
-           
+            IList<string> listIngredient = null;
             Uri Url = null;
             string calories = string.Empty, fat = string.Empty, saturatefat = string.Empty,
                 fiber = string.Empty, carbohydrate = string.Empty, protein = string.Empty,
@@ -378,9 +378,107 @@ namespace RecipeScraper
                     }
                     break;
                 case 1:
+                    // RECUPERANDO EN VALOR JSON EN LA PAGINA
+
                     string jsonValue = Document.DocumentNode.
                             SelectSingleNode("//script[@type='application/ld+json']").InnerText;
+
+                    //SERIALIZANDO EL OBJETO JSON A UN OBJETO DINAMICO
+
                     dynamic jsonData = JsonConvert.DeserializeObject(jsonValue);
+                    jsonData.nutrition.Remove("@type");
+
+
+                    Dictionary<string, string> values = jsonData.nutrition.ToObject<Dictionary<string, string>>();
+                    listIngredient = jsonData.recipeIngredient.ToObject<IList<string>>();
+
+                    // RECUPERANDO VALORES NUTRICIONALES
+
+                    foreach (KeyValuePair<string, string> valor in values)
+                    {
+                        switch (valor.Key)
+                        {
+                            case "calories":
+                                calories = valor.Value;
+                                break;
+                            case "fatContent":
+                                fat = valor.Value;
+                                break;
+                            case "saturatedFatContent":
+                                saturatefat = valor.Value;
+                                break;
+                            case "proteinContent":
+                                protein = valor.Value;
+                                break;
+                            case "carbohydrateContent":
+                                carbohydrate = valor.Value;
+                                break;
+                            case "sugarContent":
+                                sugar = valor.Value;
+                                break;
+                            case "sodiumContent":
+                                sodium = valor.Value;
+                                break;
+                            case "fiberContent":
+                                fiber = valor.Value;
+                                break;
+
+                        }
+                    }
+                    try
+                    {
+                        nutritionData.Rows.Clear();
+                        nutritionData.Rows.Add(Convert.ToDecimal(calories), Convert.ToDecimal(fat), Convert.ToDecimal(saturatefat),
+                                 Convert.ToDecimal(fiber), Convert.ToDecimal(carbohydrate), Convert.ToDecimal(protein), Convert.ToDecimal(cholesterol)
+                                 , Convert.ToDecimal(sugar), Convert.ToDecimal(sodium));
+                    }
+                    catch (Exception error)
+                    {
+                        dataError = error.Message;
+                    }
+
+                    //RECUPERANDO INGREDIENTES 
+
+                    foreach (string ingrediente in listIngredient)
+                    {
+                                                Ingredient = ingrediente;
+                        recipeTable.NewRow();
+                        recipeTable.Rows.Add(Name, Ingredient, CboTipoPlato.Text, cboCultura.Text,
+                        cboNacionalidad.Text, cboMomentoComida.Text, cboTemporada.Text, pictureRoute);
+                    }
+
+                   
+
+                    if (nutritionData.Rows.Count > 0)
+                    {
+                        //RECUPERANDO IMAGEN DEL LA RECETA
+                        imagenUrl = jsonData.image;
+                        cliente.DownloadFileCompleted += new AsyncCompletedEventHandler(Cliente_DownloadFileCompleted);
+                        Url = new Uri(imagenUrl);
+
+                        filename = System.IO.Path.GetFileName(Url.LocalPath);
+                        pictureRoute = appRoute.Remove(appRoute.Length - 10) + "\\Picture\\" + filename;
+                        cliente.DownloadFileAsync(Url, pictureRoute);
+
+                        contador++;
+                        percent = contador / cantidad * 100;
+                        lbPorcent.Text = percent.ToString();
+                        lbPorcent.Refresh();
+                        progressBarBusqueda.PerformStep();
+                        progressBarBusqueda.Refresh();
+                        recipeData.Tables.Add(recipeTable);
+                        recipeData.Tables.Add(nutritionData);
+                        dataError = objDataAccess.insertRecipeData(recipeData);
+                        if (dataError != "")
+                        {
+                            errorCount++;
+                            lbErrorCount.Text = errorCount.ToString();
+                            Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
+                        }
+                    }
+
+
+
 
                     break;
              
