@@ -76,18 +76,26 @@ namespace RecipeScraper
             if (txtTotalRegistros.Text != "")
             {
                 cantidad = Convert.ToInt32(txtTotalRegistros.Text);
-                if (cboFormato.SelectedIndex == 0)
+                if (cboScrapMode.SelectedIndex == 1)
                 {
-                    switch (cboScrapMode.SelectedIndex)
+                    switch (cboFormato.SelectedIndex)
                     {
                         case 0:
-
-                            CheckForIllegalCrossThreadCalls = false;
-                            Task BuscarDataWebAsync = new Task(() =>
+                            if (txtFileRoute.Text != "")
                             {
-                                consultarPagina(Url);
-                                MessageBox.Show("La Busqueda a concluido");
-                            });
+                                CheckForIllegalCrossThreadCalls = false;
+                                Task BuscarMicroDataLocalAsync = new Task(() =>
+                                {
+                                    scrapLocalPage(txtFileRoute.Text, cboFormato.SelectedIndex);
+                                    MessageBox.Show("La Busqueda a concluido");
+                                }
+                                );
+                                BuscarMicroDataLocalAsync.Start();
+
+                            }
+                            else
+                            { MessageBox.Show("Debe Buscar una ruta de archivo valida"); }
+
 
                             break;
                         case 1:
@@ -96,7 +104,7 @@ namespace RecipeScraper
                                 CheckForIllegalCrossThreadCalls = false;
                                 Task BuscarDataLocalAsync = new Task(() =>
                                 {
-                                    scrapLocalPage(txtFileRoute.Text, 1);
+                                    scrapLocalPage(txtFileRoute.Text, cboFormato.SelectedIndex);
                                     MessageBox.Show("La Busqueda a concluido");
                                 }
                                 );
@@ -110,24 +118,12 @@ namespace RecipeScraper
                 }
                 else
                 {
-
-                    if (txtFileRoute.Text != "")
+                    CheckForIllegalCrossThreadCalls = false;
+                    Task BuscarDataWebAsync = new Task(() =>
                     {
-                        CheckForIllegalCrossThreadCalls = false;
-                        Task BuscarMicroDataLocalAsync = new Task(() =>
-                        {
-                            scrapLocalPage(txtFileRoute.Text, cboScrapMode.SelectedIndex);
-
-                        }
-                        );
-                        BuscarMicroDataLocalAsync.Start();
-
-                    }
-                    else
-                    { MessageBox.Show("Debe Buscar una ruta de archivo valida"); }
-
-
-
+                        consultarPagina(Url);
+                        MessageBox.Show("La Busqueda a concluido");
+                    });
                 }
             }
             else { MessageBox.Show("Debe colocar un valor de registros a buscar"); }
@@ -461,7 +457,14 @@ namespace RecipeScraper
                         lbErrorCount.Text = errorCount.ToString() + "\r Json-Ld Scraper ";
                         Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
                     }
-                    if (nutritionData.Rows.Count > 0)
+                    if(nutritionData.Rows.Count > 0) { 
+                        if ( nutritionData.Rows[0]["Calorias"].ToString() != "0"|| nutritionData.Rows[0]["fat"].ToString() != "0" ||
+                        nutritionData.Rows[0]["saturatefat"].ToString() != "0" || nutritionData.Rows[0]["fiber"].ToString() != "0" ||
+                         nutritionData.Rows[0]["protein"].ToString() != "0" || nutritionData.Rows[0]["carbohydrate"].ToString() != "0"||
+                          nutritionData.Rows[0]["cholesterol"].ToString() != "0" || nutritionData.Rows[0]["sugar"].ToString() != "0" ||
+                          nutritionData.Rows[0]["sodium"].ToString() != "0"
+
+                        )
                     {
                         //RECUPERANDO IMAGEN DEL LA RECETA
                         imagenUrl = jsonData.image;
@@ -491,6 +494,7 @@ namespace RecipeScraper
                         }
 
 
+                    }
                     }
                     break;
              

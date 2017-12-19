@@ -14,3 +14,56 @@
 18/12/2017 4:41 p. m. La cadena de entrada no tiene el formato correcto.
 18/12/2017 4:42 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
 18/12/2017 4:42 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:09 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:10 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:11 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:11 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:11 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:16 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:16 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:19 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:19 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:49 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:57 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:57 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:58 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:58 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:58 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:58 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:58 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:58 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:58 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:58 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:59 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:59 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:59 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:59 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:59 p. m. La cadena de entrada no tiene el formato correcto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 9:59 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 9:59 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 10:00 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 10:00 p. m. Referencia a objeto no establecida como instancia de un objeto.
+18/12/2017 10:04 p. m. No se puede realizar enlace en tiempo de ejecución en una referencia NULL.
+18/12/2017 10:04 p. m. Referencia a objeto no establecida como instancia de un objeto.
