@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnBuscarArchivo = new System.Windows.Forms.Button();
             this.lbPorcent = new System.Windows.Forms.Label();
+            this.btnBuscarArchivo = new System.Windows.Forms.Button();
             this.progressBarBusqueda = new System.Windows.Forms.ProgressBar();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtTotalRegistros = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,6 +54,8 @@
             this.cboCultura = new System.Windows.Forms.ComboBox();
             this.CboTipoPlato = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnViewLog = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lbErrorCount = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -65,8 +66,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.openFileHtmlPage = new System.Windows.Forms.OpenFileDialog();
-            this.btnViewLog = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
+            this.chkClasificacion = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -76,11 +76,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnBuscarArchivo);
+            this.groupBox1.Controls.Add(this.chkClasificacion);
             this.groupBox1.Controls.Add(this.lbPorcent);
+            this.groupBox1.Controls.Add(this.btnBuscarArchivo);
             this.groupBox1.Controls.Add(this.progressBarBusqueda);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtTotalRegistros);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -90,9 +90,22 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(563, 140);
+            this.groupBox1.Size = new System.Drawing.Size(563, 165);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // lbPorcent
+            // 
+            this.lbPorcent.AutoSize = true;
+            this.lbPorcent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPorcent.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.lbPorcent.Location = new System.Drawing.Point(506, 102);
+            this.lbPorcent.Name = "lbPorcent";
+            this.lbPorcent.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lbPorcent.Size = new System.Drawing.Size(27, 16);
+            this.lbPorcent.TabIndex = 11;
+            this.lbPorcent.Text = "0%";
+            this.lbPorcent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnBuscarArchivo
             // 
@@ -104,21 +117,11 @@
             this.btnBuscarArchivo.UseVisualStyleBackColor = true;
             this.btnBuscarArchivo.Click += new System.EventHandler(this.btnBuscarArchivo_Click);
             // 
-            // lbPorcent
-            // 
-            this.lbPorcent.AutoSize = true;
-            this.lbPorcent.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPorcent.Location = new System.Drawing.Point(516, 98);
-            this.lbPorcent.Name = "lbPorcent";
-            this.lbPorcent.Size = new System.Drawing.Size(35, 24);
-            this.lbPorcent.TabIndex = 9;
-            this.lbPorcent.Text = "0%";
-            // 
             // progressBarBusqueda
             // 
-            this.progressBarBusqueda.Location = new System.Drawing.Point(208, 101);
+            this.progressBarBusqueda.Location = new System.Drawing.Point(125, 101);
             this.progressBarBusqueda.Name = "progressBarBusqueda";
-            this.progressBarBusqueda.Size = new System.Drawing.Size(302, 19);
+            this.progressBarBusqueda.Size = new System.Drawing.Size(375, 19);
             this.progressBarBusqueda.TabIndex = 7;
             // 
             // label4
@@ -129,13 +132,6 @@
             this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Cantidad Registro ";
-            // 
-            // txtTotalRegistros
-            // 
-            this.txtTotalRegistros.Location = new System.Drawing.Point(125, 99);
-            this.txtTotalRegistros.Name = "txtTotalRegistros";
-            this.txtTotalRegistros.Size = new System.Drawing.Size(77, 20);
-            this.txtTotalRegistros.TabIndex = 5;
             // 
             // label3
             // 
@@ -197,7 +193,7 @@
             // 
             // btnIniciar
             // 
-            this.btnIniciar.Location = new System.Drawing.Point(386, 12);
+            this.btnIniciar.Location = new System.Drawing.Point(393, 12);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(75, 23);
             this.btnIniciar.TabIndex = 1;
@@ -208,7 +204,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lbEnlaceActual);
-            this.groupBox2.Location = new System.Drawing.Point(5, 141);
+            this.groupBox2.Location = new System.Drawing.Point(5, 183);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(554, 42);
             this.groupBox2.TabIndex = 2;
@@ -236,7 +232,7 @@
             this.groupBox3.Controls.Add(this.cboNacionalidad);
             this.groupBox3.Controls.Add(this.cboCultura);
             this.groupBox3.Controls.Add(this.CboTipoPlato);
-            this.groupBox3.Location = new System.Drawing.Point(5, 276);
+            this.groupBox3.Location = new System.Drawing.Point(5, 322);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(554, 165);
             this.groupBox3.TabIndex = 3;
@@ -255,6 +251,11 @@
             // 
             this.cboTemporada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTemporada.FormattingEnabled = true;
+            this.cboTemporada.Items.AddRange(new object[] {
+            "Invierno",
+            "Verano",
+            "Otoño",
+            "Primavera"});
             this.cboTemporada.Location = new System.Drawing.Point(124, 127);
             this.cboTemporada.Name = "cboTemporada";
             this.cboTemporada.Size = new System.Drawing.Size(426, 21);
@@ -300,6 +301,10 @@
             // 
             this.cboMomentoComida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMomentoComida.FormattingEnabled = true;
+            this.cboMomentoComida.Items.AddRange(new object[] {
+            "Entrada",
+            "Plato Fuerte",
+            "Postre"});
             this.cboMomentoComida.Location = new System.Drawing.Point(124, 100);
             this.cboMomentoComida.Name = "cboMomentoComida";
             this.cboMomentoComida.Size = new System.Drawing.Size(426, 21);
@@ -309,6 +314,14 @@
             // 
             this.cboNacionalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNacionalidad.FormattingEnabled = true;
+            this.cboNacionalidad.Items.AddRange(new object[] {
+            "España",
+            "Republica Dominicana",
+            "China",
+            "Estados Unidos",
+            "Colombia",
+            "Francia",
+            "Italia"});
             this.cboNacionalidad.Location = new System.Drawing.Point(124, 73);
             this.cboNacionalidad.Name = "cboNacionalidad";
             this.cboNacionalidad.Size = new System.Drawing.Size(426, 21);
@@ -318,6 +331,10 @@
             // 
             this.cboCultura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCultura.FormattingEnabled = true;
+            this.cboCultura.Items.AddRange(new object[] {
+            "Vegano",
+            "Vegetariano",
+            "Musulman"});
             this.cboCultura.Location = new System.Drawing.Point(124, 46);
             this.cboCultura.Name = "cboCultura";
             this.cboCultura.Size = new System.Drawing.Size(426, 21);
@@ -327,6 +344,11 @@
             // 
             this.CboTipoPlato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboTipoPlato.FormattingEnabled = true;
+            this.CboTipoPlato.Items.AddRange(new object[] {
+            "Desayuno",
+            "Comida",
+            "Merienda",
+            "Cena"});
             this.CboTipoPlato.Location = new System.Drawing.Point(124, 19);
             this.CboTipoPlato.Name = "CboTipoPlato";
             this.CboTipoPlato.Size = new System.Drawing.Size(426, 21);
@@ -337,11 +359,31 @@
             this.groupBox4.Controls.Add(this.btnCerrar);
             this.groupBox4.Controls.Add(this.btnViewLog);
             this.groupBox4.Controls.Add(this.btnIniciar);
-            this.groupBox4.Location = new System.Drawing.Point(5, 442);
+            this.groupBox4.Location = new System.Drawing.Point(5, 487);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(554, 41);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Location = new System.Drawing.Point(472, 12);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCerrar.TabIndex = 3;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // btnViewLog
+            // 
+            this.btnViewLog.Location = new System.Drawing.Point(315, 12);
+            this.btnViewLog.Name = "btnViewLog";
+            this.btnViewLog.Size = new System.Drawing.Size(75, 23);
+            this.btnViewLog.TabIndex = 2;
+            this.btnViewLog.Text = "Ver Log";
+            this.btnViewLog.UseVisualStyleBackColor = true;
+            this.btnViewLog.Click += new System.EventHandler(this.btnViewLog_Click);
             // 
             // groupBox5
             // 
@@ -353,9 +395,9 @@
             this.groupBox5.Controls.Add(this.lbTotalNodosEvaluados);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Location = new System.Drawing.Point(5, 190);
+            this.groupBox5.Location = new System.Drawing.Point(5, 224);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(554, 86);
+            this.groupBox5.Size = new System.Drawing.Size(554, 99);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             // 
@@ -436,31 +478,22 @@
             // 
             this.openFileHtmlPage.FileName = "openFileDialog1";
             // 
-            // btnViewLog
+            // chkClasificacion
             // 
-            this.btnViewLog.Location = new System.Drawing.Point(308, 12);
-            this.btnViewLog.Name = "btnViewLog";
-            this.btnViewLog.Size = new System.Drawing.Size(75, 23);
-            this.btnViewLog.TabIndex = 2;
-            this.btnViewLog.Text = "Ver Log";
-            this.btnViewLog.UseVisualStyleBackColor = true;
-            this.btnViewLog.Click += new System.EventHandler(this.btnViewLog_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Location = new System.Drawing.Point(465, 12);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCerrar.TabIndex = 3;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.chkClasificacion.AutoSize = true;
+            this.chkClasificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkClasificacion.Location = new System.Drawing.Point(125, 126);
+            this.chkClasificacion.Name = "chkClasificacion";
+            this.chkClasificacion.Size = new System.Drawing.Size(146, 28);
+            this.chkClasificacion.TabIndex = 12;
+            this.chkClasificacion.Text = "Clasificacion";
+            this.chkClasificacion.UseVisualStyleBackColor = true;
             // 
             // RecipeScraperTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 495);
+            this.ClientSize = new System.Drawing.Size(563, 535);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -487,7 +520,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtTotalRegistros;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -499,7 +531,6 @@
         private System.Windows.Forms.Label lbEnlaceActual;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label lbPorcent;
         private System.Windows.Forms.ProgressBar progressBarBusqueda;
         private System.Windows.Forms.ComboBox cboMomentoComida;
         private System.Windows.Forms.ComboBox cboNacionalidad;
@@ -524,5 +555,7 @@
         private System.Windows.Forms.OpenFileDialog openFileHtmlPage;
         private System.Windows.Forms.Button btnViewLog;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Label lbPorcent;
+        private System.Windows.Forms.CheckBox chkClasificacion;
     }
 }

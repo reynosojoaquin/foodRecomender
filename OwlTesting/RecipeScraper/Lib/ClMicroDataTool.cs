@@ -128,7 +128,8 @@ namespace RecipeScraper
             }
             recipeData.Tables.Add(recipe);
             recipeData.Tables.Add(nutritionData);
-            objDataAccess.insertRecipeData(recipeData);
+            
+            objDataAccess.insertRecipeData(recipeData,false);
             Console.WriteLine("Datos Registrados con exito");
             return recipeData;
          
@@ -254,7 +255,7 @@ namespace RecipeScraper
             }
             recipeData.Tables.Add(recipe);
             recipeData.Tables.Add(nutritionData);
-            objDataAccess.insertRecipeData(recipeData);
+            objDataAccess.insertRecipeData(recipeData,false);
             //Console.WriteLine("Datos Registrados con exito");
             return recipeData;
         }

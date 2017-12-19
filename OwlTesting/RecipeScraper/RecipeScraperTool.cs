@@ -21,15 +21,16 @@ namespace RecipeScraper
     public partial class RecipeScraperTool : Form
     {
         FileTool Ftool = new FileTool();
-        decimal percent = 0;
+        double percent = 0;
         int errorCount = 0;
         Dictionary<string, string> visitedLink = new Dictionary<string, string>();
         HtmlElement botonClik = null;
         WebBrowser browser = new WebBrowser();
         HtmlWeb web = new HtmlWeb();
-        int contador = 0, cantidad = 0;
+        double contador = 0, cantidad = 0;
         private static bool completed = false;
         string baseUrl = string.Empty;
+        double itemCount = 0, cantNodeIndetified = 0;
         HtmlAgilityPack.HtmlDocument document = new HtmlAgilityPack.HtmlDocument();
        
         public RecipeScraperTool()
@@ -64,7 +65,7 @@ namespace RecipeScraper
             browser.ScriptErrorsSuppressed = true;
             browser.Visible = true;
             browser.Navigate(Url);
-            progressBarBusqueda.Maximum = Convert.ToInt32(txtTotalRegistros.Text);
+            progressBarBusqueda.Maximum = Convert.ToInt32(cantidad);
             progressBarBusqueda.Step = 1;
 
 
@@ -73,9 +74,7 @@ namespace RecipeScraper
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             string Url = "";
-            if (txtTotalRegistros.Text != "")
-            {
-                cantidad = Convert.ToInt32(txtTotalRegistros.Text);
+                        
                 if (cboScrapMode.SelectedIndex == 1)
                 {
                     switch (cboFormato.SelectedIndex)
@@ -125,22 +124,27 @@ namespace RecipeScraper
                         MessageBox.Show("La Busqueda a concluido");
                     });
                 }
-            }
-            else { MessageBox.Show("Debe colocar un valor de registros a buscar"); }
+           
         }
 
         public void scrapData(HtmlNode[] nodes, int dataformat)
         {
 
-            int itemCount = 0, cantNodeIndetified = 0;
+          
             string urlActual = string.Empty;
-            cantidad = Convert.ToInt32(txtTotalRegistros.Text);
+            cantidad = nodes.Count();
             lbTotalNodosIdentificados.Text = nodes.Count().ToString();
             cantNodeIndetified = nodes.Count();
+            progressBarBusqueda.Maximum = Convert.ToInt32(cantidad);
+            progressBarBusqueda.Step = 1;
             foreach (HtmlNode enlace in nodes)
             {
                 itemCount++;
                 lbTotalNodosEvaluados.Text = itemCount.ToString();
+                percent = Math.Round((itemCount/cantidad * 100),2,MidpointRounding.AwayFromZero);
+                lbPorcent.Text = percent.ToString()+"%";
+                progressBarBusqueda.PerformStep();
+                progressBarBusqueda.Refresh();
                 this.Refresh();
                 foreach (HtmlAttribute atributo in enlace.Attributes)
                 {
@@ -167,7 +171,7 @@ namespace RecipeScraper
                                 addValueToDic(urlActual, "");
                                 if (recetas != null)
                                 {
-                                    scrapData(recetas.ToArray(), 0);
+                                    scrapData(recetas.ToArray(), dataformat);
                                 }
                             }
 
@@ -356,15 +360,10 @@ namespace RecipeScraper
                     }
                     if (nutritionData.Rows.Count > 0)
                     {
-                        contador++;
-                        percent = contador / cantidad * 100;
-                        lbPorcent.Text = percent.ToString();
-                        lbPorcent.Refresh();
-                        progressBarBusqueda.PerformStep();
-                        progressBarBusqueda.Refresh();
+                      
                         recipeData.Tables.Add(recipeTable);
                         recipeData.Tables.Add(nutritionData);
-                        dataError = objDataAccess.insertRecipeData(recipeData);
+                        dataError = objDataAccess.insertRecipeData(recipeData,chkClasificacion.Checked);
                         if (dataError != "")
                         {
                             errorCount++;
@@ -477,15 +476,11 @@ namespace RecipeScraper
                             pictureRoute = appRoute.Remove(appRoute.Length - 10) + "\\Picture\\" + filename;
                             cliente.DownloadFileAsync(Url, pictureRoute);
                         }
-                        contador++;
-                        percent = contador / cantidad * 100;
-                        lbPorcent.Text = percent.ToString();
-                        lbPorcent.Refresh();
-                        progressBarBusqueda.PerformStep();
-                        progressBarBusqueda.Refresh();
+                        
                         recipeData.Tables.Add(recipeTable);
                         recipeData.Tables.Add(nutritionData);
-                        dataError = objDataAccess.insertRecipeData(recipeData);
+                            
+                        dataError = objDataAccess.insertRecipeData(recipeData,chkClasificacion.Checked);
                         if (dataError != "")
                         {
                             errorCount++;
@@ -542,7 +537,7 @@ namespace RecipeScraper
                     scrapData(JsonNodes, DataFormat);
                     break;
             }
-            MessageBox.Show("La Busqueda a concluido");
+           
 
         }
 
@@ -560,7 +555,7 @@ namespace RecipeScraper
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void Cliente_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)

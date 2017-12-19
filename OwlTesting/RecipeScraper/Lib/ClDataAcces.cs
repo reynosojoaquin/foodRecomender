@@ -40,18 +40,18 @@ namespace RecipeScraper
             conn.Close();
             return resultado;
         }
-        public string insertRecipeData(DataSet data)
+        public string insertRecipeData(DataSet data,bool clasificar)
         {
             string sysMessage = "";
             int error = 0;
             DataTable retorno = new DataTable();
             string sQLString = String.Empty;
-                 string calories = string.Empty, fat = string.Empty, saturatefat = string.Empty,
-                fiber = string.Empty, carbohydrate = string.Empty, protein = string.Empty,
-                cholesterol = string.Empty, sugar = string.Empty, sodium = string.Empty,
-                name=string.Empty,ingrediente=string.Empty,id=string.Empty,recipeTipoPlatoData = string.Empty,
-                recipeCulturaData = string.Empty,recipeNacionalidadData=string.Empty,
-                recipeMomentoData = string.Empty,recipeTemporadaData = string.Empty,Picture=string.Empty;
+            string calories = string.Empty, fat = string.Empty, saturatefat = string.Empty,
+            fiber = string.Empty, carbohydrate = string.Empty, protein = string.Empty,
+            cholesterol = string.Empty, sugar = string.Empty, sodium = string.Empty,
+            name = string.Empty, ingrediente = string.Empty, id = string.Empty, recipeTipoPlatoData = string.Empty,
+            recipeCulturaData = string.Empty, recipeNacionalidadData = string.Empty,
+            recipeMomentoData = string.Empty, recipeTemporadaData = string.Empty, Picture = string.Empty;
 
             using (TransactionScope transaction = new TransactionScope())
             {
@@ -77,29 +77,29 @@ namespace RecipeScraper
                             cholesterol = ntfil["cholesterol"].ToString();
                             sugar = ntfil["sugar"].ToString();
                             sodium = ntfil["sodium"].ToString();
-                           
+
                         }
 
                         sQLString = "insert into recipe (Nombre,sal,calorias,fibra,azucar,grasas," +
                         "grasasSaturadas,carbohidratos,proteinas,colesterol,recipeTipoPlatoData,"
-                        +"recipeCulturaData,recipeNacionalidadData,recipeMomentoData,recipeTemporadaData,Picture)"
-                        +" values ('{0}',{1},"
+                        + "recipeCulturaData,recipeNacionalidadData,recipeMomentoData,recipeTemporadaData,Picture)"
+                        + " values ('{0}',{1},"
                         + "{2},{3},{4},{5},{6},{7},{8},{9},'{10}','{11}','{12}',"
-                        +"'{13}','{14}','{15}');select max(recipeID) as codigo from recipe;";
+                        + "'{13}','{14}','{15}');select max(recipeID) as codigo from recipe;";
                         sQLString = string.Format(sQLString, name, sodium, calories, fiber,
-                            sugar, fat, saturatefat, carbohydrate,protein,cholesterol,recipeTipoPlatoData,
-                            recipeCulturaData,recipeNacionalidadData,recipeMomentoData,recipeTemporadaData,Picture);
-                        
-                        retorno =  EjecutaQuery(sQLString);
+                            sugar, fat, saturatefat, carbohydrate, protein, cholesterol, recipeTipoPlatoData,
+                            recipeCulturaData, recipeNacionalidadData, recipeMomentoData, recipeTemporadaData, Picture);
+
+                        retorno = EjecutaQuery(sQLString);
                         id = retorno.Rows[0]["codigo"].ToString();
-                                          
+
                         foreach (DataRow rcfil in data.Tables[0].Rows)
                         {
                             sQLString = "insert into ingredientes (recipeID,descripcion) values"
-                                +" ({0},'{1}')";
-                            sQLString = string.Format(sQLString,id, rcfil["ingrediente"].ToString());
-                            retorno =  EjecutaQuery(sQLString);
-                           
+                                + " ({0},'{1}')";
+                            sQLString = string.Format(sQLString, id, rcfil["ingrediente"].ToString());
+                            retorno = EjecutaQuery(sQLString);
+
                         }
                         transaction.Complete();
                     }
@@ -109,21 +109,49 @@ namespace RecipeScraper
                         sysMessage = ex.Message;
                     }
                 }
+                else if (clasificar)
+                {
+                    using (TransactionScope transactionModifica = new TransactionScope())
+                    {
+                       
+                        try
+                        {
+                            
+                            sQLString = "update recipe  set  "
+                           + " recipeTipoPlatoData = '{0}',recipeCulturaData = '{1}',recipeNacionalidadData = '{2}',recipeMomentoData = '{3}'"
+                           + " recipeTemporadaData = '{4}' where descripcion = '{5}'";
+
+                            sQLString = string.Format(sQLString, recipeTipoPlatoData,
+                                recipeCulturaData, recipeNacionalidadData, recipeMomentoData, recipeTemporadaData,name);
+
+                            retorno = EjecutaQuery(sQLString);
+
+                            transaction.Complete();
+                        }
+                        catch (Exception ex)
+                        {
+                            error++;
+                            sysMessage = ex.Message;
+                        }
+
+
+                        return sysMessage;
+                    }
+                    
+                }
                 return sysMessage;
-           }
-
+            }
         }
 
-        
-        public bool recipeExist(string id) {
-            bool resultado = false;
-            string Query = string.Empty;
-            Query = "SELECT RECIPEID FROM RECIPE WHERE NOMBRE = '{0}'";
-            Query = string.Format(Query, id);
-            if (EjecutaQuery(Query).Rows.Count > 0)
-                resultado = true;
-            return resultado;
+                public bool recipeExist(string id) {
+                    bool resultado = false;
+                    string Query = string.Empty;
+                    Query = "SELECT RECIPEID FROM RECIPE WHERE NOMBRE = '{0}'";
+                    Query = string.Format(Query, id);
+                    if (EjecutaQuery(Query).Rows.Count > 0)
+                        resultado = true;
+                    return resultado;
 
-        }
-    }
+                }
+            } 
 }
