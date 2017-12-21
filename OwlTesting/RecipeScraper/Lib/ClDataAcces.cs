@@ -51,17 +51,30 @@ namespace RecipeScraper
             cholesterol = string.Empty, sugar = string.Empty, sodium = string.Empty,
             name = string.Empty, ingrediente = string.Empty, id = string.Empty, recipeTipoPlatoData = string.Empty,
             recipeCulturaData = string.Empty, recipeNacionalidadData = string.Empty,
-            recipeMomentoData = string.Empty, recipeTemporadaData = string.Empty, Picture = string.Empty;
+            recipeMomentoData = string.Empty, recipeTemporadaData = string.Empty, Picture = string.Empty,origen=string.Empty;
+            Boolean esSopa = false, esPasta = false, esMarisco = false, esEnsalada = false,
+            EsBebida = false, esBajoColesterol = false, esBajoEnCalorias = false, esLibreGluten = false;
 
             using (TransactionScope transaction = new TransactionScope())
             {
                 name = data.Tables[0].Rows[0]["Name"].ToString();
+                origen = data.Tables[0].Rows[0]["origen"].ToString();
                 recipeTipoPlatoData = data.Tables[0].Rows[0]["recipeTipoPlatoData"].ToString();
                 recipeCulturaData = data.Tables[0].Rows[0]["recipeCulturaData"].ToString();
                 recipeNacionalidadData = data.Tables[0].Rows[0]["recipeNacionalidadData"].ToString();
                 recipeMomentoData = data.Tables[0].Rows[0]["recipeMomentoData"].ToString();
                 recipeTemporadaData = data.Tables[0].Rows[0]["recipeTemporadaData"].ToString();
                 Picture = data.Tables[0].Rows[0]["Picture"].ToString();
+                esSopa = Convert.ToBoolean(data.Tables[0].Rows[0]["esSopa"].ToString());
+                esPasta = Convert.ToBoolean(data.Tables[0].Rows[0]["esPasta"].ToString());
+                esMarisco = Convert.ToBoolean(data.Tables[0].Rows[0]["esMarisco"].ToString());
+                esEnsalada = Convert.ToBoolean(data.Tables[0].Rows[0]["esEnsalada"].ToString());
+                EsBebida = Convert.ToBoolean(data.Tables[0].Rows[0]["esBebida"].ToString());
+                esBajoColesterol = Convert.ToBoolean(data.Tables[0].Rows[0]["esBajoColesterol"].ToString());
+                esBajoEnCalorias = Convert.ToBoolean(data.Tables[0].Rows[0]["esBajoEnCalorias"].ToString());
+                esLibreGluten = Convert.ToBoolean(data.Tables[0].Rows[0]["esLibreGluten"].ToString());
+
+
                 if (!recipeExist(name))
                 {
                     try
@@ -116,17 +129,18 @@ namespace RecipeScraper
                        
                         try
                         {
-                            
+
                             sQLString = "update recipe  set  "
-                           + " recipeTipoPlatoData = '{0}',recipeCulturaData = '{1}',recipeNacionalidadData = '{2}',recipeMomentoData = '{3}'"
-                           + " recipeTemporadaData = '{4}' where descripcion = '{5}'";
+                           + " recipeTipoPlatoData = '{0}',recipeCulturaData = '{1}',recipeNacionalidadData = '{2}',recipeMomentoData = '{3}',"
+                           + " recipeTemporadaData = '{4}',origen ='{5}'"
+                           +"esSopa = {6}, esPasta = {7}, esMarisco={8}, esEnsalada ={9}, esBebida={10}, esBajoColesterol={11}"
+                           +"esBajoEnCalorias={12},esLibreGluten={13}"
+                           + " where Nombre = '{14}'";
 
                             sQLString = string.Format(sQLString, recipeTipoPlatoData,
-                                recipeCulturaData, recipeNacionalidadData, recipeMomentoData, recipeTemporadaData,name);
-
+                                recipeCulturaData, recipeNacionalidadData, recipeMomentoData, recipeTemporadaData,origen,name);
                             retorno = EjecutaQuery(sQLString);
-
-                            transaction.Complete();
+                            transactionModifica.Complete();
                         }
                         catch (Exception ex)
                         {
@@ -135,7 +149,7 @@ namespace RecipeScraper
                         }
 
 
-                        return sysMessage;
+                       
                     }
                     
                 }

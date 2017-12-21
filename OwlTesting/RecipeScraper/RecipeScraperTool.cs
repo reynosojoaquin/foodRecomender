@@ -23,6 +23,7 @@ namespace RecipeScraper
         FileTool Ftool = new FileTool();
         double percent = 0;
         int errorCount = 0;
+        int contRegistroEncontrados = 0;
         Dictionary<string, string> visitedLink = new Dictionary<string, string>();
         HtmlElement botonClik = null;
         WebBrowser browser = new WebBrowser();
@@ -70,10 +71,21 @@ namespace RecipeScraper
 
 
         }
-
+        private void resetBusqueda()
+        {
+             percent = 0;
+             errorCount = 0;
+             contRegistroEncontrados = 0;
+             contador = 0; 
+             cantidad = 0;
+             itemCount = 0;
+             cantNodeIndetified = 0;
+             progressBarBusqueda.Value = 0;
+        }
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             string Url = "";
+            resetBusqueda();
                         
                 if (cboScrapMode.SelectedIndex == 1)
                 {
@@ -161,7 +173,6 @@ namespace RecipeScraper
                             if (hasRecipe(recipe, dataformat))
                             {
                                 addValueToDic(urlActual, "");
-                                lbTotalRegistroEncontrados.Text = contador.ToString();
                                 lbTotalRegistroEncontrados.Refresh();
                                 GetMicroData(recipe,dataformat);
                             }
@@ -236,6 +247,17 @@ namespace RecipeScraper
             recipeTable.Columns.Add("recipeMomentoData", typeof(string));
             recipeTable.Columns.Add("recipeTemporadaData", typeof(string));
             recipeTable.Columns.Add("Picture", typeof(string));
+            recipeTable.Columns.Add("Origen", typeof(string));
+
+            recipeTable.Columns.Add("esSopa", typeof(Boolean));
+            recipeTable.Columns.Add("esPasta", typeof(Boolean));
+            recipeTable.Columns.Add("esMarisco", typeof(Boolean));
+            recipeTable.Columns.Add("esEnsalada", typeof(Boolean));
+            recipeTable.Columns.Add("esBebida", typeof(Boolean));
+            recipeTable.Columns.Add("esBajoColesterol", typeof(Boolean));
+            recipeTable.Columns.Add("esBajoEnCalorias", typeof(Boolean));
+            recipeTable.Columns.Add("esLibreGluten", typeof(Boolean));
+
 
 
             // NUTRICION DATA
@@ -289,7 +311,11 @@ namespace RecipeScraper
                                 Ingredient = chldnode.InnerText.Trim();
                                 recipeTable.NewRow();
                                 recipeTable.Rows.Add(Name, Ingredient, CboTipoPlato.Text, cboCultura.Text,
-                                cboNacionalidad.Text, cboMomentoComida.Text, cboTemporada.Text, pictureRoute);
+                                cboNacionalidad.Text, cboMomentoComida.Text, cboTemporada.Text, pictureRoute,
+                                txtOrigenRegistro.Text, chkSopa.Checked,
+                                chkPasta.Checked, chkPescadoMarisco.Checked, chkEnsalada.Checked, 
+                                chkBebida.Checked, chkBajoColesterol.Checked,chkBajoCalorias.Checked, 
+                                chkLibreGluten.Checked);
                             }
                         }
                         if (Document.DocumentNode.SelectNodes(".//*[@itemtype='http://schema.org/NutritionInformation']") != null)
@@ -370,6 +396,11 @@ namespace RecipeScraper
                             lbErrorCount.Text = errorCount.ToString()+"\r MicroData scraper ";
                             Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
                         }
+                        else
+                        {
+                            contRegistroEncontrados++;
+                            lbTotalRegistroEncontrados.Text = contRegistroEncontrados.ToString();
+                        }
                     }
                     break;
                 case 1:
@@ -444,7 +475,9 @@ namespace RecipeScraper
                         Name = jsonData.name;
                         recipeTable.NewRow();
                         recipeTable.Rows.Add(Name, Ingredient, CboTipoPlato.Text, cboCultura.Text,
-                        cboNacionalidad.Text, cboMomentoComida.Text, cboTemporada.Text, pictureRoute);
+                        cboNacionalidad.Text, cboMomentoComida.Text, cboTemporada.Text, pictureRoute,txtOrigenRegistro.Text,chkSopa.Checked,
+                        chkPasta.Checked,chkPescadoMarisco.Checked,chkEnsalada.Checked,chkBebida.Checked,chkBajoColesterol.Checked,
+                        chkBajoCalorias.Checked,chkLibreGluten.Checked);
                     }
 
 
@@ -481,13 +514,17 @@ namespace RecipeScraper
                         recipeData.Tables.Add(nutritionData);
                             
                         dataError = objDataAccess.insertRecipeData(recipeData,chkClasificacion.Checked);
-                        if (dataError != "")
-                        {
-                            errorCount++;
-                            lbErrorCount.Text = errorCount.ToString();
-                            Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
-                        }
+                            if (dataError != "")
+                            {
+                                errorCount++;
+                                lbErrorCount.Text = errorCount.ToString();
+                                Ftool.WriteLogFile(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString() + " " + dataError);
+                            }
+                            else {
 
+                                contRegistroEncontrados++;
+                                lbTotalRegistroEncontrados.Text = contRegistroEncontrados.ToString();
+                            }
 
                     }
                     }

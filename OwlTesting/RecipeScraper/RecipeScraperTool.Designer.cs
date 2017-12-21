@@ -67,11 +67,25 @@
             this.label12 = new System.Windows.Forms.Label();
             this.openFileHtmlPage = new System.Windows.Forms.OpenFileDialog();
             this.chkClasificacion = new System.Windows.Forms.CheckBox();
+            this.txtOrigenRegistro = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.chkPescadoMarisco = new System.Windows.Forms.CheckBox();
+            this.chkSopa = new System.Windows.Forms.CheckBox();
+            this.chkPasta = new System.Windows.Forms.CheckBox();
+            this.chkEnsalada = new System.Windows.Forms.CheckBox();
+            this.chkLibreGluten = new System.Windows.Forms.CheckBox();
+            this.chkBebida = new System.Windows.Forms.CheckBox();
+            this.chkBajoCalorias = new System.Windows.Forms.CheckBox();
+            this.chkBajoColesterol = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -99,7 +113,7 @@
             this.lbPorcent.AutoSize = true;
             this.lbPorcent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPorcent.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.lbPorcent.Location = new System.Drawing.Point(506, 102);
+            this.lbPorcent.Location = new System.Drawing.Point(503, 102);
             this.lbPorcent.Name = "lbPorcent";
             this.lbPorcent.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbPorcent.Size = new System.Drawing.Size(27, 16);
@@ -109,7 +123,7 @@
             // 
             // btnBuscarArchivo
             // 
-            this.btnBuscarArchivo.Location = new System.Drawing.Point(470, 74);
+            this.btnBuscarArchivo.Location = new System.Drawing.Point(471, 71);
             this.btnBuscarArchivo.Name = "btnBuscarArchivo";
             this.btnBuscarArchivo.Size = new System.Drawing.Size(81, 23);
             this.btnBuscarArchivo.TabIndex = 10;
@@ -204,7 +218,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lbEnlaceActual);
-            this.groupBox2.Location = new System.Drawing.Point(5, 183);
+            this.groupBox2.Location = new System.Drawing.Point(5, 166);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(554, 42);
             this.groupBox2.TabIndex = 2;
@@ -222,6 +236,11 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.groupBox6);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.comboBox5);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.txtOrigenRegistro);
             this.groupBox3.Controls.Add(this.Temporada);
             this.groupBox3.Controls.Add(this.cboTemporada);
             this.groupBox3.Controls.Add(this.label10);
@@ -232,9 +251,9 @@
             this.groupBox3.Controls.Add(this.cboNacionalidad);
             this.groupBox3.Controls.Add(this.cboCultura);
             this.groupBox3.Controls.Add(this.CboTipoPlato);
-            this.groupBox3.Location = new System.Drawing.Point(5, 322);
+            this.groupBox3.Location = new System.Drawing.Point(5, 303);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(554, 165);
+            this.groupBox3.Size = new System.Drawing.Size(554, 216);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             // 
@@ -249,16 +268,15 @@
             // 
             // cboTemporada
             // 
-            this.cboTemporada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTemporada.FormattingEnabled = true;
             this.cboTemporada.Items.AddRange(new object[] {
             "Invierno",
             "Verano",
             "Otoño",
             "Primavera"});
-            this.cboTemporada.Location = new System.Drawing.Point(124, 127);
+            this.cboTemporada.Location = new System.Drawing.Point(98, 129);
             this.cboTemporada.Name = "cboTemporada";
-            this.cboTemporada.Size = new System.Drawing.Size(426, 21);
+            this.cboTemporada.Size = new System.Drawing.Size(161, 21);
             this.cboTemporada.TabIndex = 11;
             // 
             // label10
@@ -299,20 +317,18 @@
             // 
             // cboMomentoComida
             // 
-            this.cboMomentoComida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMomentoComida.FormattingEnabled = true;
             this.cboMomentoComida.Items.AddRange(new object[] {
             "Entrada",
             "Plato Fuerte",
             "Postre"});
-            this.cboMomentoComida.Location = new System.Drawing.Point(124, 100);
+            this.cboMomentoComida.Location = new System.Drawing.Point(98, 102);
             this.cboMomentoComida.Name = "cboMomentoComida";
-            this.cboMomentoComida.Size = new System.Drawing.Size(426, 21);
+            this.cboMomentoComida.Size = new System.Drawing.Size(161, 21);
             this.cboMomentoComida.TabIndex = 5;
             // 
             // cboNacionalidad
             // 
-            this.cboNacionalidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboNacionalidad.FormattingEnabled = true;
             this.cboNacionalidad.Items.AddRange(new object[] {
             "España",
@@ -322,36 +338,34 @@
             "Colombia",
             "Francia",
             "Italia"});
-            this.cboNacionalidad.Location = new System.Drawing.Point(124, 73);
+            this.cboNacionalidad.Location = new System.Drawing.Point(98, 75);
             this.cboNacionalidad.Name = "cboNacionalidad";
-            this.cboNacionalidad.Size = new System.Drawing.Size(426, 21);
+            this.cboNacionalidad.Size = new System.Drawing.Size(161, 21);
             this.cboNacionalidad.TabIndex = 4;
             // 
             // cboCultura
             // 
-            this.cboCultura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCultura.FormattingEnabled = true;
             this.cboCultura.Items.AddRange(new object[] {
             "Vegano",
             "Vegetariano",
             "Musulman"});
-            this.cboCultura.Location = new System.Drawing.Point(124, 46);
+            this.cboCultura.Location = new System.Drawing.Point(98, 48);
             this.cboCultura.Name = "cboCultura";
-            this.cboCultura.Size = new System.Drawing.Size(426, 21);
+            this.cboCultura.Size = new System.Drawing.Size(161, 21);
             this.cboCultura.TabIndex = 3;
             // 
             // CboTipoPlato
             // 
-            this.CboTipoPlato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboTipoPlato.FormattingEnabled = true;
             this.CboTipoPlato.Items.AddRange(new object[] {
             "Desayuno",
             "Comida",
             "Merienda",
             "Cena"});
-            this.CboTipoPlato.Location = new System.Drawing.Point(124, 19);
+            this.CboTipoPlato.Location = new System.Drawing.Point(98, 21);
             this.CboTipoPlato.Name = "CboTipoPlato";
-            this.CboTipoPlato.Size = new System.Drawing.Size(426, 21);
+            this.CboTipoPlato.Size = new System.Drawing.Size(161, 21);
             this.CboTipoPlato.TabIndex = 2;
             // 
             // groupBox4
@@ -359,7 +373,7 @@
             this.groupBox4.Controls.Add(this.btnCerrar);
             this.groupBox4.Controls.Add(this.btnViewLog);
             this.groupBox4.Controls.Add(this.btnIniciar);
-            this.groupBox4.Location = new System.Drawing.Point(5, 487);
+            this.groupBox4.Location = new System.Drawing.Point(5, 513);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(554, 41);
             this.groupBox4.TabIndex = 4;
@@ -395,9 +409,9 @@
             this.groupBox5.Controls.Add(this.lbTotalNodosEvaluados);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Location = new System.Drawing.Point(5, 224);
+            this.groupBox5.Location = new System.Drawing.Point(5, 209);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(554, 99);
+            this.groupBox5.Size = new System.Drawing.Size(554, 92);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             // 
@@ -489,11 +503,143 @@
             this.chkClasificacion.Text = "Clasificacion";
             this.chkClasificacion.UseVisualStyleBackColor = true;
             // 
+            // txtOrigenRegistro
+            // 
+            this.txtOrigenRegistro.Location = new System.Drawing.Point(98, 189);
+            this.txtOrigenRegistro.Name = "txtOrigenRegistro";
+            this.txtOrigenRegistro.Size = new System.Drawing.Size(450, 20);
+            this.txtOrigenRegistro.TabIndex = 13;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(10, 194);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(85, 13);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Origen Registros";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(10, 164);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(60, 13);
+            this.label18.TabIndex = 19;
+            this.label18.Text = "Ingrediente";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "Pollo",
+            "Res"});
+            this.comboBox5.Location = new System.Drawing.Point(98, 158);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(161, 21);
+            this.comboBox5.TabIndex = 15;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.chkBajoCalorias);
+            this.groupBox6.Controls.Add(this.chkBajoColesterol);
+            this.groupBox6.Controls.Add(this.chkLibreGluten);
+            this.groupBox6.Controls.Add(this.chkBebida);
+            this.groupBox6.Controls.Add(this.chkPasta);
+            this.groupBox6.Controls.Add(this.chkEnsalada);
+            this.groupBox6.Controls.Add(this.chkSopa);
+            this.groupBox6.Controls.Add(this.chkPescadoMarisco);
+            this.groupBox6.Location = new System.Drawing.Point(268, 19);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(280, 164);
+            this.groupBox6.TabIndex = 20;
+            this.groupBox6.TabStop = false;
+            // 
+            // chkPescadoMarisco
+            // 
+            this.chkPescadoMarisco.AutoSize = true;
+            this.chkPescadoMarisco.Location = new System.Drawing.Point(6, 19);
+            this.chkPescadoMarisco.Name = "chkPescadoMarisco";
+            this.chkPescadoMarisco.Size = new System.Drawing.Size(116, 17);
+            this.chkPescadoMarisco.TabIndex = 0;
+            this.chkPescadoMarisco.Text = "Pescado y Marisco";
+            this.chkPescadoMarisco.UseVisualStyleBackColor = true;
+            // 
+            // chkSopa
+            // 
+            this.chkSopa.AutoSize = true;
+            this.chkSopa.Location = new System.Drawing.Point(162, 19);
+            this.chkSopa.Name = "chkSopa";
+            this.chkSopa.Size = new System.Drawing.Size(51, 17);
+            this.chkSopa.TabIndex = 1;
+            this.chkSopa.Text = "Sopa";
+            this.chkSopa.UseVisualStyleBackColor = true;
+            // 
+            // chkPasta
+            // 
+            this.chkPasta.AutoSize = true;
+            this.chkPasta.Location = new System.Drawing.Point(162, 42);
+            this.chkPasta.Name = "chkPasta";
+            this.chkPasta.Size = new System.Drawing.Size(53, 17);
+            this.chkPasta.TabIndex = 3;
+            this.chkPasta.Text = "Pasta";
+            this.chkPasta.UseVisualStyleBackColor = true;
+            // 
+            // chkEnsalada
+            // 
+            this.chkEnsalada.AutoSize = true;
+            this.chkEnsalada.Location = new System.Drawing.Point(6, 42);
+            this.chkEnsalada.Name = "chkEnsalada";
+            this.chkEnsalada.Size = new System.Drawing.Size(70, 17);
+            this.chkEnsalada.TabIndex = 2;
+            this.chkEnsalada.Text = "Ensalada";
+            this.chkEnsalada.UseVisualStyleBackColor = true;
+            // 
+            // chkLibreGluten
+            // 
+            this.chkLibreGluten.AutoSize = true;
+            this.chkLibreGluten.Location = new System.Drawing.Point(6, 135);
+            this.chkLibreGluten.Name = "chkLibreGluten";
+            this.chkLibreGluten.Size = new System.Drawing.Size(83, 17);
+            this.chkLibreGluten.TabIndex = 5;
+            this.chkLibreGluten.Text = "Libre Gluten";
+            this.chkLibreGluten.UseVisualStyleBackColor = true;
+            // 
+            // chkBebida
+            // 
+            this.chkBebida.AutoSize = true;
+            this.chkBebida.Location = new System.Drawing.Point(6, 65);
+            this.chkBebida.Name = "chkBebida";
+            this.chkBebida.Size = new System.Drawing.Size(59, 17);
+            this.chkBebida.TabIndex = 4;
+            this.chkBebida.Text = "Bebida";
+            this.chkBebida.UseVisualStyleBackColor = true;
+            // 
+            // chkBajoCalorias
+            // 
+            this.chkBajoCalorias.AutoSize = true;
+            this.chkBajoCalorias.Location = new System.Drawing.Point(6, 112);
+            this.chkBajoCalorias.Name = "chkBajoCalorias";
+            this.chkBajoCalorias.Size = new System.Drawing.Size(87, 17);
+            this.chkBajoCalorias.TabIndex = 7;
+            this.chkBajoCalorias.Text = "Bajo Calorias";
+            this.chkBajoCalorias.UseVisualStyleBackColor = true;
+            // 
+            // chkBajoColesterol
+            // 
+            this.chkBajoColesterol.AutoSize = true;
+            this.chkBajoColesterol.Location = new System.Drawing.Point(6, 88);
+            this.chkBajoColesterol.Name = "chkBajoColesterol";
+            this.chkBajoColesterol.Size = new System.Drawing.Size(96, 17);
+            this.chkBajoColesterol.TabIndex = 6;
+            this.chkBajoColesterol.Text = "Bajo Colesterol";
+            this.chkBajoColesterol.UseVisualStyleBackColor = true;
+            // 
             // RecipeScraperTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 535);
+            this.ClientSize = new System.Drawing.Size(563, 558);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -512,6 +658,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -557,5 +705,18 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label lbPorcent;
         private System.Windows.Forms.CheckBox chkClasificacion;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtOrigenRegistro;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox chkBajoCalorias;
+        private System.Windows.Forms.CheckBox chkBajoColesterol;
+        private System.Windows.Forms.CheckBox chkLibreGluten;
+        private System.Windows.Forms.CheckBox chkBebida;
+        private System.Windows.Forms.CheckBox chkPasta;
+        private System.Windows.Forms.CheckBox chkEnsalada;
+        private System.Windows.Forms.CheckBox chkSopa;
+        private System.Windows.Forms.CheckBox chkPescadoMarisco;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox comboBox5;
     }
 }
