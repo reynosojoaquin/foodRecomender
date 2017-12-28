@@ -132,13 +132,14 @@ namespace RecipeScraper
 
                             sQLString = "update recipe  set  "
                            + " recipeTipoPlatoData = '{0}',recipeCulturaData = '{1}',recipeNacionalidadData = '{2}',recipeMomentoData = '{3}',"
-                           + " recipeTemporadaData = '{4}',origen ='{5}'"
-                           +"esSopa = {6}, esPasta = {7}, esMarisco={8}, esEnsalada ={9}, esBebida={10}, esBajoColesterol={11}"
+                           + " recipeTemporadaData = '{4}',origen ='{5}', "
+                           +"esSopa = {6}, esPasta = {7}, esMarisco={8}, esEnsalada ={9}, esBebida={10}, esBajoColesterol={11}, "
                            +"esBajoEnCalorias={12},esLibreGluten={13}"
                            + " where Nombre = '{14}'";
 
                             sQLString = string.Format(sQLString, recipeTipoPlatoData,
-                                recipeCulturaData, recipeNacionalidadData, recipeMomentoData, recipeTemporadaData,origen,name);
+                                recipeCulturaData, recipeNacionalidadData, recipeMomentoData, recipeTemporadaData,origen,esSopa
+                                ,esPasta,esMarisco,esEnsalada,EsBebida,esBajoColesterol,esBajoEnCalorias,esLibreGluten, name);
                             retorno = EjecutaQuery(sQLString);
                             transactionModifica.Complete();
                         }

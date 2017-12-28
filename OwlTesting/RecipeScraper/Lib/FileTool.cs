@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace RecipeScraper.Lib
 {
-    class FileTool
+    public class FileTool
     {
         public string GetAplicationDirectory()
         {
-            return Application.StartupPath;
+            return Application.StartupPath + "/";
         }
         public void WriteLogFile(string data)
         {
@@ -43,6 +43,28 @@ namespace RecipeScraper.Lib
                         MessageBox.Show("Datos eliminados correctamente");
                     }
                  }
+            }
+        }
+        public  void writeJsonDataTofile(string data)
+        {
+            using (StreamWriter File = new StreamWriter(GetAplicationDirectory()+ "baseConocimientoReceta.Json", true))
+            {
+                File.WriteLine(data);
+            }
+        }
+        public  string readJsonDataFromFile()
+        {
+            string resultado = string.Empty;
+            resultado =  File.ReadAllText(GetAplicationDirectory() + "baseConocimientoReceta.Json");
+            return resultado;
+        }
+        public void clearJsonFile()
+        {
+            using (var fs = new FileStream(GetAplicationDirectory() + "baseConocimientoReceta.Json", FileMode.Open))
+            {
+                fs.SetLength(0);
+                fs.Close();
+                
             }
         }
     }

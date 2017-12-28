@@ -10,3 +10,26 @@ C:\Herramientas\Joaquin\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting
 D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.frmMineria.resources
 D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.Properties.Resources.resources
 D:\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.csproj.GenerateResource.Cache
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\IngredientMinery.exe.config
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\IngredientMinery.exe
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\IngredientMinery.pdb
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\MySql.Data.dll
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\RecipeScraper.exe
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\HtmlAgilityPack.dll
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\MicroDataScraper.exe
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\Newtonsoft.Json.dll
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\RecipeScraper.pdb
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\RecipeScraper.exe.config
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\MySql.Data.xml
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\HtmlAgilityPack.pdb
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\HtmlAgilityPack.xml
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\MicroDataScraper.pdb
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\MicroDataScraper.exe.config
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\Newtonsoft.Json.xml
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.csprojResolveAssemblyReference.cache
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.csproj.IngredientMinery.exe.config
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.frmMineria.resources
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.Properties.Resources.resources
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.csproj.GenerateResource.Cache
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.exe
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.pdb

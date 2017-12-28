@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnMarcarRegistro = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtNuevaPalabra = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.txtMainVocabulary = new System.Windows.Forms.TextBox();
             this.lbTotalregistro = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +49,12 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnMarcarRegistro = new System.Windows.Forms.Button();
+            this.lbTotalIngredientes = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.MnModificarBaseConocimiento = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmAgregarPalabraBc = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -56,6 +62,8 @@
             this.panel3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.MnModificarBaseConocimiento.SuspendLayout();
+            this.CmAgregarPalabraBc.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -71,6 +79,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lbTotalIngredientes);
+            this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.btnMarcarRegistro);
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.panel1);
@@ -89,6 +99,16 @@
             this.tabPage1.Text = "Identificacion";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnMarcarRegistro
+            // 
+            this.btnMarcarRegistro.Location = new System.Drawing.Point(984, 527);
+            this.btnMarcarRegistro.Name = "btnMarcarRegistro";
+            this.btnMarcarRegistro.Size = new System.Drawing.Size(126, 23);
+            this.btnMarcarRegistro.TabIndex = 11;
+            this.btnMarcarRegistro.Text = "Marcar Registros";
+            this.btnMarcarRegistro.UseVisualStyleBackColor = true;
+            this.btnMarcarRegistro.Click += new System.EventHandler(this.btnMarcarRegistro_Click);
+            // 
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(880, 6);
@@ -100,7 +120,6 @@
             // 
             this.panel1.Controls.Add(this.txtNuevaPalabra);
             this.panel1.Controls.Add(this.btnAgregar);
-            this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.txtMainVocabulary);
             this.panel1.Location = new System.Drawing.Point(625, 4);
             this.panel1.Name = "panel1";
@@ -117,7 +136,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(154, 484);
+            this.btnAgregar.Location = new System.Drawing.Point(154, 470);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(92, 23);
             this.btnAgregar.TabIndex = 2;
@@ -125,19 +144,10 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(47, 484);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(101, 23);
-            this.btnEliminar.TabIndex = 1;
-            this.btnEliminar.Text = "Borrar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
             // txtMainVocabulary
             // 
             this.txtMainVocabulary.BackColor = System.Drawing.Color.White;
+            this.txtMainVocabulary.ContextMenuStrip = this.MnModificarBaseConocimiento;
             this.txtMainVocabulary.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtMainVocabulary.Location = new System.Drawing.Point(0, 0);
             this.txtMainVocabulary.Multiline = true;
@@ -214,6 +224,7 @@
             // txtFrencuenciaPalabras
             // 
             this.txtFrencuenciaPalabras.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFrencuenciaPalabras.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFrencuenciaPalabras.Location = new System.Drawing.Point(0, 0);
             this.txtFrencuenciaPalabras.Multiline = true;
             this.txtFrencuenciaPalabras.Name = "txtFrencuenciaPalabras";
@@ -258,15 +269,51 @@
             this.dataGridView1.Size = new System.Drawing.Size(1112, 552);
             this.dataGridView1.TabIndex = 0;
             // 
-            // btnMarcarRegistro
+            // lbTotalIngredientes
             // 
-            this.btnMarcarRegistro.Location = new System.Drawing.Point(984, 527);
-            this.btnMarcarRegistro.Name = "btnMarcarRegistro";
-            this.btnMarcarRegistro.Size = new System.Drawing.Size(126, 23);
-            this.btnMarcarRegistro.TabIndex = 11;
-            this.btnMarcarRegistro.Text = "Marcar Registros";
-            this.btnMarcarRegistro.UseVisualStyleBackColor = true;
-            this.btnMarcarRegistro.Click += new System.EventHandler(this.btnMarcarRegistro_Click);
+            this.lbTotalIngredientes.AutoSize = true;
+            this.lbTotalIngredientes.Location = new System.Drawing.Point(209, 528);
+            this.lbTotalIngredientes.Name = "lbTotalIngredientes";
+            this.lbTotalIngredientes.Size = new System.Drawing.Size(13, 13);
+            this.lbTotalIngredientes.TabIndex = 14;
+            this.lbTotalIngredientes.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(138, 528);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Ingredientes";
+            // 
+            // MnModificarBaseConocimiento
+            // 
+            this.MnModificarBaseConocimiento.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eliminarToolStripMenuItem});
+            this.MnModificarBaseConocimiento.Name = "MnModificarBaseConocimiento";
+            this.MnModificarBaseConocimiento.Size = new System.Drawing.Size(118, 26);
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
+            // 
+            // CmAgregarPalabraBc
+            // 
+            this.CmAgregarPalabraBc.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.CmAgregarPalabraBc.Name = "CmAgregarPalabraBc";
+            this.CmAgregarPalabraBc.Size = new System.Drawing.Size(153, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Text = "Agregar";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // frmMineria
             // 
@@ -275,6 +322,7 @@
             this.ClientSize = new System.Drawing.Size(1126, 584);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmMineria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mineria de ingredientes";
             this.Load += new System.EventHandler(this.frmMineria_Load);
             this.tabControl1.ResumeLayout(false);
@@ -288,6 +336,8 @@
             this.panel3.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.MnModificarBaseConocimiento.ResumeLayout(false);
+            this.CmAgregarPalabraBc.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -310,11 +360,16 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtNuevaPalabra;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.TextBox txtMainVocabulary;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnMarcarRegistro;
+        private System.Windows.Forms.Label lbTotalIngredientes;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ContextMenuStrip MnModificarBaseConocimiento;
+        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip CmAgregarPalabraBc;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

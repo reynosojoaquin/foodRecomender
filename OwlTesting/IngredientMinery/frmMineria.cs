@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using RecipeScraper;
+using RecipeScraper.Lib;
+using Newtonsoft;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace IngredientMinery
 {
@@ -17,7 +21,9 @@ namespace IngredientMinery
         ClDataAcces objDataAccess = new ClDataAcces();
         SortedDictionary<string, int> dict
                        = new SortedDictionary<string, int>();
+        SortedDictionary<int, string> baseConocimiento = new SortedDictionary<int, string>();
         Dictionary<string, string> ingredientes = new Dictionary<string, string>();
+        FileTool objFileTool = new FileTool();
         string vocabulary = string.Empty;
         string[] palabras = { };
         public frmMineria()
@@ -31,15 +37,15 @@ namespace IngredientMinery
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9','½','¼','¾' };
 
 
-        private void evaluarInfoDB()
+        private void evaluarInfoDB(string value,int ingredienteID)
         {
 
             txtFrencuenciaPalabras.Text = "";
-            vocabulary = buscarDataVocabulary().Rows[0]["vocabulary"].ToString();
-            palabras =  vocabulary.Split(',');
+           // vocabulary = buscarDataVocabulary().Rows[0]["vocabulary"].ToString();
+           // palabras =  vocabulary.Split(',');
             if (txtDatosOrigen.Text != string.Empty)
             {
-                string[] words = Tokenize(txtDatosOrigen.Text);
+                string[] words = Tokenize(value);
                 if (words.Length > 0)
                 {
                    
@@ -52,7 +58,7 @@ namespace IngredientMinery
                         }
                         else
                         {
-                            dict.Add(word, 1);
+                            dict.Add(word, ingredienteID);
                         }
                     }
                     // evaluando diccionario para eliminar palabras innecesarias
@@ -67,18 +73,20 @@ namespace IngredientMinery
 
                     txtFrencuenciaPalabras.Text = resultSb.ToString();
                 }
+                lbTotalIngredientes.Text = dict.Count.ToString();
             }
         }
         private void removeNotIngredients(SortedDictionary<string,int> diccionario)
         {
-            foreach(string word in palabras){
+            foreach(KeyValuePair<int,string>entrada in baseConocimiento){
 
-                diccionario.Remove(word);
+                diccionario.Remove(entrada.Value);
             }
         }
         private void btnEvaluar_Click(object sender, EventArgs e)
         {
             evaluarIngredientes();
+
         }
         public static string[] Tokenize(string text)
         {
@@ -120,17 +128,21 @@ namespace IngredientMinery
         }
         private void verificarData()
         {
-            int count = 0;
+            int count = 0,ingredientID =0;
             string infoRecipe = string.Empty;
+            string ingredientValue = string.Empty;
             DataTable resultado = new DataTable();
             
             try { 
-                resultado = objDataAccess.EjecutaQuery("SELECT * FROM ingredientes limit 0,100");
+                resultado = objDataAccess.EjecutaQuery("SELECT * FROM ingredientes limit 0,1000");
                 registroEncontrados = resultado.Copy();
                 foreach (DataRow ingrediente in resultado.Rows)
                 {
-                    txtDatosOrigen.Text += ingrediente["descripcion"].ToString() + "\r";
-                    evaluarInfoDB();
+
+                    ingredientValue = ingrediente["descripcion"].ToString();
+                    ingredientID = Convert.ToInt32(ingrediente["ingredienteID"].ToString());
+                    txtDatosOrigen.Text += ingredientValue + "\r";
+                    evaluarInfoDB(ingredientValue,ingredientID);
                     count++;
                     lbTotalregistro.Text = count.ToString();
                 }
@@ -144,39 +156,31 @@ namespace IngredientMinery
         private void frmMineria_Load(object sender, EventArgs e)
         {
             txtFrencuenciaPalabras.ScrollBars = ScrollBars.Both;
-            buscarDataVocabulary();
+            buscarBaseConocimiento();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!txtMainVocabulary.Text.Contains(txtNuevaPalabra.Text))
-            { 
-                txtMainVocabulary.Text += txtNuevaPalabra.Text+",";
+            buscarBaseConocimiento();
+            if (!baseConocimiento.ContainsValue(txtNuevaPalabra.Text))
+            {
+                baseConocimiento.Add(baseConocimiento.Count + 1, txtNuevaPalabra.Text);
                 actualizarVocaBulary();
                 txtNuevaPalabra.Text = "";
             }
             else
             {
-                MessageBox.Show("Palabra registrada en el vocabulario");
+                MessageBox.Show("Palabra registrada en la base de conocimiento");
             }
         }
         private void actualizarVocaBulary()
         {
-            string infoRecipe = string.Empty;
-            DataTable resultado = new DataTable();
-            if(txtMainVocabulary.Text != "") { 
-            try
+           
+            if(baseConocimiento.Count > 0)
             {
-                string SqlStr = "UPDATE main SET vocabulary = '{0}';select vocabulary from main";
-                SqlStr = string.Format(SqlStr, txtMainVocabulary.Text);
-                resultado = objDataAccess.EjecutaQuery(SqlStr);
-                    txtMainVocabulary.Text = resultado.Rows[0]["vocabulary"].ToString();
-                MessageBox.Show("Proceso Concluido con exito");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
+                objFileTool.clearJsonFile();
+                objFileTool.writeJsonDataTofile(JsonConvert.SerializeObject(baseConocimiento, Formatting.Indented));
+                buscarBaseConocimiento();
             }
         }
         private DataTable buscarDataVocabulary()
@@ -199,23 +203,14 @@ namespace IngredientMinery
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            string valueSeleted = string.Empty,tempValue = string.Empty;
-            int index = 0;
-
-            valueSeleted = txtMainVocabulary.SelectedText;
-          if (txtMainVocabulary.SelectedText != "") {
-                tempValue = txtMainVocabulary.Text;
-                index = txtMainVocabulary.Text.IndexOf(valueSeleted);
-                tempValue.Remove(index,valueSeleted.Length);
-                txtMainVocabulary.Text = tempValue;
-            }
+           
         }
 
         private void evaluarIngredientes()
         {
-            foreach (string word in palabras)
+            foreach (KeyValuePair<int, string> entrada in baseConocimiento)
             {
-                dict.Remove(word);
+                dict.Remove(entrada.Value);
             }
             txtFrencuenciaPalabras.Text = "";
             StringBuilder resultSb = new StringBuilder(dict.Count * 9);
@@ -225,6 +220,7 @@ namespace IngredientMinery
             }
 
             txtFrencuenciaPalabras.Text = resultSb.ToString();
+            lbTotalIngredientes.Text = dict.Count().ToString();
         }
 
         private void btnMarcarRegistro_Click(object sender, EventArgs e)
@@ -242,5 +238,66 @@ namespace IngredientMinery
                 QueryString += sqlData;
             }
         }
+      /*  private void cargarDatosBaseConocimiento() {
+            string baseConocimientoStr = string.Empty;
+            baseConocimientoStr = buscarDataVocabulary().Rows[0]["vocabulary"].ToString();
+            string[] palabras = baseConocimientoStr.Split(',');
+            int cont = 0;
+            foreach (string word in palabras) {
+
+                cont++;
+                baseConocimiento.Add(cont, word);
+            }
+
+            objFileTool.writeJsonDataTofile(JsonConvert.SerializeObject(baseConocimiento, Formatting.Indented));
+        }*/
+
+        private void btnBaseConocimiento_Click(object sender, EventArgs e)
+        {
+          //  cargarDatosBaseConocimiento();
+        }
+        private void buscarBaseConocimiento() {
+            dynamic jsonData = JsonConvert.DeserializeObject(objFileTool.readJsonDataFromFile());
+            baseConocimiento = jsonData.ToObject<SortedDictionary<int,string>>();
+            txtMainVocabulary.Text = "";
+            foreach (KeyValuePair<int,string>valor in baseConocimiento)
+            {
+                txtMainVocabulary.Text += valor.Value+", ";
+
+            }
+           
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            eliminarPalabra();
+        }
+        private void eliminarPalabra()
+        {
+            string valueSeleted = string.Empty, tempValue = string.Empty;
+
+            valueSeleted = txtMainVocabulary.SelectedText;
+            if (txtMainVocabulary.SelectedText != "")
+            {
+                int word = txtMainVocabulary.SelectionLength;
+                txtMainVocabulary.Text = txtMainVocabulary.Text.Remove(txtMainVocabulary.SelectionStart, word);
+
+
+                if (baseConocimiento.ContainsValue(valueSeleted))
+                {
+                    baseConocimiento.Remove(baseConocimiento.FirstOrDefault(x=>x.Value == valueSeleted).Key);
+                    actualizarVocaBulary();
+                }
+              
+               
+                
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }   
+    
 }
