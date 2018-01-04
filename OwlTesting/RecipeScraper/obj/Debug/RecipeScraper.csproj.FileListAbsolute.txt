@@ -63,11 +63,12 @@ D:\projectos\foodRecomender\OwlTesting\RecipeScraper\bin\Debug\HtmlAgilityPack.x
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\bin\Debug\MySql.Data.xml
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\bin\Debug\Newtonsoft.Json.xml
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csprojResolveAssemblyReference.cache
-D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csproj.RecipeScraper.exe.config
+D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.exe.config
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.frmLogVisor.resources
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.MineriaIngredientes.resources
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.Properties.Resources.resources
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.RecipeScraperTool.resources
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csproj.GenerateResource.Cache
+D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.csproj.CoreCompileInputs.cache
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.exe
 D:\projectos\foodRecomender\OwlTesting\RecipeScraper\obj\Debug\RecipeScraper.pdb

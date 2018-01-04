@@ -168,9 +168,9 @@ namespace IngredientMinery
 
         private void frmMineria_Load(object sender, EventArgs e)
         {
-           /* txtFrencuenciaPalabras.ScrollBars = ScrollBars.Both;
+           txtFrencuenciaPalabras.ScrollBars = ScrollBars.Both;
             txtMainVocabulary.ScrollBars = ScrollBars.Both;
-            buscarBaseConocimiento();*/
+            buscarBaseConocimiento();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -398,9 +398,19 @@ namespace IngredientMinery
         }
         private void cargarDataClasificacion()
         {
-            string sQlString = "SELECT * FROM translate limit 0,{0}";
+            string sQlString = string.Empty;
+            switch (chkModify.Checked)
+            {
+                case true:
+                    sQlString = "SELECT * FROM translate where classOf is not null  limit 0,{0}";
+                    break;
+                case false:
+                    sQlString = "SELECT * FROM translate  where classOf = '' or classOf is null limit 0,{0}";
+                    break;
+            }
             sQlString = string.Format(sQlString, txtLimit.Text);
             DataTable  DataClasificacion = objDataAccess.EjecutaQuery(sQlString);
+            lbRegistroEncontrados.Text = DataClasificacion.Rows.Count.ToString();
             dgDatosClasificacion.AutoGenerateColumns = false;
             dgDatosClasificacion.DataSource = DataClasificacion;
             AddComboColum();
@@ -412,6 +422,29 @@ namespace IngredientMinery
             {
                 cargarDataClasificacion();
             }
+        }
+        private void guardarCambiosClasificacion()
+        {
+             string sqlData = "update translate set classOf = '{0}' where recipeID = {1} and ingredienteID = {2} ";
+            try
+            {
+                foreach (DataGridViewRow fila in dgDatosClasificacion.Rows)
+                {
+                    if (fila.Cells["SubClassOf"].Value.ToString() != "") {
+                        sqlData = string.Format(sqlData, fila.Cells["SubClassOf"].Value, fila.Cells["RecipeID"].Value, fila.Cells["ingredienteID"].Value);
+                        objDataAccess.EjecutaQuery(sqlData);
+                    }
+                }
+                MessageBox.Show("Datos Registrados con exito"); 
+            }catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        private void btnGuardarCambios_Click(object sender, EventArgs e)
+        {
+            guardarCambiosClasificacion();
         }
     }
 }

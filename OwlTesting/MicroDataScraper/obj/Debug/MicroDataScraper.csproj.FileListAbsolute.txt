@@ -39,5 +39,7 @@ D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\MySql.Data.dll
 D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.pdb
 D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\HtmlAgilityPack.xml
 D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\bin\Debug\MySql.Data.xml
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.csproj.CoreCompileInputs.cache
 D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.exe
 D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.pdb
+D:\projectos\foodRecomender\OwlTesting\MicroDataScraper\obj\Debug\MicroDataScraper.csprojResolveAssemblyReference.cache
