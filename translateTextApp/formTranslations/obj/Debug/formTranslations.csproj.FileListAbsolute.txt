@@ -1,0 +1,9 @@
+D:\projectos\foodRecomender\translateTextApp\formTranslations\obj\Debug\formTranslations.csprojResolveAssemblyReference.cache
+D:\projectos\foodRecomender\translateTextApp\formTranslations\obj\Debug\formTranslations.Form1.resources
+D:\projectos\foodRecomender\translateTextApp\formTranslations\obj\Debug\formTranslations.Properties.Resources.resources
+D:\projectos\foodRecomender\translateTextApp\formTranslations\obj\Debug\formTranslations.csproj.GenerateResource.Cache
+D:\projectos\foodRecomender\translateTextApp\formTranslations\bin\Debug\formTranslations.exe.config
+D:\projectos\foodRecomender\translateTextApp\formTranslations\bin\Debug\formTranslations.exe
+D:\projectos\foodRecomender\translateTextApp\formTranslations\bin\Debug\formTranslations.pdb
+D:\projectos\foodRecomender\translateTextApp\formTranslations\obj\Debug\formTranslations.exe
+D:\projectos\foodRecomender\translateTextApp\formTranslations\obj\Debug\formTranslations.pdb

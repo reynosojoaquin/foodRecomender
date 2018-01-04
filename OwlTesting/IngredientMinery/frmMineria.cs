@@ -12,19 +12,23 @@ using RecipeScraper.Lib;
 using Newtonsoft;
 using Newtonsoft.Json;
 using System.IO;
-
+using RavSoft.GoogleTranslator;
 namespace IngredientMinery
 {
     public partial class frmMineria : Form
     {
         DataTable registroEncontrados = new DataTable();
         ClDataAcces objDataAccess = new ClDataAcces();
+        int registroTraducidos = 0;
         SortedDictionary<string, int> dict
                        = new SortedDictionary<string, int>();
         SortedDictionary<int, string> baseConocimiento = new SortedDictionary<int, string>();
         Dictionary<string, string> ingredientes = new Dictionary<string, string>();
         FileTool objFileTool = new FileTool();
         string vocabulary = string.Empty;
+        string[] classOf = { "Embutido",
+            "pan","Pasta","aceite","adereso","cereal","condimento","especia",
+        "fruta","hortalizas","nuez","semillas","verduras","vino","carne","vinagre"};
         string[] palabras = { };
         public frmMineria()
         {
@@ -37,18 +41,18 @@ namespace IngredientMinery
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9','½','¼','¾' };
 
 
-        private void evaluarInfoDB(string value,int ingredienteID)
+        private void evaluarInfoDB(string value, int ingredienteID)
         {
 
             txtFrencuenciaPalabras.Text = "";
-           // vocabulary = buscarDataVocabulary().Rows[0]["vocabulary"].ToString();
-           // palabras =  vocabulary.Split(',');
+            // vocabulary = buscarDataVocabulary().Rows[0]["vocabulary"].ToString();
+            // palabras =  vocabulary.Split(',');
             if (txtDatosOrigen.Text != string.Empty)
             {
                 string[] words = Tokenize(value);
                 if (words.Length > 0)
                 {
-                   
+
 
                     foreach (string word in words)
                     {
@@ -64,7 +68,7 @@ namespace IngredientMinery
                     // evaluando diccionario para eliminar palabras innecesarias
 
                     removeNotIngredients(dict);
-                    
+
                     StringBuilder resultSb = new StringBuilder(dict.Count * 9);
                     foreach (KeyValuePair<string, int> entry in dict)
                     {
@@ -76,9 +80,10 @@ namespace IngredientMinery
                 lbTotalIngredientes.Text = dict.Count.ToString();
             }
         }
-        private void removeNotIngredients(SortedDictionary<string,int> diccionario)
+        private void removeNotIngredients(SortedDictionary<string, int> diccionario)
         {
-            foreach(KeyValuePair<int,string>entrada in baseConocimiento){
+            foreach (KeyValuePair<int, string> entrada in baseConocimiento)
+            {
 
                 diccionario.Remove(entrada.Value);
             }
@@ -122,32 +127,40 @@ namespace IngredientMinery
             Task cargarIngredientesAsync = new Task(() =>
             {
                 verificarData();
-               
+
             });
             cargarIngredientesAsync.Start();
         }
         private void verificarData()
         {
-            int count = 0,ingredientID =0;
+            int count = 0, ingredientID = 0;
             string infoRecipe = string.Empty;
             string ingredientValue = string.Empty;
             DataTable resultado = new DataTable();
-            
-            try { 
-                resultado = objDataAccess.EjecutaQuery("SELECT * FROM ingredientes limit 0,1000");
-                registroEncontrados = resultado.Copy();
-                foreach (DataRow ingrediente in resultado.Rows)
-                {
 
-                    ingredientValue = ingrediente["descripcion"].ToString();
-                    ingredientID = Convert.ToInt32(ingrediente["ingredienteID"].ToString());
-                    txtDatosOrigen.Text += ingredientValue + "\r";
-                    evaluarInfoDB(ingredientValue,ingredientID);
-                    count++;
-                    lbTotalregistro.Text = count.ToString();
+            try
+            {
+
+                if (txtLimit.Text != "")
+                {
+                    string sQlString = "SELECT * FROM ingredientes limit 0,{0}";
+                    sQlString = string.Format(sQlString, txtLimit.Text);
+                    resultado = objDataAccess.EjecutaQuery(sQlString);
+                    registroEncontrados = resultado.Copy();
+                    foreach (DataRow ingrediente in resultado.Rows)
+                    {
+
+                        ingredientValue = ingrediente["descripcion"].ToString();
+                        ingredientID = Convert.ToInt32(ingrediente["ingredienteID"].ToString());
+                        txtDatosOrigen.Text += ingredientValue + "\r";
+                        evaluarInfoDB(ingredientValue, ingredientID);
+                        count++;
+                        lbTotalregistro.Text = count.ToString();
+                    }
+                    MessageBox.Show("Proceso Concluido con exito");
                 }
-                MessageBox.Show("Proceso Concluido con exito");
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
@@ -155,16 +168,21 @@ namespace IngredientMinery
 
         private void frmMineria_Load(object sender, EventArgs e)
         {
-            txtFrencuenciaPalabras.ScrollBars = ScrollBars.Both;
-            buscarBaseConocimiento();
+           /* txtFrencuenciaPalabras.ScrollBars = ScrollBars.Both;
+            txtMainVocabulary.ScrollBars = ScrollBars.Both;
+            buscarBaseConocimiento();*/
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            addWordBaseConocimiento(txtNuevaPalabra.Text);
+        }
+        private void addWordBaseConocimiento(string word)
+        {
             buscarBaseConocimiento();
-            if (!baseConocimiento.ContainsValue(txtNuevaPalabra.Text))
+            if (!baseConocimiento.ContainsValue(word))
             {
-                baseConocimiento.Add(baseConocimiento.Count + 1, txtNuevaPalabra.Text);
+                baseConocimiento.Add(baseConocimiento.Count + 1, word);
                 actualizarVocaBulary();
                 txtNuevaPalabra.Text = "";
             }
@@ -175,8 +193,8 @@ namespace IngredientMinery
         }
         private void actualizarVocaBulary()
         {
-           
-            if(baseConocimiento.Count > 0)
+
+            if (baseConocimiento.Count > 0)
             {
                 objFileTool.clearJsonFile();
                 objFileTool.writeJsonDataTofile(JsonConvert.SerializeObject(baseConocimiento, Formatting.Indented));
@@ -191,7 +209,7 @@ namespace IngredientMinery
             {
                 resultado = objDataAccess.EjecutaQuery("SELECT vocabulary FROM main");
                 txtMainVocabulary.Text = resultado.Rows[0]["vocabulary"].ToString();
-               
+
             }
             catch (Exception e)
             {
@@ -203,7 +221,7 @@ namespace IngredientMinery
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void evaluarIngredientes()
@@ -230,7 +248,7 @@ namespace IngredientMinery
         private void marcarRegistrosEvaluados()
         {
             string sqlData = string.Empty;
-           string QueryString = string.Empty;
+            string QueryString = string.Empty;
             foreach (DataRow registro in registroEncontrados.Rows)
             {
                 sqlData = "UPDATE INGREDIENTES SET EVALUADO = 1 WHERE INGREDIENTEID = {0};";
@@ -238,34 +256,35 @@ namespace IngredientMinery
                 QueryString += sqlData;
             }
         }
-      /*  private void cargarDatosBaseConocimiento() {
-            string baseConocimientoStr = string.Empty;
-            baseConocimientoStr = buscarDataVocabulary().Rows[0]["vocabulary"].ToString();
-            string[] palabras = baseConocimientoStr.Split(',');
-            int cont = 0;
-            foreach (string word in palabras) {
+        /*  private void cargarDatosBaseConocimiento() {
+              string baseConocimientoStr = string.Empty;
+              baseConocimientoStr = buscarDataVocabulary().Rows[0]["vocabulary"].ToString();
+              string[] palabras = baseConocimientoStr.Split(',');
+              int cont = 0;
+              foreach (string word in palabras) {
 
-                cont++;
-                baseConocimiento.Add(cont, word);
-            }
+                  cont++;
+                  baseConocimiento.Add(cont, word);
+              }
 
-            objFileTool.writeJsonDataTofile(JsonConvert.SerializeObject(baseConocimiento, Formatting.Indented));
-        }*/
+              objFileTool.writeJsonDataTofile(JsonConvert.SerializeObject(baseConocimiento, Formatting.Indented));
+          }*/
 
         private void btnBaseConocimiento_Click(object sender, EventArgs e)
         {
-          //  cargarDatosBaseConocimiento();
+            //  cargarDatosBaseConocimiento();
         }
-        private void buscarBaseConocimiento() {
+        private void buscarBaseConocimiento()
+        {
             dynamic jsonData = JsonConvert.DeserializeObject(objFileTool.readJsonDataFromFile());
-            baseConocimiento = jsonData.ToObject<SortedDictionary<int,string>>();
+            baseConocimiento = jsonData.ToObject<SortedDictionary<int, string>>();
             txtMainVocabulary.Text = "";
-            foreach (KeyValuePair<int,string>valor in baseConocimiento)
+            foreach (KeyValuePair<int, string> valor in baseConocimiento)
             {
-                txtMainVocabulary.Text += valor.Value+", ";
+                txtMainVocabulary.Text += valor.Value + ", ";
 
             }
-           
+
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -285,19 +304,114 @@ namespace IngredientMinery
 
                 if (baseConocimiento.ContainsValue(valueSeleted))
                 {
-                    baseConocimiento.Remove(baseConocimiento.FirstOrDefault(x=>x.Value == valueSeleted).Key);
+                    baseConocimiento.Remove(baseConocimiento.FirstOrDefault(x => x.Value == valueSeleted).Key);
                     actualizarVocaBulary();
                 }
-              
-               
-                
+
+
+
             }
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            addWordBaseConocimiento(txtFrencuenciaPalabras.SelectedText);
+            evaluarIngredientes();
+        }
+
+        private void btnTraducir_Click(object sender, EventArgs e)
+        {
+            CheckForIllegalCrossThreadCalls = false;
+            Task translateIngredientesAsync = new Task(() =>
+            {
+                FindRowsTotranslate();
+
+            });
+            translateIngredientesAsync.Start();
+            
+        }
+        private void translateRegitros(int recetaID,int ingredienteID, string IngredienteDescripcion,string recetaNombre)
+        {
+            string receta = string.Empty, ingrediente=string.Empty,sQlStr=string.Empty;
+           
+            receta = transLate(recetaNombre);
+            ingrediente = transLate(IngredienteDescripcion);
+            sQlStr = "insert into translate (recipeID,recipeName,ingredienteID,ingredienteDescripcion) values ("
+                    +" {0},'{1}',{2},'{3}')";
+            sQlStr = string.Format(sQlStr, recetaID, receta, ingredienteID, ingrediente);
+            try
+            {
+                objDataAccess.EjecutaQuery(sQlStr);
+                registroTraducidos++;
+                lbTraducciones.Text = registroTraducidos.ToString();
+
+            }catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
         }
-    }   
-    
+        private void FindRowsTotranslate()
+        {
+            int recipeID = 0, ingredientID = 0;
+            string RecipeNombre = string.Empty;
+            string ingredientValue = string.Empty;
+            DataTable Data = new DataTable();
+
+            try
+            {
+
+                if (txtLimit.Text != "")
+                {
+                    string sQlString = "SELECT * FROM receta_ingredientes limit 0,{0}";
+                    sQlString = string.Format(sQlString, txtLimit.Text);
+                    Data = objDataAccess.EjecutaQuery(sQlString);
+                    foreach (DataRow ingrediente in Data.Rows)
+                    {
+
+                        ingredientValue = ingrediente["descripcion"].ToString();
+                        recipeID = Convert.ToInt32(ingrediente["recipeID"].ToString());
+                        ingredientID = Convert.ToInt32(ingrediente["ingredienteID"].ToString());
+                        RecipeNombre = ingrediente["RecetaNombre"].ToString();
+                        translateRegitros(recipeID, ingredientID, ingredientValue, RecipeNombre);
+                    }
+                    MessageBox.Show("Proceso Concluido con exito");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
+        }
+        private string transLate(string dataToTranslate)
+        {
+            string resultado = string.Empty;
+
+            Translator t = new Translator();
+            resultado = t.Translate(dataToTranslate, "English", "Spanish");
+            return resultado;
+        }
+        private void AddComboColum()
+        {
+            SubClassOf.Items.AddRange(classOf.ToArray());
+        }
+        private void cargarDataClasificacion()
+        {
+            string sQlString = "SELECT * FROM translate limit 0,{0}";
+            sQlString = string.Format(sQlString, txtLimit.Text);
+            DataTable  DataClasificacion = objDataAccess.EjecutaQuery(sQlString);
+            dgDatosClasificacion.AutoGenerateColumns = false;
+            dgDatosClasificacion.DataSource = DataClasificacion;
+            AddComboColum();
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabControl1.SelectedTab == tabPage3)
+            {
+                cargarDataClasificacion();
+            }
+        }
+    }
 }
