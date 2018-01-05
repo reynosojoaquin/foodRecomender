@@ -51,6 +51,10 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lbRegistroEncontrados = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnGuardarCambios = new System.Windows.Forms.Button();
+            this.chkModify = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgDatosClasificacion = new System.Windows.Forms.DataGridView();
             this.RecipeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +62,7 @@
             this.ingredienteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IngredienteDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubClassOf = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.txtLimit = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -65,11 +70,12 @@
             this.btnEvaluarBaseDatos = new System.Windows.Forms.Button();
             this.btnEvaluar = new System.Windows.Forms.Button();
             this.btnMarcarRegistro = new System.Windows.Forms.Button();
-            this.chkModify = new System.Windows.Forms.CheckBox();
-            this.btnGuardarCambios = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lbRegistroEncontrados = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnBuscarRegistros = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgOwlData = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbRegistroEncontradosOwl = new System.Windows.Forms.Label();
+            this.btnBuscarDataOwl = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -80,7 +86,10 @@
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDatosClasificacion)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgOwlData)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -285,6 +294,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnBuscarRegistros);
             this.tabPage3.Controls.Add(this.lbRegistroEncontrados);
             this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Controls.Add(this.btnGuardarCambios);
@@ -297,6 +307,44 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Clasificacion";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lbRegistroEncontrados
+            // 
+            this.lbRegistroEncontrados.AutoSize = true;
+            this.lbRegistroEncontrados.Location = new System.Drawing.Point(241, 503);
+            this.lbRegistroEncontrados.Name = "lbRegistroEncontrados";
+            this.lbRegistroEncontrados.Size = new System.Drawing.Size(13, 13);
+            this.lbRegistroEncontrados.TabIndex = 4;
+            this.lbRegistroEncontrados.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(124, 502);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(114, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Registros Encontrados";
+            // 
+            // btnGuardarCambios
+            // 
+            this.btnGuardarCambios.Location = new System.Drawing.Point(763, 523);
+            this.btnGuardarCambios.Name = "btnGuardarCambios";
+            this.btnGuardarCambios.Size = new System.Drawing.Size(117, 26);
+            this.btnGuardarCambios.TabIndex = 2;
+            this.btnGuardarCambios.Text = "Guardar Clasificacion";
+            this.btnGuardarCambios.UseVisualStyleBackColor = true;
+            this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
+            // 
+            // chkModify
+            // 
+            this.chkModify.AutoSize = true;
+            this.chkModify.Location = new System.Drawing.Point(12, 500);
+            this.chkModify.Name = "chkModify";
+            this.chkModify.Size = new System.Drawing.Size(106, 17);
+            this.chkModify.TabIndex = 1;
+            this.chkModify.Text = "Modificar valores";
+            this.chkModify.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -365,6 +413,20 @@
             this.SubClassOf.FillWeight = 150F;
             this.SubClassOf.HeaderText = "SubClassOf";
             this.SubClassOf.Name = "SubClassOf";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.btnBuscarDataOwl);
+            this.tabPage2.Controls.Add(this.lbRegistroEncontradosOwl);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(886, 558);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "Owl data";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -436,53 +498,61 @@
             this.btnMarcarRegistro.UseVisualStyleBackColor = true;
             this.btnMarcarRegistro.Click += new System.EventHandler(this.btnMarcarRegistro_Click);
             // 
-            // chkModify
+            // btnBuscarRegistros
             // 
-            this.chkModify.AutoSize = true;
-            this.chkModify.Location = new System.Drawing.Point(12, 500);
-            this.chkModify.Name = "chkModify";
-            this.chkModify.Size = new System.Drawing.Size(106, 17);
-            this.chkModify.TabIndex = 1;
-            this.chkModify.Text = "Modificar valores";
-            this.chkModify.UseVisualStyleBackColor = true;
+            this.btnBuscarRegistros.Location = new System.Drawing.Point(642, 523);
+            this.btnBuscarRegistros.Name = "btnBuscarRegistros";
+            this.btnBuscarRegistros.Size = new System.Drawing.Size(117, 26);
+            this.btnBuscarRegistros.TabIndex = 5;
+            this.btnBuscarRegistros.Text = "Buscar Data";
+            this.btnBuscarRegistros.UseVisualStyleBackColor = true;
+            this.btnBuscarRegistros.Click += new System.EventHandler(this.btnBuscarRegistros_Click);
             // 
-            // btnGuardarCambios
+            // groupBox2
             // 
-            this.btnGuardarCambios.Location = new System.Drawing.Point(763, 509);
-            this.btnGuardarCambios.Name = "btnGuardarCambios";
-            this.btnGuardarCambios.Size = new System.Drawing.Size(117, 33);
-            this.btnGuardarCambios.TabIndex = 2;
-            this.btnGuardarCambios.Text = "Guardar Clasificacion";
-            this.btnGuardarCambios.UseVisualStyleBackColor = true;
-            this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
+            this.groupBox2.Controls.Add(this.dgOwlData);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(880, 471);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
             // 
-            // label4
+            // dgOwlData
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(124, 502);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Registros Encontrados";
+            this.dgOwlData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgOwlData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgOwlData.Location = new System.Drawing.Point(3, 16);
+            this.dgOwlData.Name = "dgOwlData";
+            this.dgOwlData.Size = new System.Drawing.Size(874, 452);
+            this.dgOwlData.TabIndex = 0;
             // 
-            // lbRegistroEncontrados
+            // label6
             // 
-            this.lbRegistroEncontrados.AutoSize = true;
-            this.lbRegistroEncontrados.Location = new System.Drawing.Point(241, 503);
-            this.lbRegistroEncontrados.Name = "lbRegistroEncontrados";
-            this.lbRegistroEncontrados.Size = new System.Drawing.Size(13, 13);
-            this.lbRegistroEncontrados.TabIndex = 4;
-            this.lbRegistroEncontrados.Text = "0";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 477);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(108, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Registro encontrados";
             // 
-            // tabPage2
+            // lbRegistroEncontradosOwl
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(886, 558);
-            this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "Owl data";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.lbRegistroEncontradosOwl.AutoSize = true;
+            this.lbRegistroEncontradosOwl.Location = new System.Drawing.Point(122, 477);
+            this.lbRegistroEncontradosOwl.Name = "lbRegistroEncontradosOwl";
+            this.lbRegistroEncontradosOwl.Size = new System.Drawing.Size(13, 13);
+            this.lbRegistroEncontradosOwl.TabIndex = 2;
+            this.lbRegistroEncontradosOwl.Text = "0";
+            // 
+            // btnBuscarDataOwl
+            // 
+            this.btnBuscarDataOwl.Location = new System.Drawing.Point(687, 527);
+            this.btnBuscarDataOwl.Name = "btnBuscarDataOwl";
+            this.btnBuscarDataOwl.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscarDataOwl.TabIndex = 3;
+            this.btnBuscarDataOwl.Text = "Buscar Data";
+            this.btnBuscarDataOwl.UseVisualStyleBackColor = true;
             // 
             // frmMineria
             // 
@@ -510,8 +580,12 @@
             this.tabPage3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgDatosClasificacion)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgOwlData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -559,6 +633,12 @@
         private System.Windows.Forms.Label lbRegistroEncontrados;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnBuscarRegistros;
+        private System.Windows.Forms.Button btnBuscarDataOwl;
+        private System.Windows.Forms.Label lbRegistroEncontradosOwl;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dgOwlData;
     }
 }
 

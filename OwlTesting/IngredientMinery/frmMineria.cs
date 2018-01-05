@@ -420,7 +420,7 @@ namespace IngredientMinery
         {
             if(tabControl1.SelectedTab == tabPage3)
             {
-                cargarDataClasificacion();
+              
             }
         }
         private void guardarCambiosClasificacion()
@@ -445,6 +445,18 @@ namespace IngredientMinery
         private void btnGuardarCambios_Click(object sender, EventArgs e)
         {
             guardarCambiosClasificacion();
+        }
+
+        private void btnBuscarRegistros_Click(object sender, EventArgs e)
+        {
+            cargarDataClasificacion();
+        }
+        private void cargarDataMigracionToOwl()
+        {
+            string sQlString = string.Empty;
+            sQlString = "SELECT * FROM translate where classOf is not null  limit 0,{0}";
+            sQlString = string.Format(sQlString, txtLimit.Text);
+            DataTable DataToOwl = objDataAccess.EjecutaQuery(sQlString);
         }
     }
 }
