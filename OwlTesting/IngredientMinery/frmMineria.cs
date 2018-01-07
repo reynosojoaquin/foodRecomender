@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -13,6 +12,12 @@ using Newtonsoft;
 using Newtonsoft.Json;
 using System.IO;
 using RavSoft.GoogleTranslator;
+using com.hp.hpl.jena.rdf.model;
+using com.hp.hpl.jena.util;
+using com.hp.hpl.jena.vocabulary;
+using System;
+using java.io;
+
 namespace IngredientMinery
 {
     public partial class frmMineria : Form
@@ -453,10 +458,46 @@ namespace IngredientMinery
         }
         private void cargarDataMigracionToOwl()
         {
-            string sQlString = string.Empty;
-            sQlString = "SELECT * FROM translate where classOf is not null  limit 0,{0}";
-            sQlString = string.Format(sQlString, txtLimit.Text);
-            DataTable DataToOwl = objDataAccess.EjecutaQuery(sQlString);
+            if(txtLimit.Text != "")
+            { 
+                 string sQlString = string.Empty;
+                 sQlString = "SELECT * FROM translate where classOf is not null  limit 0,{0}";
+                 sQlString = string.Format(sQlString, txtLimit.Text);
+                 DataTable DataToOwl = objDataAccess.EjecutaQuery(sQlString);
+                dgOwlData.AutoGenerateColumns = false;
+                 dgOwlData.DataSource = DataToOwl;
+            }
+        }
+
+        private void btnBuscarDataOwl_Click(object sender, EventArgs e)
+        {
+            cargarDataMigracionToOwl();
+        }
+
+        private void btnViewFile_Click(object sender, EventArgs e)
+        {
+            visualizarFile();
+        }
+        private void visualizarFile()
+        {
+            string inputFileName = objFileTool.GetAplicationDirectory()+ "FoodOntologyRecomenderOwl.owl";
+            Model model = ModelFactory.createDefaultModel();
+
+            // use the class loader to find the input file
+            InputStream inputStream = FileManager.get().open(inputFileName);
+            if (inputStream == null)
+            {
+                throw new ArgumentException("File: " + inputFileName + " not found");
+            }
+            // read the RDF/XML file
+            model.read(new InputStreamReader(inputStream), "");
+            
+            frmVisualizarOwlFile objFileViewer = new frmVisualizarOwlFile();
+            // print the graph as RDF/XML
+            java.io.StringWriter stringWriter = new java.io.StringWriter();
+            model.write(stringWriter, "RDF / XML - ABBREV");
+            objFileViewer.OwlFileStr = stringWriter.toString();
+            objFileViewer.ShowDialog();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace RecipeScraper.Lib
     {
         public string GetAplicationDirectory()
         {
-            return Application.StartupPath + "/";
+            return Application.StartupPath + "\\";
         }
         public void WriteLogFile(string data)
         {
