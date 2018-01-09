@@ -15,6 +15,7 @@ using RavSoft.GoogleTranslator;
 using com.hp.hpl.jena.rdf.model;
 using com.hp.hpl.jena.util;
 using com.hp.hpl.jena.vocabulary;
+using com.hp.hpl.jena.ontology;
 using System;
 using java.io;
 
@@ -423,9 +424,9 @@ namespace IngredientMinery
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(tabControl1.SelectedTab == tabPage3)
+            if(tabControl1.SelectedTab == tabPage2)
             {
-              
+                llenarComboClassOf();
             }
         }
         private void guardarCambiosClasificacion()
@@ -461,8 +462,19 @@ namespace IngredientMinery
             if(txtLimit.Text != "")
             { 
                  string sQlString = string.Empty;
-                 sQlString = "SELECT * FROM translate where classOf is not null  limit 0,{0}";
-                 sQlString = string.Format(sQlString, txtLimit.Text);
+                 
+                switch (cboClassOf.Text)
+                {
+                    case "Todo":
+                        sQlString = "SELECT * FROM translate where classOf is not null  limit 0,{0}";
+                        sQlString = string.Format(sQlString, txtLimit.Text);
+                        break;
+                    default:
+                        sQlString = "SELECT * FROM translate where classOf = '{1}'  limit 0,{0}";
+                        sQlString = string.Format(sQlString, txtLimit.Text, cboClassOf.Text);
+                        break;
+                }
+               
                  DataTable DataToOwl = objDataAccess.EjecutaQuery(sQlString);
                 dgOwlData.AutoGenerateColumns = false;
                  dgOwlData.DataSource = DataToOwl;
@@ -495,9 +507,57 @@ namespace IngredientMinery
             frmVisualizarOwlFile objFileViewer = new frmVisualizarOwlFile();
             // print the graph as RDF/XML
             java.io.StringWriter stringWriter = new java.io.StringWriter();
-            model.write(stringWriter, "RDF / XML - ABBREV");
+            model.write(stringWriter, "RDF/XML-ABBREV");
             objFileViewer.OwlFileStr = stringWriter.toString();
             objFileViewer.ShowDialog();
         }
+
+        private void btnMigrar_Click(object sender, EventArgs e)
+        {
+            migrarDataToOwl();
+        }
+        private void migrarDataToOwl()
+        {
+            string inputFileName = objFileTool.GetAplicationDirectory() + "FoodOntologyRecomenderOwl.owl";
+            string uri = string.Empty,StrClassName = string.Empty,individualValue = string.Empty,
+                individualID =string.Empty,recipeIdValue =string.Empty;
+            OntClass clase = null;
+            Individual ObjIndividual = null;
+           
+            OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+            uri = "http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#";
+            // use the class loader to find the input file
+            InputStream inputStream = FileManager.get().open(inputFileName);
+            if (inputStream == null)
+            {
+                throw new ArgumentException("File: " + inputFileName + " not found");
+            }
+            // read the RDF/XML file
+            model.read(new InputStreamReader(inputStream), "");
+            foreach (DataGridViewRow fila in dgOwlData.Rows)
+            {
+
+                StrClassName = fila.Cells["ClassOfValue"].Value.ToString();
+                individualValue = fila.Cells["ingredienteValue"].Value.ToString();
+                individualID = fila.Cells["ingredienteIDValue"].Value.ToString();
+                recipeIdValue = fila.Cells["recetaID"].Value.ToString();
+                clase = model.getOntClass(uri+StrClassName);
+                ObjIndividual = model.createIndividual(uri + ":" + recipeIdValue+"_"+individualID, clase);
+                ObjIndividual.setPropertyValue(RDFS.label, model.createLiteral(individualValue, "Es"));
+                java.io.File file = new java.io.File(inputFileName);
+                model.write(new PrintWriter(file));
+
+            }
+            MessageBox.Show("Datos Registrados con exito");
+        }
+        private void llenarComboClassOf()
+        {
+            DataTable classOf = objDataAccess.EjecutaQuery("Select * from classof order by id desc");
+            cboClassOf.DisplayMember = "Descripcion";
+            cboClassOf.ValueMember = "ID";
+            cboClassOf.DataSource = classOf;
+            cboClassOf.SelectedItem = 0;
+        }
+
     }
 }

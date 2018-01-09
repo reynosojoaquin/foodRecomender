@@ -64,17 +64,13 @@
             this.IngredienteDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubClassOf = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnViewFile = new System.Windows.Forms.Button();
             this.btnMigrar = new System.Windows.Forms.Button();
             this.btnBuscarDataOwl = new System.Windows.Forms.Button();
             this.lbRegistroEncontradosOwl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgOwlData = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.txtLimit = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -82,7 +78,13 @@
             this.btnEvaluarBaseDatos = new System.Windows.Forms.Button();
             this.btnEvaluar = new System.Windows.Forms.Button();
             this.btnMarcarRegistro = new System.Windows.Forms.Button();
-            this.btnViewFile = new System.Windows.Forms.Button();
+            this.cboClassOf = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.recetaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingredienteIDValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingredienteValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClassOfValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -433,6 +435,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.cboClassOf);
             this.tabPage2.Controls.Add(this.btnViewFile);
             this.tabPage2.Controls.Add(this.btnMigrar);
             this.tabPage2.Controls.Add(this.btnBuscarDataOwl);
@@ -447,6 +451,16 @@
             this.tabPage2.Text = "Owl data";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnViewFile
+            // 
+            this.btnViewFile.Location = new System.Drawing.Point(666, 526);
+            this.btnViewFile.Name = "btnViewFile";
+            this.btnViewFile.Size = new System.Drawing.Size(96, 23);
+            this.btnViewFile.TabIndex = 5;
+            this.btnViewFile.Text = "View Owl File";
+            this.btnViewFile.UseVisualStyleBackColor = true;
+            this.btnViewFile.Click += new System.EventHandler(this.btnViewFile_Click);
+            // 
             // btnMigrar
             // 
             this.btnMigrar.Location = new System.Drawing.Point(764, 526);
@@ -455,6 +469,7 @@
             this.btnMigrar.TabIndex = 4;
             this.btnMigrar.Text = "Migrar Data To Owl";
             this.btnMigrar.UseVisualStyleBackColor = true;
+            this.btnMigrar.Click += new System.EventHandler(this.btnMigrar_Click);
             // 
             // btnBuscarDataOwl
             // 
@@ -502,61 +517,17 @@
             this.dgOwlData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgOwlData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgOwlData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this.recetaID,
             this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewComboBoxColumn1});
+            this.ingredienteIDValue,
+            this.ingredienteValue,
+            this.ClassOfValue});
             this.dgOwlData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgOwlData.Location = new System.Drawing.Point(3, 16);
             this.dgOwlData.Name = "dgOwlData";
             this.dgOwlData.RowHeadersVisible = false;
             this.dgOwlData.Size = new System.Drawing.Size(874, 452);
             this.dgOwlData.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "recipeID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Receta ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "recipeName";
-            this.dataGridViewTextBoxColumn2.FillWeight = 350F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "R Nombre";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ingredienteID";
-            this.dataGridViewTextBoxColumn3.FillWeight = 90F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Ingrediente ID";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "ingredienteDescripcion";
-            this.dataGridViewTextBoxColumn4.FillWeight = 350F;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Ingrediente Descripcioon";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewComboBoxColumn1
-            // 
-            this.dataGridViewComboBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewComboBoxColumn1.DataPropertyName = "classof";
-            this.dataGridViewComboBoxColumn1.FillWeight = 150F;
-            this.dataGridViewComboBoxColumn1.HeaderText = "SubClassOf";
-            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
-            this.dataGridViewComboBoxColumn1.ReadOnly = true;
-            this.dataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewComboBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label2
             // 
@@ -628,15 +599,66 @@
             this.btnMarcarRegistro.UseVisualStyleBackColor = true;
             this.btnMarcarRegistro.Click += new System.EventHandler(this.btnMarcarRegistro_Click);
             // 
-            // btnViewFile
+            // cboClassOf
             // 
-            this.btnViewFile.Location = new System.Drawing.Point(666, 526);
-            this.btnViewFile.Name = "btnViewFile";
-            this.btnViewFile.Size = new System.Drawing.Size(96, 23);
-            this.btnViewFile.TabIndex = 5;
-            this.btnViewFile.Text = "View Owl File";
-            this.btnViewFile.UseVisualStyleBackColor = true;
-            this.btnViewFile.Click += new System.EventHandler(this.btnViewFile_Click);
+            this.cboClassOf.FormattingEnabled = true;
+            this.cboClassOf.Location = new System.Drawing.Point(666, 480);
+            this.cboClassOf.Name = "cboClassOf";
+            this.cboClassOf.Size = new System.Drawing.Size(210, 21);
+            this.cboClassOf.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(600, 485);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(62, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "SubClassOf";
+            // 
+            // recetaID
+            // 
+            this.recetaID.DataPropertyName = "recipeID";
+            this.recetaID.HeaderText = "Receta ID";
+            this.recetaID.Name = "recetaID";
+            this.recetaID.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "recipeName";
+            this.dataGridViewTextBoxColumn2.FillWeight = 350F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "R Nombre";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // ingredienteIDValue
+            // 
+            this.ingredienteIDValue.DataPropertyName = "ingredienteID";
+            this.ingredienteIDValue.FillWeight = 90F;
+            this.ingredienteIDValue.HeaderText = "Ingrediente ID";
+            this.ingredienteIDValue.Name = "ingredienteIDValue";
+            this.ingredienteIDValue.ReadOnly = true;
+            this.ingredienteIDValue.Visible = false;
+            // 
+            // ingredienteValue
+            // 
+            this.ingredienteValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ingredienteValue.DataPropertyName = "ingredienteDescripcion";
+            this.ingredienteValue.FillWeight = 350F;
+            this.ingredienteValue.HeaderText = "Ingrediente Descripcioon";
+            this.ingredienteValue.Name = "ingredienteValue";
+            this.ingredienteValue.ReadOnly = true;
+            // 
+            // ClassOfValue
+            // 
+            this.ClassOfValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClassOfValue.DataPropertyName = "classof";
+            this.ClassOfValue.FillWeight = 150F;
+            this.ClassOfValue.HeaderText = "SubClassOf";
+            this.ClassOfValue.Name = "ClassOfValue";
+            this.ClassOfValue.ReadOnly = true;
+            this.ClassOfValue.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClassOfValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // frmMineria
             // 
@@ -724,12 +746,14 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnMigrar;
         private System.Windows.Forms.DataGridView dgOwlData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewComboBoxColumn1;
         private System.Windows.Forms.Button btnViewFile;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cboClassOf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recetaID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ingredienteIDValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ingredienteValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClassOfValue;
     }
 }
 
