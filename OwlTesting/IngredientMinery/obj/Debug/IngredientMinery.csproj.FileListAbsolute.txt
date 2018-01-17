@@ -52,3 +52,4 @@ D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\MicroDataScrap
 D:\projectos\foodRecomender\OwlTesting\IngredientMinery\bin\Debug\MicroDataScraper.exe.config
 D:\projectos\foodRecomender\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.exe
 D:\projectos\foodRecomender\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.pdb
+D:\projectos\foodRecomender\OwlTesting\IngredientMinery\obj\Debug\IngredientMinery.FrmNaturalLanguje.resources

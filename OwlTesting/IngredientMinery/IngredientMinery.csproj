@@ -64,6 +64,12 @@
     <Compile Include="frmMineria.Designer.cs">
       <DependentUpon>frmMineria.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmNaturalLanguje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNaturalLanguje.Designer.cs">
+      <DependentUpon>FrmNaturalLanguje.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVisualizarOwlFile.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     <Compile Include="Translator.cs" />
     <EmbeddedResource Include="frmMineria.resx">
       <DependentUpon>frmMineria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNaturalLanguje.resx">
+      <DependentUpon>FrmNaturalLanguje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVisualizarOwlFile.resx">
       <DependentUpon>frmVisualizarOwlFile.cs</DependentUpon>

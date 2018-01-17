@@ -2,3 +2,9 @@ C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\Inte
 C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\bin\Debug\FoodRecomenderDataAccess.pdb
 C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\obj\Debug\FoodRecomenderDataAccess.dll
 C:\Users\Joaquin\Google Drive\Murcia\Trabajo fin de master (TFM)\Desarrollo\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\obj\Debug\FoodRecomenderDataAccess.pdb
+D:\projectos\foodRecomender\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\bin\Debug\FoodRecomenderDataAccess.dll
+D:\projectos\foodRecomender\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\bin\Debug\FoodRecomenderDataAccess.pdb
+D:\projectos\foodRecomender\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\obj\Debug\FoodRecomenderDataAccess.csprojResolveAssemblyReference.cache
+D:\projectos\foodRecomender\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\obj\Debug\FoodRecomenderDataAccess.csproj.CoreCompileInputs.cache
+D:\projectos\foodRecomender\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\obj\Debug\FoodRecomenderDataAccess.dll
+D:\projectos\foodRecomender\InteligentFoodRecomenderSystem\FoodRecomenderDataAccess\obj\Debug\FoodRecomenderDataAccess.pdb

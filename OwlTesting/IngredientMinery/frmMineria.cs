@@ -33,8 +33,9 @@ namespace IngredientMinery
         FileTool objFileTool = new FileTool();
         string vocabulary = string.Empty;
         string[] classOf = { "Embutido",
-            "pan","Pasta","aceite","adereso","cereal","condimento","especia",
-        "fruta","hortalizas","nuez","semillas","verduras","vino","carne","vinagre"};
+            "Pan","Pasta","Aceite","Adereso","Cereal","Condimento","Especia",
+        "Fruta","Hortalizas","Nuez","Semillas","Verduras","Vino","Carne","Vinagre","Lacteos","Huevos",
+        "Flores"};
         string[] palabras = { };
         public frmMineria()
         {
@@ -400,6 +401,7 @@ namespace IngredientMinery
         }
         private void AddComboColum()
         {
+            SubClassOf.Items.Clear();
             SubClassOf.Items.AddRange(classOf.ToArray());
         }
         private void cargarDataClasificacion()
@@ -431,16 +433,20 @@ namespace IngredientMinery
         }
         private void guardarCambiosClasificacion()
         {
-             string sqlData = "update translate set classOf = '{0}' where recipeID = {1} and ingredienteID = {2} ";
+             string sqlData = "";
             try
             {
                 foreach (DataGridViewRow fila in dgDatosClasificacion.Rows)
                 {
-                    if (fila.Cells["SubClassOf"].Value.ToString() != "") {
-                        sqlData = string.Format(sqlData, fila.Cells["SubClassOf"].Value, fila.Cells["RecipeID"].Value, fila.Cells["ingredienteID"].Value);
-                        objDataAccess.EjecutaQuery(sqlData);
+                    sqlData = "update translate set classOf = '{0}' where recipeID = {1} and ingredienteID = {2} ";
+                    if (fila.Cells["SubClassOf"].Value != null) { 
+                        if (fila.Cells["SubClassOf"].Value.ToString() != "") {
+                            sqlData = string.Format(sqlData, fila.Cells["SubClassOf"].Value, fila.Cells["RecipeID"].Value, fila.Cells["ingredienteID"].Value);
+                            objDataAccess.EjecutaQuery(sqlData);
+                        }
                     }
                 }
+
                 MessageBox.Show("Datos Registrados con exito"); 
             }catch (Exception error)
             {
@@ -450,7 +456,14 @@ namespace IngredientMinery
 
         private void btnGuardarCambios_Click(object sender, EventArgs e)
         {
-            guardarCambiosClasificacion();
+            CheckForIllegalCrossThreadCalls = false;
+            Task guardarCambiosClasificacionAsyc = new Task(() =>
+            {
+                guardarCambiosClasificacion();
+                cargarDataClasificacion();
+            });
+            guardarCambiosClasificacionAsyc.Start();
+           
         }
 
         private void btnBuscarRegistros_Click(object sender, EventArgs e)
@@ -466,7 +479,7 @@ namespace IngredientMinery
                 switch (cboClassOf.Text)
                 {
                     case "Todo":
-                        sQlString = "SELECT * FROM translate where classOf is not null  limit 0,{0}";
+                        sQlString = "SELECT * FROM translate where  mainIngredient <> ''  limit 0,{0}";
                         sQlString = string.Format(sQlString, txtLimit.Text);
                         break;
                     default:
@@ -559,5 +572,57 @@ namespace IngredientMinery
             cboClassOf.SelectedItem = 0;
         }
 
+        private void btnTraducirIngredientes_Click(object sender, EventArgs e)
+        {
+            int cont = 0;
+            using(FileStream fs = new FileStream(objFileTool.GetAplicationDirectory() + "ingredientes.txt", FileMode.Open))
+            {
+                using(StreamReader sr = new StreamReader(fs))
+                {
+                    while(sr.Peek()>= 0)
+                    {
+                        using (StreamWriter File = new StreamWriter(objFileTool.GetAplicationDirectory() + "ingredientes_ES.txt", true))
+                        {
+                            cont++;
+                            lbTraducciones.Text = cont.ToString();
+                            File.WriteLine(transLate(sr.ReadLine()));
+                        }
+                    }
+                }
+            }
+            MessageBox.Show("Proceso concluido con exito");
+        }
+        private void registrarIngredientePrincipal()
+        {
+            int cont = 0;
+            string sqlStr = string.Empty;
+            string ingrediente = string.Empty;
+            using (FileStream fs = new FileStream(objFileTool.GetAplicationDirectory() + "ingredientes_ES.txt", FileMode.Open))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    while (sr.Peek() >= 0)
+                    {
+                      cont++;
+                        ingrediente = sr.ReadLine();
+                        sqlStr = "Update translate set mainIngredient = '"+ingrediente+"' where ingredienteDescripcion like '%"+ingrediente+"%' and  mainIngredient = ''";
+                        objDataAccess.EjecutaQuery(sqlStr);
+                        lbTotalIngredientes.Text = cont.ToString();
+                         
+                    }
+                }
+            }
+            MessageBox.Show("Proceso concluido con exito");
+        }
+
+        private void btnRegistrarIngrediente_Click(object sender, EventArgs e)
+        {
+            CheckForIllegalCrossThreadCalls = false;
+            Task RegistrarIngredientesPrincipalAsync = new Task(() =>
+            {
+                registrarIngredientePrincipal();
+            });
+            RegistrarIngredientesPrincipalAsync.Start();
+        }
     }
 }
