@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `foodrecomendersystemdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `foodrecomendersystemdb`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: foodrecomendersystemdb
@@ -28,6 +26,7 @@ CREATE TABLE `main` (
   `ingredientes` varchar(250) DEFAULT NULL,
   `id` int(11) NOT NULL,
   `vocabulary` text,
+  `classOf` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +37,7 @@ CREATE TABLE `main` (
 
 LOCK TABLES `main` WRITE;
 /*!40000 ALTER TABLE `main` DISABLE KEYS */;
-INSERT INTO `main` VALUES (NULL,1,'about,added,and,as,drained,teaspoon,tablespoon,fluid ounce,gill,cup ,pint ,quart,gallon,ml,pound,ounce,mg,Length,mm,cm,or,oz,red,your,black,of,no,oscar,part,pinch,plain,powder,preferably,raw,reduced,refrigerated,rinsed,salad,see,serving,scrubbed,sea,brand,bread,brown,can,choice,canned,coarse,container,cooked,cooking,cored,crumbled,crushed,cups,cut,Dash,dog,deli,diced,divided,dried,extra,for,firm,fat,free,fresh,Freshly,short,sharp,soy,spice,spray,stalk,smoked,slivered,sliced,teaspoons,Tip,Tips,to,toasted,virgin,wheat,white,whole,chopped,Chopped,cubed,halved,ground,grilled,into,leaves,large,light,mashed,mixed,Oscar,shredded,stemmed,tablespoons,com,cubes,de,hot,Hot,Mayer,optional,packed,paste,style,skim,such,sweet,cup,minced,ounces,inch,very,');
+INSERT INTO `main` VALUES (NULL,1,'about,added,and,as,drained,teaspoon,tablespoon,fluid ounce,gill,cup ,pint ,quart,gallon,ml,pound,ounce,mg,Length,mm,cm,or,oz,red,your,black,of,no,oscar,part,pinch,plain,powder,preferably,raw,reduced,refrigerated,rinsed,salad,see,serving,scrubbed,sea,brand,bread,brown,can,choice,canned,coarse,container,cooked,cooking,cored,crumbled,crushed,cups,cut,Dash,dog,deli,diced,divided,dried,extra,for,firm,fat,free,fresh,Freshly,short,sharp,soy,spice,spray,stalk,smoked,slivered,sliced,teaspoons,Tip,Tips,to,toasted,virgin,wheat,white,whole,chopped,Chopped,cubed,halved,ground,grilled,into,leaves,large,light,mashed,mixed,Oscar,shredded,stemmed,tablespoons,com,cubes,de,hot,Hot,Mayer,optional,packed,paste,style,skim,such,sweet,cup,minced,ounces,inch,very,',NULL);
 /*!40000 ALTER TABLE `main` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-20 21:53:04
+-- Dump completed on 2018-01-16 22:14:05

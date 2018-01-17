@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `foodrecomendersystemdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `foodrecomendersystemdb`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: foodrecomendersystemdb
@@ -54,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-20 21:53:03
+-- Dump completed on 2018-01-16 22:14:02

@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `foodrecomendersystemdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `foodrecomendersystemdb`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: foodrecomendersystemdb
@@ -27,6 +25,7 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE VIEW `receta_ingredientes` AS SELECT 
  1 AS `recipeID`,
+ 1 AS `RecetaNombre`,
  1 AS `descripcion`,
  1 AS `ingredienteID`*/;
 SET character_set_client = @saved_cs_client;
@@ -44,7 +43,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `receta_ingredientes` AS select `recipe`.`recipeID` AS `recipeID`,`ingredientes`.`descripcion` AS `descripcion`,`ingredientes`.`ingredienteID` AS `ingredienteID` from (`recipe` left join `ingredientes` on((`ingredientes`.`recipeID` = `recipe`.`recipeID`))) */;
+/*!50001 VIEW `receta_ingredientes` AS select `recipe`.`recipeID` AS `recipeID`,`recipe`.`Nombre` AS `RecetaNombre`,`ingredientes`.`descripcion` AS `descripcion`,`ingredientes`.`ingredienteID` AS `ingredienteID` from (`recipe` left join `ingredientes` on((`ingredientes`.`recipeID` = `recipe`.`recipeID`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -58,4 +57,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-20 21:53:05
+-- Dump completed on 2018-01-16 22:14:19
