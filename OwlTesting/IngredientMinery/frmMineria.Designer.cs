@@ -88,6 +88,8 @@
             this.IngredienteDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubClassOfCurrentValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubClassOf = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.lbTotalRegistroClasificados = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -306,6 +308,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lbTotalRegistroClasificados);
+            this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.btnBuscarRegistros);
             this.tabPage3.Controls.Add(this.lbRegistroEncontrados);
             this.tabPage3.Controls.Add(this.label4);
@@ -695,6 +699,24 @@
             this.SubClassOf.HeaderText = "SubClassOf";
             this.SubClassOf.Name = "SubClassOf";
             // 
+            // lbTotalRegistroClasificados
+            // 
+            this.lbTotalRegistroClasificados.AutoSize = true;
+            this.lbTotalRegistroClasificados.Location = new System.Drawing.Point(408, 504);
+            this.lbTotalRegistroClasificados.Name = "lbTotalRegistroClasificados";
+            this.lbTotalRegistroClasificados.Size = new System.Drawing.Size(13, 13);
+            this.lbTotalRegistroClasificados.TabIndex = 7;
+            this.lbTotalRegistroClasificados.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(265, 504);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(137, 13);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Total Registros Clasificados";
+            // 
             // frmMineria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -792,6 +814,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IngredienteDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubClassOfCurrentValue;
         private System.Windows.Forms.DataGridViewComboBoxColumn SubClassOf;
+        private System.Windows.Forms.Label lbTotalRegistroClasificados;
+        private System.Windows.Forms.Label label9;
     }
 }
 

@@ -35,7 +35,7 @@ namespace IngredientMinery
         string[] classOf = { "Embutido",
             "Pan","Pasta","Aceite","Adereso","Cereal","Condimento","Especia",
         "Fruta","Hortalizas","Nuez","Semillas","Verduras","Vino","Carne","Vinagre","Lacteos","Huevos",
-        "Flores"};
+        "Flores","Enlatados"};
         string[] palabras = { };
         public frmMineria()
         {
@@ -422,6 +422,7 @@ namespace IngredientMinery
             dgDatosClasificacion.AutoGenerateColumns = false;
             dgDatosClasificacion.DataSource = DataClasificacion;
             AddComboColum();
+            lbTotalRegistroClasificados.Text = getTotalRegistrosClasificados().ToString();
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -623,6 +624,14 @@ namespace IngredientMinery
                 registrarIngredientePrincipal();
             });
             RegistrarIngredientesPrincipalAsync.Start();
+        }
+        private int getTotalRegistrosClasificados() {
+
+            int resultado = 0;
+            string sqlStr = "";
+            sqlStr = "select count(ingredienteID) as total from translate where classOf <> '' limit 0,50000";
+            resultado = Convert.ToInt32(objDataAccess.EjecutaQuery(sqlStr).Rows[0]["total"].ToString());          
+            return resultado;
         }
     }
 }
