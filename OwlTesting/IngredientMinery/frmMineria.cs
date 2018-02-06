@@ -35,7 +35,19 @@ namespace IngredientMinery
         string[] classOf = { "Embutido",
             "Pan","Pasta","Aceite","Adereso","Cereal","Condimento","Especia",
         "Fruta","Hortalizas","Nuez","Semillas","Verduras","Vino","Carne","Vinagre","Lacteos","Huevos",
-        "Flores","Enlatados"};
+        "Flores","Enlatados","Mariscos","Hongos","Tortillas","Endulcorante","Azucar","Integral","Agua","Jugo","Granos",
+        "Algas","Tuberculos","Especias","Berenjenas","Tomates","Lechugas","Coles","Cebollas","Calabazas","Bananas","Remolacha","Coliflor"
+        ,"Rabano","Pastinacas","Morron","Chile","Berro","Zanahorias","Hinojo","Pepino","Esparragos","Puerro"
+        ,"Pimiento","Espinaca","Perejil","Apio","Cilantro"
+
+
+        };
+
+
+
+
+        string[] recipeProperty = {"Todas", "Tipo Plato","Cultura","Nacionalidad","geolocalizacion" };
+        
         string[] palabras = { };
         public frmMineria()
         {
@@ -406,17 +418,65 @@ namespace IngredientMinery
         }
         private void cargarDataClasificacion()
         {
-            string sQlString = string.Empty;
+            string sQlString = string.Empty,param0 =string.Empty,param1=string.Empty,param2 =string.Empty;
+             sQlString = "SELECT recipeName,ingredienteID,ingredienteDescripcion,classOf,recipeID FROM recipedatatoowl where {0} {1} {2}  limit 0,{3}";
             switch (chkModify.Checked)
             {
                 case true:
-                    sQlString = "SELECT * FROM translate where classOf is not null  limit 0,{0}";
+                  
+                    switch (cboPropiedadesReceta.Text)
+                    {
+                       
+                       
+                        case "Tipo Plato":
+                            param0 =  " recipeTipoPLatoData <> '' ";
+                            break;
+                        case "Cultura":
+                            param0 = " recipeCulturaData <> '' ";
+                            break;
+                        case "Nacionalidad":
+                            param0 = " paisOrigen > 0 ";
+                            break;
+                        case "geolocalizacion":
+                            param0 = " geolocalizacion <> '' ";
+                            break;
+                     }
+                    if (cboSubClass.Text != "Todas")
+                    {
+                        if (param0 != "")
+                            param1 += " and ";
+                        param1 += " classOf = '"+cboSubClass.Text+"'";
+                    }
+                    else
+                    {
+                        
+                          param0 = "classOf <> ''";
+                    }
                     break;
                 case false:
-                    sQlString = "SELECT * FROM translate  where classOf = '' or classOf is null limit 0,{0}";
+
+                    sQlString = "SELECT recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl where classOf <> '' or classOf is not null and  limit 0,{0}";
+                    switch (cboPropiedadesReceta.Text)
+                    {
+                        
+                        case "Tipo Plato":
+                            sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl  where classOf = '' or classOf is null and recipeTipoPLatoData <> '' limit 0,{0}";
+                            break;
+                        case "Cultura":
+                            sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl  where classOf = '' or classOf is null and recipeCulturaData <> '' limit 0,{0}";
+                            break;
+                        case "Nacionalidad":
+                            sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl  where classOf = '' or classOf is null and paisOrigen > 0 limit 0,{0}";
+                            break;
+                        case "geolocalizacion":
+                            sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl  where classOf = '' or classOf is null and geolocalizacion <> '' limit 0,{0}";
+                            break;
+
+                    }
+                   
                     break;
             }
-            sQlString = string.Format(sQlString, txtLimit.Text);
+            sQlString = string.Format(sQlString,param0,param1,param2,txtLimit.Text);
             DataTable  DataClasificacion = objDataAccess.EjecutaQuery(sQlString);
             lbRegistroEncontrados.Text = DataClasificacion.Rows.Count.ToString();
             dgDatosClasificacion.AutoGenerateColumns = false;
@@ -430,7 +490,20 @@ namespace IngredientMinery
             if(tabControl1.SelectedTab == tabPage2)
             {
                 llenarComboClassOf();
+               
             }
+            if(tabControl1.SelectedTab == tabPage3)
+            {
+                llenarComboPropiedadesReseta();
+                cboPropiedadesReceta.SelectedIndex = 0;
+                llenarComboClassOfClasificacion();
+                cboSubClass.SelectedIndex = 0;
+            }
+        }
+        private void llenarComboClassOfClasificacion()
+        {
+            cboSubClass.Items.Add("Todas");
+            cboSubClass.Items.AddRange(classOf.ToArray());
         }
         private void guardarCambiosClasificacion()
         {
@@ -566,11 +639,8 @@ namespace IngredientMinery
         }
         private void llenarComboClassOf()
         {
-            DataTable classOf = objDataAccess.EjecutaQuery("Select * from classof order by id desc");
-            cboClassOf.DisplayMember = "Descripcion";
-            cboClassOf.ValueMember = "ID";
-            cboClassOf.DataSource = classOf;
-            cboClassOf.SelectedItem = 0;
+            cboClassOf.Items.AddRange(classOf.ToArray());
+            cboClassOf.SelectedIndex = 0;
         }
 
         private void btnTraducirIngredientes_Click(object sender, EventArgs e)
@@ -629,9 +699,37 @@ namespace IngredientMinery
 
             int resultado = 0;
             string sqlStr = "";
-            sqlStr = "select count(ingredienteID) as total from translate where classOf <> '' limit 0,50000";
-            resultado = Convert.ToInt32(objDataAccess.EjecutaQuery(sqlStr).Rows[0]["total"].ToString());          
+            if (txtLimit.Text != "")
+            {
+                sqlStr = "select count(ingredienteID) as total from translate where classOf <> '' limit 0,5000";
+               // sqlStr = string.Format(sqlStr, txtLimit.Text);
+                resultado = Convert.ToInt32(objDataAccess.EjecutaQuery(sqlStr).Rows[0]["total"].ToString());
+            }
             return resultado;
+        }
+        private DataTable getIngredientByName(string name)
+        {   DataTable resultado = new DataTable();
+            string sqlStr = "";
+            if(txtLimit.Text != "")
+            { 
+                sqlStr = "select recipeName,ingredienteID,ingredienteDescripcion,classOf from recipeDataToOwl where recipeDataToOwl like '%{0}%' and recipeTipoPlatoData <> '' limit 0,{1}";
+                sqlStr = string.Format(sqlStr,name,txtLimit.Text);
+                resultado = objDataAccess.EjecutaQuery(sqlStr);
+            }
+            return resultado;
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            dgDatosClasificacion.AutoGenerateColumns = false;
+            dgDatosClasificacion.DataSource = getIngredientByName(txtBusquedaIngrediente.Text);
+            AddComboColum();
+           
+        }
+        private void llenarComboPropiedadesReseta()
+        {
+            cboPropiedadesReceta.Items.Clear();
+            cboPropiedadesReceta.Items.AddRange(recipeProperty.ToArray());
         }
     }
 }

@@ -51,6 +51,12 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cboPropiedadesReceta = new System.Windows.Forms.ComboBox();
+            this.txtBusquedaIngrediente = new System.Windows.Forms.TextBox();
+            this.lbTotalRegistroClasificados = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnBuscarRegistros = new System.Windows.Forms.Button();
             this.lbRegistroEncontrados = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,6 +64,12 @@
             this.chkModify = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgDatosClasificacion = new System.Windows.Forms.DataGridView();
+            this.RecipeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RecipeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingredienteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IngredienteDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubClassOfCurrentValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubClassOf = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.cboClassOf = new System.Windows.Forms.ComboBox();
@@ -82,14 +94,8 @@
             this.btnEvaluarBaseDatos = new System.Windows.Forms.Button();
             this.btnEvaluar = new System.Windows.Forms.Button();
             this.btnMarcarRegistro = new System.Windows.Forms.Button();
-            this.RecipeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RecipeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ingredienteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IngredienteDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubClassOfCurrentValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubClassOf = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.lbTotalRegistroClasificados = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboSubClass = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -98,6 +104,7 @@
             this.panel3.SuspendLayout();
             this.CmAgregarPalabraBc.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDatosClasificacion)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -308,6 +315,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Controls.Add(this.lbTotalRegistroClasificados);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.btnBuscarRegistros);
@@ -324,6 +332,63 @@
             this.tabPage3.Text = "Clasificacion";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.cboSubClass);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.cboPropiedadesReceta);
+            this.groupBox3.Controls.Add(this.txtBusquedaIngrediente);
+            this.groupBox3.Location = new System.Drawing.Point(12, 473);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(868, 44);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Buscar Ingrediente por nombre";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(313, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Recipe Property";
+            // 
+            // cboPropiedadesReceta
+            // 
+            this.cboPropiedadesReceta.FormattingEnabled = true;
+            this.cboPropiedadesReceta.Location = new System.Drawing.Point(402, 17);
+            this.cboPropiedadesReceta.Name = "cboPropiedadesReceta";
+            this.cboPropiedadesReceta.Size = new System.Drawing.Size(183, 21);
+            this.cboPropiedadesReceta.TabIndex = 1;
+            // 
+            // txtBusquedaIngrediente
+            // 
+            this.txtBusquedaIngrediente.Location = new System.Drawing.Point(6, 18);
+            this.txtBusquedaIngrediente.Name = "txtBusquedaIngrediente";
+            this.txtBusquedaIngrediente.Size = new System.Drawing.Size(301, 20);
+            this.txtBusquedaIngrediente.TabIndex = 0;
+            this.txtBusquedaIngrediente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            // 
+            // lbTotalRegistroClasificados
+            // 
+            this.lbTotalRegistroClasificados.AutoSize = true;
+            this.lbTotalRegistroClasificados.Location = new System.Drawing.Point(413, 537);
+            this.lbTotalRegistroClasificados.Name = "lbTotalRegistroClasificados";
+            this.lbTotalRegistroClasificados.Size = new System.Drawing.Size(13, 13);
+            this.lbTotalRegistroClasificados.TabIndex = 7;
+            this.lbTotalRegistroClasificados.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(270, 537);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(137, 13);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Total Registros Clasificados";
+            // 
             // btnBuscarRegistros
             // 
             this.btnBuscarRegistros.Location = new System.Drawing.Point(642, 523);
@@ -337,7 +402,7 @@
             // lbRegistroEncontrados
             // 
             this.lbRegistroEncontrados.AutoSize = true;
-            this.lbRegistroEncontrados.Location = new System.Drawing.Point(241, 503);
+            this.lbRegistroEncontrados.Location = new System.Drawing.Point(222, 537);
             this.lbRegistroEncontrados.Name = "lbRegistroEncontrados";
             this.lbRegistroEncontrados.Size = new System.Drawing.Size(13, 13);
             this.lbRegistroEncontrados.TabIndex = 4;
@@ -346,7 +411,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(124, 502);
+            this.label4.Location = new System.Drawing.Point(111, 536);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(114, 13);
             this.label4.TabIndex = 3;
@@ -365,7 +430,7 @@
             // chkModify
             // 
             this.chkModify.AutoSize = true;
-            this.chkModify.Location = new System.Drawing.Point(12, 500);
+            this.chkModify.Location = new System.Drawing.Point(9, 535);
             this.chkModify.Name = "chkModify";
             this.chkModify.Size = new System.Drawing.Size(106, 17);
             this.chkModify.TabIndex = 1;
@@ -377,7 +442,7 @@
             this.groupBox1.Controls.Add(this.dgDatosClasificacion);
             this.groupBox1.Location = new System.Drawing.Point(9, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(874, 482);
+            this.groupBox1.Size = new System.Drawing.Size(874, 455);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -399,8 +464,56 @@
             this.dgDatosClasificacion.Location = new System.Drawing.Point(3, 16);
             this.dgDatosClasificacion.Name = "dgDatosClasificacion";
             this.dgDatosClasificacion.RowHeadersVisible = false;
-            this.dgDatosClasificacion.Size = new System.Drawing.Size(868, 463);
+            this.dgDatosClasificacion.Size = new System.Drawing.Size(868, 436);
             this.dgDatosClasificacion.TabIndex = 0;
+            // 
+            // RecipeID
+            // 
+            this.RecipeID.DataPropertyName = "recipeID";
+            this.RecipeID.HeaderText = "Receta ID";
+            this.RecipeID.Name = "RecipeID";
+            this.RecipeID.Visible = false;
+            // 
+            // RecipeName
+            // 
+            this.RecipeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RecipeName.DataPropertyName = "recipeName";
+            this.RecipeName.FillWeight = 350F;
+            this.RecipeName.HeaderText = "R Nombre";
+            this.RecipeName.Name = "RecipeName";
+            // 
+            // ingredienteID
+            // 
+            this.ingredienteID.DataPropertyName = "ingredienteID";
+            this.ingredienteID.FillWeight = 90F;
+            this.ingredienteID.HeaderText = "Ingrediente ID";
+            this.ingredienteID.Name = "ingredienteID";
+            this.ingredienteID.Visible = false;
+            // 
+            // IngredienteDescripcion
+            // 
+            this.IngredienteDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IngredienteDescripcion.DataPropertyName = "ingredienteDescripcion";
+            this.IngredienteDescripcion.FillWeight = 350F;
+            this.IngredienteDescripcion.HeaderText = "Ingrediente Descripcioon";
+            this.IngredienteDescripcion.Name = "IngredienteDescripcion";
+            // 
+            // SubClassOfCurrentValue
+            // 
+            this.SubClassOfCurrentValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubClassOfCurrentValue.DataPropertyName = "ClassOf";
+            this.SubClassOfCurrentValue.FillWeight = 150F;
+            this.SubClassOfCurrentValue.HeaderText = "valor Actual";
+            this.SubClassOfCurrentValue.Name = "SubClassOfCurrentValue";
+            this.SubClassOfCurrentValue.ReadOnly = true;
+            // 
+            // SubClassOf
+            // 
+            this.SubClassOf.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubClassOf.DataPropertyName = "subClassOf";
+            this.SubClassOf.FillWeight = 150F;
+            this.SubClassOf.HeaderText = "SubClassOf";
+            this.SubClassOf.Name = "SubClassOf";
             // 
             // tabPage2
             // 
@@ -651,71 +764,22 @@
             this.btnMarcarRegistro.UseVisualStyleBackColor = true;
             this.btnMarcarRegistro.Click += new System.EventHandler(this.btnMarcarRegistro_Click);
             // 
-            // RecipeID
+            // label10
             // 
-            this.RecipeID.DataPropertyName = "recipeID";
-            this.RecipeID.HeaderText = "Receta ID";
-            this.RecipeID.Name = "RecipeID";
-            this.RecipeID.Visible = false;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(603, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Sub Class";
             // 
-            // RecipeName
+            // cboSubClass
             // 
-            this.RecipeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RecipeName.DataPropertyName = "recipeName";
-            this.RecipeName.FillWeight = 350F;
-            this.RecipeName.HeaderText = "R Nombre";
-            this.RecipeName.Name = "RecipeName";
-            // 
-            // ingredienteID
-            // 
-            this.ingredienteID.DataPropertyName = "ingredienteID";
-            this.ingredienteID.FillWeight = 90F;
-            this.ingredienteID.HeaderText = "Ingrediente ID";
-            this.ingredienteID.Name = "ingredienteID";
-            this.ingredienteID.Visible = false;
-            // 
-            // IngredienteDescripcion
-            // 
-            this.IngredienteDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IngredienteDescripcion.DataPropertyName = "ingredienteDescripcion";
-            this.IngredienteDescripcion.FillWeight = 350F;
-            this.IngredienteDescripcion.HeaderText = "Ingrediente Descripcioon";
-            this.IngredienteDescripcion.Name = "IngredienteDescripcion";
-            // 
-            // SubClassOfCurrentValue
-            // 
-            this.SubClassOfCurrentValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SubClassOfCurrentValue.DataPropertyName = "ClassOf";
-            this.SubClassOfCurrentValue.FillWeight = 150F;
-            this.SubClassOfCurrentValue.HeaderText = "valor Actual";
-            this.SubClassOfCurrentValue.Name = "SubClassOfCurrentValue";
-            this.SubClassOfCurrentValue.ReadOnly = true;
-            // 
-            // SubClassOf
-            // 
-            this.SubClassOf.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SubClassOf.DataPropertyName = "subClassOf";
-            this.SubClassOf.FillWeight = 150F;
-            this.SubClassOf.HeaderText = "SubClassOf";
-            this.SubClassOf.Name = "SubClassOf";
-            // 
-            // lbTotalRegistroClasificados
-            // 
-            this.lbTotalRegistroClasificados.AutoSize = true;
-            this.lbTotalRegistroClasificados.Location = new System.Drawing.Point(408, 504);
-            this.lbTotalRegistroClasificados.Name = "lbTotalRegistroClasificados";
-            this.lbTotalRegistroClasificados.Size = new System.Drawing.Size(13, 13);
-            this.lbTotalRegistroClasificados.TabIndex = 7;
-            this.lbTotalRegistroClasificados.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(265, 504);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(137, 13);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Total Registros Clasificados";
+            this.cboSubClass.FormattingEnabled = true;
+            this.cboSubClass.Location = new System.Drawing.Point(679, 16);
+            this.cboSubClass.Name = "cboSubClass";
+            this.cboSubClass.Size = new System.Drawing.Size(183, 21);
+            this.cboSubClass.TabIndex = 3;
             // 
             // frmMineria
             // 
@@ -741,6 +805,8 @@
             this.CmAgregarPalabraBc.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgDatosClasificacion)).EndInit();
             this.tabPage2.ResumeLayout(false);
@@ -816,6 +882,12 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn SubClassOf;
         private System.Windows.Forms.Label lbTotalRegistroClasificados;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtBusquedaIngrediente;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cboPropiedadesReceta;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cboSubClass;
     }
 }
 
