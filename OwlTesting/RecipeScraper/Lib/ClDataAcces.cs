@@ -15,10 +15,13 @@ namespace RecipeScraper
         string connStr = "server=localhost;user=root;database=foodrecomendersystemdb;port=3306;password=admin";
         MySqlConnection conn = null;
         MySqlCommand comando = null;
-        MySqlDataReader reader = null; 
+        MySqlDataReader reader = null;
+        MySqlDataAdapter adapter = null;
+
         public DataTable EjecutaQuery(string queryStr)
         {
             DataTable resultado = new DataTable();
+            
             resultado.Columns.Add("error");
           
             try
@@ -26,10 +29,12 @@ namespace RecipeScraper
                
                 conn = new MySqlConnection(connStr);
                 comando = new MySqlCommand(queryStr, conn);
+                adapter = new MySqlDataAdapter(comando);
                 conn.Open();
-                reader = comando.ExecuteReader();
-                resultado.Load(reader);
-                reader.Close();
+                adapter.Fill(resultado);
+                //reader = comando.ExecuteReader();
+                //resultado.Load(reader);
+               // reader.Close();
             }
             catch(Exception ex)
             {

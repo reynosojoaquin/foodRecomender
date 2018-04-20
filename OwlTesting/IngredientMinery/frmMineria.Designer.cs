@@ -52,6 +52,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cboSubClass = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cboPropiedadesReceta = new System.Windows.Forms.ComboBox();
             this.txtBusquedaIngrediente = new System.Windows.Forms.TextBox();
@@ -94,8 +96,6 @@
             this.btnEvaluarBaseDatos = new System.Windows.Forms.Button();
             this.btnEvaluar = new System.Windows.Forms.Button();
             this.btnMarcarRegistro = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cboSubClass = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -345,6 +345,23 @@
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Buscar Ingrediente por nombre";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(603, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "Sub Class";
+            // 
+            // cboSubClass
+            // 
+            this.cboSubClass.FormattingEnabled = true;
+            this.cboSubClass.Location = new System.Drawing.Point(679, 16);
+            this.cboSubClass.Name = "cboSubClass";
+            this.cboSubClass.Size = new System.Drawing.Size(183, 21);
+            this.cboSubClass.TabIndex = 3;
             // 
             // label8
             // 
@@ -763,23 +780,6 @@
             this.btnMarcarRegistro.Text = "Marcar Registros";
             this.btnMarcarRegistro.UseVisualStyleBackColor = true;
             this.btnMarcarRegistro.Click += new System.EventHandler(this.btnMarcarRegistro_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(603, 20);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(54, 13);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "Sub Class";
-            // 
-            // cboSubClass
-            // 
-            this.cboSubClass.FormattingEnabled = true;
-            this.cboSubClass.Location = new System.Drawing.Point(679, 16);
-            this.cboSubClass.Name = "cboSubClass";
-            this.cboSubClass.Size = new System.Drawing.Size(183, 21);
-            this.cboSubClass.TabIndex = 3;
             // 
             // frmMineria
             // 

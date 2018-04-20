@@ -36,17 +36,18 @@ namespace IngredientMinery
             "Pan","Pasta","Aceite","Adereso","Cereal","Condimento","Especia",
         "Fruta","Hortalizas","Nuez","Semillas","Verduras","Vino","Carne","Vinagre","Lacteos","Huevos",
         "Flores","Enlatados","Mariscos","Hongos","Tortillas","Endulcorante","Azucar","Integral","Agua","Jugo","Granos",
-        "Algas","Tuberculos","Especias","Berenjenas","Tomates","Lechugas","Coles","Cebollas","Calabazas","Bananas","Remolacha","Coliflor"
-        ,"Rabano","Pastinacas","Morron","Chile","Berro","Zanahorias","Hinojo","Pepino","Esparragos","Puerro"
-        ,"Pimiento","Espinaca","Perejil","Apio","Cilantro"
-
-
+        "Algas","Tuberculos","Especias","Berenjenas","Tomates","Lechugas","Coles","Cebollas","Calabazas","Bananas",
+        "Remolacha","Coliflor","Rabano","Pastinacas","Morron","Chile","Berro","Zanahorias","Hinojo","Pepino",
+        "Esparragos","Puerro","Pimiento","Espinaca","Perejil","Apio","Cilantro","Brucelas","Radicchio",
+        "Repollo","Endivia","Eneldo","Brocoli","Perifolo","Oregano","Comino","Jengibre","Laurel","Albahaca",
+        "Salvia","Tomillo","Anis","Menta","Cohete","Zumaque","Pesto","Romero","Gomasio","Estragon",
+        "Pimienta","Curry","Canela","Curcuma","Limoncillo","Pulpa","Nectar"
         };
 
 
 
 
-        string[] recipeProperty = {"Todas", "Tipo Plato","Cultura","Nacionalidad","geolocalizacion" };
+        string[] recipeProperty = {"Todas", "Tipo Plato","Cultura","Nacionalidad","geolocalizacion","Estacion" };
         
         string[] palabras = { };
         public frmMineria()
@@ -419,15 +420,14 @@ namespace IngredientMinery
         private void cargarDataClasificacion()
         {
             string sQlString = string.Empty,param0 =string.Empty,param1=string.Empty,param2 =string.Empty;
-             sQlString = "SELECT recipeName,ingredienteID,ingredienteDescripcion,classOf,recipeID FROM recipedatatoowl where {0} {1} {2}  limit 0,{3}";
+      
             switch (chkModify.Checked)
             {
                 case true:
-                  
+                    sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl where  {0} {1}  limit 0,{2}";
                     switch (cboPropiedadesReceta.Text)
                     {
-                       
-                       
+                                    
                         case "Tipo Plato":
                             param0 =  " recipeTipoPLatoData <> '' ";
                             break;
@@ -435,7 +435,7 @@ namespace IngredientMinery
                             param0 = " recipeCulturaData <> '' ";
                             break;
                         case "Nacionalidad":
-                            param0 = " paisOrigen > 0 ";
+                            param0 = " PaisID > 0 ";
                             break;
                         case "geolocalizacion":
                             param0 = " geolocalizacion <> '' ";
@@ -447,36 +447,55 @@ namespace IngredientMinery
                             param1 += " and ";
                         param1 += " classOf = '"+cboSubClass.Text+"'";
                     }
+                    else if (param0 != "")
+                    {
+                        param1 += " and  classOf <>''";
+                    }
                     else
                     {
                         
                           param0 = "classOf <> ''";
                     }
+
+
                     break;
                 case false:
-
-                    sQlString = "SELECT recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl where classOf <> '' or classOf is not null and  limit 0,{0}";
+                    sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl where  {0} {1}  limit 0,{2}";
                     switch (cboPropiedadesReceta.Text)
                     {
-                        
+
                         case "Tipo Plato":
-                            sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl  where classOf = '' or classOf is null and recipeTipoPLatoData <> '' limit 0,{0}";
+                            param0 = " recipeTipoPLatoData <> '' ";
                             break;
                         case "Cultura":
-                            sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl  where classOf = '' or classOf is null and recipeCulturaData <> '' limit 0,{0}";
+                            param0 = " recipeCulturaData <> '' ";
                             break;
                         case "Nacionalidad":
-                            sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl  where classOf = '' or classOf is null and paisOrigen > 0 limit 0,{0}";
+                            param0 = " paisOrigen > 0 ";
                             break;
                         case "geolocalizacion":
-                            sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl  where classOf = '' or classOf is null and geolocalizacion <> '' limit 0,{0}";
+                            param0 = " geolocalizacion <> '' ";
                             break;
 
                     }
+                    if (cboSubClass.Text != "Todas")
+                    {
+                        if (param0 != "")
+                            param1 += " and ";
+                        param1 += " classOf is null ";
+                    }
+                    else if (param0 != "") {
+                        param1 += " classOf is null ";
+                    }
+                    else
+                    {
+                        param0 = " classOf is null ";
+                    }
                    
+
                     break;
             }
-            sQlString = string.Format(sQlString,param0,param1,param2,txtLimit.Text);
+            sQlString = string.Format(sQlString,param0,param1,txtLimit.Text);
             DataTable  DataClasificacion = objDataAccess.EjecutaQuery(sQlString);
             lbRegistroEncontrados.Text = DataClasificacion.Rows.Count.ToString();
             dgDatosClasificacion.AutoGenerateColumns = false;
