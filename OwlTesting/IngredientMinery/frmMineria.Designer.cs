@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lbTraducciones = new System.Windows.Forms.Label();
@@ -66,12 +72,6 @@
             this.chkModify = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgDatosClasificacion = new System.Windows.Forms.DataGridView();
-            this.RecipeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RecipeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ingredienteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IngredienteDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubClassOfCurrentValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubClassOf = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.cboClassOf = new System.Windows.Forms.ComboBox();
@@ -96,6 +96,19 @@
             this.btnEvaluarBaseDatos = new System.Windows.Forms.Button();
             this.btnEvaluar = new System.Windows.Forms.Button();
             this.btnMarcarRegistro = new System.Windows.Forms.Button();
+            this.RecipeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingredienteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RecipeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IngredienteDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mingredient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubClassOfCurrentValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubClassOf = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.txtWhereClausure = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cboColumnas = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnAddColumn = new System.Windows.Forms.Button();
+            this.cboOperadores = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -111,14 +124,17 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgOwlData)).BeginInit();
             this.panel2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -148,6 +164,7 @@
             // 
             // lbTraducciones
             // 
+            this.lbTraducciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbTraducciones.AutoSize = true;
             this.lbTraducciones.Location = new System.Drawing.Point(314, 529);
             this.lbTraducciones.Name = "lbTraducciones";
@@ -157,6 +174,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(243, 529);
             this.label5.Name = "label5";
@@ -166,6 +184,7 @@
             // 
             // lbTotalIngredientes
             // 
+            this.lbTotalIngredientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbTotalIngredientes.AutoSize = true;
             this.lbTotalIngredientes.Location = new System.Drawing.Point(209, 528);
             this.lbTotalIngredientes.Name = "lbTotalIngredientes";
@@ -175,6 +194,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(138, 528);
             this.label3.Name = "label3";
@@ -184,6 +204,8 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.txtNuevaPalabra);
             this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.txtMainVocabulary);
@@ -194,6 +216,7 @@
             // 
             // txtNuevaPalabra
             // 
+            this.txtNuevaPalabra.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtNuevaPalabra.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNuevaPalabra.Location = new System.Drawing.Point(3, 446);
             this.txtNuevaPalabra.Name = "txtNuevaPalabra";
@@ -202,6 +225,7 @@
             // 
             // btnAgregar
             // 
+            this.btnAgregar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAgregar.Location = new System.Drawing.Point(160, 481);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(92, 23);
@@ -212,9 +236,10 @@
             // 
             // txtMainVocabulary
             // 
+            this.txtMainVocabulary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMainVocabulary.BackColor = System.Drawing.Color.White;
             this.txtMainVocabulary.ContextMenuStrip = this.MnModificarBaseConocimiento;
-            this.txtMainVocabulary.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtMainVocabulary.Location = new System.Drawing.Point(0, 0);
             this.txtMainVocabulary.Multiline = true;
             this.txtMainVocabulary.Name = "txtMainVocabulary";
@@ -238,6 +263,7 @@
             // 
             // lbTotalregistro
             // 
+            this.lbTotalregistro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbTotalregistro.AutoSize = true;
             this.lbTotalregistro.Location = new System.Drawing.Point(92, 528);
             this.lbTotalregistro.Name = "lbTotalregistro";
@@ -247,6 +273,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(8, 528);
             this.label1.Name = "label1";
@@ -256,8 +283,10 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.txtDatosOrigen);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(446, 514);
@@ -265,7 +294,9 @@
             // 
             // txtDatosOrigen
             // 
-            this.txtDatosOrigen.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtDatosOrigen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDatosOrigen.Location = new System.Drawing.Point(0, 0);
             this.txtDatosOrigen.Multiline = true;
             this.txtDatosOrigen.Name = "txtDatosOrigen";
@@ -274,6 +305,8 @@
             // 
             // panel3
             // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.txtFrencuenciaPalabras);
             this.panel3.Location = new System.Drawing.Point(452, 4);
             this.panel3.Name = "panel3";
@@ -282,6 +315,8 @@
             // 
             // txtFrencuenciaPalabras
             // 
+            this.txtFrencuenciaPalabras.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFrencuenciaPalabras.ContextMenuStrip = this.CmAgregarPalabraBc;
             this.txtFrencuenciaPalabras.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFrencuenciaPalabras.Location = new System.Drawing.Point(3, 2);
@@ -306,7 +341,8 @@
             // 
             // textBox2
             // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Location = new System.Drawing.Point(3, 517);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -315,6 +351,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox4);
             this.tabPage3.Controls.Add(this.groupBox3);
             this.tabPage3.Controls.Add(this.lbTotalRegistroClasificados);
             this.tabPage3.Controls.Add(this.label9);
@@ -334,6 +371,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.cboSubClass);
             this.groupBox3.Controls.Add(this.label8);
@@ -390,6 +428,7 @@
             // 
             // lbTotalRegistroClasificados
             // 
+            this.lbTotalRegistroClasificados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbTotalRegistroClasificados.AutoSize = true;
             this.lbTotalRegistroClasificados.Location = new System.Drawing.Point(413, 537);
             this.lbTotalRegistroClasificados.Name = "lbTotalRegistroClasificados";
@@ -399,6 +438,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(270, 537);
             this.label9.Name = "label9";
@@ -408,6 +448,7 @@
             // 
             // btnBuscarRegistros
             // 
+            this.btnBuscarRegistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBuscarRegistros.Location = new System.Drawing.Point(642, 523);
             this.btnBuscarRegistros.Name = "btnBuscarRegistros";
             this.btnBuscarRegistros.Size = new System.Drawing.Size(117, 26);
@@ -418,6 +459,7 @@
             // 
             // lbRegistroEncontrados
             // 
+            this.lbRegistroEncontrados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbRegistroEncontrados.AutoSize = true;
             this.lbRegistroEncontrados.Location = new System.Drawing.Point(222, 537);
             this.lbRegistroEncontrados.Name = "lbRegistroEncontrados";
@@ -427,6 +469,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(111, 536);
             this.label4.Name = "label4";
@@ -436,6 +479,7 @@
             // 
             // btnGuardarCambios
             // 
+            this.btnGuardarCambios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGuardarCambios.Location = new System.Drawing.Point(763, 523);
             this.btnGuardarCambios.Name = "btnGuardarCambios";
             this.btnGuardarCambios.Size = new System.Drawing.Size(117, 26);
@@ -446,6 +490,7 @@
             // 
             // chkModify
             // 
+            this.chkModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkModify.AutoSize = true;
             this.chkModify.Location = new System.Drawing.Point(9, 535);
             this.chkModify.Name = "chkModify";
@@ -456,10 +501,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dgDatosClasificacion);
             this.groupBox1.Location = new System.Drawing.Point(9, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(874, 455);
+            this.groupBox1.Size = new System.Drawing.Size(874, 345);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -467,70 +515,49 @@
             // 
             this.dgDatosClasificacion.AllowUserToAddRows = false;
             this.dgDatosClasificacion.AllowUserToDeleteRows = false;
+            this.dgDatosClasificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDatosClasificacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgDatosClasificacion.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDatosClasificacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgDatosClasificacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgDatosClasificacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RecipeID,
-            this.RecipeName,
             this.ingredienteID,
+            this.RecipeName,
             this.IngredienteDescripcion,
+            this.mingredient,
             this.SubClassOfCurrentValue,
             this.SubClassOf});
-            this.dgDatosClasificacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgDatosClasificacion.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgDatosClasificacion.Location = new System.Drawing.Point(3, 16);
             this.dgDatosClasificacion.Name = "dgDatosClasificacion";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDatosClasificacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgDatosClasificacion.RowHeadersVisible = false;
-            this.dgDatosClasificacion.Size = new System.Drawing.Size(868, 436);
+            this.dgDatosClasificacion.Size = new System.Drawing.Size(868, 326);
             this.dgDatosClasificacion.TabIndex = 0;
-            // 
-            // RecipeID
-            // 
-            this.RecipeID.DataPropertyName = "recipeID";
-            this.RecipeID.HeaderText = "Receta ID";
-            this.RecipeID.Name = "RecipeID";
-            this.RecipeID.Visible = false;
-            // 
-            // RecipeName
-            // 
-            this.RecipeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RecipeName.DataPropertyName = "recipeName";
-            this.RecipeName.FillWeight = 350F;
-            this.RecipeName.HeaderText = "R Nombre";
-            this.RecipeName.Name = "RecipeName";
-            // 
-            // ingredienteID
-            // 
-            this.ingredienteID.DataPropertyName = "ingredienteID";
-            this.ingredienteID.FillWeight = 90F;
-            this.ingredienteID.HeaderText = "Ingrediente ID";
-            this.ingredienteID.Name = "ingredienteID";
-            this.ingredienteID.Visible = false;
-            // 
-            // IngredienteDescripcion
-            // 
-            this.IngredienteDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IngredienteDescripcion.DataPropertyName = "ingredienteDescripcion";
-            this.IngredienteDescripcion.FillWeight = 350F;
-            this.IngredienteDescripcion.HeaderText = "Ingrediente Descripcioon";
-            this.IngredienteDescripcion.Name = "IngredienteDescripcion";
-            // 
-            // SubClassOfCurrentValue
-            // 
-            this.SubClassOfCurrentValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SubClassOfCurrentValue.DataPropertyName = "ClassOf";
-            this.SubClassOfCurrentValue.FillWeight = 150F;
-            this.SubClassOfCurrentValue.HeaderText = "valor Actual";
-            this.SubClassOfCurrentValue.Name = "SubClassOfCurrentValue";
-            this.SubClassOfCurrentValue.ReadOnly = true;
-            // 
-            // SubClassOf
-            // 
-            this.SubClassOf.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SubClassOf.DataPropertyName = "subClassOf";
-            this.SubClassOf.FillWeight = 150F;
-            this.SubClassOf.HeaderText = "SubClassOf";
-            this.SubClassOf.Name = "SubClassOf";
             // 
             // tabPage2
             // 
@@ -631,6 +658,14 @@
             this.dgOwlData.AllowUserToDeleteRows = false;
             this.dgOwlData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgOwlData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgOwlData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgOwlData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgOwlData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.recetaID,
@@ -638,9 +673,25 @@
             this.ingredienteIDValue,
             this.ingredienteValue,
             this.ClassOfValue});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgOwlData.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgOwlData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgOwlData.Location = new System.Drawing.Point(3, 16);
             this.dgOwlData.Name = "dgOwlData";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgOwlData.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgOwlData.RowHeadersVisible = false;
             this.dgOwlData.Size = new System.Drawing.Size(874, 452);
             this.dgOwlData.TabIndex = 1;
@@ -691,6 +742,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(4, 525);
             this.label2.Name = "label2";
@@ -700,6 +752,7 @@
             // 
             // txtLimit
             // 
+            this.txtLimit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtLimit.Location = new System.Drawing.Point(54, 518);
             this.txtLimit.Name = "txtLimit";
             this.txtLimit.Size = new System.Drawing.Size(100, 20);
@@ -707,6 +760,8 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.btnRegistrarIngrediente);
             this.panel2.Controls.Add(this.btnTraducirIngredientes);
@@ -781,6 +836,131 @@
             this.btnMarcarRegistro.UseVisualStyleBackColor = true;
             this.btnMarcarRegistro.Click += new System.EventHandler(this.btnMarcarRegistro_Click);
             // 
+            // RecipeID
+            // 
+            this.RecipeID.DataPropertyName = "recipeID";
+            this.RecipeID.HeaderText = "Receta ID";
+            this.RecipeID.Name = "RecipeID";
+            // 
+            // ingredienteID
+            // 
+            this.ingredienteID.DataPropertyName = "ingredienteID";
+            this.ingredienteID.FillWeight = 90F;
+            this.ingredienteID.HeaderText = "Ingrediente ID";
+            this.ingredienteID.Name = "ingredienteID";
+            // 
+            // RecipeName
+            // 
+            this.RecipeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RecipeName.DataPropertyName = "recipeName";
+            this.RecipeName.FillWeight = 350F;
+            this.RecipeName.HeaderText = "R Nombre";
+            this.RecipeName.Name = "RecipeName";
+            // 
+            // IngredienteDescripcion
+            // 
+            this.IngredienteDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IngredienteDescripcion.DataPropertyName = "ingredienteDescripcion";
+            this.IngredienteDescripcion.FillWeight = 350F;
+            this.IngredienteDescripcion.HeaderText = "Ingrediente Descripcioon";
+            this.IngredienteDescripcion.Name = "IngredienteDescripcion";
+            // 
+            // mingredient
+            // 
+            this.mingredient.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mingredient.DataPropertyName = "mainIngredient";
+            this.mingredient.FillWeight = 350F;
+            this.mingredient.HeaderText = "ingrediente p.";
+            this.mingredient.Name = "mingredient";
+            this.mingredient.ReadOnly = true;
+            // 
+            // SubClassOfCurrentValue
+            // 
+            this.SubClassOfCurrentValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubClassOfCurrentValue.DataPropertyName = "ClassOf";
+            this.SubClassOfCurrentValue.FillWeight = 150F;
+            this.SubClassOfCurrentValue.HeaderText = "valor Actual";
+            this.SubClassOfCurrentValue.Name = "SubClassOfCurrentValue";
+            this.SubClassOfCurrentValue.ReadOnly = true;
+            // 
+            // SubClassOf
+            // 
+            this.SubClassOf.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubClassOf.DataPropertyName = "subClassOf";
+            this.SubClassOf.FillWeight = 150F;
+            this.SubClassOf.HeaderText = "SubClassOf";
+            this.SubClassOf.Name = "SubClassOf";
+            // 
+            // txtWhereClausure
+            // 
+            this.txtWhereClausure.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWhereClausure.Location = new System.Drawing.Point(310, 16);
+            this.txtWhereClausure.Multiline = true;
+            this.txtWhereClausure.Name = "txtWhereClausure";
+            this.txtWhereClausure.Size = new System.Drawing.Size(555, 85);
+            this.txtWhereClausure.TabIndex = 9;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.cboOperadores);
+            this.groupBox4.Controls.Add(this.btnAddColumn);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.cboColumnas);
+            this.groupBox4.Controls.Add(this.txtWhereClausure);
+            this.groupBox4.Location = new System.Drawing.Point(12, 360);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(868, 107);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Where Clausure";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // cboColumnas
+            // 
+            this.cboColumnas.FormattingEnabled = true;
+            this.cboColumnas.Location = new System.Drawing.Point(6, 31);
+            this.cboColumnas.Name = "cboColumnas";
+            this.cboColumnas.Size = new System.Drawing.Size(298, 21);
+            this.cboColumnas.TabIndex = 10;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 16);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 13);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Columnas";
+            // 
+            // btnAddColumn
+            // 
+            this.btnAddColumn.Location = new System.Drawing.Point(5, 78);
+            this.btnAddColumn.Name = "btnAddColumn";
+            this.btnAddColumn.Size = new System.Drawing.Size(298, 23);
+            this.btnAddColumn.TabIndex = 12;
+            this.btnAddColumn.Text = "Add";
+            this.btnAddColumn.UseVisualStyleBackColor = true;
+            this.btnAddColumn.Click += new System.EventHandler(this.btnAddColumn_Click);
+            // 
+            // cboOperadores
+            // 
+            this.cboOperadores.FormattingEnabled = true;
+            this.cboOperadores.Items.AddRange(new object[] {
+            "=",
+            "<",
+            ">",
+            "<>",
+            "Like",
+            "is null",
+            "is not null"});
+            this.cboOperadores.Location = new System.Drawing.Point(6, 54);
+            this.cboOperadores.Name = "cboOperadores";
+            this.cboOperadores.Size = new System.Drawing.Size(298, 21);
+            this.cboOperadores.TabIndex = 13;
+            // 
             // frmMineria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -815,6 +995,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgOwlData)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -874,12 +1056,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassOfValue;
         private System.Windows.Forms.Button btnTraducirIngredientes;
         private System.Windows.Forms.Button btnRegistrarIngrediente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RecipeID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RecipeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ingredienteID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IngredienteDescripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SubClassOfCurrentValue;
-        private System.Windows.Forms.DataGridViewComboBoxColumn SubClassOf;
         private System.Windows.Forms.Label lbTotalRegistroClasificados;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -888,6 +1064,19 @@
         private System.Windows.Forms.ComboBox cboPropiedadesReceta;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cboSubClass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RecipeID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ingredienteID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RecipeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IngredienteDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mingredient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubClassOfCurrentValue;
+        private System.Windows.Forms.DataGridViewComboBoxColumn SubClassOf;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtWhereClausure;
+        private System.Windows.Forms.Button btnAddColumn;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cboColumnas;
+        private System.Windows.Forms.ComboBox cboOperadores;
     }
 }
 

@@ -46,7 +46,7 @@ namespace IngredientMinery
             int index = 0;
             StringBuilder strB = new StringBuilder();
             string sQlString = "SELECT * FROM translate limit 0,100";
-            Data = objDataAccess.EjecutaQuery(sQlString);
+            Data = objDataAccess.EjecutaQueryGet(sQlString);
             foreach (DataRow ingrediente in Data.Rows)
             {
 

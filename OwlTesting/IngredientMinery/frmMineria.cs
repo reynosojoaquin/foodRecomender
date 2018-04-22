@@ -19,6 +19,7 @@ using com.hp.hpl.jena.ontology;
 using System;
 using java.io;
 
+
 namespace IngredientMinery
 {
     public partial class frmMineria : Form
@@ -34,14 +35,11 @@ namespace IngredientMinery
         string vocabulary = string.Empty;
         string[] classOf = { "Embutido",
             "Pan","Pasta","Aceite","Adereso","Cereal","Condimento","Especia",
-        "Fruta","Hortalizas","Nuez","Semillas","Verduras","Vino","Carne","Vinagre","Lacteos","Huevos",
+        "Fruta","Nuez","Semillas","Verduras","Vino","Carne","Vinagre","Lacteos","Huevos",
         "Flores","Enlatados","Mariscos","Hongos","Tortillas","Endulcorante","Azucar","Integral","Agua","Jugo","Granos",
-        "Algas","Tuberculos","Especias","Berenjenas","Tomates","Lechugas","Coles","Cebollas","Calabazas","Bananas",
-        "Remolacha","Coliflor","Rabano","Pastinacas","Morron","Chile","Berro","Zanahorias","Hinojo","Pepino",
-        "Esparragos","Puerro","Pimiento","Espinaca","Perejil","Apio","Cilantro","Brucelas","Radicchio",
-        "Repollo","Endivia","Eneldo","Brocoli","Perifolo","Oregano","Comino","Jengibre","Laurel","Albahaca",
-        "Salvia","Tomillo","Anis","Menta","Cohete","Zumaque","Pesto","Romero","Gomasio","Estragon",
-        "Pimienta","Curry","Canela","Curcuma","Limoncillo","Pulpa","Nectar"
+        "Algas","Tuberculos","Berenjenas","Tomates","Lechugas","Coles","Cebollas","Calabazas","Bananas",
+        "Pulpa","Nectar","Sal","Mantequilla","Queso","Yogourt","Ajo","Hortalizas",
+        "fresco","Seco","Fiambres","Ajies","Coliflor","Arroz","Frijol","Maiz","Pezcado"
         };
 
 
@@ -165,7 +163,7 @@ namespace IngredientMinery
                 {
                     string sQlString = "SELECT * FROM ingredientes limit 0,{0}";
                     sQlString = string.Format(sQlString, txtLimit.Text);
-                    resultado = objDataAccess.EjecutaQuery(sQlString);
+                    resultado = objDataAccess.EjecutaQueryGet(sQlString);
                     registroEncontrados = resultado.Copy();
                     foreach (DataRow ingrediente in resultado.Rows)
                     {
@@ -227,7 +225,7 @@ namespace IngredientMinery
             DataTable resultado = new DataTable();
             try
             {
-                resultado = objDataAccess.EjecutaQuery("SELECT vocabulary FROM main");
+                resultado = objDataAccess.EjecutaQueryGet("SELECT vocabulary FROM main");
                 txtMainVocabulary.Text = resultado.Rows[0]["vocabulary"].ToString();
 
             }
@@ -361,7 +359,7 @@ namespace IngredientMinery
             sQlStr = string.Format(sQlStr, recetaID, receta, ingredienteID, ingrediente);
             try
             {
-                objDataAccess.EjecutaQuery(sQlStr);
+                objDataAccess.EjecutaQuerySet(sQlStr);
                 registroTraducidos++;
                 lbTraducciones.Text = registroTraducidos.ToString();
 
@@ -385,7 +383,7 @@ namespace IngredientMinery
                 {
                     string sQlString = "SELECT * FROM receta_ingredientes limit 0,{0}";
                     sQlString = string.Format(sQlString, txtLimit.Text);
-                    Data = objDataAccess.EjecutaQuery(sQlString);
+                    Data = objDataAccess.EjecutaQueryGet(sQlString);
                     foreach (DataRow ingrediente in Data.Rows)
                     {
 
@@ -424,7 +422,7 @@ namespace IngredientMinery
             switch (chkModify.Checked)
             {
                 case true:
-                    sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl where  {0} {1}  limit 0,{2}";
+                    sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf,mainIngredient FROM recipedatatoowl where  {0} {1}  limit 0,{2}";
                     switch (cboPropiedadesReceta.Text)
                     {
                                     
@@ -460,7 +458,7 @@ namespace IngredientMinery
 
                     break;
                 case false:
-                    sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf FROM recipedatatoowl where  {0} {1}  limit 0,{2}";
+                    sQlString = "SELECT recipeID,recipeName,ingredienteID,ingredienteDescripcion,classOf,mainIngredient FROM recipedatatoowl where  {0} {1}  limit 0,{2}";
                     switch (cboPropiedadesReceta.Text)
                     {
 
@@ -485,7 +483,7 @@ namespace IngredientMinery
                         param1 += " classOf is null ";
                     }
                     else if (param0 != "") {
-                        param1 += " classOf is null ";
+                        param1 += " and  classOf is null ";
                     }
                     else
                     {
@@ -495,21 +493,50 @@ namespace IngredientMinery
 
                     break;
             }
-            sQlString = string.Format(sQlString,param0,param1,txtLimit.Text);
-            DataTable  DataClasificacion = objDataAccess.EjecutaQuery(sQlString);
+            if(txtWhereClausure.Text == "")
+            {
+
+                sQlString = string.Format(sQlString, param0, param1, txtLimit.Text);
+
+            }
+            else
+            {
+                param0 = txtWhereClausure.Text;
+                param1 = " and  classOf is null";
+                sQlString = string.Format(sQlString, param0, param1, txtLimit.Text);
+
+            }
+
+
+            DataTable  DataClasificacion = objDataAccess.EjecutaQueryGet(sQlString);
             lbRegistroEncontrados.Text = DataClasificacion.Rows.Count.ToString();
             dgDatosClasificacion.AutoGenerateColumns = false;
             dgDatosClasificacion.DataSource = DataClasificacion;
             AddComboColum();
             lbTotalRegistroClasificados.Text = getTotalRegistrosClasificados().ToString();
         }
+        private void cargarColumnasTablaIngredientes()
+        {
+            DataTable DataToOwl = new DataTable();
 
+            string sQlString = "Select * from RecipeDataToOwl where recipeID = 0 ";
+            List<string> columnas = new List<string>();
+            DataToOwl = objDataAccess.EjecutaQueryGet(sQlString);
+            foreach (DataColumn col in DataToOwl.Columns ) {
+
+                columnas.Add(col.ColumnName);
+            }
+            cboColumnas.Items.AddRange(columnas.ToArray());
+                
+
+
+        }
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(tabControl1.SelectedTab == tabPage2)
             {
                 llenarComboClassOf();
-               
+                
             }
             if(tabControl1.SelectedTab == tabPage3)
             {
@@ -517,12 +544,14 @@ namespace IngredientMinery
                 cboPropiedadesReceta.SelectedIndex = 0;
                 llenarComboClassOfClasificacion();
                 cboSubClass.SelectedIndex = 0;
+                cargarColumnasTablaIngredientes();
             }
         }
         private void llenarComboClassOfClasificacion()
         {
             cboSubClass.Items.Add("Todas");
-            cboSubClass.Items.AddRange(classOf.ToArray());
+            Array.Sort(classOf);
+            cboSubClass.Items.AddRange(classOf);
         }
         private void guardarCambiosClasificacion()
         {
@@ -535,7 +564,7 @@ namespace IngredientMinery
                     if (fila.Cells["SubClassOf"].Value != null) { 
                         if (fila.Cells["SubClassOf"].Value.ToString() != "") {
                             sqlData = string.Format(sqlData, fila.Cells["SubClassOf"].Value, fila.Cells["RecipeID"].Value, fila.Cells["ingredienteID"].Value);
-                            objDataAccess.EjecutaQuery(sqlData);
+                            objDataAccess.EjecutaQuerySet(sqlData);
                         }
                     }
                 }
@@ -571,7 +600,7 @@ namespace IngredientMinery
                  
                 switch (cboClassOf.Text)
                 {
-                    case "Todo":
+                    case "Todos":
                         sQlString = "SELECT * FROM translate where  mainIngredient <> ''  limit 0,{0}";
                         sQlString = string.Format(sQlString, txtLimit.Text);
                         break;
@@ -581,10 +610,11 @@ namespace IngredientMinery
                         break;
                 }
                
-                 DataTable DataToOwl = objDataAccess.EjecutaQuery(sQlString);
+                 DataTable DataToOwl = objDataAccess.EjecutaQueryGet(sQlString);
                 dgOwlData.AutoGenerateColumns = false;
                  dgOwlData.DataSource = DataToOwl;
             }
+            else { MessageBox.Show("Coloque el limite de la busqueda.."); }
         }
 
         private void btnBuscarDataOwl_Click(object sender, EventArgs e)
@@ -598,7 +628,7 @@ namespace IngredientMinery
         }
         private void visualizarFile()
         {
-            string inputFileName = objFileTool.GetAplicationDirectory()+ "FoodOntologyRecomenderOwl.owl";
+            string inputFileName = objFileTool.GetAplicationDirectory()+ "FoodOntologyRecomenderOwl2142018.owl";
             Model model = ModelFactory.createDefaultModel();
 
             // use the class loader to find the input file
@@ -624,7 +654,7 @@ namespace IngredientMinery
         }
         private void migrarDataToOwl()
         {
-            string inputFileName = objFileTool.GetAplicationDirectory() + "FoodOntologyRecomenderOwl.owl";
+            string inputFileName = objFileTool.GetAplicationDirectory() + "FoodOntologyRecomenderOwl2142018.owl";
             string uri = string.Empty,StrClassName = string.Empty,individualValue = string.Empty,
                 individualID =string.Empty,recipeIdValue =string.Empty;
             OntClass clase = null;
@@ -649,7 +679,7 @@ namespace IngredientMinery
                 recipeIdValue = fila.Cells["recetaID"].Value.ToString();
                 clase = model.getOntClass(uri+StrClassName);
                 ObjIndividual = model.createIndividual(uri + ":" + recipeIdValue+"_"+individualID, clase);
-                ObjIndividual.setPropertyValue(RDFS.label, model.createLiteral(individualValue, "Es"));
+                ObjIndividual.setPropertyValue(RDFS.label, model.createLiteral(individualValue, "es"));
                 java.io.File file = new java.io.File(inputFileName);
                 model.write(new PrintWriter(file));
 
@@ -658,8 +688,13 @@ namespace IngredientMinery
         }
         private void llenarComboClassOf()
         {
-            cboClassOf.Items.AddRange(classOf.ToArray());
-            cboClassOf.SelectedIndex = 0;
+
+            Array.Sort(classOf);
+            cboClassOf.Items.AddRange(classOf);
+            cboClassOf.Items.Add("Todos");
+            cboClassOf.SelectedIndex = cboClassOf.Items.Count -1;
+           
+
         }
 
         private void btnTraducirIngredientes_Click(object sender, EventArgs e)
@@ -696,7 +731,7 @@ namespace IngredientMinery
                       cont++;
                         ingrediente = sr.ReadLine();
                         sqlStr = "Update translate set mainIngredient = '"+ingrediente+"' where ingredienteDescripcion like '%"+ingrediente+"%' and  mainIngredient = ''";
-                        objDataAccess.EjecutaQuery(sqlStr);
+                        objDataAccess.EjecutaQueryGet(sqlStr);
                         lbTotalIngredientes.Text = cont.ToString();
                          
                     }
@@ -722,7 +757,7 @@ namespace IngredientMinery
             {
                 sqlStr = "select count(ingredienteID) as total from translate where classOf <> '' limit 0,5000";
                // sqlStr = string.Format(sqlStr, txtLimit.Text);
-                resultado = Convert.ToInt32(objDataAccess.EjecutaQuery(sqlStr).Rows[0]["total"].ToString());
+                resultado = Convert.ToInt32(objDataAccess.EjecutaQueryGet(sqlStr).Rows[0]["total"].ToString());
             }
             return resultado;
         }
@@ -733,7 +768,7 @@ namespace IngredientMinery
             { 
                 sqlStr = "select recipeName,ingredienteID,ingredienteDescripcion,classOf from recipeDataToOwl where recipeDataToOwl like '%{0}%' and recipeTipoPlatoData <> '' limit 0,{1}";
                 sqlStr = string.Format(sqlStr,name,txtLimit.Text);
-                resultado = objDataAccess.EjecutaQuery(sqlStr);
+                resultado = objDataAccess.EjecutaQueryGet(sqlStr);
             }
             return resultado;
         }
@@ -749,6 +784,24 @@ namespace IngredientMinery
         {
             cboPropiedadesReceta.Items.Clear();
             cboPropiedadesReceta.Items.AddRange(recipeProperty.ToArray());
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddColumn_Click(object sender, EventArgs e)
+        {
+            if (cboColumnas.Text != "" && cboOperadores.Text != "")
+            {
+                if (txtWhereClausure.Text == "")
+                    txtWhereClausure.Text += cboColumnas.Text + " "+cboOperadores.Text;
+                else
+                    txtWhereClausure.Text += " and " + " " + cboOperadores.Text;
+            }
+            else
+                MessageBox.Show("Seleccione un a Columna y un operador");
         }
     }
 }

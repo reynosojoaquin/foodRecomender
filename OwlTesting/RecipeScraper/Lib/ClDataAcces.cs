@@ -18,7 +18,7 @@ namespace RecipeScraper
         MySqlDataReader reader = null;
         MySqlDataAdapter adapter = null;
 
-        public DataTable EjecutaQuery(string queryStr)
+        public DataTable EjecutaQueryGet(string queryStr)
         {
             DataTable resultado = new DataTable();
             
@@ -26,7 +26,7 @@ namespace RecipeScraper
           
             try
             {
-               
+            
                 conn = new MySqlConnection(connStr);
                 comando = new MySqlCommand(queryStr, conn);
                 adapter = new MySqlDataAdapter(comando);
@@ -37,6 +37,31 @@ namespace RecipeScraper
                // reader.Close();
             }
             catch(Exception ex)
+            {
+                resultado.Rows.Add();
+                resultado.Rows[0]["error"] = ex.ToString();
+
+            }
+            conn.Close();
+            return resultado;
+        }
+        public DataTable EjecutaQuerySet(string queryStr)
+        {
+            DataTable resultado = new DataTable();
+
+            resultado.Columns.Add("error");
+
+            try
+            {
+
+                conn = new MySqlConnection(connStr);
+                comando = new MySqlCommand(queryStr, conn);
+                conn.Open();
+                reader = comando.ExecuteReader();
+                //resultado.Load(reader);
+                reader.Close();
+            }
+            catch (Exception ex)
             {
                 resultado.Rows.Add();
                 resultado.Rows[0]["error"] = ex.ToString();
@@ -108,7 +133,7 @@ namespace RecipeScraper
                             sugar, fat, saturatefat, carbohydrate, protein, cholesterol, recipeTipoPlatoData,
                             recipeCulturaData, recipeNacionalidadData, recipeMomentoData, recipeTemporadaData, Picture);
 
-                        retorno = EjecutaQuery(sQLString);
+                        retorno = EjecutaQuerySet(sQLString);
                         id = retorno.Rows[0]["codigo"].ToString();
 
                         foreach (DataRow rcfil in data.Tables[0].Rows)
@@ -116,7 +141,7 @@ namespace RecipeScraper
                             sQLString = "insert into ingredientes (recipeID,descripcion) values"
                                 + " ({0},'{1}')";
                             sQLString = string.Format(sQLString, id, rcfil["ingrediente"].ToString());
-                            retorno = EjecutaQuery(sQLString);
+                            retorno = EjecutaQuerySet(sQLString);
 
                         }
                         transaction.Complete();
@@ -145,7 +170,7 @@ namespace RecipeScraper
                             sQLString = string.Format(sQLString, recipeTipoPlatoData,
                                 recipeCulturaData, recipeNacionalidadData, recipeMomentoData, recipeTemporadaData,origen,esSopa
                                 ,esPasta,esMarisco,esEnsalada,EsBebida,esBajoColesterol,esBajoEnCalorias,esLibreGluten, name);
-                            retorno = EjecutaQuery(sQLString);
+                            retorno = EjecutaQuerySet(sQLString);
                             transactionModifica.Complete();
                         }
                         catch (Exception ex)
@@ -168,7 +193,7 @@ namespace RecipeScraper
                     string Query = string.Empty;
                     Query = "SELECT RECIPEID FROM RECIPE WHERE NOMBRE = '{0}'";
                     Query = string.Format(Query, id);
-                    if (EjecutaQuery(Query).Rows.Count > 0)
+                    if (EjecutaQueryGet(Query).Rows.Count > 0)
                         resultado = true;
                     return resultado;
 
