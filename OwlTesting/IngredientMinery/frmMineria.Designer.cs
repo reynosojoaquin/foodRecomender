@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lbTraducciones = new System.Windows.Forms.Label();
@@ -57,6 +57,12 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cboOperadores = new System.Windows.Forms.ComboBox();
+            this.btnAddColumn = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cboColumnas = new System.Windows.Forms.ComboBox();
+            this.txtWhereClausure = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cboSubClass = new System.Windows.Forms.ComboBox();
@@ -72,6 +78,13 @@
             this.chkModify = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgDatosClasificacion = new System.Windows.Forms.DataGridView();
+            this.RecipeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ingredienteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RecipeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IngredienteDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mingredient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubClassOfCurrentValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubClassOf = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.cboClassOf = new System.Windows.Forms.ComboBox();
@@ -96,19 +109,7 @@
             this.btnEvaluarBaseDatos = new System.Windows.Forms.Button();
             this.btnEvaluar = new System.Windows.Forms.Button();
             this.btnMarcarRegistro = new System.Windows.Forms.Button();
-            this.RecipeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ingredienteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RecipeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IngredienteDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mingredient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubClassOfCurrentValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubClassOf = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.txtWhereClausure = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cboColumnas = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.btnAddColumn = new System.Windows.Forms.Button();
-            this.cboOperadores = new System.Windows.Forms.ComboBox();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -117,6 +118,7 @@
             this.panel3.SuspendLayout();
             this.CmAgregarPalabraBc.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDatosClasificacion)).BeginInit();
@@ -124,7 +126,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgOwlData)).BeginInit();
             this.panel2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -369,6 +371,76 @@
             this.tabPage3.Text = "Clasificacion";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.cboOperadores);
+            this.groupBox4.Controls.Add(this.btnAddColumn);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.cboColumnas);
+            this.groupBox4.Controls.Add(this.txtWhereClausure);
+            this.groupBox4.Location = new System.Drawing.Point(12, 360);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(868, 107);
+            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Where Clausure";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // cboOperadores
+            // 
+            this.cboOperadores.FormattingEnabled = true;
+            this.cboOperadores.Items.AddRange(new object[] {
+            "=",
+            "<",
+            ">",
+            "<>",
+            "Like",
+            "is null",
+            "is not null"});
+            this.cboOperadores.Location = new System.Drawing.Point(6, 54);
+            this.cboOperadores.Name = "cboOperadores";
+            this.cboOperadores.Size = new System.Drawing.Size(298, 21);
+            this.cboOperadores.TabIndex = 13;
+            // 
+            // btnAddColumn
+            // 
+            this.btnAddColumn.Location = new System.Drawing.Point(5, 78);
+            this.btnAddColumn.Name = "btnAddColumn";
+            this.btnAddColumn.Size = new System.Drawing.Size(298, 23);
+            this.btnAddColumn.TabIndex = 12;
+            this.btnAddColumn.Text = "Add";
+            this.btnAddColumn.UseVisualStyleBackColor = true;
+            this.btnAddColumn.Click += new System.EventHandler(this.btnAddColumn_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 16);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 13);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Columnas";
+            // 
+            // cboColumnas
+            // 
+            this.cboColumnas.FormattingEnabled = true;
+            this.cboColumnas.Location = new System.Drawing.Point(6, 31);
+            this.cboColumnas.Name = "cboColumnas";
+            this.cboColumnas.Size = new System.Drawing.Size(298, 21);
+            this.cboColumnas.TabIndex = 10;
+            // 
+            // txtWhereClausure
+            // 
+            this.txtWhereClausure.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWhereClausure.Location = new System.Drawing.Point(310, 16);
+            this.txtWhereClausure.Multiline = true;
+            this.txtWhereClausure.Name = "txtWhereClausure";
+            this.txtWhereClausure.Size = new System.Drawing.Size(555, 85);
+            this.txtWhereClausure.TabIndex = 9;
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -520,14 +592,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDatosClasificacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgDatosClasificacion.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgDatosClasificacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDatosClasificacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgDatosClasificacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgDatosClasificacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RecipeID,
@@ -537,37 +609,86 @@
             this.mingredient,
             this.SubClassOfCurrentValue,
             this.SubClassOf});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgDatosClasificacion.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgDatosClasificacion.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgDatosClasificacion.Location = new System.Drawing.Point(3, 16);
             this.dgDatosClasificacion.Name = "dgDatosClasificacion";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgDatosClasificacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgDatosClasificacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgDatosClasificacion.RowHeadersVisible = false;
             this.dgDatosClasificacion.Size = new System.Drawing.Size(868, 326);
             this.dgDatosClasificacion.TabIndex = 0;
             // 
+            // RecipeID
+            // 
+            this.RecipeID.DataPropertyName = "recipeID";
+            this.RecipeID.HeaderText = "Receta ID";
+            this.RecipeID.Name = "RecipeID";
+            // 
+            // ingredienteID
+            // 
+            this.ingredienteID.DataPropertyName = "ingredienteID";
+            this.ingredienteID.FillWeight = 90F;
+            this.ingredienteID.HeaderText = "Ingrediente ID";
+            this.ingredienteID.Name = "ingredienteID";
+            // 
+            // RecipeName
+            // 
+            this.RecipeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RecipeName.DataPropertyName = "recipeName";
+            this.RecipeName.FillWeight = 350F;
+            this.RecipeName.HeaderText = "R Nombre";
+            this.RecipeName.Name = "RecipeName";
+            // 
+            // IngredienteDescripcion
+            // 
+            this.IngredienteDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IngredienteDescripcion.DataPropertyName = "ingredienteDescripcion";
+            this.IngredienteDescripcion.FillWeight = 350F;
+            this.IngredienteDescripcion.HeaderText = "Ingrediente Descripcioon";
+            this.IngredienteDescripcion.Name = "IngredienteDescripcion";
+            // 
+            // mingredient
+            // 
+            this.mingredient.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mingredient.DataPropertyName = "mainIngredient";
+            this.mingredient.FillWeight = 350F;
+            this.mingredient.HeaderText = "ingrediente p.";
+            this.mingredient.Name = "mingredient";
+            this.mingredient.ReadOnly = true;
+            // 
+            // SubClassOfCurrentValue
+            // 
+            this.SubClassOfCurrentValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubClassOfCurrentValue.DataPropertyName = "ClassOf";
+            this.SubClassOfCurrentValue.FillWeight = 150F;
+            this.SubClassOfCurrentValue.HeaderText = "valor Actual";
+            this.SubClassOfCurrentValue.Name = "SubClassOfCurrentValue";
+            this.SubClassOfCurrentValue.ReadOnly = true;
+            // 
+            // SubClassOf
+            // 
+            this.SubClassOf.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubClassOf.DataPropertyName = "subClassOf";
+            this.SubClassOf.FillWeight = 150F;
+            this.SubClassOf.HeaderText = "SubClassOf";
+            this.SubClassOf.Name = "SubClassOf";
+            // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.cboClassOf);
-            this.tabPage2.Controls.Add(this.btnViewFile);
-            this.tabPage2.Controls.Add(this.btnMigrar);
-            this.tabPage2.Controls.Add(this.btnBuscarDataOwl);
-            this.tabPage2.Controls.Add(this.lbRegistroEncontradosOwl);
-            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.panel5);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -580,7 +701,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(600, 485);
+            this.label7.Location = new System.Drawing.Point(599, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 13);
             this.label7.TabIndex = 7;
@@ -589,14 +710,14 @@
             // cboClassOf
             // 
             this.cboClassOf.FormattingEnabled = true;
-            this.cboClassOf.Location = new System.Drawing.Point(666, 480);
+            this.cboClassOf.Location = new System.Drawing.Point(665, 4);
             this.cboClassOf.Name = "cboClassOf";
             this.cboClassOf.Size = new System.Drawing.Size(210, 21);
             this.cboClassOf.TabIndex = 6;
             // 
             // btnViewFile
             // 
-            this.btnViewFile.Location = new System.Drawing.Point(666, 526);
+            this.btnViewFile.Location = new System.Drawing.Point(665, 50);
             this.btnViewFile.Name = "btnViewFile";
             this.btnViewFile.Size = new System.Drawing.Size(96, 23);
             this.btnViewFile.TabIndex = 5;
@@ -606,7 +727,7 @@
             // 
             // btnMigrar
             // 
-            this.btnMigrar.Location = new System.Drawing.Point(764, 526);
+            this.btnMigrar.Location = new System.Drawing.Point(763, 50);
             this.btnMigrar.Name = "btnMigrar";
             this.btnMigrar.Size = new System.Drawing.Size(112, 23);
             this.btnMigrar.TabIndex = 4;
@@ -616,7 +737,7 @@
             // 
             // btnBuscarDataOwl
             // 
-            this.btnBuscarDataOwl.Location = new System.Drawing.Point(589, 526);
+            this.btnBuscarDataOwl.Location = new System.Drawing.Point(588, 50);
             this.btnBuscarDataOwl.Name = "btnBuscarDataOwl";
             this.btnBuscarDataOwl.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarDataOwl.TabIndex = 3;
@@ -627,7 +748,7 @@
             // lbRegistroEncontradosOwl
             // 
             this.lbRegistroEncontradosOwl.AutoSize = true;
-            this.lbRegistroEncontradosOwl.Location = new System.Drawing.Point(122, 477);
+            this.lbRegistroEncontradosOwl.Location = new System.Drawing.Point(117, 55);
             this.lbRegistroEncontradosOwl.Name = "lbRegistroEncontradosOwl";
             this.lbRegistroEncontradosOwl.Size = new System.Drawing.Size(13, 13);
             this.lbRegistroEncontradosOwl.TabIndex = 2;
@@ -636,7 +757,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 477);
+            this.label6.Location = new System.Drawing.Point(3, 55);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(108, 13);
             this.label6.TabIndex = 1;
@@ -644,11 +765,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.dgOwlData);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(880, 471);
+            this.groupBox2.Size = new System.Drawing.Size(880, 470);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
@@ -658,14 +781,14 @@
             this.dgOwlData.AllowUserToDeleteRows = false;
             this.dgOwlData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgOwlData.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgOwlData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgOwlData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgOwlData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgOwlData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.recetaID,
@@ -673,27 +796,27 @@
             this.ingredienteIDValue,
             this.ingredienteValue,
             this.ClassOfValue});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgOwlData.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgOwlData.DefaultCellStyle = dataGridViewCellStyle17;
             this.dgOwlData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgOwlData.Location = new System.Drawing.Point(3, 16);
             this.dgOwlData.Name = "dgOwlData";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgOwlData.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgOwlData.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgOwlData.RowHeadersVisible = false;
-            this.dgOwlData.Size = new System.Drawing.Size(874, 452);
+            this.dgOwlData.Size = new System.Drawing.Size(874, 451);
             this.dgOwlData.TabIndex = 1;
             // 
             // recetaID
@@ -836,130 +959,21 @@
             this.btnMarcarRegistro.UseVisualStyleBackColor = true;
             this.btnMarcarRegistro.Click += new System.EventHandler(this.btnMarcarRegistro_Click);
             // 
-            // RecipeID
+            // panel5
             // 
-            this.RecipeID.DataPropertyName = "recipeID";
-            this.RecipeID.HeaderText = "Receta ID";
-            this.RecipeID.Name = "RecipeID";
-            // 
-            // ingredienteID
-            // 
-            this.ingredienteID.DataPropertyName = "ingredienteID";
-            this.ingredienteID.FillWeight = 90F;
-            this.ingredienteID.HeaderText = "Ingrediente ID";
-            this.ingredienteID.Name = "ingredienteID";
-            // 
-            // RecipeName
-            // 
-            this.RecipeName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RecipeName.DataPropertyName = "recipeName";
-            this.RecipeName.FillWeight = 350F;
-            this.RecipeName.HeaderText = "R Nombre";
-            this.RecipeName.Name = "RecipeName";
-            // 
-            // IngredienteDescripcion
-            // 
-            this.IngredienteDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IngredienteDescripcion.DataPropertyName = "ingredienteDescripcion";
-            this.IngredienteDescripcion.FillWeight = 350F;
-            this.IngredienteDescripcion.HeaderText = "Ingrediente Descripcioon";
-            this.IngredienteDescripcion.Name = "IngredienteDescripcion";
-            // 
-            // mingredient
-            // 
-            this.mingredient.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.mingredient.DataPropertyName = "mainIngredient";
-            this.mingredient.FillWeight = 350F;
-            this.mingredient.HeaderText = "ingrediente p.";
-            this.mingredient.Name = "mingredient";
-            this.mingredient.ReadOnly = true;
-            // 
-            // SubClassOfCurrentValue
-            // 
-            this.SubClassOfCurrentValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SubClassOfCurrentValue.DataPropertyName = "ClassOf";
-            this.SubClassOfCurrentValue.FillWeight = 150F;
-            this.SubClassOfCurrentValue.HeaderText = "valor Actual";
-            this.SubClassOfCurrentValue.Name = "SubClassOfCurrentValue";
-            this.SubClassOfCurrentValue.ReadOnly = true;
-            // 
-            // SubClassOf
-            // 
-            this.SubClassOf.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SubClassOf.DataPropertyName = "subClassOf";
-            this.SubClassOf.FillWeight = 150F;
-            this.SubClassOf.HeaderText = "SubClassOf";
-            this.SubClassOf.Name = "SubClassOf";
-            // 
-            // txtWhereClausure
-            // 
-            this.txtWhereClausure.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtWhereClausure.Location = new System.Drawing.Point(310, 16);
-            this.txtWhereClausure.Multiline = true;
-            this.txtWhereClausure.Name = "txtWhereClausure";
-            this.txtWhereClausure.Size = new System.Drawing.Size(555, 85);
-            this.txtWhereClausure.TabIndex = 9;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.cboOperadores);
-            this.groupBox4.Controls.Add(this.btnAddColumn);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.cboColumnas);
-            this.groupBox4.Controls.Add(this.txtWhereClausure);
-            this.groupBox4.Location = new System.Drawing.Point(12, 360);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(868, 107);
-            this.groupBox4.TabIndex = 10;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Where Clausure";
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
-            // 
-            // cboColumnas
-            // 
-            this.cboColumnas.FormattingEnabled = true;
-            this.cboColumnas.Location = new System.Drawing.Point(6, 31);
-            this.cboColumnas.Name = "cboColumnas";
-            this.cboColumnas.Size = new System.Drawing.Size(298, 21);
-            this.cboColumnas.TabIndex = 10;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 16);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 13);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Columnas";
-            // 
-            // btnAddColumn
-            // 
-            this.btnAddColumn.Location = new System.Drawing.Point(5, 78);
-            this.btnAddColumn.Name = "btnAddColumn";
-            this.btnAddColumn.Size = new System.Drawing.Size(298, 23);
-            this.btnAddColumn.TabIndex = 12;
-            this.btnAddColumn.Text = "Add";
-            this.btnAddColumn.UseVisualStyleBackColor = true;
-            this.btnAddColumn.Click += new System.EventHandler(this.btnAddColumn_Click);
-            // 
-            // cboOperadores
-            // 
-            this.cboOperadores.FormattingEnabled = true;
-            this.cboOperadores.Items.AddRange(new object[] {
-            "=",
-            "<",
-            ">",
-            "<>",
-            "Like",
-            "is null",
-            "is not null"});
-            this.cboOperadores.Location = new System.Drawing.Point(6, 54);
-            this.cboOperadores.Name = "cboOperadores";
-            this.cboOperadores.Size = new System.Drawing.Size(298, 21);
-            this.cboOperadores.TabIndex = 13;
+            this.panel5.Controls.Add(this.btnViewFile);
+            this.panel5.Controls.Add(this.label7);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.cboClassOf);
+            this.panel5.Controls.Add(this.lbRegistroEncontradosOwl);
+            this.panel5.Controls.Add(this.btnBuscarDataOwl);
+            this.panel5.Controls.Add(this.btnMigrar);
+            this.panel5.Location = new System.Drawing.Point(3, 479);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(880, 76);
+            this.panel5.TabIndex = 8;
             // 
             // frmMineria
             // 
@@ -985,18 +999,19 @@
             this.CmAgregarPalabraBc.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgDatosClasificacion)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgOwlData)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1077,6 +1092,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cboColumnas;
         private System.Windows.Forms.ComboBox cboOperadores;
+        private System.Windows.Forms.Panel panel5;
     }
 }
 

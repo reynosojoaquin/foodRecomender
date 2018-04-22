@@ -12,18 +12,17 @@ using Newtonsoft;
 using Newtonsoft.Json;
 using System.IO;
 using RavSoft.GoogleTranslator;
-using com.hp.hpl.jena.rdf.model;
-using com.hp.hpl.jena.util;
-using com.hp.hpl.jena.vocabulary;
-using com.hp.hpl.jena.ontology;
 using System;
-using java.io;
-
+using VDS.RDF;
+using VDS.RDF.Ontology;
+using VDS.RDF.Parsing;
 
 namespace IngredientMinery
 {
     public partial class frmMineria : Form
     {
+        DataTable RecipeData = null;
+        DataTable ingredientData = null;
         DataTable registroEncontrados = new DataTable();
         ClDataAcces objDataAccess = new ClDataAcces();
         int registroTraducidos = 0;
@@ -601,18 +600,21 @@ namespace IngredientMinery
                 switch (cboClassOf.Text)
                 {
                     case "Todos":
-                        sQlString = "SELECT * FROM translate where  mainIngredient <> ''  limit 0,{0}";
+                        sQlString = "SELECT * FROM recipedatatoowl where  mainIngredient <> ''  limit 0,{0}";
                         sQlString = string.Format(sQlString, txtLimit.Text);
                         break;
                     default:
-                        sQlString = "SELECT * FROM translate where classOf = '{1}'  limit 0,{0}";
+                        sQlString = "SELECT * FROM recipedatatoowl where classOf = '{1}' and mainIngredient <> '' limit 0,{0}";
                         sQlString = string.Format(sQlString, txtLimit.Text, cboClassOf.Text);
                         break;
                 }
-               
-                 DataTable DataToOwl = objDataAccess.EjecutaQueryGet(sQlString);
-                dgOwlData.AutoGenerateColumns = false;
-                 dgOwlData.DataSource = DataToOwl;
+
+                // DataTable DataToOwl = objDataAccess.EjecutaQueryGet(sQlString);
+                  RecipeData = objDataAccess.EjecutaQueryGet(sQlString);
+                 dgOwlData.AutoGenerateColumns = false;
+                 dgOwlData.DataSource = RecipeData;
+
+
             }
             else { MessageBox.Show("Coloque el limite de la busqueda.."); }
         }
@@ -628,24 +630,7 @@ namespace IngredientMinery
         }
         private void visualizarFile()
         {
-            string inputFileName = objFileTool.GetAplicationDirectory()+ "FoodOntologyRecomenderOwl2142018.owl";
-            Model model = ModelFactory.createDefaultModel();
-
-            // use the class loader to find the input file
-            InputStream inputStream = FileManager.get().open(inputFileName);
-            if (inputStream == null)
-            {
-                throw new ArgumentException("File: " + inputFileName + " not found");
-            }
-            // read the RDF/XML file
-            model.read(new InputStreamReader(inputStream), "");
-            
-            frmVisualizarOwlFile objFileViewer = new frmVisualizarOwlFile();
-            // print the graph as RDF/XML
-            java.io.StringWriter stringWriter = new java.io.StringWriter();
-            model.write(stringWriter, "RDF/XML-ABBREV");
-            objFileViewer.OwlFileStr = stringWriter.toString();
-            objFileViewer.ShowDialog();
+           
         }
 
         private void btnMigrar_Click(object sender, EventArgs e)
@@ -654,36 +639,92 @@ namespace IngredientMinery
         }
         private void migrarDataToOwl()
         {
-            string inputFileName = objFileTool.GetAplicationDirectory() + "FoodOntologyRecomenderOwl2142018.owl";
-            string uri = string.Empty,StrClassName = string.Empty,individualValue = string.Empty,
-                individualID =string.Empty,recipeIdValue =string.Empty;
-            OntClass clase = null;
-            Individual ObjIndividual = null;
            
-            OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
-            uri = "http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#";
-            // use the class loader to find the input file
-            InputStream inputStream = FileManager.get().open(inputFileName);
-            if (inputStream == null)
-            {
-                throw new ArgumentException("File: " + inputFileName + " not found");
-            }
-            // read the RDF/XML file
-            model.read(new InputStreamReader(inputStream), "");
-            foreach (DataGridViewRow fila in dgOwlData.Rows)
-            {
+            string StrClassName = string.Empty, individualValue = string.Empty,
+            individualID = string.Empty, recipeIdValue = string.Empty, fileRoute = string.Empty,
+            recipeID = string.Empty, NombreRecipe = string.Empty, sal = string.Empty,
+            calorias = string.Empty, fibra = string.Empty, azucar = string.Empty,
+            grasas = string.Empty, grasasSaturadas = string.Empty, carbohidratos = string.Empty,
+            proteinas = string.Empty, colesterol = string.Empty, recipeTipoPlatoData = string.Empty,
+            paisNombre = string.Empty;
+             
+            OntologyClass clase = null;
+            Individual ObjIndividual = null;
 
-                StrClassName = fila.Cells["ClassOfValue"].Value.ToString();
-                individualValue = fila.Cells["ingredienteValue"].Value.ToString();
-                individualID = fila.Cells["ingredienteIDValue"].Value.ToString();
-                recipeIdValue = fila.Cells["recetaID"].Value.ToString();
-                clase = model.getOntClass(uri+StrClassName);
-                ObjIndividual = model.createIndividual(uri + ":" + recipeIdValue+"_"+individualID, clase);
-                ObjIndividual.setPropertyValue(RDFS.label, model.createLiteral(individualValue, "es"));
-                java.io.File file = new java.io.File(inputFileName);
-                model.write(new PrintWriter(file));
+            OntologyGraph OwlFile = new OntologyGraph();
+            FileLoader.Load(OwlFile, "FoodOntologyRecomenderOwl2142018.owl");
+            fileRoute = OwlFile.BaseUri.ToString();
+            OwlFile.BaseUri = new Uri("http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26");
+            
 
+
+            foreach(DataRow recipeItem in RecipeData.Rows)
+            {
+                recipeID = recipeItem["recipeID"].ToSafeString();
+                var filas = RecipeData.Select($"recipeid = {recipeID}");
+                foreach(DataRow ingredientItem in filas)
+                {
+                    StrClassName = ingredientItem["ClassOfValue"].ToString();
+                    individualValue = ingredientItem["ingredienteValue"].ToString();
+                    recipeIdValue = ingredientItem["recetaID"].ToString();
+                    individualID = $"{recipeIdValue}_{ingredientItem["ingredienteIDValue"].ToString()}";
+
+                    var uri = new Uri($"{OwlFile.BaseUri.ToString()}#{StrClassName}");
+                    OntologyClass objClass = OwlFile.CreateOntologyClass(uri);
+                    INode nodoIndividual = OwlFile.CreateUriNode(new
+                        Uri($"{OwlFile.BaseUri.ToString()}/{individualID}"));
+                   var label = OwlFile.CreateLiteralNode(individualValue, "es");
+                    Individual individual = new Individual(nodoIndividual, objClass.Resource, OwlFile);
+                    individual.AddLiteralProperty(uri, label, true);
+                    OwlFile.CreateIndividual(individual.Resource,objClass.Resource);
+                }
+                NombreRecipe     = recipeItem["recipeID"].ToSafeString();
+                sal              = recipeItem["sal"].ToSafeString();
+                calorias         = recipeItem["calorias"].ToSafeString();
+                fibra            = recipeItem["fibra"].ToSafeString();
+                azucar           = recipeItem["azucar"].ToSafeString();
+                grasas           = recipeItem["grasas"].ToSafeString();
+                grasasSaturadas      = recipeItem["grasasSaturadas"].ToSafeString();
+                carbohidratos        = recipeItem["proteinas"].ToSafeString();
+                proteinas            = recipeItem["proteinas"].ToSafeString();
+                colesterol           = recipeItem["colesterol"].ToSafeString();
+                recipeTipoPlatoData  = recipeItem["recipeTipoPlatoData"].ToSafeString();
+                paisNombre           = recipeItem["paisNombre"].ToSafeString();
+
+                var uriRecipe = new Uri($"{OwlFile.BaseUri.ToString()}#Receta");
+                OntologyClass objClassRecipe = OwlFile.CreateOntologyClass(uriRecipe);
+                INode nodoReceta = OwlFile.CreateUriNode(new
+                    Uri($"{OwlFile.BaseUri.ToString()}/{recipeID}"));
+                var labelReceta = OwlFile.CreateLiteralNode(NombreRecipe, "es");
+                Individual individualReceta = new Individual(nodoReceta,
+                    objClassRecipe.Resource, OwlFile);
+                individualReceta.AddLiteralProperty(uriRecipe, labelReceta, true);
+               var oSal = sal.ToLiteral(OwlFile);
+               var oCalorias = calorias.ToLiteral(OwlFile);
+               var oFibra = fibra.ToLiteral(OwlFile);
+               var oAzucar = azucar.ToLiteral(OwlFile);
+               var oGrasas = grasas.ToLiteral(OwlFile);
+               var oGrasasSaturadas = grasasSaturadas.ToLiteral(OwlFile);
+               var oCarbohidratos = carbohidratos.ToLiteral(OwlFile);
+               var oProteinas = proteinas.ToLiteral(OwlFile);
+               var oColesterol = colesterol.ToLiteral(OwlFile);
+               var oRecipeTipoPlatoData = recipeTipoPlatoData.ToLiteral(OwlFile);
+               var oPaisNombre = paisNombre.ToLiteral(OwlFile);
+               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaSalt", oSal, true);
+               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaCalorias", oCalorias, true);
+               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaFibra", oFibra, true);
+               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaAzucar", oAzucar, true);
+               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaFat", oGrasas, true);
+               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaSaturates", oGrasasSaturadas, true);
+               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaCabs", oCarbohidratos, true);
+                individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaProtein", oProteinas, true);
+                individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaColesterol", oColesterol, true);
+                individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/tipoPlato", oRecipeTipoPlatoData, true);
+                individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/Nacionalidad", oPaisNombre, true);
+                OwlFile.CreateIndividual(individualReceta.Resource,objClassRecipe.Resource);
+                
             }
+            OwlFile.SaveToFile($"{objFileTool.GetAplicationDirectory()}/FoodOntologyRecomenderOwl2142018.owl");
             MessageBox.Show("Datos Registrados con exito");
         }
         private void llenarComboClassOf()
