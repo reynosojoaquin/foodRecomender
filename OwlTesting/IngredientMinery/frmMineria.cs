@@ -655,73 +655,129 @@ namespace IngredientMinery
             FileLoader.Load(OwlFile, "FoodOntologyRecomenderOwl2142018.owl");
             fileRoute = OwlFile.BaseUri.ToString();
             OwlFile.BaseUri = new Uri("http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26");
-            
 
 
-            foreach(DataRow recipeItem in RecipeData.Rows)
+
+            foreach (DataRow recipeItem in RecipeData.Rows)
             {
                 recipeID = recipeItem["recipeID"].ToSafeString();
                 var filas = RecipeData.Select($"recipeid = {recipeID}");
-                foreach(DataRow ingredientItem in filas)
+
+                NombreRecipe = recipeItem["recipeName"].ToSafeString();
+                sal = recipeItem["sal"].ToSafeString();
+                calorias = recipeItem["calorias"].ToSafeString();
+                fibra = recipeItem["fibra"].ToSafeString();
+                azucar = recipeItem["azucar"].ToSafeString();
+                grasas = recipeItem["grasas"].ToSafeString();
+                grasasSaturadas = recipeItem["grasasSaturadas"].ToSafeString();
+                carbohidratos = recipeItem["proteinas"].ToSafeString();
+                proteinas = recipeItem["proteinas"].ToSafeString();
+                colesterol = recipeItem["colesterol"].ToSafeString();
+                recipeTipoPlatoData = recipeItem["recipeTipoPlatoData"].ToSafeString();
+                paisNombre = recipeItem["paisNombre"].ToSafeString();
+
+                var Uriclass = new Uri($"{OwlFile.BaseUri.ToString()}#Receta");
+                var UriRecipe  = new Uri($"{OwlFile.BaseUri.ToString()}/{recipeID}");
+                var UriRecipeSal = new Uri($"{OwlFile.BaseUri.ToString()}/recetaSalt");
+                var UriRecipeCalorias = new Uri($"{OwlFile.BaseUri.ToString()}/recetaCalorias");
+                var uriHasIngredient = new  Uri($"{OwlFile.BaseUri.ToString()}/recetaTieneIngrediente");
+
+
+                var SalNode = OwlFile.CreateLiteralNode(sal, new Uri(XmlSpecsHelper.XmlSchemaDataTypeDecimal));
+                var oCalorias = OwlFile.CreateLiteralNode(calorias, new Uri(XmlSpecsHelper.XmlSchemaDataTypeDecimal));
+
+
+
+
+
+                //var oFibra = OwlFile.CreateLiteralNode(fibra, new Uri(XmlSpecsHelper.XmlSchemaDataTypeDecimal));
+                //var oAzucar = OwlFile.CreateLiteralNode(azucar, new Uri(XmlSpecsHelper.XmlSchemaDataTypeDecimal));
+                //var oGrasas = OwlFile.CreateLiteralNode(grasas, new Uri(XmlSpecsHelper.XmlSchemaDataTypeDecimal));
+                //var oGrasasSaturadas = OwlFile.CreateLiteralNode(grasasSaturadas, new Uri(XmlSpecsHelper.XmlSchemaDataTypeDecimal));
+                //var oCarbohidratos = OwlFile.CreateLiteralNode(carbohidratos, new Uri(XmlSpecsHelper.XmlSchemaDataTypeDecimal));
+                //var oProteinas = OwlFile.CreateLiteralNode(proteinas, new Uri(XmlSpecsHelper.XmlSchemaDataTypeDecimal));
+                //var oColesterol = OwlFile.CreateLiteralNode(colesterol, new Uri(XmlSpecsHelper.XmlSchemaDataTypeDecimal));
+                //var oRecipeTipoPlatoData = OwlFile.CreateLiteralNode(recipeTipoPlatoData, new Uri(XmlSpecsHelper.XmlSchemaDataTypeString));
+                //var oPaisNombre = OwlFile.CreateLiteralNode(paisNombre, new Uri(XmlSpecsHelper.XmlSchemaDataTypeString));
+                //  INode ObjOwl = OwlFile.CreateUriNode(new Uri($"{OwlFile.BaseUri.ToString()}/recetaTieneIngrediente"));
+
+
+
+                // OntologyClass objClassRecipe = OwlFile.CreateOntologyClass(uriRecipe);
+                INode nodoIndReceta = OwlFile.CreateUriNode(new
+                      Uri($"{OwlFile.BaseUri.ToString()}/{recipeID}"));
+                INode ClassRecetaNode = OwlFile.CreateUriNode(Uriclass);
+                INode NodeHasIngrediet = OwlFile.CreateUriNode(uriHasIngredient);
+                INode salVal = OwlFile.CreateUriNode(UriRecipeSal);
+                INode calVal = OwlFile.CreateUriNode(UriRecipeCalorias);
+                Individual InReceta = new Individual(nodoIndReceta,ClassRecetaNode, OwlFile);
+                OwlFile.CreateIndividual(nodoIndReceta);
+
+                OntologyProperty PropRecipeHasIngredient = OwlFile.CreateOntologyProperty(uriHasIngredient);
+                OntologyProperty recipeSal = new OntologyProperty(UriRecipeSal, OwlFile);
+                OntologyProperty oSal = new OntologyProperty(UriRecipeSal, OwlFile);
+                OntologyProperty oCal = new OntologyProperty(UriRecipeCalorias, OwlFile);
+               
+
+                oCal.AddLiteralProperty(UriRecipeCalorias,oCalorias,true);
+
+               // InReceta.AddResourceProperty(UriRecipeSal,salVal, true);
+                InReceta.AddLiteralProperty(UriRecipeCalorias, oCalorias, true);
+               // InReceta.AddLiteralProperty(UriRecipeSal.ToString(), SalNode, true);
+              //  InReceta.AddLiteralProperty(UriRecipeCalorias.ToString(),oCalorias, true);
+                //  oSal.AddRange(new Uri($"{UriRecipeSal}/{SalNode}"));
+                //  oCal.AddRange(new Uri($"{UriRecipeCalorias}/{oCalorias}"));
+
+                //  oSal.AddRange(SalNode);
+                //  recipeSal.AddRange(SalNode);
+                InReceta.AddLabel(NombreRecipe);
+                InReceta.AddLiteralProperty(UriRecipeSal.ToString(), SalNode,true);
+                var propiedades = OwlFile.OwlDatatypeProperties;
+                var objectproperties = OwlFile.OwlObjectProperties;
+                    
+                    
+                //InReceta.AddLiteralProperty(UriRecipeCalorias, oCalorias, true);      
+
+               
+                
+                //recipeResource.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaSalt", oSal, true);
+                //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/recetaCalorias", oCalorias, true);
+                //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/recetaFibra", oFibra, true);
+                //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/recetaAzucar", oAzucar, true);
+                //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/recetaFat", oGrasas, true);
+                //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/recetaSaturates", oGrasasSaturadas, true);
+                //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/recetaCabs", oCarbohidratos, true);
+                //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/recetaProtein", oProteinas, true);
+                //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/recetaColesterol", oColesterol, true);
+                //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/tipoPlato", oRecipeTipoPlatoData, true);
+                //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/Nacionalidad", oPaisNombre, true);
+               
+                foreach (DataRow ingredientItem in filas)
                 {
-                    StrClassName = ingredientItem["ClassOfValue"].ToString();
-                    individualValue = ingredientItem["ingredienteValue"].ToString();
-                    recipeIdValue = ingredientItem["recetaID"].ToString();
-                    individualID = $"{recipeIdValue}_{ingredientItem["ingredienteIDValue"].ToString()}";
+                    StrClassName = ingredientItem["ClassOf"].ToString();
+                    individualValue = ingredientItem["ingredienteDescripcion"].ToString();
+                    recipeIdValue = ingredientItem["recipeID"].ToString();
+                    individualID = $"{recipeIdValue}_{ingredientItem["ingredienteID"].ToString()}";
 
                     var uri = new Uri($"{OwlFile.BaseUri.ToString()}#{StrClassName}");
                     OntologyClass objClass = OwlFile.CreateOntologyClass(uri);
                     INode nodoIndividual = OwlFile.CreateUriNode(new
                         Uri($"{OwlFile.BaseUri.ToString()}/{individualID}"));
-                   var label = OwlFile.CreateLiteralNode(individualValue, "es");
+                    var label = OwlFile.CreateLiteralNode(individualValue, "es");
                     Individual individual = new Individual(nodoIndividual, objClass.Resource, OwlFile);
                     individual.AddLiteralProperty(uri, label, true);
-                    OwlFile.CreateIndividual(individual.Resource,objClass.Resource);
+                    OwlFile.CreateIndividual(individual.Resource, objClass.Resource);
+                    //  INode hasIngredient = OwlFile.CreateUriNode(new Uri($"{OwlFile.BaseUri.ToString()}/recetaTieneIngrediente"));
+                    //recipeResource.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/recetaTieneIngrediente", nodoIndividual,true);
+                  //  individualReceta.AddResourceProperty($"{OwlFile.BaseUri.ToString()}/recetaTieneIngrediente", nodoIndividual, true);
+                    // Triple t = new Triple(nodoReceta, hasIngredient, nodoIndividual);
+                 //  OwlFile.Assert(t);
+                 //   OntologyResource hasIngredient =  OwlFile.CreateOntologyResource(nodoIndividual);
+                   // hasIngredient.AddResourceProperty()
+                //  var pro =   OwlFile.OwlObjectProperties;
+                  
                 }
-                NombreRecipe     = recipeItem["recipeID"].ToSafeString();
-                sal              = recipeItem["sal"].ToSafeString();
-                calorias         = recipeItem["calorias"].ToSafeString();
-                fibra            = recipeItem["fibra"].ToSafeString();
-                azucar           = recipeItem["azucar"].ToSafeString();
-                grasas           = recipeItem["grasas"].ToSafeString();
-                grasasSaturadas      = recipeItem["grasasSaturadas"].ToSafeString();
-                carbohidratos        = recipeItem["proteinas"].ToSafeString();
-                proteinas            = recipeItem["proteinas"].ToSafeString();
-                colesterol           = recipeItem["colesterol"].ToSafeString();
-                recipeTipoPlatoData  = recipeItem["recipeTipoPlatoData"].ToSafeString();
-                paisNombre           = recipeItem["paisNombre"].ToSafeString();
-
-                var uriRecipe = new Uri($"{OwlFile.BaseUri.ToString()}#Receta");
-                OntologyClass objClassRecipe = OwlFile.CreateOntologyClass(uriRecipe);
-                INode nodoReceta = OwlFile.CreateUriNode(new
-                    Uri($"{OwlFile.BaseUri.ToString()}/{recipeID}"));
-                var labelReceta = OwlFile.CreateLiteralNode(NombreRecipe, "es");
-                Individual individualReceta = new Individual(nodoReceta,
-                    objClassRecipe.Resource, OwlFile);
-                individualReceta.AddLiteralProperty(uriRecipe, labelReceta, true);
-               var oSal = sal.ToLiteral(OwlFile);
-               var oCalorias = calorias.ToLiteral(OwlFile);
-               var oFibra = fibra.ToLiteral(OwlFile);
-               var oAzucar = azucar.ToLiteral(OwlFile);
-               var oGrasas = grasas.ToLiteral(OwlFile);
-               var oGrasasSaturadas = grasasSaturadas.ToLiteral(OwlFile);
-               var oCarbohidratos = carbohidratos.ToLiteral(OwlFile);
-               var oProteinas = proteinas.ToLiteral(OwlFile);
-               var oColesterol = colesterol.ToLiteral(OwlFile);
-               var oRecipeTipoPlatoData = recipeTipoPlatoData.ToLiteral(OwlFile);
-               var oPaisNombre = paisNombre.ToLiteral(OwlFile);
-               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaSalt", oSal, true);
-               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaCalorias", oCalorias, true);
-               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaFibra", oFibra, true);
-               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaAzucar", oAzucar, true);
-               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaFat", oGrasas, true);
-               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaSaturates", oGrasasSaturadas, true);
-               individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaCabs", oCarbohidratos, true);
-                individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaProtein", oProteinas, true);
-                individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/recetaColesterol", oColesterol, true);
-                individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/tipoPlato", oRecipeTipoPlatoData, true);
-                individualReceta.AddLiteralProperty($"{OwlFile.BaseUri.ToString()}/Nacionalidad", oPaisNombre, true);
-                OwlFile.CreateIndividual(individualReceta.Resource,objClassRecipe.Resource);
+               
                 
             }
             OwlFile.SaveToFile($"{objFileTool.GetAplicationDirectory()}/FoodOntologyRecomenderOwl2142018.owl");
