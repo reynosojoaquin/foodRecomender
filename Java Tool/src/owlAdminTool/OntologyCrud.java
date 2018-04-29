@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.Individual;
@@ -14,150 +15,190 @@ import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.rdf.model.ModelFactory;
+import  me.tongfei.progressbar.*;
 public class OntologyCrud {
+	
+	static public void main(String[] args) throws Exception {
+		float percent =0;
+		double   contador = 0,totalRegistro =0;;
+		
 
-	public static void FillOwlModel() 
-	{
-		String recipeID = "",Nombre ="",Sal="",Calorias="",Fibra="",Azucar="",
-		       Grasas ="",GrasasSaturadas="",carbohidratos="",proteinas="",
-		       MainIngredient ="",ClassOf="",geolocalizacion = "",Pais="",
-		   	   Proteinas="",Colesterol="",RecipeTipoPlaro="",Location ="",
-			   PaisNombre="",ClassOF ="",ingredienteDescripcion="",ingredienteID="",RecipeID="",RecetaActual="";	
-		       Individual objreceta = null; ObjectProperty hasIngredient = null; Individual Ingrediente = null;
-		    
+		String recipeID = "", Nombre = "", Sal = "", Calorias = "", Fibra = "", Azucar = "", Grasas = "",
+				GrasasSaturadas = "", carbohidratos = "", proteinas = "", MainIngredient = "", geolocalizacion = "",
+				Pais = "", Proteinas = "", Colesterol = "", RecipeTipoPlato = "", Location = "", PaisNombre = "",
+				ClassOF = "", ingredienteDescripcion = "", ingredienteID = "", RecetaActual = "";
+		Individual objreceta = null;
 		
+		Individual Ingrediente = null;
+		Statement StIngredient = null;
+		ResultSet Ingredient = null;
+		OntClass IngredienteType = null;
+		OntClass Receta = null;
+		OntModel model = null;
+
+		String BaseUri = "";
+		String path = "src/FoodOntologyRecomenderOwl2142018.owl";
+
+		try {
+			System.out.println("1-LEYENDO LOS DATOS DESDE LA BASE DE DATOS...");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/foodrecomendersystemdb", "root",
+					"admin");
+			Statement st = conexion.createStatement();
+			ResultSet Recipe = st.executeQuery("SELECT  distinct(recipeID),nombre  FROM recipedatatoowl limit 0,10;");
+			Recipe.last();
+			totalRegistro = Recipe.getRow();
+			Recipe.beforeFirst();
+			
+			model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
+			model.read(path);
+			BaseUri = model.getNsPrefixURI("");
+			Receta = model.getOntClass(BaseUri + "Receta");
+			
+			
+
+			// DEFIDIENDO EL OBJECT PROPERTY QUE DESCRIBE LA REALACION DE LA RECETA CON LOS
+			// INGREDIENTES
 		
-		 try {
-	            Class.forName("com.mysql.cj.jdbc.Driver");
-	            Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/foodrecomendersystemdb", "root", "admin");
-	            Statement st = conexion.createStatement();
-	            ResultSet Recipe = st.executeQuery("SELECT  distinct(recipeID),nombre  FROM recipedatatoowl ;");
-	            
-	            String BaseUri ="";
-	    		String path = "src/FoodOntologyRecomenderOwl2142018.owl" ;
-	    		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
-	    		model.read(path);
-	    		BaseUri = 	model.getNsPrefixURI(""); 
-	    		OntClass Receta = model.getOntClass(BaseUri+"Receta");
-	    		OntClass IngredienteType = null;
-	    		
-	    		//DEFIDIENDO EL OBJECT PROPERTY QUE DESCRIBE LA REALACION DE LA RECETA CON LOS INGREDIENTES
-		        hasIngredient = model.getObjectProperty(BaseUri+"recetaTieneIngrediente");
-	        
-		        
-		        if (Recipe != null) {
-	                  while (Recipe.next()) 
-	                  {
-	                	  Nombre   = Recipe.getObject("nombre").toString();
-	     	    		  recipeID = Recipe.getObject("recipeID").toString();
-	     	    		 
-	                	  Statement StIngredient = conexion.createStatement();
-	      	              ResultSet Ingredient = StIngredient.executeQuery("SELECT * FROM recipedatatoowl where recipeId = "+
-	                	  recipeID+";");
-	      	             
-	      	              while(Ingredient.next()) 
-	      	              {
-	      	            	  
-	      	            	  
-	      	            	  Sal      = Ingredient.getObject("sal").toString();
-	      	            	  Calorias = Ingredient.getObject("calorias").toString();
-	      	            	  Fibra	   = Ingredient.getObject("fibra").toString();
-	      	            	  Azucar   = Ingredient.getObject("azucar").toString();
-	      	            	  Grasas   = Ingredient.getObject("grasas").toString();
-	      	             	  GrasasSaturadas	   = Ingredient.getObject("fibra").toString();
-	      	            	  carbohidratos   = Ingredient.getObject("azucar").toString();
-	      	            	  proteinas   = Ingredient.getObject("proteinas").toString();
-	      	            	  Colesterol=Ingredient.getObject("Colesterol").toString();
-	      	            	  RecipeTipoPlaro=Ingredient.getObject("recipeTipoPlato").toString();
-	      	            	  Location =Ingredient.getObject("Location").toString();
-	      	            	  PaisNombre=Ingredient.getObject("PaisNombre").toString();
-	      	            	  ClassOF =Ingredient.getObject("classOf").toString();
-	      	                  MainIngredient=Ingredient.getObject("mainIngredient").toString();;
-	      	                  ingredienteDescripcion=Ingredient.getObject("ingredienteDescripcion").toString();
-	      	                  ingredienteID=Ingredient.getObject("ingredienteID").toString();	
-	      	            	 
-	      	            	  
-	      	            	  
-	      	            	  
-	      	            	//CREACION DE LOS DATA PROPERTIES DE LA RECETA
-	      	            	  
-	      	            	DatatypeProperty DPcalorias =  model.getDatatypeProperty(BaseUri+"recetaCalorias");
-      		    		    DatatypeProperty DPcarbohidradtos =  model.getDatatypeProperty(BaseUri+"recetaCarbs");
-      		    		    DatatypeProperty DPgrasas =  model.getDatatypeProperty(BaseUri+"recetaFat");
-      		    		    DatatypeProperty DPfibra =  model.getDatatypeProperty(BaseUri+"recetaFibre");
-      		    		    DatatypeProperty DPproteinas =  model.getDatatypeProperty(BaseUri+"recetaProtein");
-    		    		    DatatypeProperty DPSalt =  model.getDatatypeProperty(BaseUri+"recetaSalt");
-    		    		    DatatypeProperty DPSaturates =  model.getDatatypeProperty(BaseUri+"recetaSaturates");
-    		    		    DatatypeProperty DPSugar =  model.getDatatypeProperty(BaseUri+"recetaSugar");
-	      	            	  
-	      	            	//EVALUAR EL NOMBRE DE LA RECETA PARA CREAR EL OBJETO SI NO EXISTE
-    		    		    
-    		    		    if(Nombre != RecetaActual)
-    		    		    {
-    		    	 		    	 RecetaActual = Nombre;
-    		    	 		    	 objreceta = model.createIndividual(BaseUri+ RecipeID, Receta);
-    		    	 		    	 
-    		    		    }
-    		    		    
-    		    		    // ASIGNANDO VALORES A LAS PROPIEDADES DE LA RECETA
-                	  		
-                	  	              	  		
-                	  	    objreceta.setPropertyValue(DPcalorias,model.createTypedLiteral(Calorias));
-           		    		objreceta.setPropertyValue(DPcarbohidradtos,model.createTypedLiteral(carbohidratos));
-           		    		objreceta.setPropertyValue(DPgrasas,model.createTypedLiteral(Grasas));
-           		    		objreceta.setPropertyValue(DPfibra,model.createTypedLiteral(Fibra));
-           		      		objreceta.setPropertyValue(DPproteinas,model.createTypedLiteral(Proteinas));
-           		    		objreceta.setPropertyValue(DPSalt,model.createTypedLiteral(Sal));
-           		    		objreceta.setPropertyValue(DPSaturates,model.createTypedLiteral(GrasasSaturadas));
-           		    		objreceta.setPropertyValue(DPSugar,model.createTypedLiteral(Azucar));
-           		    		
-           		    		
-      		  		        
-      		  		        //CREANDO LOS INDIVIDUAL DE LOS INGREDINTES 
-           		    	    IngredienteType = model.getOntClass(ClassOF);
-	            		    Ingrediente = model.createIndividual(BaseUri+recipeID+"_"+ingredienteID,IngredienteType);
-	            		   
-	            		   
-	            		   // ASIGNANDO LA RELACION ENTRE LA RECETA ACTUAL CON EL INGREDIENTE CREADO
-	            		    
-	      	    		    objreceta.setPropertyValue(hasIngredient, Ingrediente);
-	  		    		    
-	      	            	  
-	      	              }
-	                	  
-	                	  
-	                	  
-	                	  
-	                	  
-	                  /*  System.out.println("  ID: " + rs.getObject("PaisID"));
-	                    System.out.println("  Nombre: " + rs.getObject("Descripcion"));
-	                    System.out.println("  Geolocalizacion: " + rs.getObject("geolocalizacion"));
-	                    System.out.println("- ");*/
-	                }
-	                 
-		    		    
-		    		    //  model.createIndividual(BaseUri+"PapaFrita", Receta);
-		    		    try {
-		    		    	 PrintStream p= new PrintStream(path);
-		    		    	 model.writeAll(p, "RDF/XML", null);
-		    		 	     model.close();
-		    	        } catch (IOException e) {
-		    	            System.out.println("Caught the exception.");
-		    	        }    
-	                Recipe.close();
-	            }
-	            st.close();
-	 
-	        }
-	        catch(SQLException s)
-	        {
-	            System.out.println("Error: SQL.");
-	            System.out.println("SQLException: " + s.getMessage());
-	        }
-	        catch(Exception s)
-	        {
-	            System.out.println("Error: Varios.");
-	            System.out.println("SQLException: " + s.getMessage());
-	        }
+
+			if (Recipe != null) {
+				
+     			while (Recipe.next()) {
+     				
+     				 
+				     recipeID = Recipe.getString("recipeID");
+					 Nombre = Recipe.getObject("nombre").toString();
+					 objreceta = model.createIndividual(BaseUri + recipeID, Receta);
+				     objreceta.addLabel(model.createLiteral(Nombre));
+			       	 StIngredient = conexion.createStatement();
+					 Ingredient = StIngredient.executeQuery("SELECT * FROM recipedatatoowl where recipeId = " + recipeID + ";");
+					 contador++;
+					 percent =   (float)((contador / totalRegistro) * 100);
+					 printProgBar(percent,Double.toString(contador)+"/"+Double.toString(totalRegistro)+" ====> "+Nombre);
+
+					if (Ingredient != null) {
+
+						while (Ingredient.next()) {
+							ObjectProperty hasIngredient = null;
+							Sal = Ingredient.getString("sal");
+							Calorias = Ingredient.getString("calorias");
+							Fibra = Ingredient.getString("fibra");
+							Azucar = Ingredient.getString("azucar");
+							Grasas = Ingredient.getString("grasas");
+							GrasasSaturadas = Ingredient.getString("fibra");
+							carbohidratos = Ingredient.getString("azucar");
+							proteinas = Ingredient.getString("proteinas");
+							Colesterol = Ingredient.getString("Colesterol");
+							RecipeTipoPlato = Ingredient.getString("recipeTipoPlatoData");
+							geolocalizacion = Ingredient.getString("geolocalizacion");
+							PaisNombre = Ingredient.getString("paisNombre");
+							ClassOF = Ingredient.getString("classOf");
+							MainIngredient = Ingredient.getString("mainIngredient");
+							ingredienteDescripcion = Ingredient.getString("Ingredientedescripcion");
+							ingredienteID = Ingredient.getString("ingredienteID");
+
+							// CREACION DE LOS DATA PROPERTIES DE LA RECETA
+
+							DatatypeProperty DPcalorias = model.getDatatypeProperty(BaseUri + "recetaCalorias");
+							DatatypeProperty DPcarbohidradtos = model.getDatatypeProperty(BaseUri + "recetaCarbs");
+							DatatypeProperty DPgrasas = model.getDatatypeProperty(BaseUri + "recetaFat");
+							DatatypeProperty DPfibra = model.getDatatypeProperty(BaseUri + "recetaFibre");
+							DatatypeProperty DPproteinas = model.getDatatypeProperty(BaseUri + "recetaProtein");
+							DatatypeProperty DPSalt = model.getDatatypeProperty(BaseUri + "recetaSalt");
+							DatatypeProperty DPSaturates = model.getDatatypeProperty(BaseUri + "recetaSaturates");
+							DatatypeProperty DPSugar = model.getDatatypeProperty(BaseUri + "recetaSugar");
+							DatatypeProperty DPrecetaID = model.getDatatypeProperty(BaseUri + "recetaID");
+
+							// CREACION DE LOS DATAPEOPERTY DE LOS INGREDIENTES
+							DatatypeProperty DPingrendienteID = model.getDatatypeProperty(BaseUri + "ingredienteID");
+
+							// EVALUAR EL NOMBRE DE LA RECETA PARA CREAR EL OBJETO SI NO EXISTE
+
+							
+								
+								
+								// ASIGNANDO VALORES A LAS PROPIEDADES DE LA RECETA
+							if(RecetaActual != Nombre)
+							{
+								RecetaActual = Nombre;
+								objreceta.setPropertyValue(DPcalorias,
+										model.createTypedLiteral((Calorias != "") ? Float.parseFloat(Calorias) : 0));
+								objreceta.setPropertyValue(DPcarbohidradtos,
+										model.createTypedLiteral((carbohidratos !="") ? Float.parseFloat(carbohidratos):0));
+								objreceta.setPropertyValue(DPgrasas,
+										model.createTypedLiteral((Grasas !="")? Float.parseFloat(Grasas):0));
+								objreceta.setPropertyValue(DPfibra, model.createTypedLiteral(Float.parseFloat(Fibra)));
+								objreceta.setPropertyValue(DPproteinas,
+										model.createTypedLiteral((Proteinas != "") ? Float.parseFloat(Proteinas) : 0));
+								objreceta.setPropertyValue(DPSalt,
+										model.createTypedLiteral((Sal !="")? Float.parseFloat(Sal):0));
+								objreceta.setPropertyValue(DPSaturates,
+										model.createTypedLiteral((GrasasSaturadas!="")? Float.parseFloat(GrasasSaturadas):0));
+								objreceta.setPropertyValue(DPSugar, model.createTypedLiteral((Azucar!="")?Float.parseFloat(Azucar):0));
+								objreceta.setPropertyValue(DPrecetaID,
+										model.createTypedLiteral(Integer.parseInt(recipeID)));
+							
+
+							}
+
+							// CREANDO LOS INDIVIDUAL DE LOS INGREDINTES
+							IngredienteType = model.getOntClass(BaseUri + "Ingrediente");
+							Ingrediente = model.createIndividual(BaseUri + recipeID + "_" + ingredienteID,
+									IngredienteType);
+
+							// ASIGNANO VALORES A LAS PROPIEDADES DE LOS INGREDIENTES
+
+							Ingrediente.setPropertyValue(DPingrendienteID,
+									model.createTypedLiteral(Integer.parseInt(ingredienteID)));
+							Ingrediente.addLabel(model.createLiteral(MainIngredient));
+
+							// ASIGNANDO LA RELACION ENTRE LA RECETA ACTUAL CON EL INGREDIENTE CREADO
+							hasIngredient = model.getObjectProperty(BaseUri + "recetaTieneIngrediente");
+							model.add(objreceta,hasIngredient,Ingrediente);
+						}
+
+					}
+
+					
+
+				}
+			}
+			try {
+				PrintStream p = new PrintStream(path);
+				model.writeAll(p, "RDF/XML", null);
+				
+				System.out.println("\r TOTAL DE RECETAS REGISTRADAS CON EXITO ===========> "+ Double.toString(totalRegistro));
+			} catch (IOException e) {
+				System.out.println("Caught the exception.");
+			}
+			model.close();
+			Recipe.close();
+			st.close();
+       
+		} catch (SQLException s) {
+			System.out.println("Error: SQL.");
+			System.out.println("SQLException: " + s.getMessage());
+		} catch (Exception s) {
+			System.out.println("Error: Varios.");
+			System.out.println("SQLException: " + s.getMessage());
+		}
+		
 	}
+	public static void printProgBar(float percent,String info){
+	    StringBuilder bar = new StringBuilder("[");
+
+	    for(int i = 0; i < 50; i++){
+	        if( i < (percent/2)){
+	            bar.append("=");
+	        }else if( i == (percent/2)){
+	            bar.append(">");
+	        }else{
+	            bar.append(" ");
+	        }
+	    }
+
+	    bar.append("]   " + percent + "%     "+info);
+	    System.out.print("\r" + bar.toString());
+	}
+	
 }

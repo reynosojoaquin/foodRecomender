@@ -1,5 +1,6 @@
 package jenaPrueba;
 
+
 import java.io.IOException;
 import java.io.PrintStream;
 
@@ -12,6 +13,9 @@ import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.omg.CORBA.portable.IndirectionException;
 
+import me.tongfei.progressbar.ProgressBar;
+import me.tongfei.progressbar.ProgressBarStyle;
+
 public class owlTesting {
 
 	public static void main(String[] args)  throws IOException{
@@ -19,7 +23,7 @@ public class owlTesting {
        CreateIndividual();
 	}
 	public static void ReadFileOwl() {
-		
+	  
 		String path = "src/FoodOntologyRecomenderOwl2142018.owl" ;
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		model.read(path);
