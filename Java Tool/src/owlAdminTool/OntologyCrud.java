@@ -19,6 +19,41 @@ import  me.tongfei.progressbar.*;
 public class OntologyCrud {
 	
 	static public void main(String[] args) throws Exception {
+		
+		
+	}
+	public static void printProgBar(float percent,String info){
+	    StringBuilder bar = new StringBuilder("[");
+
+	    for(int i = 0; i < 50; i++){
+	        if( i < (percent/2)){
+	            bar.append("=");
+	        }else if( i == (percent/2)){
+	            bar.append(">");
+	        }else{
+	            bar.append(" ");
+	        }
+	    }
+
+	    bar.append("]   " + percent + "%     "+info);
+	    System.out.print("\r" + bar.toString());
+	}
+	
+	
+	public static void  GenerarMatrizSimilitud() throws Exception
+	{
+		String BaseUri = "";
+		String path = "src/FoodOntologyRecomenderOwl2142018.owl";
+		OntModel model = null;
+		model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
+		model.read(path);
+		BaseUri = model.getNsPrefixURI("");
+		
+		
+		
+	}
+    
+	public static void migrarDataToOwl() throws Exception  {
 		float percent =0;
 		double   contador = 0,totalRegistro =0;;
 		
@@ -37,7 +72,7 @@ public class OntologyCrud {
 		OntModel model = null;
 
 		String BaseUri = "";
-		String path = "src/FoodOntologyRecomenderOwl2142018.owl";
+		String path = "src/FoodOntologyRecomenderOwl352018.owl";
 
 		try {
 			System.out.println("1-LEYENDO LOS DATOS DESDE LA BASE DE DATOS...");
@@ -45,7 +80,7 @@ public class OntologyCrud {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/foodrecomendersystemdb", "root",
 					"admin");
 			Statement st = conexion.createStatement();
-			ResultSet Recipe = st.executeQuery("SELECT  distinct(recipeID),nombre  FROM recipedatatoowl limit 0,10;");
+			ResultSet Recipe = st.executeQuery("SELECT  distinct(recipeID),nombre  FROM recipedatatoowl limit 0,100;");
 			Recipe.last();
 			totalRegistro = Recipe.getRow();
 			Recipe.beforeFirst();
@@ -111,7 +146,7 @@ public class OntologyCrud {
 
 							// CREACION DE LOS DATAPEOPERTY DE LOS INGREDIENTES
 							DatatypeProperty DPingrendienteID = model.getDatatypeProperty(BaseUri + "ingredienteID");
-
+							DatatypeProperty DPIngredientePrincipal = model.getDatatypeProperty(BaseUri + "mainIngredient");
 							// EVALUAR EL NOMBRE DE LA RECETA PARA CREAR EL OBJETO SI NO EXISTE
 
 							
@@ -151,6 +186,7 @@ public class OntologyCrud {
 							Ingrediente.setPropertyValue(DPingrendienteID,
 									model.createTypedLiteral(Integer.parseInt(ingredienteID)));
 							Ingrediente.addLabel(model.createLiteral(MainIngredient));
+							Ingrediente.setPropertyValue(DPIngredientePrincipal,model.createTypedLiteral(MainIngredient));
 
 							// ASIGNANDO LA RELACION ENTRE LA RECETA ACTUAL CON EL INGREDIENTE CREADO
 							hasIngredient = model.getObjectProperty(BaseUri + "recetaTieneIngrediente");
@@ -183,22 +219,10 @@ public class OntologyCrud {
 			System.out.println("SQLException: " + s.getMessage());
 		}
 		
-	}
-	public static void printProgBar(float percent,String info){
-	    StringBuilder bar = new StringBuilder("[");
-
-	    for(int i = 0; i < 50; i++){
-	        if( i < (percent/2)){
-	            bar.append("=");
-	        }else if( i == (percent/2)){
-	            bar.append(">");
-	        }else{
-	            bar.append(" ");
-	        }
-	    }
-
-	    bar.append("]   " + percent + "%     "+info);
-	    System.out.print("\r" + bar.toString());
+		
+		
 	}
 	
+	
+
 }
