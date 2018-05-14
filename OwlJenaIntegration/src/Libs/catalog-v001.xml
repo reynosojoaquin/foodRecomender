@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1526311887165" name="duplicate:http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26" uri="FoodOntologyRecomenderOw152018.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1526311887165" name="duplicate:http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26" uri="FoodOntologyRecomenderOwl1352018.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1526311887165" name="duplicate:http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26" uri="FoodOntologyRecomenderOwl652018.owl"/>
+    </group>
+</catalog>

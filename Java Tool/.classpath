@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry including="owlAdminTool/|test/" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jena"/>
 	<classpathentry kind="lib" path="libs/mysql-connector-java-8.0.11.jar"/>
 	<classpathentry kind="lib" path="D:/projectos/foodRecomender/Java Tool/libs/progressbar.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jena"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

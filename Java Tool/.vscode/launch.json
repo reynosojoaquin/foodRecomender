@@ -1,0 +1,82 @@
+{
+    // Utilizar IntelliSense para aprender acerca de los posibles atributos.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos 
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "java",
+            "name": "Debug (Launch)-OntologyCrud<OwlPopulationApp>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "owlAdminTool.OntologyCrud",
+            "projectName": "OwlPopulationApp",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-DbAccess<OwlPopulationApp>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "test.DbAccess",
+            "projectName": "OwlPopulationApp",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-helloWolrldRdf<OwlPopulationApp>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "test.helloWolrldRdf",
+            "projectName": "OwlPopulationApp",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-owlTesting<OwlPopulationApp>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "test.owlTesting",
+            "projectName": "OwlPopulationApp",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-DocsConnectionPropsHelper<OwlPopulationApp>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.mysql.cj.jdbc.DocsConnectionPropsHelper",
+            "projectName": "OwlPopulationApp",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-TimezoneDump<OwlPopulationApp>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.mysql.cj.jdbc.admin.TimezoneDump",
+            "projectName": "OwlPopulationApp",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Attach)",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 0
+        }
+    ]
+}

@@ -6,23 +6,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DecimalFormat;
 
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.Individual;
-import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.rdf.model.ModelFactory;
-import  me.tongfei.progressbar.*;
+import org.apache.jena.ontology.*;
+
 public class OntologyCrud {
 	
-	static public void main(String[] args) throws Exception {
-		
-		
-	}
-	public static void printProgBar(float percent,String info){
+	public  void printProgBar(float percent,String info){
 	    StringBuilder bar = new StringBuilder("[");
 
 	    for(int i = 0; i < 50; i++){
@@ -40,10 +35,10 @@ public class OntologyCrud {
 	}
 	
 	
-	public static void  GenerarMatrizSimilitud() throws Exception
+	public  void  GenerarMatrizSimilitud(String modelPath) throws Exception
 	{
 		String BaseUri = "";
-		String path = "src/FoodOntologyRecomenderOwl2142018.owl";
+		String path = modelPath;
 		OntModel model = null;
 		model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM);
 		model.read(path);
@@ -53,7 +48,7 @@ public class OntologyCrud {
 		
 	}
     
-	public static void migrarDataToOwl() throws Exception  {
+	public  void migrarDataToOwl(String modelPath,int cantidad) throws Exception  {
 		float percent =0;
 		double   contador = 0,totalRegistro =0;;
 		
@@ -62,17 +57,28 @@ public class OntologyCrud {
 				GrasasSaturadas = "", carbohidratos = "", proteinas = "", MainIngredient = "", geolocalizacion = "",
 				Pais = "", Proteinas = "", Colesterol = "", RecipeTipoPlato = "", Location = "", PaisNombre = "",
 				ClassOF = "", ingredienteDescripcion = "", ingredienteID = "", RecetaActual = "";
+
+		 String ingredientName = "";
 		Individual objreceta = null;
-		
 		Individual Ingrediente = null;
+		Individual INDIVIngredientList = null;
+		
+		Statement  StIngredienteList = null;
 		Statement StIngredient = null;
 		ResultSet Ingredient = null;
+		ResultSet RsListaIngredientes = null;
+		
 		OntClass IngredienteType = null;
 		OntClass Receta = null;
 		OntModel model = null;
+		OntClass ClassIngredientList = null;
 
+		
+		
+		
+		
 		String BaseUri = "";
-		String path = "src/FoodOntologyRecomenderOwl352018.owl";
+		String path = modelPath;
 
 		try {
 			System.out.println("1-LEYENDO LOS DATOS DESDE LA BASE DE DATOS...");
@@ -80,7 +86,9 @@ public class OntologyCrud {
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/foodrecomendersystemdb", "root",
 					"admin");
 			Statement st = conexion.createStatement();
-			ResultSet Recipe = st.executeQuery("SELECT  distinct(recipeID),nombre  FROM recipedatatoowl limit 0,100;");
+			ResultSet Recipe = st.executeQuery("SELECT  distinct(recipeID),nombre  FROM recipedatatoowl where classOf is not null  limit 0,"+Integer.toString(cantidad)+";");
+			
+			
 			Recipe.last();
 			totalRegistro = Recipe.getRow();
 			Recipe.beforeFirst();
@@ -106,7 +114,7 @@ public class OntologyCrud {
 					 objreceta = model.createIndividual(BaseUri + recipeID, Receta);
 				     objreceta.addLabel(model.createLiteral(Nombre));
 			       	 StIngredient = conexion.createStatement();
-					 Ingredient = StIngredient.executeQuery("SELECT * FROM recipedatatoowl where recipeId = " + recipeID + ";");
+					 Ingredient = StIngredient.executeQuery("SELECT * FROM recipedatatoowl where recipeId = " + recipeID + " and  classOf is not null ;");
 					 contador++;
 					 percent =   (float)((contador / totalRegistro) * 100);
 					 printProgBar(percent,Double.toString(contador)+"/"+Double.toString(totalRegistro)+" ====> "+Nombre);
@@ -115,22 +123,22 @@ public class OntologyCrud {
 
 						while (Ingredient.next()) {
 							ObjectProperty hasIngredient = null;
-							Sal = Ingredient.getString("sal");
-							Calorias = Ingredient.getString("calorias");
-							Fibra = Ingredient.getString("fibra");
-							Azucar = Ingredient.getString("azucar");
-							Grasas = Ingredient.getString("grasas");
-							GrasasSaturadas = Ingredient.getString("fibra");
-							carbohidratos = Ingredient.getString("azucar");
-							proteinas = Ingredient.getString("proteinas");
-							Colesterol = Ingredient.getString("Colesterol");
-							RecipeTipoPlato = Ingredient.getString("recipeTipoPlatoData");
-							geolocalizacion = Ingredient.getString("geolocalizacion");
-							PaisNombre = Ingredient.getString("paisNombre");
-							ClassOF = Ingredient.getString("classOf");
-							MainIngredient = Ingredient.getString("mainIngredient");
-							ingredienteDescripcion = Ingredient.getString("Ingredientedescripcion");
-							ingredienteID = Ingredient.getString("ingredienteID");
+							Sal 						= Ingredient.getString("sal");
+							Calorias 					= Ingredient.getString("calorias");
+							Fibra 						= Ingredient.getString("fibra");
+							Azucar 						= Ingredient.getString("azucar");
+							Grasas 						= Ingredient.getString("grasas");
+							GrasasSaturadas 			= Ingredient.getString("fibra");
+							carbohidratos 				= Ingredient.getString("azucar");
+							proteinas 					= Ingredient.getString("proteinas");
+							Colesterol 					= Ingredient.getString("Colesterol");
+							RecipeTipoPlato 			= Ingredient.getString("recipeTipoPlatoData");
+							geolocalizacion 			= Ingredient.getString("geolocalizacion");
+							PaisNombre 					= Ingredient.getString("paisNombre");
+							ClassOF 					= Ingredient.getString("classOf");
+							MainIngredient 				= Ingredient.getString("mainIngredient");
+							ingredienteDescripcion 		= Ingredient.getString("Ingredientedescripcion");
+							ingredienteID 				= Ingredient.getString("ingredienteID");
 
 							// CREACION DE LOS DATA PROPERTIES DE LA RECETA
 
@@ -181,7 +189,7 @@ public class OntologyCrud {
 							Ingrediente = model.createIndividual(BaseUri + recipeID + "_" + ingredienteID,
 									IngredienteType);
 
-							// ASIGNANO VALORES A LAS PROPIEDADES DE LOS INGREDIENTES
+							// ASIGNANDO VALORES A LAS PROPIEDADES DE LOS INGREDIENTES
 
 							Ingrediente.setPropertyValue(DPingrendienteID,
 									model.createTypedLiteral(Integer.parseInt(ingredienteID)));
@@ -200,6 +208,23 @@ public class OntologyCrud {
 				}
 			}
 			try {
+				
+				 StIngredienteList =  conexion.createStatement();
+				 RsListaIngredientes = StIngredienteList.executeQuery("SELECT  * from ingredientlist");
+				String ingredientListID = "";		 
+				while(RsListaIngredientes.next()) {
+					ingredientName =  RsListaIngredientes.getString("Descripcion");
+					ingredientListID = RsListaIngredientes.getString("ingredientID");
+					ClassIngredientList  = model.getOntClass(BaseUri+"ingredienteList");
+					INDIVIngredientList = model.createIndividual(BaseUri+"Lst"+ingredientListID, ClassIngredientList);
+				    INDIVIngredientList.addLabel(model.createLiteral(ingredientName));
+				    System.out.println("\r "+"Lst"+ingredientName.trim());
+					
+				}
+				System.out.println("\r LISTA DE INGREDIENTES GUARDADOS CON EXITO");
+				
+	
+				
 				PrintStream p = new PrintStream(path);
 				model.writeAll(p, "RDF/XML", null);
 				
@@ -207,9 +232,18 @@ public class OntologyCrud {
 			} catch (IOException e) {
 				System.out.println("Caught the exception.");
 			}
+			
+			
+			
+			
 			model.close();
 			Recipe.close();
 			st.close();
+			
+			
+			
+			
+			
        
 		} catch (SQLException s) {
 			System.out.println("Error: SQL.");
@@ -222,6 +256,7 @@ public class OntologyCrud {
 		
 		
 	}
+	
 	
 	
 

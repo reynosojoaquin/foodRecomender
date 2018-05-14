@@ -1,0 +1,1104 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#"
+     xml:base="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#RecetasConSimilitud -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#RecetasConSimilitud">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Similitud"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneSimilitudCon"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#ingredienteEnReceta -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#ingredienteEnReceta">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ingrediente"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneIngrediente"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaEnMomento -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaEnMomento">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#MomentoComida"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneMomento"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneIngrediente -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneIngrediente">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ingrediente"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneMomento -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneMomento">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#MomentoComida"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneNacionalidad -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneNacionalidad">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pais"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneSimilitudCon -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneSimilitudCon">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Similitud"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneTemporada -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneTemporada">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Temporada"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneTipoPlato -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTieneTipoPlato">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#tipoPlato"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#usuarioTieneLocalisacion -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#usuarioTieneLocalisacion">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ubicacion"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#UserProfile"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#ingredienteID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#ingredienteID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ingrediente"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#mainIngredient -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#mainIngredient">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ingrediente"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaCalorias -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaCalorias">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaCarbs -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaCarbs">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaFat -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaFat">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaFibre -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaFibre">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaID">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaIntrucciones -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaIntrucciones">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaNombre -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaNombre">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaProtein -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaProtein">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaSalt -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaSalt">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaSaturates -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaSaturates">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaServicios -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaServicios">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaSugar -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaSugar">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTiempoPreparacion -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#recetaTiempoPreparacion">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#similitudRIDA -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#similitudRIDA">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Similitud"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#similitudRIDB -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#similitudRIDB">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Similitud"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#similitudValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#similitudValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Similitud"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Aceite -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Aceite">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Adereso -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Adereso">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Agua -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Agua">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ajies -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ajies">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Frutos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ajo -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ajo">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bulbos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Algas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Algas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Animal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Animal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Arroz -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Arroz">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cereal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ave -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ave">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Carne"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Azucar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Azucar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bebida -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bebida">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Berenjena -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Berenjena">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Frutos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bulbos -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bulbos">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Hortalizas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cafe -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cafe">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Calabaza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Calabaza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Frutos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Carne -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Carne">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cebolla -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cebolla">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bulbos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cereal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cereal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cerveza -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cerveza">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bebida"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Chocolate -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Chocolate">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Coles -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Coles">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Flor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Coliflor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Coliflor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Flor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Colorante -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Colorante">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Condimento -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Condimento">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cordero -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cordero">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Carne"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cultura -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cultura"/>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Embutido -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Embutido">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Endulcorante -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Endulcorante">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Enlatados -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Enlatados">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Especias -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Especias">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Fiambre -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Fiambre">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Embutido"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Flor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Flor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Hortalizas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Flores -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Flores">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Fresco -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Fresco">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Embutido"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Frijol -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Frijol">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Legumbres"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Fruta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Fruta">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Frutos -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Frutos">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Hortalizas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Galletas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Galletas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Panaderia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Gelatina -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Gelatina">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Golosina -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Golosina">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Harina -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Harina">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Hongos -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Hongos">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Hortalizas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Hortalizas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Huevos -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Huevos">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ingrediente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ingrediente"/>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Integral -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Integral">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Jarabe -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Jarabe">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bebida"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Lacteos -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Lacteos">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Leche -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Leche">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Lacteos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Lechugas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Lechugas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Verduras"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Legumbres -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Legumbres">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Hortalizas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Licor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Licor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bebida"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Maiz -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Maiz">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Frutos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Mantequilla -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Mantequilla">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Lacteos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Marisco -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Marisco">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Mayonesa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Mayonesa">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Lacteos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Migas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Migas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Panaderia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#MomentoComida -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#MomentoComida"/>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Nectar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Nectar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Fruta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Nuez -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Nuez">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pais -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pais"/>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pan -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pan">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Panaderia"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Panaderia -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Panaderia">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pasta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pasta">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pescado -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pescado">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Porcino -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Porcino">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Carne"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pulpa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Pulpa">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Fruta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Queso -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Queso">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Lacteos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Raices -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Raices">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Hortalizas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Receta"/>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Reposteria -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Reposteria">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Sal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Sal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Seco -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Seco">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Embutido"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Sidra -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Sidra">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bebida"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Similitud -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Similitud"/>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Tallos_hojas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Tallos_hojas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Hortalizas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Te -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Te">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bebida"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Temporada -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Temporada"/>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Tortillas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Tortillas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ubicacion -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ubicacion"/>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#UserProfile -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#UserProfile"/>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vacuno -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vacuno">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Carne"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Ingrediente"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Verduras -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Verduras">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Tallos_hojas"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vinagre -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vinagre">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otros"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vino -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vino">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Bebida"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Yogourt -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Yogourt">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Lacteos"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#frutosSecos -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#frutosSecos">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Vegetal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#ingredienteList -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#ingredienteList"/>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#tipoPlato -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#tipoPlato"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cena -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Cena">
+        <rdf:type rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#tipoPlato"/>
+        <rdfs:label>Cena
+</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Comida -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Comida">
+        <rdf:type rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#tipoPlato"/>
+        <rdfs:label>Comida</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Desayuno -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Desayuno">
+        <rdf:type rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#tipoPlato"/>
+        <rdfs:label>Desayuno</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Merieda -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Merieda">
+        <rdf:type rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#tipoPlato"/>
+        <rdfs:label>Merienda</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otoño -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Otoño">
+        <rdf:type rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Temporada"/>
+        <rdfs:label xml:lang="es">Otoño</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Primavera -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Primavera">
+        <rdf:type rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Temporada"/>
+        <rdfs:label xml:lang="es">Primavera</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Verano -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Verano">
+        <rdf:type rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Temporada"/>
+        <rdfs:label xml:lang="es">Verano</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#temp1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#temp1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/joaquin/ontologies/2017/11/untitled-ontology-26#Temporada"/>
+        <rdfs:label xml:lang="es">Invierno</rdfs:label>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
