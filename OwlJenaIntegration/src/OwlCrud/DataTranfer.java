@@ -27,7 +27,7 @@ public class DataTranfer {
 	OntModel modelo = null;
 	Statement  StIngredientes  = null;
 	ResultSet  Ingredientes	= null;
-	
+    Connection conection    = null;
 	String recipeID = "", Nombre = "", Sal = "", Calorias = "", Fibra = "", Azucar = "", Grasas = "",
 			GrasasSaturadas = "", carbohidratos = "", proteinas = "", MainIngredient = "", geolocalizacion = "",
 			Pais = "", Proteinas = "", Colesterol = "", RecipeTipoPlato = "", Location = "", PaisNombre = "",
@@ -42,8 +42,8 @@ public class DataTranfer {
 		ResultSet Data = null;
 		System.out.println("1-LEYENDO LOS DATOS DESDE LA BASE DE DATOS...");
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conexion = GetConnection();
-		Statement st = conexion.createStatement();
+		conection = GetConnection();
+		Statement st = conection.createStatement();
 	    try {
 			return	 Data = st.executeQuery(Sqlquery+
 					Integer.toString(Cantidad)+";");
@@ -51,7 +51,8 @@ public class DataTranfer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		 if(conection != null)
+			 conection.close();
 		return Data;
 		
 	}
@@ -74,21 +75,23 @@ public class DataTranfer {
 		 Individual receta 			= null;
 		 Individual Ingrediente     = null;
 		 Individual tipoPlato		= null;
+		 Individual Pais			= null;
 		 Connection con 			= null;
-		 OntClass   RecetaType       = null;
+		 OntClass   RecetaType      = null;
 		
 		 ObjectProperty hasIngredient = null;
 		 ObjectProperty hasTipoPlato = null;
+		 ObjectProperty hasPais = null;
 		 
 		 RecetaType = modelo.getOntClass(BaseUri + "Receta");
 		 receta = modelo.createIndividual(BaseUri + recipeID, RecetaType);
 	     receta.addLabel(modelo.createLiteral(Nombre));
 	     
-	     RecetaActual = Nombre;
+	  
 	     con = this.GetConnection();
 	   	 StIngredientes = con.createStatement();
 		 Ingredientes =  GetDbData("SELECT * FROM recipedatatoowl where recipeId = " +
-		      	 recipeID + " and  classOf is not null and recipeTipoPlatoData <> '' limit 0,",20);
+		      	 recipeID + " and  classOf is not null  limit 0,",20);
 		 if(Ingredientes != null)
 		 {
 			 while(Ingredientes.next()) 
@@ -120,39 +123,52 @@ public class DataTranfer {
 
 			
 				// ASIGNANDO VALORES A LAS PROPIEDADES DE LA RECETA
+				
+				
 				if(RecetaActual != Nombre)
 				{
 					RecetaActual = Nombre;
 					receta.setPropertyValue(DPcalorias,
-							modelo.createTypedLiteral((Calorias != "") ? Float.parseFloat(Calorias) : 0));
+							modelo.createTypedLiteral((Calorias != "") ? Double.parseDouble(Calorias) : 0));
 					receta.setPropertyValue(DPcarbohidradtos,
-							modelo.createTypedLiteral((carbohidratos !="") ? Float.parseFloat(carbohidratos):0));
+							modelo.createTypedLiteral((carbohidratos !="") ? Double.parseDouble(carbohidratos):0));
 					receta.setPropertyValue(DPgrasas,
-							modelo.createTypedLiteral((Grasas !="")? Float.parseFloat(Grasas):0));
-					receta.setPropertyValue(DPfibra, modelo.createTypedLiteral(Float.parseFloat(Fibra)));
+							modelo.createTypedLiteral((Grasas !="")? Double.parseDouble(Grasas):0));
+					receta.setPropertyValue(DPfibra, modelo.createTypedLiteral(Double.parseDouble(Fibra)));
 					receta.setPropertyValue(DPproteinas,
-							modelo.createTypedLiteral((Proteinas != "") ? Float.parseFloat(Proteinas) : 0));
+							modelo.createTypedLiteral((Proteinas != "") ? Double.parseDouble(Proteinas) : 0));
 					receta.setPropertyValue(DPSalt,
-							modelo.createTypedLiteral((Sal !="")? Float.parseFloat(Sal):0));
+							modelo.createTypedLiteral((Sal !="")? Double.parseDouble(Sal):0));
 					receta.setPropertyValue(DPSaturates,
-							modelo.createTypedLiteral((GrasasSaturadas!="")? Float.parseFloat(GrasasSaturadas):0));
-					receta.setPropertyValue(DPSugar, modelo.createTypedLiteral((Azucar!="")?Float.parseFloat(Azucar):0));
+							modelo.createTypedLiteral((GrasasSaturadas!="")? Double.parseDouble(GrasasSaturadas):0));
+					receta.setPropertyValue(DPSugar, modelo.createTypedLiteral((Azucar!="")?Double.parseDouble(Azucar):0));
 					receta.setPropertyValue(DPrecetaID,
 							modelo.createTypedLiteral(Integer.parseInt(recipeID)));
+					
+					tipoPlato     	=    GetIndividual(RecipeTipoPlato);
+					if(PaisNombre != null && !PaisNombre.isEmpty())
+							Pais 			=    GetIndividual(tools.remplaceWhiteSpace(PaisNombre));
 			
 				}
 				Ingrediente = GetIngredient(Ingredientes);
 				
 				// ASIGNANDO LA RELACION ENTRE LA RECETA ACTUAL CON EL INGREDIENTE CREADO
-				hasIngredient =  GetObjectProperty("recetaTieneIngrediente");
-				hasTipoPlato  =  GetObjectProperty("recetaTieneTipoPlato");
-				tipoPlato     = modelo.getIndividual(BaseUri+RecipeTipoPlato);
-				modelo.add(receta,hasIngredient,Ingrediente);
+				hasIngredient 	=  GetObjectProperty("recetaTieneIngrediente");
+				hasTipoPlato  	=  GetObjectProperty("recetaTieneTipoPlato");
+				hasPais  		=  GetObjectProperty("recetaTienePais");
+				
+				if(Ingrediente != null)
+					modelo.add(receta,hasIngredient,Ingrediente);
 				if(tipoPlato != null)
 			    	modelo.add(receta,hasTipoPlato,tipoPlato);
 				}
+			   if(Pais != null) 
+			   {
+			    	modelo.add(receta,hasPais,Pais);
+			   }
+			   
 		 }
-	     con.close();
+	    
 	     return receta;
 	}
 	
@@ -163,34 +179,41 @@ public class DataTranfer {
 	public ObjectProperty GetObjectProperty(String nombre) {
 		return modelo.getObjectProperty(BaseUri+nombre);
 	}
-	
+	public Individual GetIndividual(String nombre) {
+	  	Individual ObjIndividual = null;
+	    ObjIndividual  =  modelo.getIndividual(BaseUri+nombre);
+		return ObjIndividual;
+	}
 	public Connection GetConnection() throws ClassNotFoundException 
 	{
-		Connection conexion = null;
+		
 		try {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-	    conexion = DriverManager.getConnection("jdbc:mysql://localhost/foodrecomendersystemdb",
+	    conection = DriverManager.getConnection("jdbc:mysql://localhost/foodrecomendersystemdb?useSSL=false",
 				"root","admin");
 	    }catch (SQLException s) {
 			System.out.println("Error: SQL.");
 			System.out.println("SQLException: " + s.getMessage());
 		} 
-	    return conexion; 
+	    return conection; 
 	}
   
 	public Individual GetIngredient(ResultSet IngredientData) throws SQLException, FileNotFoundException {
     
     	Individual ingrediente = null;
     	OntClass IngredienteType = null;
-    	
+    	String Uri  			=  null;
     	MainIngredient 			= IngredientData.getString("mainIngredient");
 		ingredienteDescripcion 	= IngredientData.getString("Ingredientedescripcion");
 		ingredienteID 			= IngredientData.getString("ingredienteID");
 		ClassOF 				= IngredientData.getString("classOf");
-		String Uri    = BaseUri+tools.remplaceWhiteSpace(MainIngredient);
-		ingrediente   = modelo.getIndividual(Uri);
+		if(!MainIngredient.isEmpty() && !ClassOF.isEmpty())
+		{	
+			Uri    = BaseUri+tools.remplaceWhiteSpace(MainIngredient);
+			ingrediente   = modelo.getIndividual(Uri);
+		}
 		System.out.println(MainIngredient);
-		if(ingrediente == null) 
+		if(ingrediente == null && !MainIngredient.isEmpty() ) 
 		{
 			// CREACION DE LOS DATAPEOPERTY DE LOS INGREDIENTES
 			DatatypeProperty DPingrendienteID 		= 	modelo.getDatatypeProperty(BaseUri + "ingredienteID");

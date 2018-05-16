@@ -15,9 +15,9 @@ public class mainClass {
 		}
 		else 
 		{
-				objDataTranfer.MigrateDataToOwl("src/Libs/FoodOntologyRecomenderOwl1452018.owl",
-	     		"SELECT  distinct(recipeID),nombre  FROM recipedatatoowl where classOf is not null and recipeTipoPlatoData <> '' limit 0,"
-						, 10);
+				objDataTranfer.MigrateDataToOwl("src/Libs/FoodOntologyRecomenderOwl1552018.owl",
+	     		"SELECT  distinct(recipeID),nombre  FROM recipedatatoowl where classOf is not null  limit 0,"
+						, 4000);
 		}
 	}
 
