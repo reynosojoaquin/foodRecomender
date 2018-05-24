@@ -74,6 +74,7 @@ public class tools {
 		
 			return StrVar.replace(' ', '_');
 		}
+		
 		public double GetMediaAritmetica(double numeros[]) 
 		{
 		   

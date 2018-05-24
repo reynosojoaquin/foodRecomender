@@ -1,5 +1,5 @@
 package OwlCrud;
-
+import Similarity.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -140,14 +140,15 @@ public class receta {
             }
          
 	}
-	public void   getAtributeRecipeVector( Resource receta,OntModel modelo ) 
+	public recetaAtributos   getAtributeRecipeVector( Resource receta,OntModel modelo ) 
 	{
+		 recetaAtributos retorno = new recetaAtributos();
 		 String  PropValue = "";
 		 double[] RecipeAtribute = new double[4];
 		 int pais 					 = 0;
 		 int cantidadIngrediente   	 = 0;
 		 int tipoPlato            	 = 0;
-		 double distanciaIngrediente = 0;
+		 
 		 ArrayList<String> tipoPlatoList = new ArrayList<String>()
 		 {{ 
 			 add("Desayuno");
@@ -155,7 +156,8 @@ public class receta {
 			 add("Cena");
 			 add("Merienda");
 		 }};
-		 
+		 ArrayList<double[]> ingredientesReceta = new ArrayList<double[]>();
+		 ArrayList<String> paisList  = getIndividualPais(modelo);
 		 String BaseUri = 	modelo.getNsPrefixURI(""); 
          String PropertyName = "";
          
@@ -178,25 +180,29 @@ public class receta {
             	{
             		case "recetaTienePais":
             		    PropValue = tools.getValueAsString(propiedad, pPais);
-            			pais = Integer.parseInt(PropValue);
+            			pais = paisList.indexOf(PropValue);
             		break;
             		case "recetaTieneTipoPlato":
             			 PropValue = tools.getValueAsString(propiedad, pTipoPlato);
-            			 tipoPlato = Integer.parseInt(PropValue);
+            			 tipoPlato = tipoPlatoList.indexOf(PropValue) ;
             		break;
             		case  "recetaTieneIngrediente":
+            			ingredientesReceta.add(getAtributeIngredientVector(propiedad, modelo));
             			break;
             	}		
          		
      	
         }
+         
+         retorno.ingredientesAtributos = ingredientesReceta;
+         return retorno;
 		
 	} 
 	
-	public void   getAtributeIngredientVector( Resource ingrediente,OntModel modelo ) 
+	public double[]   getAtributeIngredientVector( Resource ingrediente,OntModel modelo ) 
 	{
 		 String  PropValue = "";
-		 double[] IngredientAtribute = new double[4];
+		 double[] IngredientAtribute = new double[3];
 		 int SuperClass			   	 = 0;
 		 int MainIngredient      	 = 0;
 		 int Class 				     = 0;		
@@ -234,11 +240,34 @@ public class receta {
      	       	
         
         }  		
-     	
-        
+         
+         IngredientAtribute[0] = MainIngredient;
+         IngredientAtribute[1] = Class;
+         IngredientAtribute[2] = SuperClass;
+         return IngredientAtribute;
 		
 	} 
-	
+	public ArrayList<String> getIndividualPais(OntModel modelo) 
+	{
+		ArrayList<String> retorno = null;
+		String value = "";
+		String[] paises =null;
+		Resource pais = modelo.getResource(modelo.getNsPrefixURI("")+"Pais");
+		ExtendedIterator<Individual> individuals = modelo.listIndividuals(pais);
+		 while (individuals != null)
+		 {
+			 Individual indvPais = individuals.next();
+			 value += indvPais.getLocalName()+",";
+	     }
+		 paises = value.split(",");
+		 retorno = new ArrayList<String>(paises.length);
+		 for(String p:paises) 
+		 {
+		    retorno.add(p);	 
+		 }
+		 
+		return retorno;
+	}
 	public   ArrayList<String> GetObjectProPerties(){
 		 
 		 return this.ingredientes;
@@ -320,6 +349,8 @@ public class receta {
 		 
 		 return retorno;
 	}
+	
+	
     public ArrayList<String>[] getArrayClass() 
     {
     	ArrayList<String> retorno[]=null;
