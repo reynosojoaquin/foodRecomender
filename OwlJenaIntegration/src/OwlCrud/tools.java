@@ -1,10 +1,15 @@
 package OwlCrud;
 
+import java.util.ArrayList;
+
+import org.apache.jena.ontology.OntClass;
+import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
+import org.apache.jena.util.iterator.ExtendedIterator;
 import org.apache.jena.vocabulary.RDFS;
 
 public class tools {
@@ -64,8 +69,68 @@ public class tools {
 		    bar.append("]   " + percent + "%     "+info);
 		    System.out.print("\r" + bar.toString());
 		}
+		
 		public static String remplaceWhiteSpace(String StrVar){
 		
 			return StrVar.replace(' ', '_');
 		}
+		public double GetMediaAritmetica(double numeros[]) 
+		{
+		   
+		   double media	   		= 0;
+		   
+		   int 	  elementos   	= 0;
+		   double suma			= 0;	
+		   
+		   elementos  = numeros.length;
+		   for(double i:numeros) 
+		   {
+			   suma = suma + i;
+		   }
+		   media = suma/ elementos;
+		    return media;
+			
+		}
+		public double GetDesviacionStandar(double numeros[]) 
+		{
+			double varianza 		= 0;
+			double retorno   		= 0;
+			double sumatoria 		= 0;
+			double desviacion		= 0;
+			int elementos        = 0;
+			double media			= 0;
+			elementos  = 			numeros.length;
+			media 	   =  			GetMediaAritmetica(numeros); 
+			for(int i=0;i<elementos;i++) 
+			{
+				sumatoria = Math.pow(numeros[i]-media, 2);
+				varianza = varianza + sumatoria;
+			}
+			varianza = varianza / (elementos-1);
+			desviacion = Math.sqrt(varianza);
+			retorno    = Math.rint(desviacion*100)/100;
+			return retorno;
+		}
+		public double GetDistanciaEuclidea(double vectorA[],double vectorB[]) {
+			double 	distancia =0;
+			int  	sizeA	  =0;
+			int 	sizeB 	  =0;
+			double  resta     =0;
+		  	double  Sumatoria =0;
+		    sizeA = vectorA.length;
+		    sizeB = vectorB.length;
+		    if(sizeA == sizeB)
+		    {
+		      for(int i=0;i<sizeA;i++)
+		      {
+		    	  resta =  Math.pow((vectorA[i] - vectorB[i]),2);	
+		    	  Sumatoria = Sumatoria + resta;
+		      }
+		    	
+		      distancia = Math.sqrt(Sumatoria);
+		    }
+		
+			return distancia;
+		}
+		
 }

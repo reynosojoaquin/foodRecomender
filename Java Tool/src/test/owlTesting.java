@@ -187,7 +187,7 @@ public class owlTesting {
     
     	
         Resource receta = model.getResource( BaseUri + "Receta" );
-   
+    
         StmtIterator i = model.listStatements( null, RDF.type, receta );
 
         while (i.hasNext()) {
